@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex boucle et string</title>
+</head>
+<body>
+    
+    <script>
+        let listePersonnes = [
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Player 4",
+            "Player 5"
+        ]
+        console.log(listePersonnes);
+        let arrayBis = [];
+        //rendu :
+        // let arrayBis = [
+        //     "P1",
+        //     "P2",
+        //     "P3",
+        //     "P4",
+        //     "P5"
+        // ]
+
+        // array.push
+        // string[0]
+        // string[string.length-1]
+        // console.log(listePersonnes);
+        // console.log(listePersonnes[0]);
+        // let mot = listePersonnes[0];
+        // console.log(mot[0]); // 1ère lettre du mot
+        // let lettre1 = mot[0];
+        // console.log(mot[mot.length-1]); // dernière lettre du mot
+        // let derniereLettre = mot[mot.length-1];
+
+        // arrayBis.push(lettre1+derniereLettre);
+
+        // console.log(arrayBis);
+        
+        for(let i = 0; i < listePersonnes.length; i++)
+        {          
+            let mot = listePersonnes[i]; 
+            let lettre1 = mot[0];
+            let dernierCaractere = mot[mot.length-1];
+            arrayBis.push(lettre1+dernierCaractere);
+        }
+        
+        console.log(arrayBis);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle for</title>
+</head>
+<body>
+    
+    <script>
+        //boucle = répéter des instructions plusieurs fois jusqu'à ce qu'une condition soit remplie
+      
+        // for(let i = 0; i <= 255; i++) // Répète les instructions TANT QUE i < 10.
+        // {            
+        //    console.log(i);            
+        // }
+
+        for(let i = 0; i < 5; i++)
+        {
+            let reponse = prompt("Saisir liste membres équipe");
+            console.log(reponse);
+            if(reponse === "stop" || reponse === null)
+                break;
+
+            if(reponse === "continuer")
+                continue;
+        }
+     
+    </script>
+</body>
+</html>

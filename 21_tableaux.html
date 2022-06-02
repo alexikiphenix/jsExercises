@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableaux</title>
+</head>
+<body>
+    
+    <script>
+        // let reponse; 
+        // for(let i = 0; i < 5; i++)
+        // {   
+        //     if(reponse !== undefined)
+        //         reponse += `${prompt("Saisir liste membres équipe")}, `;  
+        //     else
+        //         reponse =  `${prompt("Saisir liste membres équipe")}, `;  
+        //     console.log(reponse);            
+        // }
+
+        // let monTableau = ["John", "Maria", "Momo", "Lulu"];
+        // console.log(monTableau);
+        
+        // for(let i = 0; i < monTableau.length; i++)
+        //     console.log(monTableau[i]);
+
+        // let listeMembres = [];
+        // console.log(listeMembres);
+
+        // listeMembres.push('John');
+        // console.log(listeMembres);
+
+        // listeMembres.push('Maria');
+        // console.log(listeMembres);
+
+        // let tableauEssai = ["marcus", "john", "lilia", "anna", "rufus", "iris"]
+        // for(let i = 0; i < tableauEssai.length; i++)
+        //     console.log(tableauEssai[i]);
+        // console.log(tableauEssai);
+
+        let listeNombres = [];
+        
+        for(let i = 0; i <= 10; i++)
+            listeNombres.push(i);  // ajoute 1 élément à la fin du tableau
+        
+        listeNombres.unshift("Début"); // ajoute un élément au début du tableau
+
+        console.log(listeNombres);
+
+        listeNombres.pop();  // supprime dernier élément du tableau.
+        console.log(listeNombres);
+
+        listeNombres.shift(); // supprime premier élément du tableau.
+        console.log(listeNombres);
+
+
+    </script>
+</body>
+</html>

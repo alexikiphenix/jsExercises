@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objets</title>
+</head>
+<body>
+    
+
+    <script>
+        /*        
+            Quelles sont les principales caractéristiques d'une voiture ?:
+            - Marque
+            - Modèle
+            - Couleur
+            - Nombre de portes
+        */
+
+        // objet littéral
+        let voiture1 = {
+            "marque" : "Renault",
+            "modele" : "Clio",
+            "couleur": "gris",
+            "nbPortes" : 5,
+            "vitesse" : 188,
+            "equipements" : ["GPS", "Nitro", "autoradio", "TV"], 
+            "proprietaire" : {
+                "prenom" : "Bob",
+                "nom" : "leponge",
+                "ville": "Paris"
+            },
+            "klaxonner" : () => {
+                console.log("Tuuuuuuuuuuuuuuuuuuuuut")
+            }
+        }
+
+        let voiture2 = {
+            "marque" : "Bugatti",
+            "modele" : "Chiron",
+            "couleur" : "rouge",
+            "nbPortes" : 3,
+            "vitesse" : 417
+        }
+
+        console.log(voiture1.marque); // Dot Notation ("notation avec point")
+        console.log(voiture1.modele);
+        console.log(voiture1.couleur);
+        console.log(voiture1.nbPortes);
+        console.log(voiture1.vitesse);
+        voiture1.vitesse = 220;
+        console.log(voiture1.vitesse);
+        for(let i = 0; i < voiture1.equipements.length; i++)
+            console.log(voiture1.equipements[i]);
+        console.log(voiture1.proprietaire);
+        voiture1.klaxonner();
+
+
+        console.log("--------------");
+        //console.log(voiture2["marque"]); // Brackets Notation (Notation avec crochets)
+
+
+
+        //différences avec tableau
+        // let voiture7 = [
+        //     ["marque", "Renault"],
+        //     ["modele" , "Clio"],
+        //     ["couleur" , "gris"],
+        //     ["nbPortes" , 5]
+        // ]
+        // console.log(voiture7);
+
+        
+        
+    </script>
+</body>
+</html>

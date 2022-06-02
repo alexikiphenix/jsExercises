@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3c49c887f2.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        #container{
+            width: 50vw; /* vw : Viewport Width - largeur de la surface visible de l'écran*/
+            margin: auto;
+            /* border: 2px solid red; */
+        }
+        #addParagraphBtn:hover
+        {
+            cursor: pointer;
+        }
+        #mainBox
+        {            
+            border: 1px dotted black;
+        }
+        input
+        {
+            width: 100%;
+        }
+        /* p{margin: 0 0 1rem; border:1px dotted black;} */
+    </style>
+    <title>DOM 2 eventListener</title>
+</head>
+<body>
+    <div id="container">       
+        <main id="mainBox" class="essai essaiEncore">
+            <p>
+                <!-- <label for="name">Nom</label> -->
+                <!-- <input id="name" type="text" name="name"> -->
+            </p>
+            
+
+          
+            <!-- 
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, minus!</p>
+            <p>Reprehenderit, numquam asperiores placeat vitae eos facere consectetur fuga? Nostrum.</p> -->
+        </main>
+         <span><i id="addParagraphBtn" class="fas fa-plus-square"></i></span>
+    </div>    
+    <script>
+        let mainBox = document.getElementById('mainBox');   
+        let addParagraphBtn = document.getElementById('addParagraphBtn');
+        
+        const addParagraph = () =>
+        {
+            let paragraph = document.createElement('p');
+            let label = document.createElement('label');
+            let input = document.createElement('input');
+            label.setAttribute(`for`, `name`);
+            label.innerText = `Nom`;
+            paragraph.appendChild(label);
+            input.setAttribute(`id`, `name`);
+            input.setAttribute(`type`, `text`);
+            input.setAttribute(`name`, `name`);
+            paragraph.appendChild(input);
+            //paragraph.innerText = 'Lorem ipsum dolor sit, amet consectetur.`;
+            mainBox.appendChild(paragraph);            
+        }    
+        
+        addParagraphBtn.addEventListener('click', () =>{
+            console.log("Bouton appuyé !");
+            addParagraph();
+        });
+       
+        // for(let i = 0; i < 10; i++)     
+        //     mainBox.innerHTML += `<p>Lorem essai </p>`;       
+        
+        
+    </script>
+</body>
+</html>

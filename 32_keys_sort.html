@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object keys sort</title>
+</head>
+<body>
+
+    <script>
+        // var list = {"you": 100, "me": 75, "foo": 116, "bar": 15};
+        // keysSorted = Object.keys(list).sort(function(a,b){return list[a]-list[b]})
+        // console.log(keysSorted); 
+
+        const unordered = {
+            'paragraphe3': 'foo',
+            'paragraphe2': 'bar',
+            'paragraphe10': 'baz',
+            'section1': 'test'
+            };
+
+       
+            const getOrderParagraphs = (unordered) =>
+            {
+                const paragraphNumbers = {};
+                let paragraphNumber = new RegExp(`[0-9]+$`);
+                let mySearch = new RegExp(`^paragraphe[0-9]+$`);
+                for(let property in unordered)
+                {
+                    if(mySearch.test(property))
+                    {                    
+                        let number = paragraphNumber.exec(property);
+                        number = number[0];                        
+                        paragraphNumbers[number] = number;
+                    }                    
+                }
+
+                const ordered = Object.keys(paragraphNumbers).sort().reduce(
+                (obj, key) => { 
+                    obj[key] = paragraphNumbers[key]; 
+                    return obj;
+                }, 
+                
+                );
+                return ordered;
+            }
+            
+
+            console.log(getOrderParagraphs(unordered));
+           
+
+    </script>    
+</body>
+</html>

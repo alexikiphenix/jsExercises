@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #mainBox{border: 3px solid red;}
+        p{margin: 0;}
+    </style>
+    <title>DOM 1</title>
+</head>
+<body>
+    
+    <main id="mainBox" class="essai essaiEncore">
+        <!-- 
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, minus!</p>
+        <p>Reprehenderit, numquam asperiores placeat vitae eos facere consectetur fuga? Nostrum.</p> -->
+    </main>
+    <script>
+        let mainBox = document.getElementById('mainBox');   
+        for(let i = 0; i < 10; i++)
+        {
+            let paragraph = document.createElement('p');
+            paragraph.innerText = `Lorem ipsum dolor sit, amet consectetur.`;
+            mainBox.appendChild(paragraph);
+        }
+        
+        
+       
+        // for(let i = 0; i < 10; i++)     
+        //     mainBox.innerHTML += `<p>Lorem essai </p>`;       
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctions</title>
+</head>
+<body>
+    
+    <script>
+        // Définition d'une fonction fléchée (Arrow function) sans paramètres
+        const sayHello = () =>
+        {  
+            console.log("Hello "); 
+        }
+
+        sayHello();
+     
+
+        // // Définition d'une fonction fléchée avec paramètres
+        const sayHello2 = (prenom, nom, ville) =>
+        {
+            console.log(`Hello ${prenom} ${nom}, qui vit à ${ville} !`);  
+        }
+        
+        // Exécution / appel de la fonction :
+        sayHello2(`Marcus`, `Thuram`, `Marseille`);
+        sayHello2(`Lila`, `Martin`, `Paris`);        
+    </script>
+</body>
+</html>

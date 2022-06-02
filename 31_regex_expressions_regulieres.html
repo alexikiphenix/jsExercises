@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{display: flex; flex-wrap: wrap;}
+        [class^="boite"]
+        {
+            display: grid;
+            place-content: center;
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+        }
+    </style>
+    <title>RegEx - Expressions regulieres</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="boite-1">1</div>
+        <div class="boite">2</div>
+        <div class="boite-3">3</div>
+        <div class="boite-4">4</div>
+        <div class="boite-5">5</div>
+        <div class="boite-6">6</div>
+        <div class="boite-7">7</div>
+        <div class="boite-8">8</div>
+        <div class="boite-9">9</div>
+        <div class="boite-10">10</div>
+        <div>VIDE</div>
+    </div>
+    
+    <script>
+        let mot1 = "paragraphe10";
+        let mot2 = "1section_paragraphe1";
+        
+
+       // console.log(mot2.includes(`paragraphe`));
+
+        // RegEx => Regular Expressions => expressions régulières
+        let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
+        console.log(mySearch.test(mot1));
+        console.log(mySearch.exec(mot1));
+        let paragraphNumber = new RegExp(`[0-9]+$`);
+        console.log(paragraphNumber.exec(mot1));
+        paragraphNumber = paragraphNumber.exec(mot1);
+        console.log(paragraphNumber[0]);
+        // tab[0]
+
+    </script>
+</body>
+</html>

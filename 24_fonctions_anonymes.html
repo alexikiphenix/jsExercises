@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctions</title>
+</head>
+<body>
+    
+    <script>
+        /******************* MEHODE 1 *****************************/
+        // 1- Définition d'une fonction anonyme (stockée dans une variable)
+        let sayHello = function(){           
+            console.log("Hello anonyme dans une variable");       
+        }
+        
+        // Exécution ou appel de la fonction :       
+        sayHello();
+     
+
+        /********************* METHODE 2 **************************/
+        // 2- Définition et exécution d'une fonction anonyme auto-invoquée 
+        (function() 
+        {
+            console.log(`Hello fonction anonyme auto-invoquée !`);  
+        })();
+        
+          
+    </script>
+</body>
+</html>

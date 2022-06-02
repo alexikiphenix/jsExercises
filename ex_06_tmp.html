@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex </title>
+</head>
+<body>
+    
+    <script>
+        /*
+            1. Saisir le prénom
+            2. l'enregistrer dans un tableau
+            3. répéter l'opération indéfiniment ou écrire stop pour arrêter
+            4. afficher le tableau
+
+            
+            */
+
+            let listePrenoms = [];
+            let reponse;
+            
+            //************************ DEBUT BOUCLE **************************************
+                // - déterminer condition d'entrée dans la boucle PAS DE CONDITON D ENTREE 
+                // - déterminer condition de sortie : utilisateur tape stop
+
+                // 1. Capturer saisie de l'utilisateur
+                do
+                {
+                    reponse = prompt(`Saisir le prénom | "stop" pour arrêter`);
+
+                    // 2. ajouter dans un tableau sauf si reponse = stop ou = null
+                    if(reponse !== "stop")     
+                    {
+                        if(reponse !== null) 
+                            listePrenoms.push(reponse); 
+                    }                                                                            
+                }
+                while(reponse !== "stop" && reponse !== null) 
+            //************************ FIN BOUCLE ***************
+
+            // 4 Afficher le tableau
+            console.log(listePrenoms);
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle While</title>
+</head>
+<body>
+
+    <script>
+        // boucle = répéter des instructions plusieurs fois jusqu'à ce qu'une condition soit remplie
+        // let i = 0;
+        // while(i < 256) // Répète les instructions TANT QUE i < 10.
+        // {            
+        //     console.log(i);
+        //     document.write(`<div style="color: white; background-color: rgb(0, 0, ${i});">`);
+        //         document.write(i++);
+        //     document.write('</div>');
+        // }
+
+        // 2**8 = 2x2x2x2x2x2x2x2  rgb(255, 255, 150) // couleurs 3 fois 8 bits = 2**24 (bits)  1 byte = 8bits => 1 octet
+        
+        let compteur = 0;
+        let continuer = true; // undefined ou not defined
+        
+        while(continuer === true)
+        {
+            continuer = confirm(`${compteur} - Voulez-vous continuer ?`);
+            compteur++;
+        }
+
+        
+
+
+
+    </script>
+</body>
+</html>

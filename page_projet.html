@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3c49c887f2.js" crossorigin="anonymous"></script>
+   <style>
+        *{
+            box-sizing: border-box;
+        }
+        #container
+        {
+            width: 50vw;
+            margin: auto;           
+        }
+        #mainBox
+        {
+             border: 1px dotted black;
+        }
+        #addParagraphBtn:hover
+        {
+            cursor: pointer;
+        }
+        #newParagraph
+        {
+            width: 100%;
+        }
+
+    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Page projet</title>
+</head>
+<body>
+    <div id="container">
+        <main id="mainBox">        
+        </main>
+        <label for="newParagraph">Texte du paragraphe</label>
+        <textarea name="" id="newParagraph" cols="30" rows="3"></textarea>
+        <span><i id="addParagraphBtn" class="fas fa-plus-circle"></i></span>
+    </div>
+
+
+
+    <script defer>
+        
+        let mainBox = document.getElementById('mainBox');
+        let addParagraphBtn = document.querySelector('#addParagraphBtn'); // autre méthode
+        let newParagraph = document.getElementById('newParagraph');
+        let mySound = new Audio('assets/medias/sound.wav');        
+        let counter = 1;        
+        mySound.volume = .1;
+        const addParagraph = (text) =>
+        {
+            let paragraph = document.createElement('p');
+            paragraph.innerText = `${text}`;
+            mainBox.appendChild(paragraph);
+        }
+        
+        addParagraphBtn.addEventListener('click', () => {      
+            if(newParagraph.value !== "") 
+            {     
+                addParagraph(newParagraph.value);
+                localStorage.setItem(`paragraphe${counter}`, newParagraph.value);
+                newParagraph.value = ``;
+                mySound.play();
+                counter++;
+            }
+            else
+                alert("Remplir le paragraphe !");
+        })
+
+
+        // console.log(localStorage);
+        // console.log(localStorage.getItem('paragraphe1'));
+        // console.log(localStorage.getItem('paragraphe2'));
+        // JSON : Javascript Object Notation
+      
+        const getOrderParagraphs = (unordered) =>
+        {
+            if(localStorage.length === 0)
+            {
+                return false;
+            }
+            
+            let continueOrder = false;
+                
+            const paragraphNumbers = {};
+            let paragraphNumber = new RegExp(`[0-9]+$`);
+            let mySearch = new RegExp(`^paragraphe[0-9]+$`);
+            for(let property in unordered)
+            {
+                if(mySearch.test(property))
+                {                    
+                    let number = paragraphNumber.exec(property);
+                    number = number[0];                        
+                    paragraphNumbers[number] = number;
+                    continueOrder = true;
+                }                    
+            }
+
+            if(continueOrder === false)
+                return false;
+
+            const ordered = Object.keys(paragraphNumbers).sort().reduce(
+            (obj, key) => { 
+                obj[key] = paragraphNumbers[key]; 
+                return obj;
+            }, 
+            
+            );
+            return ordered;
+        }
+        
+        console.log(getOrderParagraphs(localStorage));
+        
+        const searchAndAdd = () =>
+        {
+            let paragraph = new RegExp(`^paragraphe[0-9]+$`); // Regex vérifie s'il s'agit bienn de la bonne clé ex paragraphe10        //parcourir un objet : For in
+            for(let property in localStorage)
+            {
+                if(paragraph.test(property))
+                {
+                    addParagraph(localStorage[property]);                                  
+                }                                         
+            }
+        }
+      
+        searchAndAdd();
+    
+        // let mainBox2 = document.querySelector('.mainBox');
+    </script>
+</body>
+</html>

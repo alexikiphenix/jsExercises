@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructeurs</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // Fonction constructeur d'objets = une classe
+        function Voiture(marque, modele, couleur, nbPortes, vitesse, equipements, proprietaire, klaxonner)
+        {
+            this.marque = marque;
+            this.modele = modele;
+            this.couleur = couleur;
+            this.nbPortes = nbPortes;
+            this.vitesse = vitesse;
+            this.equipements = equipements;
+            this.proprietaire = proprietaire;
+            this.klaxonner = () => {
+                console.log("Tuuuuuuuuuuuuuuuuuuuuut");
+                return this; 
+            }
+        }
+
+        function Proprietaire(nom, prenom, ville)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.ville = ville;
+        }
+
+        let proprietaire1 = new Proprietaire("Danny", "John", "Lyon");
+        let voiture3 = new Voiture("Ford", "Escort", "Noire", 5, 200, ["GPS", "Nitro"], proprietaire1);
+        
+        voiture3.klaxonner();
+        
+       
+
+
+        // voiture2.klaxonner();
+
+        
+    </script>
+</body>
+</html>

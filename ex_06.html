@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let reponse;
+        let liste = [];
+        do
+        {
+            reponse = prompt("Saisir un prénom | stop pour arrêter");
+            if(reponse !== "stop")
+                liste.push(reponse);
+
+            console.log(reponse);
+        }
+        while(reponse !== "stop" && reponse != null)
+
+        console.log(liste);
+    </script>
+</body>
+</html>

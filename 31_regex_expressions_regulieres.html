@@ -18,22 +18,20 @@
     <title>RegEx - Expressions regulieres</title>
 </head>
 <body>
-
     <div class="container">
-        <div class="boite-1">1</div>
-        <div class="boite">2</div>
-        <div class="boite-3">3</div>
-        <div class="boite-4">4</div>
-        <div class="boite-5">5</div>
-        <div class="boite-6">6</div>
-        <div class="boite-7">7</div>
-        <div class="boite-8">8</div>
-        <div class="boite-9">9</div>
-        <div class="boite-10">10</div>
-        <div>VIDE</div>
+        <form name="signInForm" action="script.html" method="post">
+            <div><label for="name">nom</label><input type="text" id="name" ,="" name="name"></div>
+            <div><label for="prenom">prenom</label><input type="text" id="prenom" ,="" name="prenom"></div>
+            <div><label for="field-3">field-3</label><input type="text" id="field-3" ,="" name="field-3"></div>
+            <div><label for="field-4">field-4</label><input type="text" id="field-4" ,="" name="field-4"></div>
+            <div><label for="field-5">field-5</label><input type="text" id="field-5" ,="" name="field-5"></div>
+            <button type="submit">Enregistrer</button>
+        </form>
     </div>
     
     <script>
+        name = document.getElementById('name')
+        let signInForm = document.querySelector(`[name="signInForm"]`);
         let mot1 = "paragraphe10";
         let mot2 = "1section_paragraphe1";
         
@@ -42,13 +40,17 @@
 
         // RegEx => Regular Expressions => expressions régulières
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
-        console.log(mySearch.test(mot1));
-        console.log(mySearch.exec(mot1));
-        let paragraphNumber = new RegExp(`[0-9]+$`);
-        console.log(paragraphNumber.exec(mot1));
-        paragraphNumber = paragraphNumber.exec(mot1);
-        console.log(paragraphNumber[0]);
-        // tab[0]
+        let checkName = new RegExp(`^[a-zA-Z-/s/]+`);
+        // console.log(mySearch.test(mot1));
+        // console.log(mySearch.exec(mot1));
+        // let paragraphNumber = new RegExp(`[0-9]+$`);
+        // console.log(paragraphNumber.exec(mot1));
+        // paragraphNumber = paragraphNumber.exec(mot1);
+        // console.log(paragraphNumber[0]);
+        
+
+        console.log(signInForm);
+        form.addEventListener('submit')
 
     </script>
 </body>

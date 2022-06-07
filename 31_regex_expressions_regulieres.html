@@ -27,7 +27,7 @@
 <body>
     <div class="container">
         <form name="signInForm" action="" method="post">
-            <div><label for="name">nom</label><input type="text" id="name" name="name"></div>
+            <div><label for="name">nom</label><input type="text" value="test" id="name" name="name"></div>
             <div><label for="prenom">prenom</label><input type="text" id="prenom" name="prenom"></div>
             <div><label for="field-3">field-3</label><input type="text" id="field-3" name="field-3"></div>
             <div><label for="field-4">field-4</label><input type="text" id="field-4" name="field-4"></div>
@@ -37,11 +37,11 @@
     </div>
     
     <script>
-        name = document.getElementById('name')
-        let signInForm = document.querySelector(`[name="signInForm"]`);
-        let mot1 = "paragraphe10";
-        let mot2 = "1section_paragraphe1";
+        let name = document.getElementById('name')
         
+        let signInForm = document.querySelector(`[name="signInForm"]`);
+        // let mot1 = "paragraphe10";
+        // let mot2 = "1section_paragraphe1";        
 
        // console.log(mot2.includes(`paragraphe`));
 
@@ -53,15 +53,15 @@
         // let paragraphNumber = new RegExp(`[0-9]+$`);
         // console.log(paragraphNumber.exec(mot1));
         // paragraphNumber = paragraphNumber.exec(mot1);
-        // console.log(paragraphNumber[0]);
-        
-        console.log(name);
+        // console.log(paragraphNumber[0]);        
+       
+        console.log(name.value);
         
         signInForm.addEventListener('submit', () =>{
-            // if(checkName.test(name))
-            //     alert('Le nom est valide');
-            // else
-            //     alert('Le nom est invalide');            
+            if(checkName.test(name))
+                alert('Le nom est valide');
+            else
+                alert('Le nom est invalide');            
            
                 alert(name.value);
         })

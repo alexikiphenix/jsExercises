@@ -64,9 +64,9 @@
             else
                 alert(`Le nom ${signInForm.name.value} est invalide`);  
 
-            alert(checkEmail.test(signInForm.email.value) ? 
-            `L'email ${signInForm.email.value} est valide` : 
-            `L'email ${signInForm.email.value} est invalide`);
+        checkEmail.test(signInForm.email.value) ? 
+            alert(`L'email ${signInForm.email.value} est valide`) : 
+            alert(`L'email ${signInForm.email.value} est invalide`);
         })
 
     </script>

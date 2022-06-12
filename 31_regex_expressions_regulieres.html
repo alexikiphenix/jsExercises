@@ -13,12 +13,15 @@
             background-color: white;
             border-radius: 1rem;
         }
-    
+        form > div
+        {
+            margin-bottom: 1rem;
+        }
         input:not([type="checkbox"], [type="radio"])
         {      
             width: 100%;
             height: 2rem;
-            margin: .1rem 0 1rem;            
+            margin: .1rem 0 .1rem;            
             border-radius: .9rem;
             border: 1px solid rgb(18, 195, 56);
         }
@@ -26,6 +29,7 @@
         {
             height: 3rem;
             width: 100%;
+            margin-top: 1rem;
             font-size: 1.2rem;
             font-weight: 900;
             border-radius: 2rem;
@@ -34,10 +38,22 @@
             background-color: rgb(18, 195, 56);       
         }
         [type="submit"]:hover
-        {
+        {            
             cursor: pointer;
             color: rgb(18, 195, 56);
             background-color: rgb(203, 211, 205); 
+        }
+        [class="hidden"]
+        {
+            display: none;            
+        }
+        input+small
+        {
+            color: red;
+        }
+        .animate-txt
+        {
+            font-size: 1.2rem;
         }
     </style>
     <title>RegEx - Expressions regulieres</title>
@@ -45,9 +61,19 @@
 <body>
     <div class="container">
         <form name="signInForm" action="" method="POST">
-            <div><label for="name">nom</label><input type="text" value="test" id="name" name="name"></div>
-            <div><label for="prenom">prenom</label><input type="text" id="prenom" name="prenom"></div>
-            <div><label for="email">Email</label><input type="email" id="email" name="email"></div>
+            <div id="box-name">
+                <label for="name">nom</label>
+                <input type="text" value="test" id="name" name="name">
+                <!-- <small id="message-name" class="hidden"></small> -->
+            </div>
+            <div id="box-first-name">
+                <label for="first-name">prenom</label>
+                <input type="text" id="first-name" name="first-name">
+            </div>
+            <div id="box-email">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
             <div><label for="field-4">field-4</label><input type="text" id="field-4" name="field-4"></div>
             <div><label for="field-5">field-5</label><input type="text" id="field-5" name="field-5"></div>
             <button type="submit">Enregistrer</button>
@@ -56,7 +82,7 @@
     
     <script>
         //let name = document.getElementById('name')
-                
+        const messages = [];
         let signInForm = document.querySelector(`[name="signInForm"]`);
         // let mot1 = "paragraphe10";
         // let mot2 = "1section_paragraphe1";        
@@ -75,21 +101,37 @@
         // let paragraphNumber = new RegExp(`[0-9]+$`);
         // console.log(paragraphNumber.exec(mot1));
         // paragraphNumber = paragraphNumber.exec(mot1);
-        // console.log(paragraphNumber[0]);        
-       
+        // console.log(paragraphNumber[0]);    
+
+          
+        const showMessages = (field, message) =>{
+            let fieldBox = document.getElementById(field);
+            let small = document.createElement('small');
+            small.innerText = message;
+            fieldBox.appendChild(small);            
+        }
+
         console.log(checkName.test(signInForm.name.value));
         
-        signInForm.addEventListener('submit', () =>{
+        signInForm.addEventListener('submit', (e) =>{
             if(checkName.test(signInForm.name.value))
                 alert(`Le nom ${signInForm.name.value} est valide`);
             else
-                alert(`Le nom ${signInForm.name.value} est invalide`);  
+            {
+                //alert(`Le nom ${signInForm.name.value} est invalide`);  
+                messages.push(`Le nom est invalide`);                   
+                showMessages(`box-name`,`Le nom est invalide`);                      
+                e.preventDefault();
+            }
 
-        checkEmail.test(signInForm.email.value) ? 
-            alert(`L'email ${signInForm.email.value} est valide`) : 
-            alert(`L'email ${signInForm.email.value} est invalide`);
+            checkEmail.test(signInForm.email.value) ? 
+                messages.push(`L'email ${signInForm.email.value} est valide`) : 
+                showMessages(`box-email`,`L'email est invalide`);            
+                messages.push(`L'email est invalide`);
+                e.preventDefault();
         })
 
+        console.log(messages);
     </script>
 </body>
 </html>

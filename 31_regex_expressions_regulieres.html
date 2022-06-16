@@ -122,13 +122,12 @@
                 messages.push(`Le nom est invalide`);                   
                 showMessages(`box-name`,`Le nom est invalide`);                      
                 e.preventDefault();
-            }
-
+            }       
             checkEmail.test(signInForm.email.value) ? 
-                messages.push(`L'email ${signInForm.email.value} est valide`) : 
-                showMessages(`box-email`,`L'email est invalide`);            
-                messages.push(`L'email est invalide`);
-                e.preventDefault();
+            messages.push(`L'email ${signInForm.email.value} est valide`) : 
+            showMessages(`box-email`,`L'email est invalide`);            
+            messages.push(`L'email est invalide`);
+            e.preventDefault();
         })
 
         console.log(messages);

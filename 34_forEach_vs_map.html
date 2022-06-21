@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function practice (i)
+        {
+            return i+1;
+        };
+        var a = [ -1, 0, 1, 2, 3, 4, 5 ];
+        var b = [ 0 ];
+        var c = [ 0 ];
+        console.log(a);
+        b = a.forEach(practice);
+        console.log("=====");
+        console.log(a);
+        console.log(b);
+        c = a.map(practice);
+        console.log("=====");
+        console.log(a);
+        console.log(c);
+    </script>
+</body>
+</html>

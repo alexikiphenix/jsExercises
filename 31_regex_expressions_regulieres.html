@@ -100,7 +100,7 @@
         // .trim
         let checkEmail2 = new RegExp(`^[a-z]+[-_\.a-z0-9]+@[a-z]{2,}[-_\.a-z0-9]+\.[a-z]{2,40}$`);
         
-        let checkEmail = new RegExp('/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/');
+        let checkEmail = new RegExp('^[a-z0-9]+(?:[._-][a-z0-9]+)*@[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}$');
         //let checkEmail = new RegExp('^[a-z]+[-_\.a-z]*@[a-z]+[-_\.a-z]*\.[a-z]{2,}$');
         // console.log(mySearch.test(mot1));
         // console.log(mySearch.exec(mot1));
@@ -129,7 +129,8 @@
                 messages.push(`Le nom est invalide`);                   
                 showMessages(`box-name`,`Le nom est invalide`);                      
                 e.preventDefault();
-            }       
+            }    
+
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);

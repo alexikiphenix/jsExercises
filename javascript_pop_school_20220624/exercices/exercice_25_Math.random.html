@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #nuancier
+        {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-template-rows: repeat(5, 50px);
+            grid-auto-rows: 50px;
+            width: 250px;
+            border: 1px solid black;
+        }
+        .maCase
+        {
+            height: 100%;
+        }
+    </style>
+    <title>Math.random</title>
+</head>
+<body>
+    <div id="nuancier">        
+    </div>
+
+    <script>
+        let nuancier = document.getElementById(`nuancier`);
+        let nombre;
+        let maCase;
+        let couleur;
+        
+        // nombre = Math.random()*100; // génère un nombre aléatoire entre 0 et 100 (100 non inclu)
+        // nombre = Math.floor(nombre);
+        function genereUnAleatoire(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min +1)) + min;
+        }
+
+        const creeDesCouleurs = () =>
+        {
+            for(let compteur = 1; compteur <= 25; compteur++)
+            {
+                maCase = document.createElement(`div`);
+                nombre = genereUnAleatoire(0, 360);
+                maCase.style.backgroundColor = `hsl(${nombre}, 100%, 50%)`;
+                nuancier.appendChild(maCase);         
+            }
+        }
+
+        setInterval(creeDesCouleurs, 500);
+
+
+    </script>
+</body>
+</html>

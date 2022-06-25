@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableaux</title>
+</head>
+<body>
+    
+    <script>
+        let tableau = new Array('Lucas', 'Mohamed', 'Emilie', 'Denys'); // Création explicite
+        let tableau2 = []; // création implicite
+        console.log(tableau);
+        // console.log(tableau2);
+        // console.log(tableau[0]);
+        // console.log(tableau[3]);
+        // for(let indice = 0; indice < tableau.length; indice++)
+        //     console.log(tableau[indice]);
+
+        let Lucas = ["lucas@monmail.com", "Trappes", "Promo 16"];
+        let Mohamed = ["mohamed@monmail.com", "Bordeaux", "Promo 14"];
+        let Emilie = ["emilie@monmail.com", "Marne la Vallée", "Promo 10"];
+        let Denys = ["denys@monmail.com", "Kiev", "Promo 18"];
+
+        let arrayFilled = new Array(Lucas, Mohamed, Emilie);
+        console.log(arrayFilled);
+        arrayFilled.push(Denys);
+        arrayFilled.splice(2, 1); // supprime 1 élément à l'index 2.
+    </script>
+</body>
+</html>

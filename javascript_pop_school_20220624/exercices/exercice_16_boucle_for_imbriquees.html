@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .grille-nombres
+        {
+            display: grid;
+            grid-template-columns: repeat(11, 5vw);
+            grid-auto-rows: auto;
+        }
+        .numero-id{
+            font-weight: bold;
+            color: red;
+        }
+        [class*="numero"]
+        {     
+            display: inline-block;
+            padding: 0.5rem;
+            border: 1px dotted black;
+        }
+    </style>
+    <title>Boubcles for imbriquees</title>
+</head>
+<body>
+    
+
+    <table border="1">
+        <tr><!-- Table Row -->
+            <!-- Table Data -->
+            <td>1</td>
+            <td>Lionel</td>
+            <td>Messi</td>
+            <td>PSG</td>
+            <td>France</td>            
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Emilie</td>
+            <td>Martin</td>
+            <td>Lyon</td>
+            <td>France</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Mohamed</td>
+            <td>Salah</td>
+            <td>Liverpool</td>
+            <td>Angleterre</td>
+        </tr>
+    </table>
+
+    <p>
+        Lorem ipsum <span style="border:3px solid red;">dolor</span> sit amet consectetur adipisicing elit. Adipisci, rerum.
+    </p>
+
+    <h2>Avec javaScript :</h2>
+    <script>
+        /*
+        document.write(`<table border="1">`);
+            for(let compteur = 0; compteur < 20; compteur++)
+            {
+                document.write(`<tr>`);
+                    document.write(`<td>${compteur}</td>`);
+                    document.write(`<td>prenom ${compteur}</td>`);
+                    document.write(`<td>nom ${compteur}</td>`);
+                document.write(`</tr>`);
+            }
+        document.write(`</table>`);
+        */
+        document.write('<div class="grille-nombres">')
+            for(let compteur = 1; compteur <= 10; compteur++)
+            {
+                
+                    document.write(`<span class="numero-id">${compteur}</span>`);
+                    //document.write(`1 2 3 4 5 6 7 8 9 10`);
+                    for(let compteur2 = 1; compteur2 <= 10; compteur2++)
+                    {
+                        document.write(`<span class="numero-2">${compteur*compteur2}</span>`);
+                    }
+                
+            }
+            // <div>
+            //      <span class="numero-id">1</span>
+            //      <span class="numero-2">1</span>
+            //      <span class="numero-2">10</span>
+            // </div>
+        document.write('</div>')
+
+    </script>
+</body>
+</html>

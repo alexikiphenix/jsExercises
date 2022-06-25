@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+                /*
+            Exercice :
+            Créer une fenêtre modale demandant l'age de la personne
+            En fonction de la réponse afficher :
+             
+            0 et 17 ans => "age, tu es très jeune";
+            18 et 25 ans => "age, tu es jeune";
+            26 et 45 ans => "age, tu es encore jeune";
+            46 et 55 ans => "age, une carrière bien remplie";
+            56 et 64 ans => "age, troisième partie de carrière";
+            65 ans et plus => "age, une retraite bien méritée";
+        */
+       let age = prompt("Quel est votre âge ?");
+       if(age > 0 && age < 18)
+       {
+            console.log(`${age} ans ! tu es très jeune`);
+       }
+       else if(age >= 18 && age < 26)
+       {
+            console.log(`${age} ans ! tu es jeune`);
+       }
+       else if(age >= 26 && age < 46)
+       {
+            console.log(`${age} ans ! tu es encore jeune`);
+       }       
+       else if(age >= 46 && age < 56)
+       {
+            console.log(`${age} ans ! une carrière bien remple`);
+       }
+       else if(age >= 56 && age < 65)
+       {
+            console.log(`${age} ans ! 3ème partie de carrière`);
+       }
+       else if(age >= 65 && age <= 130)
+       {
+            console.log(`${age} ans ! une retraite bien méritée`);
+       }
+       else
+       {
+          console.log("Erreur");
+       }
+
+ 
+
+    </script>
+</body>
+</html>

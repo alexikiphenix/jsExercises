@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle while</title>
+</head>
+<body>
+    
+    <script>
+        // Die = dé
+        let die = 6;
+        let userChoice;
+        // do while permet d'entrer au moins une fois dans la boucle
+        // et d'évaluer ensuite si la condition est remplie.
+        do
+        {            
+            userChoice = prompt(`Choisir un numéro entre 1 et 6 ("quitter" pour sortir)`);
+        } 
+        while(userChoice != die && userChoice !== "quitter")
+
+        document.write("Bravo !"); 
+    </script>   
+</body>
+</html>

@@ -98,7 +98,7 @@
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
         let checkName = new RegExp(`^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$`);
         // .trim
-        let checkEmail2 = new RegExp(`^[a-z]+[-_\.a-z0-9]+@[a-z]{2,}[-_\.a-z0-9]+\.[a-z]{2,40}$`);
+        let checkEmail2 = new RegExp(`^[a-z]+([-_\.a-z0-9]+@[a-z]{2,})[-_\.a-z0-9]+\.[a-z]{2,40}$`);
         
         let checkEmail = new RegExp('^[a-z0-9]+(?:[._-][a-z0-9]+)*@[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}$');
         //let checkEmail = new RegExp('^[a-z]+[-_\.a-z]*@[a-z]+[-_\.a-z]*\.[a-z]{2,}$');

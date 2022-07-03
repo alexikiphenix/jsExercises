@@ -100,7 +100,7 @@
         // .trim
         let checkEmail2 = new RegExp(`^[a-z]+([-_\.a-z0-9]+@[a-z]{2,})[-_\.a-z0-9]+\.[a-z]{2,40}$`);
         
-        let checkEmail = new RegExp('^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$');
+        let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         // Good regEx checking double dots :
         // ^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$
         

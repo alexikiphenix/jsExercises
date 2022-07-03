@@ -118,11 +118,12 @@
             small.innerText = message;
             fieldBox.appendChild(small);            
         }
-        console.log(checkEmail);
-        console.log(signInForm.email.value);
-        console.log(checkEmail.test(signInForm.email.value));
-       
         
+        //console.log(checkEmail.test(signInForm.email.value));
+       
+        const str = "Lorem ipsum dolor sit amet";
+        const regex = /[a]/;
+        console.log(str.match);
         signInForm.addEventListener('submit', (e) =>{            
             // if(checkName.test(signInForm.name.value))
             //     alert(`Le nom ${signInForm.name.value} est valide`);

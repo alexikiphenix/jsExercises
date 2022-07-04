@@ -98,7 +98,7 @@
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
         let checkName = new RegExp(`^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$`);
         // .trim
-        let checkEmail2 = new RegExp(`^[a-z]+([-_\.a-z0-9]+@[a-z]{2,})[-_\.a-z0-9]+\.[a-z]{2,40}$`);
+        
         
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         // Good regEx checking double dots :
@@ -133,7 +133,7 @@
             //     showMessages(`box-name`,`Le nom est invalide`);                      
             //     e.preventDefault();
             // }    
-
+            console.log(checkEmail.test(signInForm.email.value.trim()));
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);

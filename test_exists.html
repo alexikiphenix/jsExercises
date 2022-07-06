@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test variable existence</title>
+</head>
+<body>
+    <span id="mySpan">Essai</span>
+    
+    <script>
+        //let myVariable;
+        let myVariable = document.querySelector("id", "mySpan");
+        let myTypeOf = typeof(myVariable);
+        console.log(typeof(myVariable));
+        console.log(myTypeOf);
+
+
+        if(myVariable && typeof(window[myVariable]) == 'object')
+        {
+            console.log("Ma variable existe");
+        }
+        else
+        {
+            console.log("Ma variable n'existe pas");
+        }
+
+        var varName = 'myVar';
+if (typeof(window[varName]) == 'undefined') {
+  console.log("Variable " + varName + " not defined");
+} else {
+  console.log("Variable " + varName + " defined");
+}
+    </script>
+</body>
+</html>

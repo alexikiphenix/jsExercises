@@ -10,14 +10,10 @@
     <span id="mySpan">Essai</span>
     
     <script>
-        //let myVariable;
-        let myVariable = document.querySelector("id", "mySpan");
-        let myTypeOf = typeof(myVariable);
-        console.log(typeof(myVariable));
-        console.log(myTypeOf);
-
-
-        if(myVariable && typeof(window[myVariable]) == 'object')
+        "use strict";
+        let myVariable = document.querySelector("#mySpan");
+        //let myVariable = {nom : "adbul", prenom : "momo"};
+        if(typeof myVariable  === 'object')
         {
             console.log("Ma variable existe");
         }
@@ -26,12 +22,21 @@
             console.log("Ma variable n'existe pas");
         }
 
-        var varName = 'myVar';
-if (typeof(window[varName]) == 'undefined') {
-  console.log("Variable " + varName + " not defined");
-} else {
-  console.log("Variable " + varName + " defined");
-}
+        
+        if(myVariable)
+        {
+            console.log("Ma variable existe");
+        }
+        else
+        {
+            console.log("Ma variable n'existe pas");
+        }
+
+        // for(let property in myVariable)
+        //     console.log(`${property} => ${myVariable[property]}`);
+
+        console.log(myVariable);
+
     </script>
 </body>
 </html>

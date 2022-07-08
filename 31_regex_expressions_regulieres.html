@@ -63,44 +63,46 @@
         <form name="signInForm" action="" method="POST">
             <div id="box-name">
                 <label for="name">nom</label>
-                <input type="text" value="test" id="name" name="name">
+                <input type="text" value="test" id="name" name="name" />
                 <!-- <small id="message-name" class="hidden"></small> -->
             </div>
-            <div id="box-first-name">
-                <label for="first-name">prenom</label>
-                <input type="text" id="first-name" name="first-name">
+            <div id="box-firstName">
+                <label for="firstName">prenom</label>
+                <input type="text" id="firstName" name="firstName" />
+            </div>
+            <div id="box-aka">
+                <label for="aka">Pseudonyme</label>
+                <input type="text" id="aka" name="aka" />
             </div>
             <div id="box-email">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" />
             </div>
-            <div><label for="field-4">field-4</label><input type="text" id="field-4" name="field-4"></div>
             <div>
                 <label for="commentary">Commentary</label>
-                <input type="text" id="commentary" name="commentary">
+                <input type="text" id="commentary" name="commentary" />
             </div>
             <button type="submit">Enregistrer</button>
         </form>
     </div>
     
     <script>
-
+        let signInForm = document.querySelector(`[name="signInForm"]`);
+        let checkName = new RegExp(`^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$`);
+        let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         let checkCommentary = new RegExp('/$/')
+        let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
         //let name = document.getElementById('name')
         const messages = [];
-        let signInForm = document.querySelector(`[name="signInForm"]`);
         // let mot1 = "paragraphe10";
         // let mot2 = "1section_paragraphe1";        
 
        // console.log(mot2.includes(`paragraphe`));
 
         // RegEx => Regular Expressions => expressions régulières
-        let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
-        let checkName = new RegExp(`^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$`);
         // .trim
         
         
-        let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         // Good regEx checking double dots :
         // ^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$
         
@@ -114,45 +116,58 @@
           
         const showMessages = (field, message) =>{
             let fieldBox = document.getElementById(field);
-            if(!small)
+            let small = document.createElement('small');            
+            if(!document.getElementById(`small-${field}`)) // we check if a message has already been sent
             {
-               let small = document.createElement('small'); 
-            }                
-            small.innerText = message;
-            fieldBox.appendChild(small);            
+               small.setAttribute('id', `small-${field}`)
+               small.innerText = message;
+               fieldBox.appendChild(small);   
+            }   
+            else
+            {
+                small.innerText = message;
+            }             
         }
         
         //console.log(checkEmail.test(signInForm.email.value));
        
         const str = "Lorem ipsum dolor sit amet";
         const regex = /[a]/;
-        console.log(str.match);
+        
         signInForm.addEventListener('submit', (e) =>{            
-            if(checkName.test(signInForm.name.value))
+            if(checkName.test(signInForm.name.value.trim()))
                 alert(`Le nom ${signInForm.name.value} est valide`);
             else
-            {        
-                alert(`Le nom ${signInForm.name.value} est invalide`);
+            {                   
                 messages.push(`Le nom est invalide`);                   
                 showMessages(`box-name`,`Le nom est invalide`);                      
                 e.preventDefault();
             }    
-            console.log(checkEmail.test(signInForm.email.value.trim()));
-            // if(checkEmail.test(signInForm.email.value))
-            // { 
-            //     alert(`L'email ${signInForm.email.value} est valide`);
-            //     messages.push(`L'email ${signInForm.email.value} est valide`) 
-            // }
-            // else
-            // {
-            //     alert(`L'email ${signInForm.email.value} est invalide`);
-            //     showMessages(`box-email`,`L'email est invalide`);            
-            //     messages.push(`L'email est invalide`);
-            //     e.preventDefault();
-            // }
+
+            if(checkName.test(signInForm.firstName.value.trim()))
+                alert(`Le nom ${signInForm.firstName.value} est valide`);
+            else
+            { 
+                messages.push(`Le nom est invalide`);                   
+                showMessages(`box-firstName`,`Le prénom est invalide`);                      
+                e.preventDefault();
+            }  
+            
+            if(checkEmail.test(signInForm.email.value))
+            { 
+                alert(`L'email ${signInForm.email.value} est valide`);
+                messages.push(`L'email ${signInForm.email.value} est valide`) 
+            }
+            else
+            {
+                alert(`L'email ${signInForm.email.value} est invalide`);
+                showMessages(`box-email`,`L'email est invalide`);            
+                messages.push(`L'email est invalide`);
+                e.preventDefault();
+            }
         })
 
-        console.log(messages);
+
     </script>
 </body>
 </html>

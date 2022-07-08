@@ -136,10 +136,13 @@
         
         signInForm.addEventListener('submit', (e) =>{            
             if(checkName.test(signInForm.name.value.trim()))
+            {                
                 alert(`Le nom ${signInForm.name.value} est valide`);
+                showMessages(`box-name`,`OK`);  
+            }
             else
             {                   
-                messages.push(`Le nom est invalide`);                   
+                //messages.push(`Le nom est invalide`);                   
                 showMessages(`box-name`,`Le nom est invalide`);                      
                 e.preventDefault();
             }    
@@ -148,7 +151,7 @@
                 alert(`Le nom ${signInForm.firstName.value} est valide`);
             else
             { 
-                messages.push(`Le nom est invalide`);                   
+                //messages.push(`Le nom est invalide`);                   
                 showMessages(`box-firstName`,`Le prénom est invalide`);                      
                 e.preventDefault();
             }  
@@ -156,17 +159,21 @@
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);
-                messages.push(`L'email ${signInForm.email.value} est valide`) 
+                showMessages(`OK`);
+                alert(`L'email ${signInForm.email.value} est BIEN valide`);
+                //messages.push(`L'email ${signInForm.email.value} est valide`) 
             }
             else
             {
                 alert(`L'email ${signInForm.email.value} est invalide`);
                 showMessages(`box-email`,`L'email est invalide`);            
-                messages.push(`L'email est invalide`);
+                //messages.push(`L'email est invalide`);
                 e.preventDefault();
             }
         })
 
+        console.log(checkEmail.test(signInForm.email.value.trim()));
+        console.log(signInForm.email.value);
 
     </script>
 </body>

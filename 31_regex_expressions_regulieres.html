@@ -88,7 +88,7 @@
     
     <script>
         let signInForm = document.querySelector(`[name="signInForm"]`);
-        let checkName = new RegExp(`^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$`);
+        let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         let checkCommentary = new RegExp('/$/')
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
@@ -134,7 +134,8 @@
         const str = "Lorem ipsum dolor sit amet";
         const regex = /[a]/;
         
-        signInForm.addEventListener('submit', (e) =>{            
+        signInForm.addEventListener('submit', (e) =>{   
+            // console.log(checkEmail.test(signInForm.email.value));         
             if(checkName.test(signInForm.name.value.trim()))
             {                
                 alert(`Le nom ${signInForm.name.value} est valide`);
@@ -148,10 +149,9 @@
             }    
 
             if(checkName.test(signInForm.firstName.value.trim()))
-                alert(`Le nom ${signInForm.firstName.value} est valide`);
+                alert(`Le prénom ${signInForm.firstName.value} est valide`);
             else
-            { 
-                //messages.push(`Le nom est invalide`);                   
+            {                  
                 showMessages(`box-firstName`,`Le prénom est invalide`);                      
                 e.preventDefault();
             }  
@@ -159,12 +159,13 @@
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);
-                showMessages(`OK`);
+                showMessages(`box-email`, `OK`);
                 alert(`L'email ${signInForm.email.value} est BIEN valide`);
                 //messages.push(`L'email ${signInForm.email.value} est valide`) 
             }
             else
             {
+                console.log(checkEmail.test(signInForm.email.value));  
                 alert(`L'email ${signInForm.email.value} est invalide`);
                 showMessages(`box-email`,`L'email est invalide`);            
                 //messages.push(`L'email est invalide`);
@@ -172,8 +173,8 @@
             }
         })
 
-        console.log(checkEmail.test(signInForm.email.value.trim()));
-        console.log(signInForm.email.value);
+        //console.log(checkEmail.test(signInForm.email.value.trim()));
+       // console.log(signInForm.email.value);
 
     </script>
 </body>

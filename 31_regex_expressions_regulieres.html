@@ -125,7 +125,9 @@
             }   
             else
             {
+                small = document.getElementById(`small-${field}`);
                 small.innerText = message;
+                console.log(small);
             }             
         }
         
@@ -159,9 +161,12 @@
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);
-                showMessages(`box-email`, `OK`);
+                console.log(checkEmail.test(signInForm.email.value));
+                //showMessages(`box-email`, `OK`);
                 alert(`L'email ${signInForm.email.value} est BIEN valide`);
-                //messages.push(`L'email ${signInForm.email.value} est valide`) 
+                console.log(checkEmail.test(signInForm.email.value)); 
+                //messages.push(`L'email ${signInForm.email.value} est valide`)
+                e.preventDefault(); 
             }
             else
             {

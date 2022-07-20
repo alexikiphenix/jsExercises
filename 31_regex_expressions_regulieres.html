@@ -176,6 +176,9 @@
                 alert(`L'email ${signInForm.email.value} est invalide`);
                 showMessages(`box-email`,`L'email est invalide`);            
                 //messages.push(`L'email est invalide`);
+                console.log(checkEmail.test(signInForm.email.value));
+                console.log(checkEmail.test(signInForm.email.value));
+                console.log(checkEmail.test(signInForm.email.value));
                 e.preventDefault();
             }
         })

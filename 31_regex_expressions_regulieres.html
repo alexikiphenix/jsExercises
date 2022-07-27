@@ -121,13 +121,13 @@
             {
                small.setAttribute('id', `small-${field}`)
                small.innerText = message;
-               fieldBox.appendChild(small);   
+               fieldBox.appendChild(small);  
             }   
             else
             {
                 small = document.getElementById(`small-${field}`);
                 small.innerText = message;
-                console.log(small);
+                
             }             
         }
         
@@ -151,13 +151,13 @@
             //     e.preventDefault();
             // }    
 
-            // if(checkName.test(signInForm.firstName.value.trim()))
-            //     alert(`Le prénom ${signInForm.firstName.value} est valide`);
-            // else
-            // {                  
-            //     showMessages(`box-firstName`,`Le prénom est invalide`);                      
-            //     e.preventDefault();
-            // }  
+            if(checkName.test(signInForm.firstName.value.trim()))
+                alert(`Le prénom ${signInForm.firstName.value} est valide`);
+            else
+            {                  
+                showMessages(`box-firstName`,`Le prénom est invalide`);                      
+                e.preventDefault();
+            }  
             
             if(checkEmail.test(signInForm.email.value))
             { 

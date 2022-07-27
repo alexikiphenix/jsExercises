@@ -63,12 +63,12 @@
         <form name="signInForm" action="" method="POST">
             <div id="box-name">
                 <label for="name">nom</label>
-                <input type="text" value="test" id="name" name="name" />
+                <input type="text" id="name" name="name" />
                 <!-- <small id="message-name" class="hidden"></small> -->
             </div>
-            <div id="box-firstName">
-                <label for="firstName">prenom</label>
-                <input type="text" id="firstName" name="firstName" />
+            <div id="box-firstname">
+                <label for="firstname">prenom</label>
+                <input type="text" id="firstname" name="firstname" />
             </div>
             <div id="box-aka">
                 <label for="aka">Pseudonyme</label>
@@ -89,6 +89,7 @@
     <script>
         let signInForm = document.querySelector(`[name="signInForm"]`);
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+        let checkFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         let checkCommentary = new RegExp('/$/')
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
@@ -100,21 +101,17 @@
        // console.log(mot2.includes(`paragraphe`));
 
         // RegEx => Regular Expressions => expressions régulières
-        // .trim
+       
         
         
         // Good regEx checking double dots :
         // ^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$
         
         //let checkEmail = new RegExp('^[a-z]+[-_\.a-z]*@[a-z]+[-_\.a-z]*\.[a-z]{2,}$');
-        // console.log(mySearch.test(mot1));
-        // console.log(mySearch.exec(mot1));
-        // let paragraphNumber = new RegExp(`[0-9]+$`);
-        // console.log(paragraphNumber.exec(mot1));
-        // paragraphNumber = paragraphNumber.exec(mot1);
-        // console.log(paragraphNumber[0]);    
+      
+     
           
-        const showMessages = (field, message) =>{
+        const showMessage = (field, message) =>{
             let fieldBox = document.getElementById(field);
             let small = document.createElement('small');            
             if(!document.getElementById(`small-${field}`)) // we check if a message has already been sent
@@ -130,62 +127,49 @@
                 
             }             
         }
-        
-        //console.log(checkEmail.test(signInForm.email.value));
-       
-        // const str = "Lorem ipsum dolor sit amet";
-        // const myRegex = /[a]/;
-        // console.log(myRegex.test(str));
 
-        signInForm.addEventListener('submit', (e) =>{   
-            // // console.log(checkEmail.test(signInForm.email.value));         
-            // if(checkName.test(signInForm.name.value.trim()))
-            // {                
-            //     alert(`Le nom ${signInForm.name.value} est valide`);
-            //     showMessages(`box-name`,`OK`);  
-            // }
-            // else
-            // {                   
-            //     //messages.push(`Le nom est invalide`);                   
-            //     showMessages(`box-name`,`Le nom est invalide`);                      
-            //     e.preventDefault();
-            // }    
 
-            if(checkName.test(signInForm.firstName.value.trim()))
-                alert(`Le prénom ${signInForm.firstName.value} est valide`);
+
+
+        signInForm.addEventListener('submit', (e) =>{                 
+            if(checkName.test(signInForm.name.value.trim()))
+            {                
+                alert(`Le nom ${signInForm.name.value} est valide`);
+                showMessage(`box-name`,`OK`);  
+            }
+            else
+            {                   
+                //messages.push(`Le nom est invalide`);                   
+                showMessage(`box-name`,`Le nom est invalide`);                      
+                e.preventDefault();
+            }    
+
+            if(checkFirstname.test(signInForm.firstname.value.trim()))
+            {
+                alert(`Le prénom ${signInForm.firstname.value} est valide`);
+                showMessage(`box-firstname`,`ok`);  
+            }
             else
             {                  
-                showMessages(`box-firstName`,`Le prénom est invalide`);                      
+                showMessage(`box-firstname`,`Le prénom est invalide`);                      
                 e.preventDefault();
             }  
             
             if(checkEmail.test(signInForm.email.value))
             { 
                 alert(`L'email ${signInForm.email.value} est valide`);
-                console.log(checkEmail.test(signInForm.email.value));
-                console.log(checkEmail.test(signInForm.email.value));
-                console.log(checkEmail.test(signInForm.email.value));
-                showMessages(`box-email`, `OK`);
-                alert(`L'email ${signInForm.email.value} est BIEN valide`);
-                console.log(checkEmail.test(signInForm.email.value)); 
+                showMessage(`box-email`, `OK`);
+                alert(`L'email ${signInForm.email.value} est BIEN valide`);             
                 //messages.push(`L'email ${signInForm.email.value} est valide`)
                 e.preventDefault(); 
             }
             else
-            {
-                console.log(checkEmail.test(signInForm.email.value));  
+            {                 
                 alert(`L'email ${signInForm.email.value} est invalide`);
-                showMessages(`box-email`,`L'email est invalide`);            
-                //messages.push(`L'email est invalide`);
-                console.log(checkEmail.test(signInForm.email.value));
-                console.log(checkEmail.test(signInForm.email.value));
-                console.log(checkEmail.test(signInForm.email.value));
+                showMessage(`box-email`,`L'email est invalide`);  
                 e.preventDefault();
             }
         })
-
-        //console.log(checkEmail.test(signInForm.email.value.trim()));
-       // console.log(signInForm.email.value);
 
     </script>
 </body>

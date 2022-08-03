@@ -91,7 +91,7 @@
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
-        let checkCommentary = new RegExp('/$/')
+        let checkCommentary = new RegExp('/(^HITLER)/')
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
         //let name = document.getElementById('name')
         const messages = [];
@@ -131,7 +131,8 @@
 
 
 
-        signInForm.addEventListener('submit', (e) =>{                 
+        signInForm.addEventListener('submit', (e) =>{     
+            console.log(checkCommentary.test(signInForm.commentary.value));         
             if(checkName.test(signInForm.name.value.trim()))
             {                
                 alert(`Le nom ${signInForm.name.value} est valide`);

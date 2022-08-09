@@ -17,7 +17,7 @@
         {
             margin-bottom: 1rem;
         }
-        input:not([type="checkbox"], [type="radio"])
+        input:not([type="checkbox"], [type="radio"]), textarea
         {      
             width: 100%;
             height: 2rem;
@@ -55,6 +55,10 @@
         {
             font-size: 1.2rem;
         }
+        .w100{
+            width: 100%;
+            border-radius: 1rem;
+        }
     </style>
     <title>RegEx - Expressions regulieres</title>
 </head>
@@ -80,7 +84,7 @@
             </div>
             <div>
                 <label for="commentary">Commentary</label>
-                <input type="text" id="commentary" name="commentary" />
+                <textarea id="commentary" class="w100" name="commentary"></textarea>
             </div>
             <button type="submit">Enregistrer</button>
         </form>

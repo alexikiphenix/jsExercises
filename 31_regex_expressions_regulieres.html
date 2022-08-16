@@ -171,6 +171,20 @@
                 showMessage(`box-email`,`L'email est invalide`);  
                 e.preventDefault();
             }
+            if(checkCommentary.test(signInForm.commentary.value))
+            { 
+                alert(`L'email ${signInForm.commentary.value} est valide`);
+                showMessage(`box-commentary`, `OK`);
+                alert(`L'commentary ${signInForm.commentary.value} est BIEN valide`);             
+                //messages.push(`L'commentary ${signInForm.commentary.value} est valide`)
+                e.preventDefault(); 
+            }
+            else
+            {                 
+                alert(`L'commentary ${signInForm.commentary.value} est invalide`);
+                showMessage(`box-commentary`,`L'commentary est invalide`);  
+                e.preventDefault();
+            }
         })
 
     </script>

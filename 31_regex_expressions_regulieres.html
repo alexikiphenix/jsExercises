@@ -96,7 +96,8 @@
         const myForm = {
             checkName : ()=>{
                 let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
-            }
+            },
+            checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
         }
         let signInForm = document.querySelector(`[name="signInForm"]`);
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
@@ -138,6 +139,8 @@
                 
             }             
         }
+
+        console.log(myForm.checkName2.test("martial----"));
 
         signInForm.addEventListener('submit', (e) =>{   
             alert("Test"); 

@@ -50,7 +50,7 @@
         {
             display: none;            
         }
-        input+small
+        input+small, textarea+small
         {
             color: red;
         }
@@ -93,13 +93,7 @@
     </div>
     
     <script>
-        const myForm = {
-            checkName : ()=>{
-                let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
-            },
-            checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi),
-            checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
-        }
+        // Method 1
         let signInForm = document.querySelector(`[name="signInForm"]`);
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
@@ -109,7 +103,19 @@
         //let name = document.getElementById('name')
         const messages = [];
         // let mot1 = "paragraphe10";
-        // let mot2 = "1section_paragraphe1";        
+        // let mot2 = "1section_paragraphe1"; 
+        
+        // method 2 with an object myForm
+        const myForm = {
+            checkName : ()=>{
+                let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+            },
+            checkFirstname : ()=>{
+                let checkFistname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+            },
+            checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi),
+            checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
+        }
 
        // console.log(mot2.includes(`paragraphe`));
 

@@ -10,11 +10,20 @@
     
     <script>
         const myString = "j'essaye de voir !";        
+        console.log(myString.length)
         console.log(myString.charAt(2))
         console.log(myString.includes('essaye'));
         console.log(myString.indexOf(`'`));
-
         console.log(myString.charCodeAt(7))
+        console.log(myString.slice(7));
+        
+        const strToArray = myString.split('');
+        console.log(strToArray);
+        console.log(strToArray.join(''));
+
+        const str1 = "Hello ";
+        const str2 = "Ronaldo"
+        console.log(str1.concat(' ', str2));
     </script>
 </body>
 </html>

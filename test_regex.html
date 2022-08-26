@@ -8,16 +8,29 @@
 </head>
 <body>
     <script>
-        const str = 'Lorem ipsum doloris';
+        const str = 'Tests sur les regEx : expressions régulières';
+        
+        // Chercher un mot dans une chaîne de caractères
+        const word = /(Tests)/;
+        console.log(`mot : ${str.match(word)}`)
+            
+        // small letters
         const small = /[a-z]/g;
         console.log(str.match(small));
-    
+
+        // all except small letters 
         const nonSmall = /[^a-z]/g;
         console.log(str.match(nonSmall));
+  
+        // big letters
+        const big = /[A-Z]/g;
+        console.log(str.match(big));
 
-        //---------------------------------------
+        // all except small letters 
         const nonSmallLetters = /[a-z]/g;
         console.log(str.match(smallLetters));
+
+
     </script>
 </body>
 </html>

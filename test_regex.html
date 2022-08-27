@@ -8,11 +8,17 @@
 </head>
 <body>
     <script>
-        const str = 'Tests sur les regEx : expressions régulières';
+        const str = 'Coupes du monde 1998 et 2020 - France';
         
         // Chercher un mot dans une chaîne de caractères
-        const word = /(Tests)/;
-        console.log(`mot : ${str.match(word)}`)
+        const word = /Coupes/;
+        console.log('-- 1 mot dans une chaîne --');
+        console.log(str.match(word))
+
+        // plusieurs occurences g = greedy
+        const words = /e/g;
+        console.log("-- plusieurs occurences (lettre e) drapeau g = greedy --")
+        console.log(str.match(words))
             
         // small letters
         const small = /[a-z]/g;
@@ -27,8 +33,8 @@
         console.log(str.match(big));
 
         // all except small letters 
-        const nonSmallLetters = /[a-z]/g;
-        console.log(str.match(smallLetters));
+        const nonBig = /[^A-Z]/g;
+        console.log(str.match(nonBig));
 
 
     </script>

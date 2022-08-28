@@ -20,17 +20,21 @@
         console.log("-- plusieurs occurences (lettre e) drapeau g = greedy --")
         console.log(str.match(words))
             
-        // small letters
+        // classe de caractères,lettres minuscules
         const small = /[a-z]/g;
+        console.log("-- classe de caractères,lettres minuscules --");
         console.log(str.match(small));
+        
+        // classe de caractères,lettres majuscules
+        const big = /[a-z]/g;
+        console.log("-- classe de caractères,lettres minuscules --");
+        console.log(str.match(big));
 
         // all except small letters 
         const nonSmall = /[^a-z]/g;
         console.log(str.match(nonSmall));
   
-        // big letters
-        const big = /[A-Z]/g;
-        console.log(str.match(big));
+
 
         // all except small letters 
         const nonBig = /[^A-Z]/g;

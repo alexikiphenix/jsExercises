@@ -30,7 +30,7 @@
         console.log("-- classe de caractères,lettres majuscules --");
         console.log(str.match(big));
 
-        // classe de caractères,lettres majuscules
+        // classe de caractères,toutes les lettres
         const letters = /[a-z]/gi;  // drapeau i = insensible à la casse (minuscules/majuscules)
         console.log("-- classe de caractères,lettres majuscules --");
         console.log(str.match(letters));
@@ -40,13 +40,17 @@
         console.log("-- classe de caractères,tous les chiffres --");
         console.log(str.match(digit));
 
-        // all except small letters 
-        const nonSmall = /[^a-z]/g;
-        console.log(str.match(nonSmall));
+
+        // raccourci lettres \w (words)
+        const shortcutLetters = /[\w]/g;
+        console.log("-- raccourci toutes les lettres : \w --");
+        console.log(str.match(shortcutLetters));
   
-        // all except small letters 
-        const nonBig = /[^A-Z]/g;
-        console.log(str.match(nonBig));
+
+        // raccourci chiffres \d (digits)
+        const shortcutDigits = /[\d]/g;
+        console.log("-- raccourci tous les chiffres : \w --");
+        console.log(str.match(shortcutDigits));
 
 
 

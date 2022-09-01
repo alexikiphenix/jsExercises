@@ -30,15 +30,20 @@
         console.log("-- classe de caractères,lettres minuscules --");
         console.log(str.match(big));
 
+        // classe de caractères,tous les chiffres
+        const all = /[0-9]/g;
+        console.log("-- classe de caractères,tous les chiffres --");
+        console.log(str.match(all));
+
         // all except small letters 
         const nonSmall = /[^a-z]/g;
         console.log(str.match(nonSmall));
   
-
-
         // all except small letters 
         const nonBig = /[^A-Z]/g;
         console.log(str.match(nonBig));
+
+
 
 
     </script>

@@ -26,14 +26,19 @@
         console.log(str.match(small));
         
         // classe de caractères,lettres majuscules
-        const big = /[a-z]/g;
-        console.log("-- classe de caractères,lettres minuscules --");
+        const big = /[A-Z]/g;
+        console.log("-- classe de caractères,lettres majuscules --");
         console.log(str.match(big));
 
+        // classe de caractères,lettres majuscules
+        const letters = /[a-z]/gi;  // drapeau i = insensible à la casse (minuscules/majuscules)
+        console.log("-- classe de caractères,lettres majuscules --");
+        console.log(str.match(letters));
+
         // classe de caractères,tous les chiffres
-        const all = /[0-9]/g;
+        const digit = /[0-9]/g;
         console.log("-- classe de caractères,tous les chiffres --");
-        console.log(str.match(all));
+        console.log(str.match(digit));
 
         // all except small letters 
         const nonSmall = /[^a-z]/g;

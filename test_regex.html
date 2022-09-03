@@ -43,17 +43,21 @@
 
         // raccourci lettres \w (words)
         const shortcutLetters = /[\w]/g;
-        console.log("-- raccourci toutes les lettres : \w --");
+        console.log("-- raccourci toutes les lettres : \\w --");
         console.log(str.match(shortcutLetters));
   
 
         // raccourci chiffres \d (digits)
         const shortcutDigits = /[\d]/g;
-        console.log("-- raccourci tous les chiffres : \w --");
+        console.log("-- raccourci tous les chiffres : \\d --");
         console.log(str.match(shortcutDigits));
 
 
-
+        // regex nom, prénom sans espace ni caractères spéciaux
+        const regName = /[a-z]+['- ]/g;
+        const name = "marcos"
+        console.log("-- regex nom, prénom --");
+        console.log(name.match(small));
 
     </script>
 </body>

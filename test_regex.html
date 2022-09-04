@@ -53,8 +53,14 @@
         console.log(str.match(shortcutDigits));
 
 
+        // regex alias, sans espace mais tiret ou point autorisé 
+        const regAKA = /(?:[a-z]+[.- ])/g;
+        const AKA = "marcos-2048"
+        console.log("-- regex AKA, prénom --");
+        console.log(name.match(small));
+
         // regex nom, prénom sans espace ni caractères spéciaux
-        const regName = /[a-z]+['- ]/g;
+        const regName = /(?:[a-z]+['- ])/g;
         const name = "marcos"
         console.log("-- regex nom, prénom --");
         console.log(name.match(small));

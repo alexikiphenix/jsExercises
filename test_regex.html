@@ -61,8 +61,14 @@
 
         // regex nom, prénom sans espace ni caractères spéciaux
         const regName = /(?:[a-z]+['- ])/g;
-        const name = "marcos"
-        console.log("-- regex nom, prénom --");
+        const name = "l'estanguet"
+        console.log("-- regex nom, prénom avec guillemet simple --");
+        console.log(name.match(small));
+
+        // regex adresse, 
+        const regAdress = /(?:[0-9a-zéèà]+['- ])/gi;
+        const adress = "5 rue de l'écoute s'il pleut, 92000"
+        console.log("-- regex nom, prénom avec guillemet simple --");
         console.log(name.match(small));
 
     </script>

@@ -65,9 +65,9 @@
         console.log("-- regex nom, prénom avec guillemet simple --");
         console.log(name.match(small));
 
-        // regex adresse, 
-        const regAdress = /(?:[0-9a-zéèà]+['- ])/gi;
-        const adress = "5 rue de l'écoute s'il pleut, 92000"
+        // regex adresse, peut avoir lettres, chiffres, guillemets, tirets
+        const regAddress = /(?:[\d\w]+['- ])/gi;
+        const address = "5 rue de l'écoute s'il pleut, 92000"
         console.log("-- regex nom, prénom avec guillemet simple --");
         console.log(name.match(small));
 

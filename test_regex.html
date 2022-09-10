@@ -77,6 +77,11 @@
         console.log("-- regex phone, --");
         console.log(phone.match(small));
 
+         // regex email, peut avoir chiffres et points/tiret hautou bas
+         const regEmail = /^(?:[a-z]{1,n}+[.-\d]*)@(?:[a-z]{1,n}+[.-\d]*).[a-z]{2,4}$/gi;
+        const email = "nom.prenom@mon-mail.com"
+        console.log("-- regex email, --");
+        console.log(email.match(small));
     </script>
 </body>
 </html>

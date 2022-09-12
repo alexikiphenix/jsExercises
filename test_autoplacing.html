@@ -6,27 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{box-sizing: border-box;}
-        #tableTest{ margin: auto; width: 80%; border: 1px solid blue;}
-        #tableTest td{
-            /* width: 10%; */
-            border: 1px solid black;
-            background-color: grey;
-        }
-        #myTable{width: 100%; margin: auto; border: 1px solid black;}        
-        
-        </style>
+        #myTable{width: 100%; margin: auto; border: 1px solid black;}         
+    </style>
     <title>Auto placing images</title>
 </head>
 <body>
     <div id="imgBox">
     </div>
     <script>
-            let nbImages = 25;
-            let imgSize = 300;
-
-        
-
-            
+            let nbImages = 27;
+            let imgSize = 300; // in px               
             
             const createMyTable = () => {
                 let screenSize = window.innerWidth; 
@@ -35,8 +24,7 @@
                 let imgBox = document.querySelector('#imgBox');
                 let myTable = document.createElement('table');
                 myTable.setAttribute('id', 'myTable');
-                console.log(nbImgPerLine);  
-                console.log(screenSize);                 
+                                
                 for(let i = 0; i < nbImages/nbImgPerLine; i++)
                 {            
                     let line = document.createElement('tr');
@@ -47,9 +35,9 @@
                         {
                             cell.innerText = `image ${imgCounter}`;
                             cell.style.width = `${imgSize}px`;
-                            // ou cell.style.width = `${100/nbImgPerLine}%`;
+                            // or cell.style.width = `${100/nbImgPerLine}%`; if you prefer in %
                             cell.style.border = `1px dotted black`;
-                            // ou cell.classList.add('myBorder');
+                            // or cell.classList.add('myBorder'); if you prefer direct CSS rules.
                         }
                         line.appendChild(cell);                             
                         imgCounter++;
@@ -57,26 +45,18 @@
                     myTable.appendChild(line);            
                 }
                 imgBox.appendChild(myTable);                        
+                console.log(`ecran ${screenSize}px => ${nbImgPerLine} x ${imgSize}px`);  
             }
-           
-            
-        
-            if(typeof myTable != undefined)
-               createMyTable();
+
+            createMyTable();
 
             window.addEventListener('resize', () =>
             {
-                if(document.querySelector('id', 'myTable'))
-                {
-                    console.log("MyTable === remove")
-                    myTable.remove();
-                    console.log(myTable)
-                }
-                else
-                {
-                    console.log("MyTable === undefined")
-                    createMyTable();
-                }
+                let showTable = document.querySelector('#myTable');
+                
+                if(document.querySelector('#myTable'))               
+                    myTable.remove();           
+                createMyTable();               
             })
             
     </script>

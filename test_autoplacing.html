@@ -4,16 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{box-sizing: border-box;}
+        #tableTest{ margin: auto; width: 80%; border: 1px solid blue;}
+        #tableTest td{
+            /* width: 10%; */
+            border: 1px solid black;
+            background-color: grey;
+        }
+        #myTable{width: 100%; margin: auto; border: 1px solid black;}        
+        
+        </style>
     <title>Auto placing images</title>
 </head>
 <body>
-    
+    <div id="imgBox">
+    </div>
     <script>
-        let nbImages = 20;
-        let ImgSize = 300;
-        let screenSize = 1200;
+            let nbImages = 25;
+            let imgSize = 300;
 
         
+
+            
+            
+            const createMyTable = () => {
+                let screenSize = window.innerWidth; 
+                let nbImgPerLine = parseInt(window.innerWidth/imgSize);    
+                let imgCounter = 0;
+                let imgBox = document.querySelector('#imgBox');
+                let myTable = document.createElement('table');
+                myTable.setAttribute('id', 'myTable');
+                console.log(nbImgPerLine);  
+                console.log(screenSize);                 
+                for(let i = 0; i < nbImages/nbImgPerLine; i++)
+                {            
+                    let line = document.createElement('tr');
+                    for(let j = 0; j < nbImgPerLine; j++)
+                    {
+                        let cell = document.createElement('td')
+                        if(imgCounter < nbImages)
+                        {
+                            cell.innerText = `image ${imgCounter}`;
+                            cell.style.width = `${imgSize}px`;
+                            // ou cell.style.width = `${100/nbImgPerLine}%`;
+                            cell.style.border = `1px dotted black`;
+                            // ou cell.classList.add('myBorder');
+                        }
+                        line.appendChild(cell);                             
+                        imgCounter++;
+                    }
+                    myTable.appendChild(line);            
+                }
+                imgBox.appendChild(myTable);                        
+            }
+           
+            
+        
+            if(typeof myTable != undefined)
+               createMyTable();
+
+            window.addEventListener('resize', () =>
+            {
+                if(document.querySelector('id', 'myTable'))
+                {
+                    console.log("MyTable === remove")
+                    myTable.remove();
+                    console.log(myTable)
+                }
+                else
+                {
+                    console.log("MyTable === undefined")
+                    createMyTable();
+                }
+            })
+            
     </script>
 </body>
 </html>

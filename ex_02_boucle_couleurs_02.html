@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* hsl(hue saturation lightness); */
+
+        div{
+            min-height: 1px;              
+        }
+
+
+    </style>
+    <title>Ex 02 boucles couleurs</title>
+</head>
+<body>  
+
+    <!-- <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(1, 100%, 50%);"></div>
+    <div style="background-color: hsl(2, 100%, 50%);"></div>
+    <div style="background-color: hsl(3, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(0, 100%, 50%);"></div>
+    <div style="background-color: hsl(120, 100%, 50%);"></div> -->
+  
+    
+
+    <script>
+        let i = 0;
+        while(i <= 360)
+        {   
+            document.write(`<div style="background-color: hsl(${i}, 100%, 50%);">`);
+                document.write(i);
+            document.write(`</div>`);
+            i++;
+        }
+        
+
+    </script>
+</body>
+</html>

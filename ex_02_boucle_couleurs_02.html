@@ -30,8 +30,7 @@
         const listColors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f']
         let bigBox = document.querySelector(`#bigBox`);
         let color;
-        
-        
+        let counter = 0;
         for(let i = 0; i < 16; i++)
         {
             for(let j = 0; j < 16; j++)
@@ -44,9 +43,11 @@
                     box.style.backgroundColor = `${color}`; 
                     bigBox.appendChild(box);     
                     console.log(`#${listColors[i]}${listColors[i]}${listColors[i]}`);                    
+                    console.log(`color number : ${counter++}`)
                 }
             }
         }
+
         
     </script>
 </body>

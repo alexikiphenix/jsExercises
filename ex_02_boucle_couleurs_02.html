@@ -8,16 +8,13 @@
         #bigBox{
             display: grid;
             /* grid-template-columns: repeat(16, 1fr); */
-            width: 10%;
+            width: 80%;
             margin: auto;
             text-align: center;
             color: white;
             text-shadow: 1px 1px black;
         }
-        #bigBox > div
-        {
-            width: 100%;            
-        }
+     
 
     </style>
     <title>Ex 02 boucles couleurs</title>
@@ -37,9 +34,9 @@
             {
                 for(let k = 0; k < 16; k++)
                 {
-                    let box = document.createElement(`div`);
+                    let box = document.createElement(`span`);
                     color = `#${listColors[i]}${listColors[j]}${listColors[k]}`;
-                    box.innerText = `#${listColors[i]}${listColors[i]}${listColors[i]}`;
+                    box.innerText = `#${listColors[i]}${listColors[j]}${listColors[k]}`;
                     box.style.backgroundColor = `${color}`; 
                     bigBox.appendChild(box);     
                     console.log(`#${listColors[i]}${listColors[i]}${listColors[i]}`);                    

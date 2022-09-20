@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         #bigBox{
-            display: grid;
+            /* display: grid; */
             /* grid-template-columns: repeat(16, 1fr); */
             width: 80%;
             margin: auto;
@@ -15,7 +15,11 @@
             text-shadow: 1px 1px black;
         }
      
-
+        span{
+            display: inline-block;
+            height: 1rem;
+            padding: .5rem;
+        }
     </style>
     <title>Ex 02 boucles couleurs</title>
 </head>
@@ -42,6 +46,8 @@
                     console.log(`#${listColors[i]}${listColors[i]}${listColors[i]}`);                    
                     console.log(`color number : ${counter++}`)
                 }
+                let lineReturn = document.createElement('br');
+                bigBox.appendChild(lineReturn);
             }
         }
 

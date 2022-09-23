@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    .main-section{
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid black;
+    }
+    .txt-block{
+      position: relative;
+      width: 10rem;
+      height: 20rem;
+      margin: 2rem;
+      background-color: grey;
+    }
+    .square{
+      position: absolute;
+      top: -1rem;
+      right: -1rem;      
+      height: 6rem;
+      width: 6rem;
+      z-index: -100;
+      background-color: darkred;      
+    }
+  </style>
+  <title>Position et z-index</title>
+</head>
+<body>
+<section class="main-section">
+    <article class="txt-block">
+      <div class="square"></div>
+    </article>
+    
+    <article class="txt-block">
+        <div class="square"></div>
+    </article>
+        
+    <article class="txt-block">
+        <div class="square"></div>
+    </article>
+</section>
+</body>
+</html>

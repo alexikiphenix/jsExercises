@@ -97,6 +97,7 @@
         let signInForm = document.querySelector(`[name="signInForm"]`);
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+        let checkAka = new RegExp(/^[a-zA-Z]+(?:[\-_.][a-zA-Z]+)*$/gi);
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         let checkCommentary = new RegExp(/^(?:(?!HITLER).)*$/gm)
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence

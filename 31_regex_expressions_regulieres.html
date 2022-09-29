@@ -150,12 +150,9 @@
         console.log(myForm.checkName2.test("martial----"));
 
         signInForm.addEventListener('submit', (e) =>{   
-            alert("Test"); 
-            console.log("Try");
             // myForm.checkName().test;
             e.preventDefault();
-            alert("Test"); 
-            
+                    
             //console.log(checkCommentary.test(signInForm.commentary.value));         
             if(checkName.test(signInForm.name.value.trim()))
             {                
@@ -177,6 +174,17 @@
             else
             {                  
                 showMessage(`box-firstname`,`Le prénom est invalide`);                      
+                e.preventDefault();
+            }  
+
+            if(checkAka.test(signInForm.aka.value.trim()))
+            {
+                alert(`Le pseudo ${signInForm.aka.value} est valide`);
+                showMessage(`box-aka`,`ok`);  
+            }
+            else
+            {                  
+                showMessage(`box-aka`,`Le pseudo est invalide`);                      
                 e.preventDefault();
             }  
             

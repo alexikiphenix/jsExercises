@@ -108,14 +108,21 @@
         
         // method 2 with an object myForm
         const myForm = {
-            checkName : ()=>{
-                let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+            checkName : (name)=>{
+                let regName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+                return myForm.checkName.test(name);
             },
             checkFirstname : ()=>{
-                let checkFistname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+                let regFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
             },
             checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi),
             checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
+        }
+
+        // test object 
+        if(signInForm.name.value)
+        {
+            console.log(myForm.checkName(signInForm.name.value));
         }
 
        // console.log(mot2.includes(`paragraphe`));
@@ -179,7 +186,7 @@
 
             if(checkAka.test(signInForm.aka.value.trim()))
             {
-                alert(`Le pseudo ${signInForm.aka.value} est valide`);
+                alert(`Le pseudo  ${signInForm.aka.value} est valide`);
                 showMessage(`box-aka`,`ok`);  
             }
             else

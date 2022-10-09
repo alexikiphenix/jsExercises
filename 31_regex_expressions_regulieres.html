@@ -114,6 +114,7 @@
             },
             checkFirstname : ()=>{
                 let regFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+                return myForm.checkFirstname.test(name);
             },
             checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi),
             checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
@@ -121,11 +122,9 @@
 
         // test object 
         if(signInForm.name.value)
-        {
-            console.log("test start");
+        {            
             console.log(myForm.checkName(signInForm.name.value));
-            console.log(myForm.checkName(signInForm.firstname.value));
-            console.log("test end");
+            console.log(myForm.checkFirstname(signInForm.firstname.value));            
         }
 
        // console.log(mot2.includes(`paragraphe`));

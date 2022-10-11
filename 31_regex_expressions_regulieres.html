@@ -112,9 +112,13 @@
                 let regName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
                 return myForm.checkName.test(name);
             },
-            checkFirstname : ()=>{
+            checkFirstname : (firstname)=>{
                 let regFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
-                return myForm.checkFirstname.test(name);
+                return myForm.checkFirstname.test(firstname);
+            },
+            checkAKA : (aka)=>{
+                let regFirstname = new RegExp(/^[a-zA-Z]+(?:[\-_.][a-zA-Z]+)*$/gi);
+                return myForm.checkFirstname.test(aka);
             },
             checkName2 : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi),
             checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)

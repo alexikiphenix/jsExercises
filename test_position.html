@@ -29,6 +29,20 @@
       background-color: blue;
       transition: all 4s;
     }
+    .rank
+    {
+      display: grid;
+      place-content: center;
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      color: white;
+      font-weight: 900;
+      background-color: darkred;
+    }
   </style>
   <title>Position et z-index</title>
 </head>
@@ -36,14 +50,17 @@
 <section class="main-section">
     <article class="txt-block">
       <div class="square"></div>
+      <div class="rank">1</div>
     </article>
     
     <article class="txt-block">
         <div class="square"></div>
+        <div class="rank">2</div>
     </article>
         
     <article class="txt-block">
         <div class="square"></div>
+        <div class="rank">3</div>
     </article>
 </section>
 </body>

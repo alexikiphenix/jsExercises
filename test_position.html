@@ -50,7 +50,7 @@
 <section class="main-section">
     <article class="txt-block">
       <div class="square"></div>
-      <div class="rank">1</div>
+      <div class="rank" id="rank01">1</div>
     </article>
     
     <article class="txt-block">
@@ -63,5 +63,12 @@
         <div class="rank">3</div>
     </article>
 </section>
+<script>
+  let rank01 = document.querySelector('#rank01');
+  console.log(rank01);
+  rank01.addEventListener('click', () =>{
+    let newRank = prompt('Quel est le nouveau classement ?');
+  })
+</script>
 </body>
 </html>

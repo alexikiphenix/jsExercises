@@ -66,8 +66,12 @@
 <script>
   let rank01 = document.querySelector('#rank01');
   console.log(rank01);
-  rank01.addEventListener('click', () =>{
+  rank01.addEventListener('dblclick', () =>{
     let newRank = prompt('Quel est le nouveau classement ?');
+  })
+  rank01.addEventListener('click', () =>{
+    let number = rank01.innerHTML;
+    console.log(number);    
   })
 </script>
 </body>

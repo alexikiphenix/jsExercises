@@ -31,11 +31,15 @@
     <div id="square01" class="square"></div> 
 
     <script>
-        let counter;
+        let counter = 1;
         let square01 = document.querySelector(`#square01`);
-        square01.innerHTML = `1`;
+        square01.style.userSelect = `none`;
+        square01.addEventListener(`click`, () =>{
+            counter++;
+            square01.innerHTML = `${counter}`;
+        })
 
-        console.log(square01);
+        // console.log(square01);
         console.log(square01.innerHTML);
     </script>
 </body>

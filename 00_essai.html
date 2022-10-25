@@ -7,12 +7,15 @@
     <style>
         .square
         {
+            display: grid;
+            place-content: center;
             width: 200px;
             height: 200px;
             margin: 5rem auto;
             color: white;   
             transform-origin: center center;         
             transition: 3s;
+            font-size: 2rem;
             background-color: darkred;
         }
         .square:hover
@@ -25,9 +28,13 @@
     <title>Essai</title>
 </head>
 <body>
-    <div class="square"></div>   
+    <div id="square01" class="square"></div> 
+
     <script>
-        document.write("10h50:20");
+        let square01 = document.querySelector(`#square01`);
+        square01.innerHTML = `1`;
+        console.log(square01);
+        console.log(square01.innerHTML);
     </script>
 </body>
 </html>

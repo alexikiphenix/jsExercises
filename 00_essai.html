@@ -29,14 +29,24 @@
 </head>
 <body>
     <div id="square01" class="square"></div> 
+    <div id="square02" class="square"></div> 
 
     <script>
         let counter = 1;
+        let counter2 = 1;
+
         let square01 = document.querySelector(`#square01`);
         square01.style.userSelect = `none`;
         square01.addEventListener(`click`, () =>{
             counter++;
             square01.innerHTML = `${counter}`;
+        })
+
+        let square02 = document.querySelector(`#square02`);
+        square02.style.userSelect = `none`;
+        square02.addEventListener(`click`, () =>{
+            counter2++;
+            square02.innerHTML = `${counter2}`;
         })
 
         // console.log(square01);

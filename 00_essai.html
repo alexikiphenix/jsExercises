@@ -30,10 +30,12 @@
 <body>
     <div id="square01" class="square"></div> 
     <div id="square02" class="square"></div> 
+    <div id="square03" class="square"></div> 
 
     <script>
         let counter = 1;
         let counter2 = 1;
+        let counter3 = 1;
 
         let square01 = document.querySelector(`#square01`);
         square01.style.userSelect = `none`;
@@ -49,8 +51,15 @@
             square02.innerHTML = `${counter2}`;
         })
 
+        let square03 = document.querySelector(`#square03`);
+        square02.style.userSelect = `none`;
+        square02.addEventListener(`click`, () =>{
+            counter3++;
+            square03.innerHTML = `${counter3}`;
+        })
+
         // console.log(square01);
-        console.log(square01.innerHTML);
+        console.log(square03.innerHTML);
     </script>
 </body>
 </html>

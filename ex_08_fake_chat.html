@@ -20,6 +20,18 @@
             'J\'ai beaucoup de boulot demain',
             'On pourrait se faire un concert'
         ]
+
+        // 2- créer une fonction aléatoire ou utiliser celle de MDN 
+        // On renvoie un entier aléatoire entre une valeur min (incluse)
+        // et une valeur max (incluse).
+        // Attention : si on utilisait Math.round(), on aurait une distribution
+        // non uniforme !
+        function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
     </script>
 </body>
 </html>

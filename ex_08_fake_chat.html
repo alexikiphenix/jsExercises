@@ -10,7 +10,7 @@
     <script>
         // just an exercice to handle localStorage
 
-        // 1- créer une liste de messages
+        // 1- Créer une liste de messages
         const messages = [
             'J\'ai envie de sortir',
             'On pourrait voir un film',
@@ -21,7 +21,7 @@
             'On pourrait se faire un concert'
         ]
 
-        // 2- créer une fonction aléatoire ou utiliser celle de MDN 
+        // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
         // On renvoie un entier aléatoire entre une valeur min (incluse)
         // et une valeur max (incluse).
         // Attention : si on utilisait Math.round(), on aurait une distribution
@@ -30,6 +30,14 @@
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 3- Créer une fonction qui renvoie un message au hasard : 
+        // version 0.5
+        const getRandomMessage = () => {
+            const message = messages[getRandomInt(0, messages.length-1)];
+            console.log(message);
+            return message;
         }
 
     </script>

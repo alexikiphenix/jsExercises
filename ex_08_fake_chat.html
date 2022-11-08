@@ -33,12 +33,17 @@
         }
 
         // 3- Créer une fonction qui renvoie un message au hasard : 
-        // version 0.5
+        // version 3.0
+        // version 3.1 supprimer le message de la liste pour éviter doublon
         const getRandomMessage = () => {
-            const message = messages[getRandomInt(0, messages.length-1)];
-            console.log(message);
+            const indice = getRandomInt(0, messages.length-1);
+            const message = messages[indice];
+            messages.splice(indice, 1);
             return message;
         }
+
+        getRandomMessage();
+
 
     </script>
 </body>

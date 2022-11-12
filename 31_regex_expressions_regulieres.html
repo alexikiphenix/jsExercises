@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body{background-color: rgb(18, 195, 56);}
+        body{background-color: rgb(198, 232, 206);}
         .container{
             width: 70%; 
             margin: auto; 
@@ -21,7 +22,7 @@
         {      
             width: 100%;                     
             border-radius: .9rem;
-            border: 1px solid rgb(18, 195, 56);
+            border: 1px solid rgb(198, 232, 206);
         }
         input:not([type="checkbox"], [type="radio"])
         {
@@ -38,7 +39,7 @@
             border-radius: 2rem;
             border: none;     
             color: white;
-            background-color: rgb(18, 195, 56);       
+            background-color: rgb(198, 232, 206);       
         }
         [type="submit"]:hover
         {            
@@ -96,12 +97,19 @@
         // Method 1
         let signInForm = document.querySelector(`[name="signInForm"]`);
         let checkName = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
+        let checkName2 = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkFirstname = new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi);
         let checkAka = new RegExp(/^[a-zA-Z]+(?:[\-_.][a-zA-Z]+)*$/gi);
         let checkEmail = new RegExp(/^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/gi);
         let checkCommentary = new RegExp(/^(?:(?!HITLER).)*$/gm)
         let mySearch = new RegExp(`^paragraphe[0-9]+$`); // motif ou l'occurence
         //let name = document.getElementById('name')
+        console.log(("amlex").match(checkName2));
+        console.log(("amlex").match(checkName2));
+        
+        console.log(checkName2.test("amlex"));
+        console.log(checkName2.test("amlex"));
+
         const messages = [];
         // let mot1 = "paragraphe10";
         // let mot2 = "1section_paragraphe1"; 
@@ -124,18 +132,16 @@
             checkFirstname : new RegExp(/^[a-zA-Z]+(?:[\-\s'][a-zA-Z]+)*$/gi)
         }
 
-        // test object 
+        /* test object 
         if(signInForm.name.value)
         {            
             console.log(myForm.checkName(signInForm.name.value));
             console.log(myForm.checkFirstname(signInForm.firstname.value));            
-        }
+        } */
 
        // console.log(mot2.includes(`paragraphe`));
 
-        // RegEx => Regular Expressions => expressions régulières
-       
-        
+        // RegEx => Regular Expressions => expressions régulières     
         
         // Good regEx checking double dots :
         // ^([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$
@@ -155,12 +161,11 @@
             else
             {
                 small = document.getElementById(`small-${field}`);
-                small.innerText = message;
-                
+                small.innerText = message;                
             }             
         }
 
-        console.log(myForm.checkName2.test("martial----"));
+        // console.log(myForm.checkName2.test("martial----"));
 
         signInForm.addEventListener('submit', (e) =>{   
             // myForm.checkName().test;
@@ -171,6 +176,7 @@
             {                
                 alert(`Le nom ${signInForm.name.value} est valide`);
                 showMessage(`box-name`,`OK`);  
+                checkName.test(signInForm.name.value.trim());
             }
             else
             {                   
@@ -183,6 +189,7 @@
             {
                 alert(`Le prénom ${signInForm.firstname.value} est valide`);
                 showMessage(`box-firstname`,`ok`);  
+                checkFirstname.test(signInForm.firstname.value.trim());
             }
             else
             {                  

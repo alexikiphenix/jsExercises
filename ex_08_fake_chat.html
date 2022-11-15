@@ -48,10 +48,12 @@
         while(messages.length > 0)
         { 
             count++;                          
-            talk.push({'content' : getRandomMessage()});                        
+            talk.push({'message' : getRandomMessage()});                   
         }
         
-        localStorage.setItem('talk', talk);
+        localStorage.setItem('fakeChat', talk);
+
+        console.log(localStorage.getItem('fakeChat'));
 
     </script>
 </body>

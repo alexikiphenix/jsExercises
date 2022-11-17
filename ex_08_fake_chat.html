@@ -50,10 +50,17 @@
             count++;                          
             talk.push({'message' : getRandomMessage()});                   
         }
+        for(let index = 0; index < talk.length; index++) 
+        {
+            console.log(talk[index]);            
+        }
         
         localStorage.setItem('fakeChat', talk);
 
         console.log(localStorage.getItem('fakeChat'));
+        //const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
+        console.log(typeof myChatStorage);
+        //myChatStorage.map((message) => log(message));
 
     </script>
 </body>

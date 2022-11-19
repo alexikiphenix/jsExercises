@@ -47,8 +47,9 @@
         // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
         while(messages.length > 0)
         { 
-            count++;                          
-            talk.push({'message' : getRandomMessage()});                   
+            count++;  
+            // 5 enregistrer les messages au format JSON                       
+            talk.push(JSON.stringify({'message' : getRandomMessage()}));                   
         }
         for(let index = 0; index < talk.length; index++) 
         {

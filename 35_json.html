@@ -47,6 +47,8 @@
     console.log(myObj.year);
 
     let myBookStr = JSON.stringify(myBook);
+    localStorage.setItem('id', 1);
+    localStorage.setItem('name', 'Book of healing');
     console.log(myBookStr);
     console.log(JSON.parse(myBookStr));
 

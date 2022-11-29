@@ -8,14 +8,19 @@
 </head>
 <body>
     <form action="" method="post">
-        <p><label for="name1">Nom1</label><input type="text" nam="name1"></p>
-        <p><label for="name2">Nom2</label><input type="text" name="name2"></p>
+        <p><label for="name1">Nom1</label><input type="text" name="name1"></p>
+        <p><label for="name2">Nom2</label><input type="text" name="name2" id="name2"></p>
         <p><label for="name3">Nom3</label><input type="text" name="name3"></p>
         <button type="submit">Enregistrer</button>
     
     </form>
     <script>
         console.log(document.forms);
+        // differents ways to get the inputs
+        let name1 = document.querySelector('[name="name1"]');
+        let name2 = document.querySelector('#name2');
+        console.log(name1);
+        console.log(name2);
     </script>
 </body>
 </html>

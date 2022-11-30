@@ -41,7 +41,7 @@
 <body>
     <div class="wrapper">
       <header>Header</header>
-      <main>
+      <main id="mainArticles">
         <h2>Mes activités</h2>
         <article>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est rerum voluptas voluptate unde deleniti quo aliquid facilis autem nobis!</p>
@@ -64,14 +64,29 @@
       // en dessous sous forme d'1 article contenant 1 seul paragraphe
 
         // Etape 1 : "récupérer" le textarea et le button dans une variable JS 
-        // pour pouvoir appliquer plus facilement les méthodes JS
+        // pour pouvoir appliquer plus facilement les méthodes JS        
         const inTxt = document.querySelector('#inTxt');
         const btnAddTxt = document.querySelector('#btnAddTxt');
-
-        // Etape 2 ajouter un écouteur d'évènement pour réagir au clic
-        btnAddTxt.addEventListener('click', () =>
+       
+        
+        // Etape 2 créer une fonction ajouter du texte : 
+        const addTxt = (txt) => 
         {
-          console.log(intTxt.value);
+          const newArticle = document.createElement('article');
+          const newTxt = document.createElement('p');
+          newTxt.innerText = `${txt}`;               
+          
+          document.querySelector('main').appendChild(newArticle);
+          newArticle.appendChild(newTxt);
+          console.log(newArticle);
+        }
+
+        // Etape 3 ajouter un écouteur d'évènement pour réagir au clic
+        // et exécuter la fonction
+        btnAddTxt.addEventListener('click', () =>
+        {     
+          console.log(inTxt.value);     
+          addTxt(inTxt.value);
         })
 
 

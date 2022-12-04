@@ -20,7 +20,12 @@
         let name1 = document.querySelector('[name="name1"]');
         let name2 = document.getElementById('name2');
         let name3 = document.querySelector('#name3');
-        let BtnValidate = document.querySelector('[type="submit"]');
+        let btnValidate = document.querySelector('[type="submit"]');
+        btnValidate.addEventListener('click', (e) =>
+        {
+            e.preventDefault();
+            alert("êtes-vous sûr ?");
+        })
         console.log(name1);
         console.log(name2);
         console.log(name3);

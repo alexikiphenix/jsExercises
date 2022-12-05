@@ -24,7 +24,12 @@
         btnValidate.addEventListener('click', (e) =>
         {
             e.preventDefault();
-            alert("êtes-vous sûr ?");
+            let choice = confirm("êtes-vous sûr O/N ?");
+            if(choice)
+                alert("Bon choix !");
+            else
+                alert("Poltron !");
+
         })
         console.log(name1);
         console.log(name2);

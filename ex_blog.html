@@ -45,6 +45,7 @@
       }
       p{
         text-align: justify;
+        border-bottom: 1px dotted green;
       }
     </style>
     <title>Document</title>
@@ -84,11 +85,14 @@
         const addTxt = (txt) => 
         {
           const newArticle = document.createElement('article');
-          const newTxt = document.createElement('p');
-          newTxt.innerText = `${txt}`;               
+          // const newTxt = document.createElement('p');
+          // Etape 4 utiliser une regex pour remplacer
+          // les retours à la ligne par des <p>
+          txt = '<p>'+txt.replace(/\n/g, '</p><p>')+'</p>';
+          // newTxt.innerText = `${txt}`;               
           
           document.querySelector('main').appendChild(newArticle);
-          newArticle.appendChild(newTxt);          
+          newArticle.innerHTML = txt;          
         }
 
         // Etape 3 ajouter un écouteur d'évènement pour réagir au clic
@@ -98,7 +102,15 @@
           addTxt(inTxt.value);
         })
 
+        let myTxt = `Hello World !
+          Welcome in the programming world
+          Enjoy JS such as candies
+        `;
 
+        
+        let myTxt2 = '<p>'+myTxt.replace(/\n/g, '</p><p>')+'</p>';
+        console.log(myTxt);
+        console.log(myTxt2);
       // Exercice 2 : ajout d'un article mais avec autant de <p> qu'il
       // y a de retours à la ligne.
     </script>

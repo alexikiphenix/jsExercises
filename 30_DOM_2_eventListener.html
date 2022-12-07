@@ -31,7 +31,8 @@
     <title>DOM 2 eventListener</title>
 </head>
 <body>
-    <div id="container">       
+    <div id="container">      
+        <h1>Mon paragraphe</h1> 
         <main id="mainBox" class="essai essaiEncore">
             <p>
                 <!-- <label for="name">Nom</label> -->
@@ -48,7 +49,21 @@
     </div>    
     <script>
         let mainBox = document.getElementById('mainBox');   
+        let myParagraph = document.querySelector(`h1`);
         let addParagraphBtn = document.getElementById('addParagraphBtn');
+        
+        const sayHello = () =>{
+            console.log("Hello");
+            myParagraph.style.color = "blue";
+        }
+        const sayBye = () =>{
+            console.log("Bye");
+            myParagraph.style.color = "darkred";
+        }
+
+
+        addParagraphBtn.addEventListener('mouseenter', sayHello);
+        addParagraphBtn.addEventListener('mouseleave', sayBye);
         
         const addParagraph = () =>
         {
@@ -73,6 +88,7 @@
        
         // for(let i = 0; i < 10; i++)     
         //     mainBox.innerHTML += `<p>Lorem essai </p>`;       
+        
         
         
     </script>

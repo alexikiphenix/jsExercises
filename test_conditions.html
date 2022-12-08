@@ -9,14 +9,35 @@
 <body>
 
     <script>
-        let reponse = confirm("Voulez-vous manger une glace ?");
+
+        let age = 23;
+        if(age >= 18)
+            console.log("Tu es majeur(e) !");
+        else 
+            console.log("Tu es mineur(e)");
+
+        let reponse = confirm("Y-a-t-il un humain derrière l'écran ?");
         console.log(reponse);
 
         if(reponse)  // = if(reponse === true)
-            console.log("Quel parfum ?");
+            console.log("Oui apparement il y a eu une réaction");
         else
             console.log("vous ne savez-pas ce que vous loupez !");
 
+        //const test = true;
+        
+        // Vérifier type de variable
+        if(typeof test)
+            console.log(`Test = true typeof : ${typeof test}`);
+        else
+            console.log(`Test = false`)
+
+        const bool = true;
+
+        if(!bool)
+            console.log(`réponse : true`);
+        else
+            console.log(`réponse : false`);
 
     </script>
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For in</title>
+</head>
+<body>
+    
+    <script>
+        // Objet        
+        let voiture1 = {
+            marque: "Renault",
+            modele: "Clio",
+            couleur: "gris",
+            nbPortes: 5,
+            vitesse: 188,
+            equipements: ["GPS", "Nitro", "autoradio", "TV"], 
+            proprietaire: {
+                prenom: "Bob",
+                nom: "leponge",
+                ville: "Paris"
+            },
+            klaxonner: () => {
+                console.log("Tuuuuuuuuuuuuuuuuuuuuut")
+            }
+        }
+
+        for(const property in voiture1)
+            console.log(`${property} => ${voiture1[property]}`);
+            // !!! voiture1.property ne fonctionnera pas avec 
+            //  for in, property est ici une chaine de caractères.
+    </script>
+</body>
+</html>

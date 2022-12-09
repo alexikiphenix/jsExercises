@@ -9,23 +9,27 @@
 <body>
     
     <script>
-             // objet littéral
-             let voiture1 = {
-            marque: "Renault",
-            modele: "Clio",
-            couleur: "gris",
-            nbPortes: 5,
-            vitesse: 188,
-            equipements: ["GPS", "Nitro", "autoradio", "TV"], 
-            proprietaire: {
-                prenom: "Bob",
-                nom: "leponge",
-                ville: "Paris"
-            },
-            klaxonner: () => {
-                console.log("Tuuuuuuuuuuuuuuuuuuuuut")
-            }
-        }
+        // élément ittérable
+        const prenom = "Marcus";
+        let voiture1 = ["marque", "Renault"];
+            // modele, "Clio",
+            // couleur, "gris",
+            // nbPortes, 5,
+            // vitesse, 188,
+            // equipements, ["GPS", "Nitro", "autoradio", "TV"], 
+            // proprietaire, {
+            //     prenom, "Bob",
+            //     nom, "leponge",
+            //     ville, "Paris"
+            // },
+            // klaxonner, () => {
+            //     console.log("Tuuuuuuuuuuuuuuuuuuuuut")
+            // }
+        for(const letter of prenom)
+            console.log(letter);
+
+        for(const element of voiture1)
+            console.log(element);
     </script>
 </body>
 </html>

@@ -15,18 +15,22 @@
         // {            
         //    console.log(i);            
         // }
+        const listPlayers = [];
 
-        for(let i = 0; i < 5; i++)
+        for(let i = 0; i < 50; i++)
         {
             let reponse = prompt("Saisir liste membres équipe");
             console.log(reponse);
             if(reponse === "stop" || reponse === null)
                 break;
-
-            if(reponse === "continuer")
+            if(reponse !== "stop")
+            {
+                listPlayers.push(reponse);
                 continue;
+            }
         }
      
+        console.log(listPlayers);
     </script>
 </body>
 </html>

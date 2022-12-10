@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propagation des événements</title>
+</head>
+<body>
+    <button id="btn">Enregistrer</button>
+    <script>
+        const btn = document.querySelector(`#btn`);
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // pour éviter d'entrer en concurrence avec un parent qui a aussi un event
+            console.log("Bouton");
+        })
+
+        document.body.addEventListener('click', () =>{
+            console.log("Body");
+        })
+    </script>
+</body>
+</html>

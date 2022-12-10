@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test</title>
-</head>
-<body>
+  </head>
+  <body>
+    <label for="name">Saisir votre nom</label>
+    <input id="name" type="text" name="name" />
     <button id="btn" type="submit">Valider</button>
-   
+
     <script>
-        let counter = 0;
-        const btn = document.querySelector('#btn');
-        const count = () => {
-            console.log(++counter);
-        }
+    // liste des événements : https://developer.mozilla.org/fr/docs/Web/Events
+      let counter = 0;
+      const inputName = document.querySelector("#name");
+      const btn = document.querySelector("#btn");
+      const count = () => {
+        console.log(++counter);
+      };
 
-        const showEvent = (e) => {
-            console.log(e);
-        }
+      const showLetter = (e) => {
+        //console.log(e);
+        console.log(`touche: ${e.key} - keyCode: ${e.keyCode} `);
+      };
 
-        //btn.addEventListener('click', count);
-        btn.addEventListener('dblclick', showEvent);
-        document.addEventListener('keydown', count);
+      const showInputLetter = (e) => {
+        // console.log(e);
+        // console.log(e.data);
+        console.log(inputName.value);
+        //console.log(`touche: ${e.} - keyCode: ${e.value} `);
+      };
 
+      //btn.addEventListener('click', count);
+      btn.addEventListener("dblclick", count);
+      // document.addEventListener('keydown', showLetter);
 
+      window.addEventListener("load", () => {
+        console.log("Page chargée !");
+      });
 
+      // keydown vs input
+      //inputName.addEventListener("keydown", showLetter);
+      inputName.addEventListener("input", showInputLetter);
 
-        
-       //btn.removeEventListener('click', alerter);
-
- 
-
-       
-
+      //btn.removeEventListener('click', alerter);
     </script>
-</body>
+  </body>
 </html>

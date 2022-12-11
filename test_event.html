@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #ball{
+            height: 30vh;
+            width: 30vh;
+            border-radius: 50%;
+            background-color: darkred;
+        }
+        #square{
+            height: 30vh;
+            width: 30vh;
+            background-color: rgb(8, 125, 43);
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="square"></div>
+    <div id="ball"></div>
+
+    <script>
+        const ball = document.querySelector('#ball');
+        const square = document.querySelector('#square');
+        const takeColor1 = () =>{
+            ball.style.backgroundColor = `#edfedf`;
+        }
+        const takeColor2 = () =>{
+            square.style.backgroundColor = `#edfedf`;
+        }
+
+        ball.addEventListener('mouseover', takeColor1);
+        square.addEventListener('click', takeColor2);
+
+        document.body.addEventListener('click', (e) => {
+            console.log(`position X: ${e.clientX} - position Y: ${e.clientY}`);
+        });
+    </script>
+
+</body>
+</html>

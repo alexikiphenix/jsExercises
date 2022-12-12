@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    
+    <script>
+        // this fait référence au contexte appelant
+        const person1 = {
+            name: "Nora",
+            introduce : () =>{
+                console.log(`Je m'appelle ${person1.name}`)
+            }
+        }
+
+
+        const person2 = {
+            name: "Marcus",
+            introduce(){
+                console.log(`Je m'appelle ${this.name}`)
+            }
+        }
+        
+        person1.introduce();
+        person2.introduce();
+    </script>
+</body>
+</html>

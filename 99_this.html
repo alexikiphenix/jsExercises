@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>This</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <div>
+      <button id="btn1">Bouton 1</button>
+      <button btn2="">Bouton 2</button>
+      <button btn3="">Bouton 3</button>
+      <button btn4="">Bouton 4</button>
+      <button btn5="">Bouton 5</button>
+    </div>
+
     <script>
-        // this fait référence au contexte appelant
-        const person1 = {
-            name: "Nora",
-            introduce : () =>{
-                console.log(`Je m'appelle ${person1.name}`)
-            }
-        }
-
-
-        const person2 = {
-            name: "Marcus",
-            introduce(){
-                console.log(`Je m'appelle ${this.name}`)
-            }
-        }
+        const btn1 = document.querySelector(`#btn1`);
         
-        person1.introduce();
-        person2.introduce();
+        btn1.addEventListener('click', () => {
+            btn1.style.backgroundColor = `darkred`;
+        })
+
+      // this fait référence au contexte appelant
+      const person1 = {
+        name: "Nora",
+        introduce: () => {
+          console.log(`Je m'appelle ${person1.name}`);
+        },
+      };
+
+      const person2 = {
+        name: "Marcus",
+        introduce() {
+          console.log(`Je m'appelle ${this.name}`);
+        },
+      };
+
+      person1.introduce();
+      person2.introduce();
     </script>
-</body>
+  </body>
 </html>

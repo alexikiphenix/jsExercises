@@ -37,8 +37,25 @@
         },
       };
 
+      const person3 = {
+        name: "Mona",
+        introduce() {
+          console.log(`Je m'appelle ${this.name}`);
+        },
+      }
+
+      const person4 = {
+        name: "Momo",
+        introduce() {
+          console.log(`Je m'appelle ${this.name}`);
+        },
+      };
+
+      // Pas la bonne méthode penser au cosntructeur
       person1.introduce();
       person2.introduce();
+      person3.introduce();
+      person4.introduce();
     </script>
   </body>
 </html>

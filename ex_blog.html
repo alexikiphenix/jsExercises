@@ -103,15 +103,22 @@
         // Etape 2 créer une fonction ajouter du texte : 
         const addTxt = (txt) => 
         {
-          const newArticle = document.createElement('article');
-          // const newTxt = document.createElement('p');
-          // Etape 4 utiliser une regex pour remplacer
-          // les retours à la ligne par des <p>
-          txt = '<p>'+txt.replace(/\n/g, '</p><p>')+'</p>';
-          // newTxt.innerText = `${txt}`;               
-          
-          document.querySelector('main').appendChild(newArticle);
-          newArticle.innerHTML = txt;          
+          // Gestion du textarea vide ou avec un espace
+          // axe d'amélioration : gérer plusieurs espaces
+          if(txt !== "" && txt != " ")
+          {
+            const newArticle = document.createElement('article');
+            // const newTxt = document.createElement('p');
+            // Etape 4 utiliser une regex pour remplacer
+            // les retours à la ligne par des <p>
+            txt = '<p>'+txt.replace(/\n/g, '</p><p>')+'</p>';
+            // newTxt.innerText = `${txt}`;               
+            
+            document.querySelector('main').appendChild(newArticle);
+            newArticle.innerHTML = txt;          
+          }
+          else  
+            return false;
         }
 
         // Etape 3 ajouter un écouteur d'évènement pour réagir au clic

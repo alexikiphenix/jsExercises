@@ -46,16 +46,18 @@
 
       const person4 = {
         name: "Momo",
+        firstname: "Gane",
         introduce() {
           console.log(`Je m'appelle ${this.name}`);
         },
       };
 
-      // Pas la bonne méthode penser au cosntructeur
+      // Pas la bonne méthode, penser au cosntructeur
       person1.introduce();
       person2.introduce();
       person3.introduce();
       person4.introduce();
+      console.log(person4.firstname);
     </script>
   </body>
 </html>

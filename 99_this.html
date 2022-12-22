@@ -68,6 +68,14 @@
         },
       };
 
+      const person7 = {
+        name: "Bonus",
+        firstname: "Indira",
+        introduce() {
+          console.log(`Je m'appelle ${this.name}`);
+        },
+      };
+
       // Pas la bonne méthode, penser au cosntructeur
       person1.introduce();
       person2.introduce();
@@ -76,6 +84,10 @@
       console.log(person1.firstname);
       console.log(person4.firstname);
       console.log(person6.firstname);
+      for(const property in person7)
+      {
+        console.log(person7[property]);
+      }
     </script>
   </body>
 </html>

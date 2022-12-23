@@ -81,9 +81,14 @@
       person2.introduce();
       person3.introduce();
       person4.introduce();
+      person7.introduce();
       console.log(person1.firstname);
       console.log(person4.firstname);
       console.log(person6.firstname);
+      for(const property in person1)
+      {
+        console.log(person1[property]);
+      }
       for(const property in person7)
       {
         console.log(person7[property]);

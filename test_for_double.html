@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double for</title>
+</head>
+<body>
+    <div id="mainList">      
+    </div>
+    
+    <script>
+        const mainList = document.querySelector('#mainList');
+        for(let i = 0; i < 10; i++)
+        {
+            const myBox = document.createElement('div');            
+            myBox.style.height = `10px`;
+            myBox.style.width = `10%`; 
+            myBox.style.border = `1px dotted darkgrey`;
+
+            mainList.appendChild(myBox);
+        }
+    </script>
+</body>
+</html>

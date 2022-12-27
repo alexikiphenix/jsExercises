@@ -19,7 +19,12 @@
             myBox.style.width = `10%`; 
             myBox.style.border = `1px dotted darkgrey`;
 
-            mainList.appendChild(myBox);
+            for(let j = 0; j < 10; j++)
+            {
+                mainList.appendChild(myBox);
+            }
+            const myBr = document.createElement('br'); 
+            mainList.appendChild(myBr);
         }
     </script>
 </body>

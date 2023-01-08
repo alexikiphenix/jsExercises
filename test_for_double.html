@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
     <title>Double for</title>
 </head>
 <body>
+    <div id="smallBox"></div>
     <div id="mainList">      
     </div>
     
@@ -19,17 +23,16 @@
             myBox.style.width = `10%`; 
             myBox.style.border = `1px dotted darkgrey`;
             myBox.style.backgroundColor = `#${i}99`;
-            myBox.style.border = `1px solid red`;
+            myBox.style.border = `3px solid #99${i}`;
             myBox.style.transitionDelay = `1s`;
-
             for(let j = 0; j < 10; j++)
             {
-                //mainList.appendChild(myBox);
-                document.write(`|${j}|`);
+                mainList.appendChild(myBox);
+                //document.write(`|${j}|`);
             }
             const myBr = document.createElement('br'); 
-            document.write(`---- <br />`);
-            //mainList.appendChild(myBr);
+            //document.write(`---- <br />`);
+            mainList.appendChild(myBr);
         }
     </script>
 </body>

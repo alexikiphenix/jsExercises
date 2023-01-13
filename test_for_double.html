@@ -23,13 +23,13 @@
         smallBox.style.height = `150px`;
         smallBox.style.backgroundColor = `darkred`;
 
-        for(let i = 0; i < 10; i++)
+        for(let i = 0; i < 100; i++)
         {
             const myBox = document.createElement('div');            
             myBox.style.height = `10px`;
             myBox.style.width = `10%`; 
             myBox.style.border = `1px dotted darkgrey`;
-            myBox.style.backgroundColor = `#${i}99`;
+            myBox.style.backgroundColor = `hsl(${i}deg 30% 50%)`;
             myBox.style.border = `3px solid #99${i}`;
             myBox.style.transitionDelay = `1s`;
             for(let j = 0; j < 10; j++)

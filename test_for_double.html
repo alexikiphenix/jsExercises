@@ -26,11 +26,10 @@
         for(let i = 0; i < 100; i++)
         {
             const myBox = document.createElement('div');            
-            myBox.style.height = `10px`;
-            myBox.style.width = `10%`; 
+            myBox.style.height = `10px`; // mauvaise méthode (répitition inutile CSS)
+            myBox.style.width = `10%`;  // mauvaise méthode (répétition inutile CSS)
             myBox.style.backgroundColor = `hsl(${i}deg 30% 50%)`;
-            myBox.style.border = `3px solid #99${i}`;
-            myBox.style.transitionDelay = `1s`;
+            myBox.style.transitionDuration = `1s`;
             for(let j = 0; j < 10; j++)
             {
                 mainList.appendChild(myBox);

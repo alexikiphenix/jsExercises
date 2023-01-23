@@ -57,7 +57,7 @@
         // const regAKA = /(?:[a-z]+[.- ])/g;
         const AKA = "marcos-2048"
         console.log("-- regex AKA, prénom --");
-        console.log(name.match(small));
+        console.log(AKA.match(small));
 
         // regex nom, prénom sans espace ni caractères spéciaux
         //const regName = /(?:[a-z]+['- ])/g;
@@ -66,13 +66,13 @@
         console.log(name.match(small));
 
         // regex adresse, peut avoir lettres, chiffres, guillemets, tirets
-        const regAddress = /(?:[\d\w]+['\- ])/gi;
+        const regAddress = /(?:[\d\w]+['\- ])+/gi;
         const address = "5 rue de l'écoute s'il pleut, 92000"
         console.log("-- regex nom, prénom avec guillemet simple --");
         console.log(name.match(small));
 
         // regex téléphone, peut avoir chiffres et espaces/points/tiret haut
-        const regPhone = /(?:[\d]{2}+[.\- ]?){4}/gi;
+        const regPhone = /(?:[\d]{2}[.\- ]?){4}/gi;
         const phone = "06.00.00.00.00"
         console.log("-- regex phone, --");
         console.log(phone.match(small));

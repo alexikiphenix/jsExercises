@@ -11,3 +11,4 @@ console.log(regex.test(str));
 
 const email = "ayuui@jkm.com";
 const regEmail = /^[a-z]+(?:[a-z][_\-.])/;
+console.log(email.match(regexEmail));

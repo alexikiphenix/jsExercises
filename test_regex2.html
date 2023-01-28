@@ -15,9 +15,10 @@
 
         */
         const name = "Kalala";
-        const email = "ayuui@jkm.com";
-        const regName = /^[a-z]+?:([\w\d\]*[-_.]?)/;
+        const email = "ayuui@zhrr.com";
+        const regName = /^[a-z]+?:([\w\d\]*[-_.]?)@[a-z]+?:([\w\d\]*[-_.]?)/;
         const regEmail = /^[a-z]+(?:[a-z][_\-.])+@[a-z]+(?:[a-z][_\-.])+.[a-z]+(?:[a-z][_\-.])+/;
+        console.log(regName.test(name));
         console.log(email.match(regEmail));
     </script>
 </body>

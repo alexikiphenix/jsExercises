@@ -16,8 +16,7 @@
         #bars-box
         {            
             position: relative;
-            height: 20vh;            
-            border: 3px solid red;
+            height: 20vh;              
         }
         #bar01
         {
@@ -25,12 +24,9 @@
             left: 0;
             bottom: 0;
             width: 20%;            
-            background-color: green;
+            background-color: darkred;
         }
-        #btn01
-        {
-                           
-        }
+
     </style>
     <title>Test event 2</title>
 </head>
@@ -45,16 +41,28 @@
         const bar01 = document.querySelector('#bar01');
         const btn = document.querySelector('#btn01');
         let barHeight = 1;
-        
-        btn.addEventListener('click', () =>{
+        let increaseBarId;
+
+        const increaseBar = () =>{
             if(barHeight <= 99)
             {
                 barHeight++;
                 bar01.style.height = `${barHeight}%`;
             }
-                
-            bar01.style.backgroundColor = `blue`;
+        }
+        btn.addEventListener('click', () =>{
+            increaseBar();
         })
+
+        btn.addEventListener('mousedown', () =>{
+            increaseBarId = setInterval(increaseBar, 10);
+        })
+
+        btn.addEventListener('mouseup', () =>{
+            clearInterval(increaseBarId);
+        })
+
+        // next step when mousedown
         
   
     </script>

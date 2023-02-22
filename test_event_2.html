@@ -15,14 +15,14 @@
         }
         #bars-box
         {            
-            position: relative;
+            display: flex;
+            justify-content: center;      
+            align-items: end;    
+            margin-bottom: 1rem;  
             height: 20vh;              
         }
         #bar01
         {
-            position: absolute;
-            left: 0;
-            bottom: 0;
             width: 20%;            
             background-color: darkred;
         }
@@ -35,14 +35,18 @@
         <div id="bars-box">
             <div id="bar01"></div>
         </div>
-        <button id="btn01">^</button>
+        <button id="btnIncrease">^</button>
+        <button id="btnDecrease">v</button>
+        <button id="btnEnlarge">></button>
     </div>
     <script>
         const bar01 = document.querySelector('#bar01');
-        const btn = document.querySelector('#btn01');
-        const btnElargir;
+        const btnIncrease = document.querySelector('#btnIncrease');
+        const btnDecrease = document.querySelector('#btnDecrease');        
+        const btnElargir = true;
         let barHeight = 1;
         let increaseBarId;
+        let decreaseBarId;
 
         const increaseBar = () =>{
             if(barHeight <= 99)
@@ -51,16 +55,34 @@
                 bar01.style.height = `${barHeight}%`;
             }
         }
-        btn.addEventListener('click', () =>{
+        const decreaseBar = () =>{
+            if(barHeight >= 1)
+            {
+                barHeight--;
+                bar01.style.height = `${barHeight}%`;
+            }
+        }
+        btnIncrease.addEventListener('click', () =>{
             increaseBar();
         })
+        btnDecrease.addEventListener('click', () =>{
+            decreaseBar();
+        })
 
-        btn.addEventListener('mousedown', () =>{
+        btnIncrease.addEventListener('mousedown', () =>{
             increaseBarId = setInterval(increaseBar, 10);
         })
 
-        btn.addEventListener('mouseup', () =>{
+        btnDecrease.addEventListener('mousedown', () =>{
+            decreaseBarId = setInterval(decreaseBar, 10);
+        })
+
+        btnIncrease.addEventListener('mouseup', () =>{
             clearInterval(increaseBarId);
+        })
+
+        btnDecrease.addEventListener('mouseup', () =>{
+            clearInterval(decreaseBarId);
         })
 
         // next step when mousedown

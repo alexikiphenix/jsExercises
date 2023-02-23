@@ -23,7 +23,8 @@
         }
         #bar01
         {
-            width: 20%;            
+            width: 50%;
+            height: 50%;            
             background-color: darkred;
         }
 
@@ -37,14 +38,16 @@
         </div>
         <button id="btnIncrease">^</button>
         <button id="btnDecrease">v</button>
-        <button id="btnEnlarge">></button>
+        <button id="btnEnlarge">< ></button>
+        <button id="btnSlim"> >< </button>
     </div>
     <script>
         const bar01 = document.querySelector('#bar01');
         const btnIncrease = document.querySelector('#btnIncrease');
         const btnDecrease = document.querySelector('#btnDecrease');        
-        const btnElargir = true;
-        let barHeight = 1;
+        const btnEnlarge = document.querySelector('#btnEnlarge');
+        let barHeight = 50;
+        let barWidth = 50;
         let increaseBarId;
         let decreaseBarId;
 
@@ -62,6 +65,16 @@
                 bar01.style.height = `${barHeight}%`;
             }
         }
+
+        const enlargeBar = () =>{
+            if(barWidth <= 99)
+            {
+                barWidth++;
+                bar01.style.width = `${barWidth}%`;
+            }
+        }
+
+
         btnIncrease.addEventListener('click', () =>{
             increaseBar();
         })
@@ -77,6 +90,10 @@
             decreaseBarId = setInterval(decreaseBar, 10);
         })
 
+        btnEnlarge.addEventListener('mousedown', () =>{
+            enlargeBarId = setInterval(enlargeBar, 10);
+        })
+
         btnIncrease.addEventListener('mouseup', () =>{
             clearInterval(increaseBarId);
         })
@@ -85,8 +102,11 @@
             clearInterval(decreaseBarId);
         })
 
-        // next step when mousedown
-        
+        btnEnlarge.addEventListener('mouseup', () =>{
+            clearInterval(enlargeBarId);
+        })
+
+         
   
     </script>
 </body>

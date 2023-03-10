@@ -92,8 +92,7 @@
             {
                 barWidth--;
                 bar01.style.width = `${barWidth}%`;
-            }
-            
+            }            
         }
         
         const preventMinWidth = () => { 
@@ -124,6 +123,7 @@
 
         btnSlim.addEventListener('mousedown', () =>{
             slimBarId = setInterval(slimBar, 10);
+            preventMinWidth();
         })
 
         btnIncrease.addEventListener('mouseup', () =>{

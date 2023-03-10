@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .grille
+        {
+            display: grid;
+            
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 2px;
+            width: 70%;
+            margin: auto;
+        }
+        .grille > div:not(.entete)
+        {
+            padding: 3px;
+            background-color: rgb(185, 134, 232);
+        }
+        
+        .entete
+        {
+            color: white;
+            padding: 3px;
+            background-color: rgb(138, 37, 156);
+        }
+    </style>
+    <title>Test doc</title>
+</head>
+<body>
+
+    <div class="grille">
+        <!-- nom, prenom, age, nationalite, profession -->
+        <div class="entete">Nom</div>
+        <div class="entete">Prénom</div>
+        <div class="entete">Age</div>
+        <div class="entete">Nationalité</div>
+        <div class="entete">Profession</div>
+
+        <div>Dupont</div>
+        <div>Marc</div>
+        <div>31</div>
+        <div>Français</div>
+        <div>Couvreur</div>
+        
+        <div>Ben</div>
+        <div>Mohamed</div>
+        <div>35</div>
+        <div>Algérien</div>
+        <div>Développeur</div>
+
+        
+        <div>Sissoko</div>
+        <div>Fatou</div>
+        <div>28</div>
+        <div>Malienne</div>
+        <div>Cadre RH</div>
+
+
+        <div>Ribery</div>
+        <div>Franck</div>
+        <div>39</div>
+        <div>Français</div>
+        <div>Footballeur</div>
+
+
+    </div>
+    <script>
+       
+    </script>
+</body>
+</html>

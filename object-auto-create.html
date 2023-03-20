@@ -14,11 +14,16 @@
             this.nom = nom;
             this.prenom = prenom;
         }
+        let nom;
+        let prenom;
             for(let i = 0; i < 5; i++)
             {
-                window[`Personne${i}`] = new Personne(`Doe${i}`, `John${i}`);
+                prenom = prompt('Quel est votre prénom ?');
+                nom = prompt('Quel est votre nom ?');
+                // window['Personne'+i] = new Personne('Doe'+i, 'John'+i);
+                window[`Personne${i}`] = new Personne(`John${i}`);
                 console.log(window[`Personne${i}`]);
             }
-    </script>
+    </script> 
 </body>
 </html>

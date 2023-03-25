@@ -1,3 +1,11 @@
 $txt-1 : 16px;
 $color-secondary : rgb(86, 86, 214);
 $color-primary : rgb(187, 85, 29);
+
+@for $i from 1 through 5
+{
+    .style-#{i}
+    {
+        font-size: #{i}em;
+    }
+}

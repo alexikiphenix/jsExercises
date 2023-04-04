@@ -30,7 +30,13 @@
         const boxImg = document.querySelector(`#boxImg`);
         const btnDecrease = document.querySelector(`#btnDecrease`);
         const btnIncrease = document.querySelector(`#btnIncrease`);
-        btnDecrease.addEventListener('click', decrease);
+        let width;
+        const decrease () =>{
+            width = boxImg.getAttribute(`width`);
+            console.log(width);
+            boxImg.style.width = `${width-5}px`;
+        }
+        btnDecrease.addEventListener('mousedown', decrease);
     </script>
 </body>
 </html>

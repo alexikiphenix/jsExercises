@@ -31,8 +31,8 @@
         const btnDecrease = document.querySelector(`#btnDecrease`);
         const btnIncrease = document.querySelector(`#btnIncrease`);
         let width;
-        const decrease () =>{
-            width = boxImg.getAttribute(`width`);
+        const decrease = () =>{
+            width = boxImg.clientWidth;
             console.log(width);
             boxImg.style.width = `${width-5}px`;
         }

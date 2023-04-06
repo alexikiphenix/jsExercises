@@ -16,6 +16,27 @@
         {
             text-align: center;
         }
+
+        #btnDecrease, #btnIncrease
+        {
+            padding: .5rem;
+            color: rgb(214, 214, 214);
+            background-color: #bb5313;
+        }
+
+        [id^="btn"]:hover
+        {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #boxBtn
+        {
+            padding: 1rem;
+            border: 1px solid #000;
+        }
+
+
     </style>
     <title>Resizer</title>
 </head>
@@ -31,12 +52,25 @@
         const btnDecrease = document.querySelector(`#btnDecrease`);
         const btnIncrease = document.querySelector(`#btnIncrease`);
         let width;
+        let height;
+
         const decrease = () =>{
             width = boxImg.clientWidth;
-            console.log(width);
+            height = boxImg.clientHeight;
             boxImg.style.width = `${width-5}px`;
+            boxImg.style.height = `${height-5}px`;
+            console.log(width);
         }
         btnDecrease.addEventListener('mousedown', decrease);
+
+        const increase = () =>{
+            width = boxImg.clientWidth;
+            height = boxImg.clientHeight;
+            boxImg.style.width = `${width+5}px`;
+            boxImg.style.height = `${height+5}px`;
+            console.log(width);
+        }
+        btnIncrease.addEventListener('mousedown', increase);
     </script>
 </body>
 </html>

@@ -70,7 +70,7 @@
         btnDecrease.addEventListener('mouseup', () =>
             {
                 clearInterval(constantDecrease);
-                console.log("clear");
+                console.log(constantDecrease);
             }
         );
 
@@ -83,7 +83,7 @@
         }
         btnIncrease.addEventListener('mousedown', () => 
             {
-                setInterval(increase, 100);
+                const constantIncrease = setInterval(increase, 100);
             }
         );
         btnIncrease.addEventListener('mouseup', () => 

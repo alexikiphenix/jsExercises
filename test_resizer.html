@@ -61,14 +61,16 @@
             boxImg.style.height = `${height-5}px`;
             console.log(width);
         }
-        btnDecrease.addEventListener('mousedown', () =>{
-            const constantDecrease = setInterval(decrease, 100);
-        }
+        btnDecrease.addEventListener('mousedown', () =>
+            {
+                const constantDecrease = setInterval(decrease, 100);
+            }
         );
-        btnDecrease.addEventListener('mouseup', () =>{
-            clearInterval(constantDecrease);
-            console.log("clear");
-        }
+        btnDecrease.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantDecrease);
+                console.log("clear");
+            }
         );
 
         const increase = () =>{
@@ -79,9 +81,14 @@
             console.log(width);
         }
         btnIncrease.addEventListener('mousedown', () => 
-        {
-            setInterval(increase, 100);
-        }
+            {
+                setInterval(increase, 100);
+            }
+        );
+        btnIncrease.addEventListener('mouseup', () => 
+            {
+                clearInterval(increase);
+            }
         );
     </script>
 </body>

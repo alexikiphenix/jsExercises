@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #btnIncrease
+        {
+            display: inline-grid;
+            place-content: center;
+            height: 20px;
+            width: 20px;
+            margin-bottom: 1rem;
+            padding: .5rem;
+            user-select: none;
+            color: white;
+            background-color: rgb(78, 77, 77);
+        }
+        #btnIncrease:hover
+        {
+            cursor: pointer;
+            transform: scale(.90);
+            box-shadow: 4px 4px 4px black;
+        }
+        #box
+        {
+            height: 60px;
+            width: 5px;
+            background-color: blueviolet;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="btnIncrease">+</div>
+    <div id="box"></div>
+
+    <script>
+        const btnIncrease = document.querySelector('#btnIncrease');
+        const box = document.getElementById('box');
+        let constantIncrease;
+        let width = 5;
+
+        const increase = () =>
+        {
+            width+= 5;
+            box.style.width = `${width}px`;
+            console.log(box.style.width);
+        }
+
+        btnIncrease.addEventListener('mousedown', () =>
+            {
+                constantIncrease = setInterval(increase, 100);
+            }
+        )
+        btnIncrease.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantIncrease);
+            }
+        )
+
+    </script>
+</body>
+</html>

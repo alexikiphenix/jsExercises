@@ -51,20 +51,24 @@
     <script>
         const boxImg = document.querySelector(`#boxImg`);
         const btnDecrease = document.querySelector(`#btnDecrease`);
-        const btnIncrease = document.querySelector(`#btnIncrease`);
-        let width;
-        let height;
+        const btnIncrease = document.querySelector(`#btnIncrease`);  
+        let constantDecrease;     
+        let constantIncrease;     
+        // let width = boxImg.clientWidth;
+        // let height = boxImg.clientHeight;
+        let width = 50;
+        let height = 50;
 
         const decrease = () =>{
-            width = boxImg.clientWidth;
-            height = boxImg.clientHeight;
-            boxImg.style.width = `${width-5}px`;
-            boxImg.style.height = `${height-5}px`;
+            width -= 5;
+            height -= 5;
+            boxImg.style.width = `${width}px`;
+            boxImg.style.height = `${height}px`;
             console.log(width);
         }
         btnDecrease.addEventListener('mousedown', () =>
             {
-                const constantDecrease = setInterval(decrease, 100);
+                constantDecrease = setInterval(decrease, 100);
             }
         );
         btnDecrease.addEventListener('mouseup', () =>
@@ -74,23 +78,27 @@
             }
         );
 
+
         const increase = () =>{
-            width = boxImg.clientWidth;
-            height = boxImg.clientHeight;
-            boxImg.style.width = `${width+5}px`;
-            boxImg.style.height = `${height+5}px`;
+            width += 5;
+            height += 5;
+            boxImg.style.width = `${width}px`;
+            boxImg.style.height = `${height}px`;
             console.log(width);
         }
-        btnIncrease.addEventListener('mousedown', () => 
+        btnIncrease.addEventListener('mousedown', () =>
             {
-                const constantIncrease = setInterval(increase, 100);
+                constantIncrease = setInterval(increase, 100);
             }
         );
-        btnIncrease.addEventListener('mouseup', () => 
+        btnIncrease.addEventListener('mouseup', () =>
             {
-                clearInterval(increase);
+                clearInterval(constantIncrease);
+                console.log(constantIncrease);
             }
         );
+
+
     </script>
 </body>
 </html>

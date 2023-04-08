@@ -76,6 +76,12 @@
                 console.log(constantDecrease);
             }
         );
+        btnDecrease.addEventListener('mouseout', () =>
+            {
+                clearInterval(constantDecrease);
+                console.log(constantDecrease);
+            }
+        );
 
 
         const increase = () =>{
@@ -91,6 +97,12 @@
             }
         );
         btnIncrease.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantIncrease);
+                console.log(constantIncrease);
+            }
+        );
+        btnIncrease.addEventListener('mouseout', () =>
             {
                 clearInterval(constantIncrease);
                 console.log(constantIncrease);

@@ -46,6 +46,7 @@
     <div id="boxBtn">
         <span id="btnDecrease">-</span>
         <span id="btnIncrease">+</span>
+        <span id="btnLeft"><=</span>
     </div>
 
     <script>
@@ -58,7 +59,8 @@
         // let height = boxImg.clientHeight;
         let width = 50;
         let height = 50;
-
+        let positionX = boxImg.clientLeft;
+        console.log(positionX);
         const decrease = () =>{
             width -= 5;
             height -= 5;

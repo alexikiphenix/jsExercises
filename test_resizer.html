@@ -102,18 +102,25 @@
             if(getRect(boxImg).x >= getRect(bigBox).x+5)
                 return true;
             else
-                return false;
+                return false;                                              
         }
-
+        
         const checkRight = () =>
         {
             if(getRect(boxImg).right <= getRect(bigBox).right-5)
+            return true;
+            else
+            return false;
+        }
+        
+        const checkTop = () =>
+        {
+            if(getRect(boxImg).y <= getRect(bigBox).x-5)
                 return true;
             else
-                return false;
+                return false;                                              
         }
-      
-
+        
         
         /*
         ***********************************************************************

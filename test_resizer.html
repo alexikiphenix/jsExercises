@@ -50,7 +50,7 @@
 
 
     </style>
-
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
     <title>Resizer</title>
 </head>
 <body>
@@ -60,22 +60,66 @@
     <div id="boxBtn">
         <span id="btnDecrease">-</span>
         <span id="btnIncrease">+</span>
-        <span id="btnLeft"><=</span>
+        <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
+        <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     </div>
 
-    <script>
+    <script>        
+        const bigBox = document.querySelector(`#bigBox`);
         const boxImg = document.querySelector(`#boxImg`);
         const btnDecrease = document.querySelector(`#btnDecrease`);
         const btnIncrease = document.querySelector(`#btnIncrease`);  
+        let bigBoxRect;
+        let boxImgRect;  
+
         let constantDecrease;     
         let constantIncrease;    
         let constantMoveLeft; 
+        let constantMoveRight; 
         // let width = boxImg.clientWidth;
         // let height = boxImg.clientHeight;
         let width = 5;
         let height = 5;
         let positionX = boxImg.clientLeft;
+      
+
+        /***********************************************************************
+         * *************************** GET BOUNDING RECT ***********************
+         * *********************************************************************         * 
+         */
+        const getRect = (element) =>
+        {
+            let rect = element.getBoundingClientRect();
+            return rect;
+        }
+
+        /***********************************************************************
+         ************************** checkBorders *******************************
+         * check if borders are reached and return true if        
+         */
+        const checkLeft = () =>
+        {
+            if(getRect(boxImg).x >= getRect(bigBox).x+5)
+                return true;
+            else
+                return false;
+        }
+
+        const checkRight = () =>
+        {
+            if(getRect(boxImg).right <= getRect(bigBox).right-5)
+                return true;
+            else
+                return false;
+        }
+      
+
         
+        /*
+        ***********************************************************************
+        ******************************* DECREASE FUNCTION *********************
+        ***********************************************************************
+        */
         const decrease = () =>{
             if(width >= 1)
             {
@@ -86,8 +130,7 @@
             {
                 height -= 5;                
                 boxImg.style.height = `${height}%`;            
-            }
-            console.log(width);
+            }           
         }
         btnDecrease.addEventListener('mousedown', () =>
             {
@@ -96,8 +139,7 @@
         );
         btnDecrease.addEventListener('mouseup', () =>
             {
-                clearInterval(constantDecrease);
-                console.log(constantDecrease);
+                clearInterval(constantDecrease);                
             }
         );
         btnDecrease.addEventListener('mouseout', () =>
@@ -108,49 +150,108 @@
         );
         
         
+        /*
+        ***********************************************************************
+        ******************************* INCREASE FUNCTION *********************
+        ***********************************************************************
+        */
         const increase = () =>{
-            width += 5;
-            height += 5;
-            boxImg.style.width = `${width}%`;
-            boxImg.style.height = `${height}%`;
-            console.log(width);
+            if(width <= 95)
+            {
+                width += 5;
+                boxImg.style.width = `${width}%`;                
+            }
+            if(height <= 95)
+            {
+                height += 5;
+                boxImg.style.height = `${height}%`;
+            }           
         }
         btnIncrease.addEventListener('mousedown', () =>
-        {
-            constantIncrease = setInterval(increase, 100);
-        }
-        );
-        btnIncrease.addEventListener('mouseup', () =>
-        {
-            clearInterval(constantIncrease);
-            console.log( boxImg.style.height);
-        }
-        );
-        btnIncrease.addEventListener('mouseout', () =>
-        {
-            clearInterval(constantIncrease);
-            console.log(constantIncrease);
-        }
-        );
-        
-        const moveLeft = () =>{
-            positionX -= 5;            
-            boxImg.style.transform = `translateX(${positionX}px)`;           
-            console.log(positionX);
-        }
-        btnLeft.addEventListener('mousedown', () =>
             {
-                constantMoveLeft = setInterval(moveLeft, 100);
+                constantIncrease = setInterval(increase, 100);
             }
         );
+        btnIncrease.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantIncrease);           
+            }
+        );
+        btnIncrease.addEventListener('mouseout', () =>
+            {
+                clearInterval(constantIncrease);           
+            }
+        );
+        
+
+        /*
+        **********************************************************************************
+        ******************************* MOVELEFT FUNCTION ********************************
+        **********************************************************************************
+        */
+        const moveLeft = () =>
+        {
+            // console.log(`${getRect(bigBox).x} --------- ${getRect(boxImg).x}`);                
+            if(checkLeft(boxImg))
+            {                
+                positionX -= 5;            
+                boxImg.style.transform = `translateX(${positionX}px)`;                       
+            }
+            console.log(checkLeft());
+        }
+
+        btnLeft.addEventListener('mousedown', () =>
+            {
+                    constantMoveLeft = setInterval(moveLeft, 100);
+                // getBoundingClientRect() give informations posX, posY, width and height;
+                
+                
+            }
+        );
+
         btnLeft.addEventListener('mouseup', () =>
             {
                 clearInterval(constantMoveLeft);                
             }
         );
+
         btnLeft.addEventListener('mouseout', () =>
             {
                 clearInterval(constantMoveLeft);                
+            }
+        );
+
+
+        /*
+        ************************************************************************************
+        ******************************* MOVERIGHT FUNCTION *********************************
+        ************************************************************************************
+        */
+        const moveRight = () =>
+        {
+            // console.log(`${getRect(bigBox).right} --------- ${getRect(boxImg).right}`);   
+            if(getRect(boxImg).right <= getRect(bigBox).right-5)
+            {
+                positionX += 5;            
+                boxImg.style.transform = `translateX(${positionX}px)`;                      
+            }
+        }
+
+        btnRight.addEventListener('mousedown', () =>
+            {
+                constantMoveRight = setInterval(moveRight, 100);
+            }
+        );
+
+        btnRight.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantMoveRight);                
+            }
+        );
+
+        btnRight.addEventListener('mouseout', () =>
+            {
+                clearInterval(constantMoveRight);                
             }
         );
         

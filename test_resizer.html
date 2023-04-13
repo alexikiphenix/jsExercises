@@ -61,6 +61,8 @@
         <span id="btnDecrease">-</span>
         <span id="btnIncrease">+</span>
         <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
+        <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
+        <span id="btnUp"><i class="fa-solid fa-arrow-up-long"></i></span>
         <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     </div>
 
@@ -69,6 +71,10 @@
         const boxImg = document.querySelector(`#boxImg`);
         const btnDecrease = document.querySelector(`#btnDecrease`);
         const btnIncrease = document.querySelector(`#btnIncrease`);  
+        const btnLeft = document.querySelector(`#btnLeft`);  
+        const btnRight = document.querySelector(`#btnRight`);  
+        const btnUp = document.querySelector(`#btnUp`);  
+        const btnDown = document.querySelector(`#btnDown`);  
         let bigBoxRect;
         let boxImgRect;  
 
@@ -76,19 +82,24 @@
         let constantIncrease;    
         let constantMoveLeft; 
         let constantMoveRight; 
+        let constantMoveUp; 
+        let constantMoveDown; 
         // let width = boxImg.clientWidth;
         // let height = boxImg.clientHeight;
         let width = 5;
         let height = 5;
         let positionX = boxImg.clientLeft;
+        let positionY = boxImg.clientTop;
+        //let positionY = getRect(boxImg).y};
       
-
+      
         /***********************************************************************
          * *************************** GET BOUNDING RECT ***********************
          * *********************************************************************         * 
          */
         const getRect = (element) =>
         {
+            // getBoundingClientRect() give informations posX, posY, width and height;
             let rect = element.getBoundingClientRect();
             return rect;
         }
@@ -113,12 +124,13 @@
             return false;
         }
         
-        const checkTop = () =>
+        const checkUp = () =>
         {
-            if(getRect(boxImg).y <= getRect(bigBox).x-5)
+            if(getRect(boxImg).y >= getRect(bigBox).y-5)
                 return true;
             else
-                return false;                                              
+                return false;          
+            return true;                                    
         }
         
         
@@ -197,22 +209,17 @@
         **********************************************************************************
         */
         const moveLeft = () =>
-        {
-            // console.log(`${getRect(bigBox).x} --------- ${getRect(boxImg).x}`);                
+        {                    
             if(checkLeft(boxImg))
             {                
                 positionX -= 5;            
                 boxImg.style.transform = `translateX(${positionX}px)`;                       
-            }
-            console.log(checkLeft());
+            }            
         }
 
         btnLeft.addEventListener('mousedown', () =>
             {
-                    constantMoveLeft = setInterval(moveLeft, 100);
-                // getBoundingClientRect() give informations posX, posY, width and height;
-                
-                
+                    constantMoveLeft = setInterval(moveLeft, 100);                             
             }
         );
 
@@ -259,6 +266,41 @@
         btnRight.addEventListener('mouseout', () =>
             {
                 clearInterval(constantMoveRight);                
+            }
+        );
+
+        
+        /*
+        ************************************************************************************
+        ******************************* MOVEUP FUNCTION *********************************
+        ************************************************************************************
+        */
+        const moveUp = () =>
+        {          
+            if(checkUp())
+            {
+                positionY -= 5;            
+                // boxImg.style.transform = `translateX(${positionX}px)`;   
+                boxImg.style.transform = `translateY(${positionY}px)`;   
+                console.log(`position : ${getRect(bigBox).y} => ${getRect(boxImg).y} positionY => ${positionY}`);                   
+            }
+        }
+
+        btnUp.addEventListener('mousedown', () =>
+            {
+                constantMoveUp = setInterval(moveUp, 100);
+            }
+        );
+
+        btnUp.addEventListener('mouseup', () =>
+            {
+                clearInterval(constantMoveUp);                
+            }
+        );
+
+        btnUp.addEventListener('mouseout', () =>
+            {
+                clearInterval(constantMoveUp);                
             }
         );
         

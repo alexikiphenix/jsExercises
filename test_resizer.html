@@ -32,7 +32,12 @@
 
         [id^="btn"]
         {
-            padding: .5rem;
+            display: inline-grid;
+            place-content: center;
+            height: 1.8rem;
+            width: 1.8rem;
+            padding: .1rem;
+            transform-origin: center;
             user-select: none;
             color: rgb(214, 214, 214);
             background-color: rgb(78, 77, 77);
@@ -41,6 +46,12 @@
         [id^="btn"]:hover
         {
             cursor: pointer;
+        }
+        
+        [id^="btn"]:active
+        {
+            transform: scale(.9);
+            box-shadow: 5px 5px 5px black;
         }
         
         #boxBtn
@@ -68,7 +79,8 @@
         <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     </div>
 
-    <script>        
+    <script>    
+        "use strict";    
         const bigBox = document.querySelector(`#bigBox`);
         const boxImg = document.querySelector(`#boxImg`);
         const btnDecrease = document.querySelector(`#btnDecrease`);
@@ -110,21 +122,22 @@
         }
 
         /***********************************************************************
-        ***** CENTERING WITH POSTITION ABSOLUTE AND REMOVING TRANSLATEX  *******
-        ***********************************************************************         * 
+        ******** ADDING POSTITION ABSOLUTE AND REMOVING TRANSLATE_X  ***********
+        ***************** WITHOUT LOSING RELATIVE POSITION IN % ****************
+        ************************************************************************         * 
         */
         // We need to add position: absolute and center boxImg but without translateX (to skip some issues)
-        const centerWithPosition = () => 
+        const keepRelativePosition = () => 
         {
-            boxImg.style.position = 'static';
-            delete  boxImg.style;
-            positionX = getRect(boxImg).x;
-            // positionY = getRect(boxImg).y;
-           boxImg.style.position = 'absolute';
-            boxImg.style.left = `${positionX}px`;
-            console.log("Resize");
+            // positionX calculated in % 
+            positionX = ((getRect(boxImg).x)*100)/document.body.clientWidth;
+            positionY = getRect(boxImg).y;
+            console.log(positionX);
+            boxImg.style.position = 'absolute';
+            boxImg.style.left = `${positionX}%`;
+            console.log(positionX);
         }
-        
+
         const centerWithPositionAutre = () => 
         {
             boxImg.style.position = 'static';
@@ -136,9 +149,9 @@
             console.log("Resize");
         }
 
-        centerWithPosition();
+        keepRelativePosition();
 
-        window.addEventListener('resize', centerWithPosition);
+        window.addEventListener('resize', keepRelativePosition);
 
 
         /***********************************************************************

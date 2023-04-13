@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
     <style>
+        body{margin: 0;}
         #bigBox
         {
+            position: relative;
             display: grid;
-            /* justify-content: center;             */
+            justify-content: center;            
             align-items: end;
             margin-top: 5rem;
             height: 50vh;
@@ -17,6 +19,7 @@
         }
         #boxImg
         {
+            position: relative;
             height: 5vh;
             width: 5vh;
             margin: auto auto 0;
@@ -25,7 +28,7 @@
         }
         #boxBtn 
         {
-            text-align: center;
+            text-align: center;            
         }
 
         [id^="btn"]
@@ -74,7 +77,8 @@
         const btnLeft = document.querySelector(`#btnLeft`);  
         const btnRight = document.querySelector(`#btnRight`);  
         const btnUp = document.querySelector(`#btnUp`);  
-        const btnDown = document.querySelector(`#btnDown`);  
+        const btnDown = document.querySelector(`#btnDown`); 
+        const range = 5; 
         let bigBoxRect;
         let boxImgRect;  
 
@@ -88,8 +92,10 @@
         // let height = boxImg.clientHeight;
         let width = 5;
         let height = 5;
-        let positionX = boxImg.clientLeft;
-        let positionY = boxImg.clientTop;
+        let positionX;
+        let positionY;
+        // let positionX = boxImg.clientLeft;
+        // let positionY = boxImg.clientTop;
         //let positionY = getRect(boxImg).y};
       
       
@@ -103,6 +109,48 @@
             let rect = element.getBoundingClientRect();
             return rect;
         }
+
+        /***********************************************************************
+        ***** CENTERING WITH POSTITION ABSOLUTE AND REMOVING TRANSLATEX  *******
+        ***********************************************************************         * 
+        */
+        // We need to add position: absolute and center boxImg but without translateX (to skip some issues)
+        const centerWithPosition = () => 
+        {
+            boxImg.style.position = 'static';
+            delete  boxImg.style;
+            positionX = getRect(boxImg).x;
+            // positionY = getRect(boxImg).y;
+           boxImg.style.position = 'absolute';
+            boxImg.style.left = `${positionX}px`;
+            console.log("Resize");
+        }
+        
+        const centerWithPositionAutre = () => 
+        {
+            boxImg.style.position = 'static';
+            delete  boxImg.style;
+            positionX = getRect(boxImg).x;
+            // positionY = getRect(boxImg).y;
+           boxImg.style.position = 'absolute';
+            boxImg.style.left = `${positionX}px`;
+            console.log("Resize");
+        }
+
+        centerWithPosition();
+
+        window.addEventListener('resize', centerWithPosition);
+
+
+        /***********************************************************************
+         **** REMOVE TRANSLATE (ADDED FOR CENTERING WITH POSITION ABSOLUTE) ****
+         ***********************************************************************         * 
+         */
+        // const removeTranslate = () =>
+        // {
+        //     boxImg.style.transform = `translateX(0)`;
+        // }
+
 
         /***********************************************************************
          ************************** checkBorders *******************************
@@ -126,7 +174,7 @@
         
         const checkUp = () =>
         {
-            if(getRect(boxImg).y >= getRect(bigBox).y-5)
+            if(getRect(boxImg).y >= getRect(bigBox).y-range)
                 return true;
             else
                 return false;          
@@ -211,15 +259,19 @@
         const moveLeft = () =>
         {                    
             if(checkLeft(boxImg))
-            {                
-                positionX -= 5;            
-                boxImg.style.transform = `translateX(${positionX}px)`;                       
+            {                       
+                //removeTranslate(); // TranslateX(-50%) was put to center with position : absolute
+                boxImg.style.left = `${getRect(boxImg).x-range}px`;
+                
+                // 2ND METHOD
+                // positionX -= 5;                            
+                // boxImg.style.transform = `translateX(${positionX}px)`;                       
             }            
         }
 
         btnLeft.addEventListener('mousedown', () =>
             {
-                    constantMoveLeft = setInterval(moveLeft, 100);                             
+                constantMoveLeft = setInterval(moveLeft, 100);                             
             }
         );
 
@@ -243,12 +295,8 @@
         */
         const moveRight = () =>
         {
-            // console.log(`${getRect(bigBox).right} --------- ${getRect(boxImg).right}`);   
-            if(getRect(boxImg).right <= getRect(bigBox).right-5)
-            {
-                positionX += 5;            
-                boxImg.style.transform = `translateX(${positionX}px)`;                      
-            }
+            //removeTranslate();            
+            boxImg.style.left = `${getRect(boxImg).x+range}px`;    
         }
 
         btnRight.addEventListener('mousedown', () =>

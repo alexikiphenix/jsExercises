@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
+    <style>
+        body{margin: 0;}
+        [id^="btn"]
+        {
+            display: inline-grid;
+            place-content: center;
+            height: 25px;
+            width: 25px;
+            padding: 5px;
+            user-select: none;
+            color: white;
+            background-color: #464545;
+        }
+
+        [id^="btn"]:hover
+        {        
+            cursor: pointer;
+        }
+        [id^="btn"]:active
+        {
+            transform: scale(.9);
+            cursor: pointer;
+            box-shadow: 3px 3px 3px solid black;
+        }
+        #boxImg
+        {
+            position: absolute;            
+            height: 50px;
+            width:  50px;
+            background-color: blueviolet;
+        }
+    </style>
+    <title>Test translate</title>
+</head>
+<body>
+    <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
+    <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
+    <div id="boxImg"></div>
+
+    <script>
+        const btnRight = document.querySelector('#btnRight');
+        const btnDown = document.querySelector(`#btnDown`);
+        const boxImg = document.querySelector('#boxImg');  
+        const range = 1;      
+
+        /***********************************************************************
+         ******************** FUNCTION GETBOUNDING RECTANGLE *******************
+         ***********************************************************************
+        */
+        const getRect = (element) =>
+        {
+            const rect = element.getBoundingClientRect();            
+            console.log(`x : ${rect.x} ---- y : ${rect.y}`);
+            return rect;
+        }
+
+        btnRight.addEventListener('mousedown', () =>
+            {              
+                boxImg.style.left = `${getRect(boxImg).x+range}px`;    
+                // 2nd way to do it, but pay attention transform will relocate the element
+                //boxImg.style.transform = `translateX(${positionY}px)`;                              
+            }
+        );
+                      
+        btnDown.addEventListener('mousedown', () =>
+            {                
+                boxImg.style.top = `${getRect(boxImg).y+range}px`;  
+
+                // 2nd way to do it, but pay attention transform will relocate the element
+                //boxImg.style.transform = `translateY(${positionY}px)`;
+            }
+        )
+    </script>
+</body>
+</html>

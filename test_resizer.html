@@ -299,6 +299,42 @@
             }
         );
 
+        /*
+        **********************************************************************************
+        ******************************* MOVELEFT FUNCTION ********************************
+        **********************************************************************************
+        */
+        const move = (direction) =>
+        {  
+            switch(direction)                  
+            {
+                case "left": boxImg.style.left = `${getRect(boxImg).x-range}px`;
+                        if(checkLeft(boxImg))
+                        {
+                            btnLeft.addEventListener('mousedown', () =>
+                                {
+                                    constantMoveLeft = setInterval(move, 100, "left");                             
+                                }
+                            );
+                        }
+                        btnLeft.addEventListener('mouseup', () =>
+                            {
+                                clearInterval(constantMoveLeft);                
+                            }
+                        );
+                        btnLeft.addEventListener('mouseout', () =>
+                            {
+                                clearInterval(constantMoveLeft);                
+                            }
+                        );
+                break;
+            }                                
+        }// END MOVE function            
+
+
+
+
+
 
         /*
         ************************************************************************************

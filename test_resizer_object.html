@@ -40,15 +40,18 @@
     <title>Test translate</title>
 </head>
 <body>
+    <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
     <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
     <div id="boxImg"></div>
 
     <script>
         const btnRight = document.querySelector('#btnRight');
-        const btnDown = document.querySelector(`#btnDown`);
+        const btnLeft = document.querySelector('#btnLeft');
+        const btnUp = document.querySelector('#btnUp');
+        const btnDown = document.querySelector('#btnDown');        
         const boxImg = document.querySelector('#boxImg');  
-        const range = 1;      
+        let range = 5;      
 
         /***********************************************************************
          ******************** FUNCTION GETBOUNDING RECTANGLE *******************
@@ -60,23 +63,44 @@
             console.log(`x : ${rect.x} ---- y : ${rect.y}`);
             return rect;
         }
+           
+        // const move = (direction) =>
+        // {
+        //     if(direction === "left" || direction === "up")
+        //         range *=-1; // for changing sign
+        //     boxImg.style.left ="100px"; 
+        //     window[`${boxImg.style}.${direction}`] = "100px";
+        //     window[boxImg.style+'.'+direction] = "100px";
+        //     boxImg.style.concat('', direction) ="100px"; 
+        //     eval('window[`${boxImg.style}.${direction}`] = 100px')
+        // }
 
-        btnRight.addEventListener('mousedown', () =>
-            {              
-                boxImg.style.left = `${getRect(boxImg).x+range}px`;    
-                // 2nd way to do it, but pay attention transform will relocate the element
-                //boxImg.style.transform = `translateX(${positionY}px)`;                              
-            }
-        );
-                      
-        btnDown.addEventListener('mousedown', () =>
-            {                
-                boxImg.style.top = `${getRect(boxImg).y+range}px`;  
+        const move = (direction) =>
+        {
+            // if(direction === "left" || direction === "up")
+            switch(direction)
+            {
+                case 'left':                
+                    boxImg.style.left = `${getRect(boxImg).x-range}px`;                                     
+                    console.log(getRect(boxImg).x);
+                    // 2nd way to do it, but pay attention transform will relocate the element
+                    //boxImg.style.transform = `translateX(${positionY}px)`;                              
+                break;
+                case 'right':
+                    boxImg.style.left = `${getRect(boxImg).x+range}px`;
+                break;
+            }            
+        } // end function move
 
-                // 2nd way to do it, but pay attention transform will relocate the element
-                //boxImg.style.transform = `translateY(${positionY}px)`;
-            }
-        )
+
+        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
+        btnRight.addEventListener('mousedown', () =>{move(`right`);});
+        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
+        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
+
+
+        
+
     </script>
 </body>
 </html>

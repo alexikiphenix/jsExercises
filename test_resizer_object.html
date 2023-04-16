@@ -43,6 +43,7 @@
     <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
     <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
+    <span id="btnUp"><i class="fa-solid fa-arrow-up-long"></i></span>
     <div id="boxImg"></div>
 
     <script>
@@ -81,22 +82,28 @@
             switch(direction)
             {
                 case 'left':                
-                    boxImg.style.left = `${getRect(boxImg).x-range}px`;                                     
-                    console.log(getRect(boxImg).x);
-                    // 2nd way to do it, but pay attention transform will relocate the element
+                    boxImg.style.left = `${getRect(boxImg).x-range}px`;                    
+                    // 2nd way to do it, but pay attention, transform will relocate the element
                     //boxImg.style.transform = `translateX(${positionY}px)`;                              
                 break;
                 case 'right':
                     boxImg.style.left = `${getRect(boxImg).x+range}px`;
                 break;
+                case 'up':
+                    boxImg.style.top = `${getRect(boxImg).y-range}px`;
+                break;
+                case 'down':
+                    boxImg.style.top = `${getRect(boxImg).y+range}px`;
+                    console.log(getRect(boxImg).x);
+                break;
             }            
         } // end function move
 
-
+        
         btnLeft.addEventListener('mousedown', () =>{move(`left`);});
         btnRight.addEventListener('mousedown', () =>{move(`right`);});
-        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
-        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
+        btnUp.addEventListener('mousedown', () =>{move(`up`);});
+        btnDown.addEventListener('mousedown', () =>{move(`down`);});
 
 
         

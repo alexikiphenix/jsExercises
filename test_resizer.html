@@ -95,6 +95,7 @@
 
         let constantDecrease;     
         let constantIncrease;    
+        let moveWithInterval;
         let constantMoveLeft; 
         let constantMoveRight; 
         let constantMoveUp; 
@@ -131,11 +132,9 @@
         {
             // positionX calculated in % 
             positionX = ((getRect(boxImg).x)*100)/document.body.clientWidth;
-            positionY = getRect(boxImg).y;
-            console.log(positionX);
+            positionY = getRect(boxImg).y;            
             boxImg.style.position = 'absolute';
-            boxImg.style.left = `${positionX}%`;
-            console.log(positionX);
+            boxImg.style.left = `${positionX}%`;           
         }
 
         const centerWithPositionAutre = () => 
@@ -262,43 +261,6 @@
             }
         );
         
-
-        /*
-        **********************************************************************************
-        ******************************* MOVELEFT FUNCTION ********************************
-        **********************************************************************************
-        */
-        const moveLeft = () =>
-        {                    
-            if(checkLeft(boxImg))
-            {                       
-                //removeTranslate(); // TranslateX(-50%) was put to center with position : absolute
-                boxImg.style.left = `${getRect(boxImg).x-range}px`;
-                
-                // 2ND METHOD
-                // positionX -= 5;                            
-                // boxImg.style.transform = `translateX(${positionX}px)`;                       
-            }            
-        }
-
-        btnLeft.addEventListener('mousedown', () =>
-            {
-                constantMoveLeft = setInterval(moveLeft, 100);                             
-            }
-        );
-
-        btnLeft.addEventListener('mouseup', () =>
-            {
-                clearInterval(constantMoveLeft);                
-            }
-        );
-
-        btnLeft.addEventListener('mouseout', () =>
-            {
-                clearInterval(constantMoveLeft);                
-            }
-        );
-
         /*
         **********************************************************************************
         ******************************* MOVE FUNCTION ********************************
@@ -310,168 +272,63 @@
             {
                 case "left": 
                     if(checkLeft())
+                       boxImg.style.left  = `${getRect(boxImg).x-range}px`;
+                break;
+                case "right": 
+                    if(checkRight())
+                       boxImg.style.left  = `${getRect(boxImg).x+range}px`;
+                break;
+                case "down": 
+                    if(checkDown())
+                       boxImg.style.top  = `${getRect(boxImg).y-range}px`;
+                break;
+                case "up": 
+                    if(checkUp())
                     {
-                        boxImg.style.left  = `${getRect(boxImg).x-range}px`;
+                        // console.log(`${getRect(boxImg).y}px`);
+                        // console.log(`${getRect(boxImg).y-range}px`);
+                        let movement = getRect(boxImg).y-range; 
+                        console.log(movement);
+                        boxImg.style.top = `0px`;
+                        //console.log(`${range}`);
+                        //boxImg.style.top  = `${getRect(boxImg).y-range}px`;
+
                     }
-                            btnLeft.addEventListener('mouseup', () =>
-                            {
-                                clearInterval(constantMoveLeft);                
-                            }
-                        );
-                        btnLeft.addEventListener('mouseout', () =>
-                            {
-                                clearInterval(constantMoveLeft);                
-                            }
-                        );
-                        break;
-                        case "right":
-                            boxImg.style.left = `${getRect(boxImg).x-range}px`;
-                                if(checkLeft(boxImg))
-                                {
-                                    btnLeft.addEventListener('mousedown', () =>
-                                        {
-                                            constantMoveLeft = setInterval(move, 100, "left");                             
-                                        }
-                                    );
-                                }
-                                btnLeft.addEventListener('mouseup', () =>
-                                    {
-                                        clearInterval(constantMoveLeft);                
-                                    }
-                                );
-                                btnLeft.addEventListener('mouseout', () =>
-                                    {
-                                        clearInterval(constantMoveLeft);                
-                                    }
-                                );
-                        break;
+                break;
                 default:
                     return false;
-                break;                
+                break;     
             }                                
         }// END MOVE function   
 
-        const moveConstantLy = (direction) =>
-        {  
-            switch(direction)                  
-            {
-                case "left": 
-                if(checkLeft(boxImg))
-                {
-                            boxImg.style.left  = `${getRect(boxImg).x-range}px`;
-                            btnLeft.addEventListener('mousedown', () =>
-                                {
-                                    constantMoveLeft = setInterval(move, 100, "left");                             
-                                }
-                            );
-                        }
-                        btnLeft.addEventListener('mouseup', () =>
-                            {
-                                clearInterval(constantMoveLeft);                
-                            }
-                        );
-                        btnLeft.addEventListener('mouseout', () =>
-                            {
-                                clearInterval(constantMoveLeft);                
-                            }
-                        );
-                        break;
-                        case "right":
-                            boxImg.style.left = `${getRect(boxImg).x-range}px`;
-                                if(checkLeft(boxImg))
-                                {
-                                    btnLeft.addEventListener('mousedown', () =>
-                                        {
-                                            constantMoveLeft = setInterval(move, 100, "left");                             
-                                        }
-                                    );
-                                }
-                                btnLeft.addEventListener('mouseup', () =>
-                                    {
-                                        clearInterval(constantMoveLeft);                
-                                    }
-                                );
-                                btnLeft.addEventListener('mouseout', () =>
-                                    {
-                                        clearInterval(constantMoveLeft);                
-                                    }
-                                );
-                        break;
-                default:
-                    return false;
-                break;                
-            }                                
-        }// END MOVE function            
-
-
-
-
-
-
-        /*
-        ************************************************************************************
-        ******************************* MOVERIGHT FUNCTION *********************************
-        ************************************************************************************
-        */
-        const moveRight = () =>
+        const moveConstantLy = () =>
         {
-            //removeTranslate();            
-            boxImg.style.left = `${getRect(boxImg).x+range}px`;    
-        }
-
-        btnRight.addEventListener('mousedown', () =>
-            {
-                constantMoveRight = setInterval(moveRight, 100);
-            }
-        );
-
-        btnRight.addEventListener('mouseup', () =>
-            {
-                clearInterval(constantMoveRight);                
-            }
-        );
-
-        btnRight.addEventListener('mouseout', () =>
-            {
-                clearInterval(constantMoveRight);                
-            }
-        );
-
+            // LEFT
+                btnLeft.addEventListener('mousedown', () =>
+                    {moveWithInterval = setInterval(move, 100, "left");})                    
+                btnLeft.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
+                btnLeft.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
         
-        /*
-        ************************************************************************************
-        ******************************* MOVEUP FUNCTION *********************************
-        ************************************************************************************
-        */
-        const moveUp = () =>
-        {          
-            if(checkUp())
-            {
-                positionY -= 5;            
-                // boxImg.style.transform = `translateX(${positionX}px)`;   
-                boxImg.style.transform = `translateY(${positionY}px)`;   
-                console.log(`position : ${getRect(bigBox).y} => ${getRect(boxImg).y} positionY => ${positionY}`);                   
-            }
-        }
-
-        btnUp.addEventListener('mousedown', () =>
-            {
-                constantMoveUp = setInterval(moveUp, 100);
-            }
-        );
-
-        btnUp.addEventListener('mouseup', () =>
-            {
-                clearInterval(constantMoveUp);                
-            }
-        );
-
-        btnUp.addEventListener('mouseout', () =>
-            {
-                clearInterval(constantMoveUp);                
-            }
-        );
+            // RIGHT
+                btnRight.addEventListener('mousedown', () =>
+                    {moveWithInterval = setInterval(move, 100, "right");})                    
+                btnRight.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
+                btnRight.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
         
-        </script>
+            // DOWN
+                btnDown.addEventListener('mousedown', () =>
+                    {moveWithInterval = setInterval(move, 100, "down");})                    
+                btnDown.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
+                btnDown.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
+        
+            // UP
+                btnUp.addEventListener('mousedown', () =>
+                    {moveWithInterval = setInterval(move, 100, "up");})                    
+                btnUp.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
+                btnUp.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
+        }     
+
+        moveConstantLy();
+    </script>
 </body>
 </html>

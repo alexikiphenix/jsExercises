@@ -301,7 +301,7 @@
 
         /*
         **********************************************************************************
-        ******************************* MOVELEFT FUNCTION ********************************
+        ******************************* MOVE FUNCTION ********************************
         **********************************************************************************
         */
         const move = (direction) =>
@@ -309,9 +309,56 @@
             switch(direction)                  
             {
                 case "left": 
-                    boxImg.style.left = `${getRect(boxImg).x-range}px`;
-                        if(checkLeft(boxImg))
-                        {
+                    if(checkLeft())
+                    {
+                        boxImg.style.left  = `${getRect(boxImg).x-range}px`;
+                    }
+                            btnLeft.addEventListener('mouseup', () =>
+                            {
+                                clearInterval(constantMoveLeft);                
+                            }
+                        );
+                        btnLeft.addEventListener('mouseout', () =>
+                            {
+                                clearInterval(constantMoveLeft);                
+                            }
+                        );
+                        break;
+                        case "right":
+                            boxImg.style.left = `${getRect(boxImg).x-range}px`;
+                                if(checkLeft(boxImg))
+                                {
+                                    btnLeft.addEventListener('mousedown', () =>
+                                        {
+                                            constantMoveLeft = setInterval(move, 100, "left");                             
+                                        }
+                                    );
+                                }
+                                btnLeft.addEventListener('mouseup', () =>
+                                    {
+                                        clearInterval(constantMoveLeft);                
+                                    }
+                                );
+                                btnLeft.addEventListener('mouseout', () =>
+                                    {
+                                        clearInterval(constantMoveLeft);                
+                                    }
+                                );
+                        break;
+                default:
+                    return false;
+                break;                
+            }                                
+        }// END MOVE function   
+
+        const moveConstantLy = (direction) =>
+        {  
+            switch(direction)                  
+            {
+                case "left": 
+                if(checkLeft(boxImg))
+                {
+                            boxImg.style.left  = `${getRect(boxImg).x-range}px`;
                             btnLeft.addEventListener('mousedown', () =>
                                 {
                                     constantMoveLeft = setInterval(move, 100, "left");                             

@@ -136,6 +136,7 @@
             positionY = getRect(boxImg).y;            
             boxImg.style.position = 'absolute';
             boxImg.style.left = `${positionX}%`;           
+            // boxImg.style.top = `${positionY}%`;           
         }
 
         const centerWithPositionAutre = () => 
@@ -143,9 +144,11 @@
             boxImg.style.position = 'static';
             delete  boxImg.style;
             positionX = getRect(boxImg).x;
+            positionY = getRect(boxImg).y;
             // positionY = getRect(boxImg).y;
            boxImg.style.position = 'absolute';
             boxImg.style.left = `${positionX}px`;
+            // boxImg.style.top = `${positionY}px`;
             console.log("Resize");
         }
 
@@ -290,10 +293,9 @@
                         // console.log(`${getRect(boxImg).y-range}px`);
                         let movement = getRect(boxImg).y-range; 
                         console.log(movement);
-                        boxImg.style.top = `0px`;
+                        boxImg.style.top = `${movement}px`;
                         //console.log(`${range}`);
                         //boxImg.style.top  = `${getRect(boxImg).y-range}px`;
-
                     }
                 break;
                 default:

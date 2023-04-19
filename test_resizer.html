@@ -187,14 +187,14 @@
             return false;
         }
         
-        const checkUp = () =>
-        {
-            if(getRect(boxImg).y >= getRect(bigBox).y-range)
-                return true;
-            else
-                return false;          
-            return true;                                    
-        }
+        // const checkUp = () =>
+        // {
+        //     if(getRect(boxImg).y >= getRect(bigBox).y-range)
+        //         return true;
+        //     else
+        //         return false;          
+        //     return true;                                    
+        // }
         
         
         /*
@@ -293,6 +293,7 @@
                         // console.log(`${getRect(boxImg).y-range}px`);
                         let movement = getRect(boxImg).y-range; 
                         console.log(movement);
+                        //boxImg.style.top = `${boxImg}px`;
                         boxImg.style.top = `${movement}px`;
                         //console.log(`${range}`);
                         //boxImg.style.top  = `${getRect(boxImg).y-range}px`;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    
+    <script defer>
+        const myObj = {
+            name : "Washington",
+            firstname : "Denzel",
+            bestMovie : "Training day"
+        }
+
+        let myObjString = JSON.stringify(myObj);
+        console.log(myObjString);
+        console.log(JSON.parse(myObjString));
+        
+        for(const property in myObj)
+        {
+            console.log(myObj[element]);
+        }
+        
+        for(const element of myObj)
+        {
+            console.log(myObj[element]);
+        }
+
+
+        for(let it = 0; i < 10; i++)
+        {
+            window[`voiture${i}`] = {nom: 'marcus'}
+        }
+    </script>
+</body>
+</html>

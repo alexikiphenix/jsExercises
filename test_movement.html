@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #boxControl
+        {
+            display: flex;            
+        }
+
+        [id^="btn"]
+        {
+            color: white;
+            background-color: #313030;
+        }
+    </style>
     <title>Test movement</title>
 </head>
 <body>
@@ -13,10 +25,12 @@
         <div id="btneft">></div>
         <div id="btneft">4</div>
     </div>
+    <div id="boxImg"></div>
 
     <script>
         const btnLeft = document.querySelector('#btnLeft');
         const btnRight = document.querySelector('#btnRight');
+        const boxImg = document.getElementById(`boxImg`);
         console.log(btnLeft);
     </script>
 </body>

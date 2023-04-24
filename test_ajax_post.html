@@ -8,12 +8,14 @@
 <body>
     <div id="boxText"></div>
     <script>
-        const url = "https://net2ftp.cluster030.hosting.ovh.net/ajax_post.php";
+        const url = "http://metacra.cluster030.hosting.ovh.net/ajax_post.php";
         const myRequest = new XMLHttpRequest();
 
         myRequest.open('POST', url);
         myRequest.responseType = 'json';
         myRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        myRequest.send('firstname=Ursulla&age=30');
 
         myRequest.onload = function() 
         {

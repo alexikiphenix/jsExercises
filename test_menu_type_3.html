@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #bigBox
+        {
+            position: relative;
+            height: 400px;
+            width: 400px;
+            display: grid; 
+            place-content: center;
+            border: 1px solid #000;            
+        }
+        #triggerLabel
+        {        
+            display: grid;
+            place-content: center;           
+            user-select: none;                   
+            color: white;    
+            background-color: black;
+            border: 1px solid #000;
+            border-radius: 50%;    
+            height: 80px;
+            width:  80pX;   
+        }
+        #trigger
+        {
+            display: none;
+        }
+        [id^="subMenu"]
+        {
+            display: grid;
+            place-content: center;   
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            height: 3px;
+            width: 3px; 
+            overflow: hidden;
+            transition: 2s;        
+            user-select: none;     
+            color: white;    
+            background-color: rgb(190, 16, 16);            
+            border-radius: 50%;
+        }  
+        #subMenu1
+        {
+            background-color: rgb(16, 190, 54);
+            border: 1px solid #58bb07;
+        } 
+   
+        #trigger:checked~#subMenu1
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: -100% -100%;
+            rotate: -360deg;
+        }
+        #trigger:checked~#subMenu2
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: 100% -100%;
+            rotate: 360deg;
+        }
+        #trigger:checked~#subMenu3
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: -100% 100%;
+            rotate: -360deg;
+        }
+        #trigger:checked~#subMenu4
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: 100% 100%;
+            rotate: 360deg;
+        }
+
+    </style>
+    <title>Test loop</title>
+</head>
+<body>
+    <!-- Il faut se rappeler le sélecteur voisins généraux  -->
+    <div id="bigBox">              
+        <label id="triggerLabel" for="trigger">trigger</label>
+        <input type="checkbox" id="trigger" />
+        <div id="subMenu1">menu 1</div>
+        <div id="subMenu2">menu 2</div>
+        <div id="subMenu3">menu 3</div>
+        <div id="subMenu4">menu 4</div>
+        
+    </div>
+
+    <script>
+        const bigBox = document.getElementById('bigBox');
+        console.log(bigBox);
+    </script>
+</body>
+</html>

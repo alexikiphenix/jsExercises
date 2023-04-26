@@ -115,16 +115,24 @@
 
     <script>
         const bigBox = document.getElementById('bigBox');
-        const counterBox = document.querySelector(`counter`);
+        const trigger = document.getElementById('trigger');
+        const counterBox = document.querySelector(`#counter`);
+        console.log(counterBox);
         let counter = 0;
         const count = () =>
         {
             counter++;
+            console.log(counter);
             counterBox.innerText = `${counter}`;
         }
 
+        trigger.addEventListener('click', () => 
+            {
+                count();
+            }
+        )
         count();
-        console.log(bigBox);
+       
     </script>
 </body>
 </html>

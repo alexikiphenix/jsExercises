@@ -95,6 +95,7 @@
             left: 0; */
             translate: 100% 100%;
             rotate: 360deg;
+            background-color: rgb(22, 48, 190);
         }
 
     </style>
@@ -108,12 +109,21 @@
         <div id="subMenu1">menu 1</div>
         <div id="subMenu2">menu 2</div>
         <div id="subMenu3">menu 3</div>
-        <div id="subMenu4">menu 4</div>
-        
+        <div id="subMenu4">menu 4</div>        
     </div>
+    <span id="counter">0</span>
 
     <script>
         const bigBox = document.getElementById('bigBox');
+        const counterBox = document.querySelector(`counter`);
+        let counter = 0;
+        const count = () =>
+        {
+            counter++;
+            counterBox.innerText = `${counter}`;
+        }
+
+        count();
         console.log(bigBox);
     </script>
 </body>

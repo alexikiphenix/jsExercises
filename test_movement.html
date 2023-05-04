@@ -31,13 +31,16 @@
         const btnLeft = document.querySelector('#btnLeft');
         const btnRight = document.querySelector('#btnRight');
         const boxImg = document.getElementById(`boxImg`);
-        let boxInfos = boxImg.getBoundingClientRect();
-        console.log(boxInfos);
-        console.log(boxInfos().x);
-        console.log(boxInfos().y);
-        console.log(boxInfos().right);
-        console.log(boxInfos().bottom);
-        console.log(btnLeft);
+        let boxPosition = boxImg.getBoundingClientRect();
+        console.log(boxPosition);
+        console.log(boxPosition.x);
+        console.log(boxPosition.right);
+        console.log(boxPosition.y);
+        console.log(boxPosition.bottom);
+        // console.log(boxInfos().y);
+        // console.log(boxInfos().right);
+        // console.log(boxInfos().bottom);
+        // console.log(btnLeft);
         btnLeft.addEventListener('click', () =>{moveleft();})
     </script>
 </body>

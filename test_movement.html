@@ -12,11 +12,18 @@
 
         [id^="btn"]
         {
+            margin: 5px;            
             color: white;
             background-color: #313030;
         }
+        [id^="btn"]:hover
+        {
+            cursor: pointer;
+        }
+
         #boxImg
         {
+            position: absolute;
             height: 50px;
             width: 50px;
             background-color: blueviolet;
@@ -37,17 +44,24 @@
         const btnLeft = document.querySelector('#btnLeft');
         const btnRight = document.querySelector('#btnRight');
         const boxImg = document.getElementById(`boxImg`);
+        const range = 5;
         let boxPosition = boxImg.getBoundingClientRect();
+       
+        const moveleft = () =>
+        {
+            boxImg.style.position = `${boxPosition.x-range}px`;
+        }
         console.log(boxPosition);
         console.log(boxPosition.x);
         console.log(boxPosition.right);
         console.log(boxPosition.y);
         console.log(boxPosition.bottom);
+        
         // console.log(boxInfos().y);
         // console.log(boxInfos().right);
         // console.log(boxInfos().bottom);
         // console.log(btnLeft);
-        btnLeft.addEventListener('click', () =>{moveleft();})
+        btnLeft.addEventListener('click', () =>{moveLeft();})
     </script>
 </body>
 </html>

@@ -12,12 +12,25 @@
 
         const sendInfos = async () => 
         {
-            fetch(url,
+            const myRequest = await fetch(url,
                 {
                     method: 'POST',
-                    firstname: 'Adonkor 2'
+                    headers : {
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    },
+                    body : new URLSearchParams({
+                        firstname: 'Adonkor'
+                    })
                 }
             )
+
+            if(!myRequest.ok)
+                console.log('Erreur communication avec API');
+            else
+            {
+                let myData = myRequest.json();
+                console.log(myData);
+            }
         }
 
 

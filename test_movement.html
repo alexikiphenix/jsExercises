@@ -12,7 +12,8 @@
 
         [id^="btn"]
         {
-            margin: 5px;            
+            margin: 5px;    
+            user-select: none;        
             color: white;
             background-color: #313030;
         }
@@ -45,17 +46,33 @@
         const btnRight = document.querySelector('#btnRight');
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
+        let position = boxImg.getBoundingClientRect();
+        const getPosition = () =>
+        {
+            position = boxImg.getBoundingClientRect();
+            console.log(position.x-range);
+            return position;            
+        }
+        const move = (side) =>
+        {
+            position = boxImg.getBoundingClientRect();
+            switch(side)
+            {
+                case "left":                    
+                    console.log(position.x-range);
+                    return boxImg.getBoundingClientRect.x;
+                break;
+                default:
+                    return false;
+                break;
+            }
+        }
         let boxPosition = boxImg.getBoundingClientRect();
        
-        const moveleft = () =>
+        const moveLeft = () =>
         {
-            boxImg.style.position = `${boxPosition.x-range}px`;
+            boxImg.style.left = `${getPosition().x-range}px`;            
         }
-        console.log(boxPosition);
-        console.log(boxPosition.x);
-        console.log(boxPosition.right);
-        console.log(boxPosition.y);
-        console.log(boxPosition.bottom);
         
         // console.log(boxInfos().y);
         // console.log(boxInfos().right);

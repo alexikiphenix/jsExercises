@@ -62,6 +62,19 @@
                     console.log(position.x-range);
                     return boxImg.getBoundingClientRect.x;
                 break;
+                case "right":                    
+                    console.log(position.x+range);
+                    boxImg.style.left = `${position.x+range}px`;
+                    return boxImg.getBoundingClientRect.x;
+                break;
+                case "up":                    
+                    console.log(position.y-range);
+                    return boxImg.getBoundingClientRect.x;
+                break;
+                case "down":                    
+                    console.log(position.y+range);
+                    return boxImg.getBoundingClientRect.y;
+                break;
                 default:
                     return false;
                 break;
@@ -74,11 +87,13 @@
             boxImg.style.left = `${getPosition().x-range}px`;            
         }
         
+        
         // console.log(boxInfos().y);
         // console.log(boxInfos().right);
         // console.log(boxInfos().bottom);
         // console.log(btnLeft);
         btnLeft.addEventListener('click', () =>{moveLeft();})
+        btnRight.addEventListener('click', () =>{move("right");})
     </script>
 </body>
 </html>

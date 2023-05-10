@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
     <style>
         #boxControl
         {
@@ -12,7 +13,11 @@
 
         [id^="btn"]
         {
-            margin: 5px;    
+            display: grid;
+            place-content: center;
+            height: 30px;
+            width: 30px;
+            margin: .5rem;         
             user-select: none;        
             color: white;
             background-color: #313030;
@@ -34,16 +39,18 @@
 </head>
 <body>
     <div id="boxControl">
-        <div id="btnLeft"><=</div>
-        <div id="btnRight">=></div>
-        <div id="btneft">></div>
-        <div id="btnDown">v</div>
+        <div id="btnLeft"><i class="fa-solid fa-arrow-left"></i></div>
+        <div id="btnRight"><i class="fa-solid fa-arrow-right"></i></div>
+        <div id="btnUp"><i class="fa-solid fa-arrow-up"></i></div>
+        <div id="btnDown"><i class="fa-solid fa-arrow-down"></i></div>
     </div>
     <div id="boxImg"></div>
 
     <script>
         const btnLeft = document.querySelector('#btnLeft');
         const btnRight = document.querySelector('#btnRight');
+        const btnUp = document.getElementById('btnUp');
+        const btnDown = document.getElementById('btnDown');
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let position = boxImg.getBoundingClientRect();
@@ -59,20 +66,22 @@
             switch(side)
             {
                 case "left":                    
-                    console.log(position.x-range);
+                    boxImg.style.left = `${position.x-range}px`;
                     return boxImg.getBoundingClientRect.x;
                 break;
                 case "right":                    
                     console.log(position.x+range);
                     boxImg.style.left = `${position.x+range}px`;
                     return boxImg.getBoundingClientRect.x;
-                break;
-                case "up":                    
+                    break;
+                    case "up":                    
                     console.log(position.y-range);
-                    return boxImg.getBoundingClientRect.x;
-                break;
-                case "down":                    
+                    boxImg.style.top = `${position.y-range}px`;
+                    return boxImg.getBoundingClientRect.y;
+                    break;
+                    case "down":                    
                     console.log(position.y+range);
+                    boxImg.style.top = `${position.y+range}px`;
                     return boxImg.getBoundingClientRect.y;
                 break;
                 default:
@@ -92,8 +101,10 @@
         // console.log(boxInfos().right);
         // console.log(boxInfos().bottom);
         // console.log(btnLeft);
-        btnLeft.addEventListener('click', () =>{moveLeft();})
+        btnLeft.addEventListener('click', () =>{move("left");})
         btnRight.addEventListener('click', () =>{move("right");})
+        btnUp.addEventListener('click', () =>{move("up");})
+        btnDown.addEventListener('click', () =>{move("down");})
     </script>
 </body>
 </html>

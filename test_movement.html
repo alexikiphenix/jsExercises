@@ -89,13 +89,15 @@
                 break;
             }
         }
-        let boxPosition = boxImg.getBoundingClientRect();
-       
-        const moveLeft = () =>
+
+        const constantMove = (direction) =>
         {
-            boxImg.style.left = `${getPosition().x-range}px`;            
+            setInterval(move, 100, direction)
         }
-        
+
+       // let boxPosition = boxImg.getBoundingClientRect();
+       
+                
         
         // console.log(boxInfos().y);
         // console.log(boxInfos().right);
@@ -105,6 +107,8 @@
         btnRight.addEventListener('click', () =>{move("right");})
         btnUp.addEventListener('click', () =>{move("up");})
         btnDown.addEventListener('click', () =>{move("down");})
+
+        btnLeft.addEventListener('mousedown', () =>{constantMove("left");})
     </script>
 </body>
 </html>

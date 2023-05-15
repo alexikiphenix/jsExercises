@@ -52,39 +52,38 @@
         const btnRight = document.querySelector('#btnRight');
         const btnUp = document.getElementById('btnUp');
         const btnDown = document.getElementById('btnDown');
-        const btnЕnlarge = document.getElementById('btnEnlarge');
+        const btnEnlarge = document.getElementById('btnEnlarge');
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let constantMoveId; //persistentMove
-        let position = boxImg.getBoundingClientRect();
-        const getPosition = () =>
+        let boxRect = boxImg.getBoundingClientRect();
+        const getBoxRect = () =>
         {
-            position = boxImg.getBoundingClientRect();
-            console.log(position.x-range);
-            return position;            
+            boxRect = boxImg.getBoundingClientRect();            
+            return boxRect;            
         }
         const move = (side) =>
         {
-            position = boxImg.getBoundingClientRect();
+            boxRect = boxImg.getBoundingClientRect();
             switch(side)
             {
                 case "left":                    
-                    boxImg.style.left = `${position.x-range}px`;
+                    boxImg.style.left = `${boxRect.x-range}px`;
                     return boxImg.getBoundingClientRect.x;
                 break;
                 case "right":                    
-                    console.log(position.x+range);
-                    boxImg.style.left = `${position.x+range}px`;
+                    console.log(boxRect.x+range);
+                    boxImg.style.left = `${boxRect.x+range}px`;
                     return boxImg.getBoundingClientRect.x;
                     break;
                     case "up":                    
-                    console.log(position.y-range);
-                    boxImg.style.top = `${position.y-range}px`;
+                    console.log(boxRect.y-range);
+                    boxImg.style.top = `${boxRect.y-range}px`;
                     return boxImg.getBoundingClientRect.y;
                     break;
                     case "down":                    
-                    console.log(position.y+range);
-                    boxImg.style.top = `${position.y+range}px`;
+                    console.log(boxRect.y+range);
+                    boxImg.style.top = `${boxRect.y+range}px`;
                     return boxImg.getBoundingClientRect.y;
                 break;
                 default:
@@ -98,14 +97,14 @@
             constantMoveId = setInterval(move, 100, direction)
         }
 
-       // let boxPosition = boxImg.getBoundingClientRect();
+        const enlarge = () =>
+        {
+            boxRect = getBoxRect();
+            boxImg.style.width = `${boxRect.width+range}px`;
+        }
+       // let boxboxRect = boxImg.getBoundingClientRect();
        
-                
-        
-        // console.log(boxInfos().y);
-        // console.log(boxInfos().right);
-        // console.log(boxInfos().bottom);
-        // console.log(btnLeft);
+            
         btnLeft.addEventListener('click', () =>{move("left");})
         btnRight.addEventListener('click', () =>{move("right");})
         btnUp.addEventListener('click', () =>{move("up");})
@@ -127,6 +126,10 @@
         btnUp.addEventListener('mousedown', () =>{constantMove("up");})
         btnUp.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
         btnUp.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+        
+        btnEnlarge.addEventListener('mousedown', () =>{enlarge();})
+        
+
         </script>
 </body>
 </html>

@@ -56,6 +56,7 @@
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let constantMoveId; //persistentMove
+        let constantEnlargeId;
         let boxRect = boxImg.getBoundingClientRect();
         const getBoxRect = () =>
         {
@@ -102,6 +103,11 @@
             boxRect = getBoxRect();
             boxImg.style.width = `${boxRect.width+range}px`;
         }
+
+        const constantEnlarge = () =>
+        {
+            constantEnlargeId = setInterval(enlarge, 100);
+        }
        // let boxboxRect = boxImg.getBoundingClientRect();
        
             
@@ -127,7 +133,9 @@
         btnUp.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
         btnUp.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
         
-        btnEnlarge.addEventListener('mousedown', () =>{enlarge();})
+        btnEnlarge.addEventListener('mousedown', () =>{constantEnlarge();})
+        btnEnlarge.addEventListener('mouseup', () =>{clearInterval(constantEnlargeId);})
+        btnEnlarge.addEventListener('mouseout', () =>{clearInterval(constantEnlargeId);})
         
 
         </script>

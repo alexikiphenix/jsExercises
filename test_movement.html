@@ -32,6 +32,7 @@
             position: absolute;
             height: 50px;
             width: 50px;
+            transform: rotate(45deg);
             background-color: blueviolet;
         }
     </style>
@@ -43,9 +44,10 @@
         <div id="btnRight"><i class="fa-solid fa-arrow-right"></i></div>
         <div id="btnUp"><i class="fa-solid fa-arrow-up"></i></div>
         <div id="btnDown"><i class="fa-solid fa-arrow-down"></i></div>
+        <div id="btnReduce"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
         <div id="btnEnlarge"><i class="fa-solid fa-arrows-left-right"></i></div>
     </div>
-    <div id="boxImg"></div>
+    <div id="boxImg">E</div>
 
     <script>
         const btnLeft = document.querySelector('#btnLeft');
@@ -53,9 +55,11 @@
         const btnUp = document.getElementById('btnUp');
         const btnDown = document.getElementById('btnDown');
         const btnEnlarge = document.getElementById('btnEnlarge');
+        const btnReduce = document.getElementById('btnReduce');
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let constantMoveId; //persistentMove
+        let constantReduceId;
         let constantEnlargeId;
         let boxRect = boxImg.getBoundingClientRect();
         const getBoxRect = () =>
@@ -98,6 +102,17 @@
             constantMoveId = setInterval(move, 100, direction)
         }
 
+        const reduce = () =>
+        {
+            boxRect = getBoxRect();
+            boxImg.style.width = `${boxRect.width-range}px`;
+        }
+
+        const constantReduce = () =>
+        {
+            constantReduceId = setInterval(reduce, 100);
+        }
+        
         const enlarge = () =>
         {
             boxRect = getBoxRect();
@@ -132,6 +147,10 @@
         btnUp.addEventListener('mousedown', () =>{constantMove("up");})
         btnUp.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
         btnUp.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+        
+        btnReduce.addEventListener('mousedown', () =>{constantReduce();})
+        btnReduce.addEventListener('mouseup', () =>{clearInterval(constantReduceId);})
+        btnReduce.addEventListener('mouseout', () =>{clearInterval(constantReduceId);})
         
         btnEnlarge.addEventListener('mousedown', () =>{constantEnlarge();})
         btnEnlarge.addEventListener('mouseup', () =>{clearInterval(constantEnlargeId);})

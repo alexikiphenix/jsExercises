@@ -58,11 +58,15 @@
         const btnDown = document.getElementById('btnDown');
         const btnReduce = document.getElementById('btnReduce');
         const btnEnlarge = document.getElementById('btnEnlarge');
+        const btnRotateLeft = document.querySelector('#btnRotateLeft');
+        const btnRotateRight = document.querySelector('#btnRotateRight');        
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
+        let angle = 0;
         let constantMoveId; //persistentMove
         let constantReduceId;
         let constantEnlargeId;
+        let constantRotateId;
         let boxRect = boxImg.getBoundingClientRect();
         const getBoxRect = () =>
         {
@@ -127,7 +131,25 @@
         }
        // let boxboxRect = boxImg.getBoundingClientRect();
        
-            
+        const rotate = (direction) =>
+        {
+            if(direction === 'left' || direction === 'right')  
+            {
+                if(direction === 'left')
+                    angle -= range;
+                if(direction === 'right')
+                    angle += range;
+
+                boxImg.style.transform = `rotate(${angle}deg)`;
+            }   
+            else
+                return false;            
+        }
+
+        const constantRotate = (direction) =>
+        {
+            constantRotateId = setInterval(rotate, 100, direction);
+        }
         btnLeft.addEventListener('click', () =>{move("left");})
         btnRight.addEventListener('click', () =>{move("right");})
         btnUp.addEventListener('click', () =>{move("up");})
@@ -157,6 +179,14 @@
         btnEnlarge.addEventListener('mousedown', () =>{constantEnlarge();})
         btnEnlarge.addEventListener('mouseup', () =>{clearInterval(constantEnlargeId);})
         btnEnlarge.addEventListener('mouseout', () =>{clearInterval(constantEnlargeId);})
+        
+        btnRotateLeft.addEventListener('mousedown', () =>{constantRotate('left');})
+        btnRotateLeft.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        btnRotateLeft.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
+
+        btnRotateRight.addEventListener('mousedown', () =>{constantRotate('right');})
+        btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
         
 
         </script>

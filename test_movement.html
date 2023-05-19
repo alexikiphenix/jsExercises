@@ -48,11 +48,12 @@
         <div id="btnEnlarge"><i class="fa-solid fa-arrows-left-right"></i></div>
         <div id="btnRotateLeft"><i class="fa-solid fa-rotate-left"></i></div>
         <div id="btnRotateRight"><i class="fa-solid fa-rotate-right"></i></div>
-        <div id="btnUnbox"><i class="fa-solid fa-box"></i></div>
+        <div id="btnBorder"><i class="fa-regular fa-square"></i></div>
     </div>
     <div id="boxImg">E</div>
 
     <script>
+        // Bug when we click on rotate then on down button
         const btnLeft = document.querySelector('#btnLeft');
         const btnRight = document.querySelector('#btnRight');
         const btnUp = document.getElementById('btnUp');
@@ -60,10 +61,12 @@
         const btnReduce = document.getElementById('btnReduce');
         const btnEnlarge = document.getElementById('btnEnlarge');
         const btnRotateLeft = document.querySelector('#btnRotateLeft');
-        const btnRotateRight = document.querySelector('#btnRotateRight');        
+        const btnRotateRight = document.querySelector('#btnRotateRight');  
+        const btnBorder = document.querySelector('#btnBorder');      
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let angle = 0;
+        let border = false;
         let constantMoveId; //persistentMove
         let constantReduceId;
         let constantEnlargeId;
@@ -151,6 +154,20 @@
         {
             constantRotateId = setInterval(rotate, 100, direction);
         }
+
+        const toggleBorder = () =>
+        {
+            if(border === false)
+            {
+                boxImg.style.border = `5px solid black`;
+                border = true;
+            }
+            else     
+            {
+                boxImg.style.borderWidth = `0px`;
+                border = false;
+            }        
+        }
         btnLeft.addEventListener('click', () =>{move("left");})
         btnRight.addEventListener('click', () =>{move("right");})
         btnUp.addEventListener('click', () =>{move("up");})
@@ -189,6 +206,7 @@
         btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
         btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
         
+        btnBorder.addEventListener('click', ()=>{toggleBorder();})
 
         </script>
 </body>

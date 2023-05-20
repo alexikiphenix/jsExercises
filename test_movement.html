@@ -49,8 +49,9 @@
         <div id="btnRotateLeft"><i class="fa-solid fa-rotate-left"></i></div>
         <div id="btnRotateRight"><i class="fa-solid fa-rotate-right"></i></div>
         <div id="btnBorder"><i class="fa-regular fa-square"></i></div>
-        <div id="btnDarken"><i class="fa-solid fa-sun fa-fade"></i></div>
-        <div id="btnLighten"><i class="fa-regular fa-sun fa-fade"></i></div>
+        <div id="btnDarken"><i class="fa-solid fa-moon"></i></div>
+        <div id="btnLighten"><i class="fa-solid fa-sun"></i></div>
+        
     </div>
     <div id="boxImg">E</div>
 
@@ -64,10 +65,13 @@
         const btnEnlarge = document.getElementById('btnEnlarge');
         const btnRotateLeft = document.querySelector('#btnRotateLeft');
         const btnRotateRight = document.querySelector('#btnRotateRight');  
+        const btnDarken = document.querySelector('#btnDarken');  
+        const btnLighten = document.querySelector('#btnLighten');  
         const btnBorder = document.querySelector('#btnBorder');      
         const boxImg = document.getElementById(`boxImg`);
         const range = 5;
         let angle = 0;
+        let opacity = 1;
         let border = false;
         let constantMoveId; //persistentMove
         let constantReduceId;
@@ -170,6 +174,28 @@
                 border = false;
             }        
         }
+
+        const lighten = () =>
+        {
+            if(opacity > 0 && opacity < 1)
+            {
+                opacity += .1;
+                boxImg.style.opacity = `${opacity}`;
+                console.log(opacity);
+            }
+            else
+            return false;
+        }
+        
+        const darken = () =>
+        {
+            if(opacity > 0 && opacity <= 1)
+            {
+                opacity -= .1;
+                boxImg.style.opacity = `${opacity}`;
+                console.log(opacity);
+            }            
+        }
         btnLeft.addEventListener('click', () =>{move("left");})
         btnRight.addEventListener('click', () =>{move("right");})
         btnUp.addEventListener('click', () =>{move("up");})
@@ -208,6 +234,12 @@
         btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
         btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
         
+        btnDarken.addEventListener('mousedown', () =>{darken();})
+        // btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        // btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
+        
+        btnLighten.addEventListener('mousedown', () =>{lighten();})
+
         btnBorder.addEventListener('click', ()=>{toggleBorder();})
 
         </script>

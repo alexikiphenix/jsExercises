@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test JSON 4</title>
+</head>
+<body>
+    
+    <script>
+        localStorage.setItem('name', 'oumar');
+        localStorage.setItem('pouvoir1', 'glace');
+
+        // don't forget to check the value before saving it
+        let name = localStorage.getItem('name');
+        let pouvoir1 = localStorage.getItem('pouvoir1');
+        const hero1 = {
+            name: localStorage.getItem('name'),
+            pouvoir1: localStorage.getItem('pouvoir1')
+        }
+    
+        let hero1Stringified = JSON.stringify(hero1);
+        console.log(hero1Stringified);
+    </script>
+</body>
+</html>

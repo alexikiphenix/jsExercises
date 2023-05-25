@@ -11,39 +11,25 @@
     <script>
         class Hero
         {
-            constructor(name, power1, power2 = undefined, power3 = undefined)
+            constructor(name, power1, power2 = false, power3 = false)
             {
                 this.name = name;
                 this.power1 = power1;
             }
-            attack(power1)
+            attack(power)
             {
                 console.log(power);
             }
         }
 
         Hero1 = new Hero("Iron-Man", "laser");
-        // console.log(hero1.name);
-        // hero1.attack(hero1.power1);
 
+        // destructuring object => destructuration d'un objet (affectation destructurée)
         let {name, power1} = Hero1;
         console.log(name);
         console.log(power1);
 
-        class Personne{
-            constructor(prenom, nom1)
-            {
-                this.prenom = prenom;
-                this.nom1 = nom1;
-            }
-        }
-        Personne = new Personne("Usain", "Bolt")
-        //let Personne = {prenom: "Usain", nom1: "Bolt"};
- 
-        // La destructuration d'un objet :
-        let {prenom, nom1} = Personne;
-        console.log(prenom); // Affiche "Usain".
-        console.log(nom1); // Affiche "Bolt".
+       
     </script>
 </body>
 </html>

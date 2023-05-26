@@ -19,8 +19,13 @@
         console.log(regString.test(myString));
         console.log(email.match(regEmail));
 
-        const frEmail = email.replace(regEmail, '$1$2$3.fr');
-        console.log(frEmail);
+        
+        const frenchisizeEmail = (email) =>
+        {
+            return email.replace(regEmail, '$1$2$3.fr');
+        }
+        
+        console.log(frenchisizeEmail(email));
     </script>
 </body>
 </html>

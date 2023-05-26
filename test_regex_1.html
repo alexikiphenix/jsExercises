@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test regex 3</title>
+</head>
+<body>
+    
+    <script>
+        const myString = 'Hello the World is wonderfull !';
+        const regString = /^H[\w]+/;
+        
+        const email = "top_fighter@winners.ga";
+        const regEmail = /(^[a-z]+)([.\-_]?[a-z]*)*(@[a-z]+)([.\-_]?[a-z]*)*$/;
+        
+
+        console.log(regString.test(myString));
+        console.log(email.match(regEmail));
+
+        const frEmail = email.replace(regEmail, '$1$2$3.fr');
+        console.log(frEmail);
+    </script>
+</body>
+</html>

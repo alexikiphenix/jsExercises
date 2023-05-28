@@ -11,8 +11,11 @@
     <script>
         const myString = 'Hello the World is wonderfull !';
         const regString = /^H[\w]+/;
+        const fromMySite = /^cpz[\w]/;
+        const listEmails = [];
         
-        const email = "top_fighter@winners.ga";
+        const email1 = "top_fighter@winners.ga";
+        const email2 = "real_people@fakeemail.kr";
         const regEmail = /(^[a-z]+)([.\-_]?[a-z]*)*(@[a-z]+)([.\-_]?[a-z]*)*$/;
         
 
@@ -25,7 +28,26 @@
             return email.replace(regEmail, '$1$2$3.fr');
         }
         
-        console.log(frenchisizeEmail(email));
+        let frEmail = frenchisizeEmail(email);
+
+        console.log(`Original email : ${email} french email : ${frEmail}`);
+        localStorage.setItem('cpzEmail', frEmail);
+
+        console.log(localStorage);
+
+        const fill = () =>
+        {
+            for(const element in localStorage)
+            {
+                if(element.match(fromMySite))   
+                {
+                    console.log(localStorage.getItem(element));
+                    listEmails.push(localStorage.getItem(element));
+                    console.log(listEmails);
+                }
+            }
+        }
+        
     </script>
 </body>
 </html>

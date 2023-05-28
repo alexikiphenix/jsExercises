@@ -28,14 +28,18 @@
             return email.replace(regEmail, '$1$2$3.fr');
         }
         
-        let frEmail = frenchisizeEmail(email);
+        // we should better create an array
+        let frEmail = frenchisizeEmail(email1);
+        let frEmail2 = frenchisizeEmail(email2);
 
         console.log(`Original email : ${email} french email : ${frEmail}`);
-        localStorage.setItem('cpzEmail', frEmail);
+
+        localStorage.setItem('cpzEmail1', frEmail);
+        localStorage.setItem('cpzEmail2', frEmail2);
 
         console.log(localStorage);
 
-        const fill = () =>
+        const fillFromStorage = () =>
         {
             for(const element in localStorage)
             {
@@ -48,6 +52,7 @@
             }
         }
         
+        fillFromStorage();
     </script>
 </body>
 </html>

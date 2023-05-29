@@ -16,11 +16,12 @@
         
         const email1 = "top_fighter@winners.ga";
         const email2 = "real_people@fakeemail.kr";
+        const email3 = "pop_rock@fakeemail.ca";
         const regEmail = /(^[a-z]+)([.\-_]?[a-z]*)*(@[a-z]+)([.\-_]?[a-z]*)*$/;
         
 
         console.log(regString.test(myString));
-        console.log(email.match(regEmail));
+        console.log(email1.match(regEmail));
 
         
         const frenchisizeEmail = (email) =>
@@ -31,11 +32,13 @@
         // we should better create an array
         let frEmail = frenchisizeEmail(email1);
         let frEmail2 = frenchisizeEmail(email2);
+        let frEmail3 = frenchisizeEmail(email3);
 
-        console.log(`Original email : ${email} french email : ${frEmail}`);
+        console.log(`Original email : ${email1} french email : ${frEmail}`);
 
         localStorage.setItem('cpzEmail1', frEmail);
         localStorage.setItem('cpzEmail2', frEmail2);
+        localStorage.setItem('cpzEmail3', frEmail3);
 
         console.log(localStorage);
 

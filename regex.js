@@ -5,6 +5,7 @@
 */
 const str = "Lo4 lor12 _3";
 const regex = /_3$/gi;  
+const regexEmail = "marcus@muererpuu.com";
 console.log(str.match(regex));
 console.log(regex.test(str));
 

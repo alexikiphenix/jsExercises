@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
+    <style>
+        #boxControl
+        {
+            display: flex;            
+        }
+
+        [id^="btn"]
+        {
+            display: grid;
+            place-content: center;
+            height: 30px;
+            width: 30px;
+            margin: .5rem;         
+            user-select: none;        
+            color: white;
+            background-color: #313030;
+        }
+        [id^="btn"]:hover
+        {
+            cursor: pointer;
+        }
+
+        #boxImg
+        {
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            /* transform: rotate(45deg); */
+            background-color: blueviolet;
+        }
+    </style>
+    <title>Test movement</title>
+</head>
+<body>
+    <div id="boxControl">
+        <div id="btnLeft"><i class="fa-solid fa-arrow-left"></i></div>
+        <div id="btnRight"><i class="fa-solid fa-arrow-right"></i></div>
+        <div id="btnUp"><i class="fa-solid fa-arrow-up"></i></div>
+        <div id="btnDown"><i class="fa-solid fa-arrow-down"></i></div>
+        <div id="btnReduce"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+        <div id="btnEnlarge"><i class="fa-solid fa-arrows-left-right"></i></div>
+        <div id="btnRotateLeft"><i class="fa-solid fa-rotate-left"></i></div>
+        <div id="btnRotateRight"><i class="fa-solid fa-rotate-right"></i></div>
+        <div id="btnBorder"><i class="fa-regular fa-square"></i></div>
+        <div id="btnDarken"><i class="fa-solid fa-moon"></i></div>
+        <div id="btnLighten"><i class="fa-solid fa-sun"></i></div>        
+    </div>
+    <div id="boxImg">E</div>
+
+    <script>
+        // Bug when we click on rotate then on down button
+        // Bug darken (it decreases under 0)
+        const btnLeft = document.querySelector('#btnLeft');
+        const btnRight = document.querySelector('#btnRight');
+        const btnUp = document.getElementById('btnUp');
+        const btnDown = document.getElementById('btnDown');
+        const btnReduce = document.getElementById('btnReduce');
+        const btnEnlarge = document.getElementById('btnEnlarge');
+        const btnRotateLeft = document.querySelector('#btnRotateLeft');
+        const btnRotateRight = document.querySelector('#btnRotateRight');  
+        const btnDarken = document.querySelector('#btnDarken');  
+        const btnLighten = document.querySelector('#btnLighten');  
+        const btnBorder = document.querySelector('#btnBorder');      
+        const boxImg = document.getElementById(`boxImg`);
+        const range = 5;
+        let angle = 0;
+        let opacity = 1;
+        let border = false;
+        let constantMoveId; //persistentMove
+        let constantReduceId;
+        let constantEnlargeId;
+        let constantRotateId;
+        let boxRect = boxImg.getBoundingClientRect();
+        const getBoxRect = () =>
+        {
+            boxRect = boxImg.getBoundingClientRect();            
+            return boxRect;            
+        }
+        const move = (side) =>
+        {
+            boxRect = boxImg.getBoundingClientRect();
+            switch(side)
+            {
+                case "left":                    
+                    boxImg.style.left = `${boxRect.x-range}px`;
+                    return boxImg.getBoundingClientRect.x;
+                break;
+                case "right":                    
+                    console.log(boxRect.x+range);
+                    boxImg.style.left = `${boxRect.x+range}px`;
+                    return boxImg.getBoundingClientRect.x;
+                break;
+                case "up":                    
+                    console.log(boxRect.y-range);
+                    boxImg.style.top = `${boxRect.y-range}px`;
+                    return boxImg.getBoundingClientRect.y;
+                break;
+                case "down":                    
+                    console.log(boxRect.y+range);
+                    boxImg.style.top = `${boxRect.y+range}px`;
+                    return boxImg.getBoundingClientRect.y;
+                break;
+                default:
+                    return false;
+                break;
+            }
+        }
+
+        const constantMove = (direction) =>
+        {
+            constantMoveId = setInterval(move, 100, direction)
+        }
+
+        const reduce = () =>
+        {
+            boxRect = getBoxRect();
+            boxImg.style.width = `${boxRect.width-range}px`;
+        }
+
+        const constantReduce = () =>
+        {
+            constantReduceId = setInterval(reduce, 100);
+        }
+        
+        const enlarge = () =>
+        {
+            boxRect = getBoxRect();
+            boxImg.style.width = `${boxRect.width+range}px`;
+        }
+
+        const constantEnlarge = () =>
+        {
+            constantEnlargeId = setInterval(enlarge, 100);
+        }
+       // let boxboxRect = boxImg.getBoundingClientRect();
+       
+        const rotate = (direction) =>
+        {
+            if(direction === 'left' || direction === 'right')  
+            {
+                if(direction === 'left')
+                    angle -= range;
+                if(direction === 'right')
+                    angle += range;
+
+                boxImg.style.transform = `rotate(${angle}deg)`;
+            }   
+            else
+                return false;            
+        }
+
+        const constantRotate = (direction) =>
+        {
+            constantRotateId = setInterval(rotate, 100, direction);
+        }
+
+        const toggleBorder = () =>
+        {
+            if(border === false)
+            {
+                boxImg.style.border = `5px solid black`;
+                border = true;
+            }
+            else     
+            {
+                boxImg.style.borderWidth = `0px`;
+                border = false;
+            }        
+        }
+
+        const lighten = () =>
+        {
+            if(opacity > 0 && opacity < 1)
+            {
+                opacity += .1;
+                boxImg.style.opacity = `${opacity}`;
+                console.log(opacity);
+            }
+            else
+            return false;
+        }
+        
+        const darken = () =>
+        {
+            if(opacity > 0 && opacity <= 1)
+            {
+                opacity -= .1;
+                boxImg.style.opacity = `${opacity}`;
+                console.log(opacity);
+            }            
+        }
+        btnLeft.addEventListener('click', () =>{move("left");})
+        btnRight.addEventListener('click', () =>{move("right");})
+        btnUp.addEventListener('click', () =>{move("up");})
+        btnDown.addEventListener('click', () =>{move("down");})
+
+        btnLeft.addEventListener('mousedown', () =>{constantMove("left");})
+        btnLeft.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
+        btnLeft.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+
+        btnRight.addEventListener('mousedown', () =>{constantMove("right");})
+        btnRight.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
+        btnRight.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+
+
+        btnDown.addEventListener('mousedown', () =>{constantMove("down");})
+        btnDown.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
+        btnDown.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+
+        btnUp.addEventListener('mousedown', () =>{constantMove("up");})
+        btnUp.addEventListener('mouseup', () =>{clearInterval(constantMoveId);})
+        btnUp.addEventListener('mouseout', () =>{clearInterval(constantMoveId);})
+        
+        btnReduce.addEventListener('mousedown', () =>{constantReduce();})
+        btnReduce.addEventListener('mouseup', () =>{clearInterval(constantReduceId);})
+        btnReduce.addEventListener('mouseout', () =>{clearInterval(constantReduceId);})
+        
+        btnEnlarge.addEventListener('mousedown', () =>{constantEnlarge();})
+        btnEnlarge.addEventListener('mouseup', () =>{clearInterval(constantEnlargeId);})
+        btnEnlarge.addEventListener('mouseout', () =>{clearInterval(constantEnlargeId);})
+        
+        btnRotateLeft.addEventListener('mousedown', () =>{constantRotate('left');})
+        btnRotateLeft.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        btnRotateLeft.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
+
+        btnRotateRight.addEventListener('mousedown', () =>{constantRotate('right');})
+        btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
+        
+        btnDarken.addEventListener('mousedown', () =>{darken();})
+        // btnRotateRight.addEventListener('mouseup', () =>{clearInterval(constantRotateId);})
+        // btnRotateRight.addEventListener('mouseout', () =>{clearInterval(constantRotateId);})
+        
+        btnLighten.addEventListener('mousedown', () =>{lighten();})
+
+        btnBorder.addEventListener('click', ()=>{toggleBorder();})
+
+        </script>
+</body>
+</html>

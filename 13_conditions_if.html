@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -94,4 +95,102 @@
 
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions if</title>
+</head>
+<body>
+    
+    <script>
+        /*
+            Exercice 01 :
+            Créez une fenêtre modale demandant l'age de la personne
+            En fonction de la réponse affichez :
+             
+            0 et 17 ans => "age, tu es très jeune";
+            18 et 25 ans => "age, tu es jeune";
+            26 et 45 ans => "age, tu es encore jeune";
+            46 et 55 ans => "age, une carrière bien remplie";
+            56 et 64 ans => "age, troisième partie de carrière";
+            65 ans et plus => "age, une retraite bien méritée";
+        */
+
+         /*
+            Exercice 02 :
+            Crééz une variable appelée nombreAleatoire et donnez lui une valeur 
+            entre 0 et 100 (nombre entier uniquement).
+
+            Créer une fenêtre modale demandant un nombre compris entre 0-100.
+            En fonction de l'écart entre le nombre choisi et le nombreAléatoire défini,
+            le programme renvoie :
+            
+            Ecart entre 1 et 5 => "Presque, tu es tout près";
+            Ecart entre 6 et 10 => "Tu approches";
+            Ecart entre supérieur à 10 => "Tu es loin"
+        */
+
+
+        /*
+        SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+            2 = Non REMPLIE => autres instructions
+        */
+    //    let age = 18;
+    //    if(age >= 18)
+    //    {
+    //        console.log(`${age} ans, tu es majeur`);
+    //    }
+    //    else
+    //    {
+    //         console.log(`${age} ans, tu es mineur`);
+    //    }
+
+
+        /*
+        SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+        SINON SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+        SINON SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+            2 = Non REMPLIE => autres instructions
+        */
+        let typeRepas = "vegan";
+        if(typeRepas === "omnivore")
+        {
+            console.log(`${typeRepas}, tu es omnivore`);
+        }
+        else if(typeRepas === "vegetarien")
+        {
+            console.log(`${typeRepas}, tu es vegetarien`);
+        }
+        else
+        {
+            console.log(`${typeRepas}, tu es compliqué(e)`);
+        }
+
+        /*
+            Valeurs "truthy et falsy"
+                Truthy (valeurs qui existent):
+                    true, 1, 2,..., string, tableau, objet
+                falsy (valeurs qui n'existent pas ou sont nulles): :
+                    false, 0, null, undefined, NaN                
+        */
+
+        const booleen = NaN;        
+        console.log(Boolean(booleen));
+
+        let boutonAppuye = false;
+        boutonAppuye = !boutonAppuye;
+        console.log(boutonAppuye);
+
+
+    </script>
+</body>
+>>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
 </html>

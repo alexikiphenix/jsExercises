@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        dd{
+            font-size: 0;     
+            transition: ease-out 2s;       
+        }
+        dt.show+dd
+        {
+            font-size: inherit;          
+        }
+    </style>
+    <title>Test jquery</title>
+</head>
+<body>
+    
+    <dl>
+        <dt>Définition 1</dt>
+        <dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem deleniti id ullam, labore magni officiis.</dd>
+        <dt>Définition 2</dt>
+        <dd>Porro ab aut, fugiat fuga vel ullam ratione deleniti veritatis? Architecto provident iusto ad nesciunt.</dd>
+        <dt>Définition 3</dt>
+        <dd>Atque autem iure nam omnis possimus. Doloribus nobis hic facere similique illo harum voluptate itaque.</dd>
+        <dt>Définition 4</dt>
+        <dd>Voluptatum odit, nihil quos atque ipsum qui distinctio perspiciatis id maxime tempore quisquam quibusdam culpa!</dd>
+        <dt>Définition 5</dt>
+        <dd>Dolorem pariatur voluptas, deleniti necessitatibus qui facere nulla maxime accusantium eos quo? Nemo, at sapiente!</dd>
+    </dl>
+    <script src="assets/js/jquery-3.6.4.js"></script>
+    <script>
+        $('dt').click(function (){
+            $(this).toggleClass('show');
+        })
+    </script>
+</body>
+</html>

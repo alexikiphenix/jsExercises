@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -81,4 +82,90 @@
         // let mainBox2 = document.querySelector('.mainBox');
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/3c49c887f2.js" crossorigin="anonymous"></script>
+   <style>
+        *{
+            box-sizing: border-box;
+        }
+        #container
+        {
+            width: 50vw;
+            margin: auto;           
+        }
+        #mainBox
+        {
+             border: 1px dotted black;
+        }
+        #addParagraphBtn:hover
+        {
+            cursor: pointer;
+        }
+        #newParagraph
+        {
+            width: 100%;
+        }
+
+    </style>
+    <title>Revisions</title>
+</head>
+<body>
+    <div id="container">
+        <main id="mainBox">        
+        </main>
+        <label for="newParagraph">Texte du paragraphe</label>
+        <textarea name="" id="newParagraph" cols="30" rows="3"></textarea>
+        <span><i id="addParagraphBtn" class="fas fa-plus-circle"></i></span>
+    </div>
+
+
+
+    <script>
+        /*
+            - expliquer expressions et déclarations
+            - Gérer la saisie d'espaces
+             
+
+        */
+        let mainBox = document.getElementById('mainBox');
+        let addParagraphBtn = document.querySelector('#addParagraphBtn'); // autre méthode
+        let newParagraph = document.getElementById('newParagraph');
+        let counter = 1;        
+        const addParagraph = (text) =>
+        {
+            let paragraph = document.createElement('p');
+            paragraph.innerText = `${text}`;
+            paragraph.style.border = `1px dotted black`;
+            mainBox.appendChild(paragraph);
+        }
+        
+        addParagraphBtn.addEventListener('click', () => {      
+            if(newParagraph.value !== "") 
+            {     
+                addParagraph(newParagraph.value);
+                localStorage.setItem(`paragraphe${counter}`, newParagraph.value);
+                newParagraph.value = ``;
+                counter++;
+            }
+            else
+                alert("Remplir le paragraphe !");
+        })
+        console.log(localStorage);
+        console.log(localStorage.getItem('paragraphe1'));
+        console.log(localStorage.getItem('paragraphe2'));
+        // JSON : Javascript Object Notation
+
+        
+      
+    
+        // let mainBox2 = document.querySelector('.mainBox');
+    </script>
+</body>
+>>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
 </html>

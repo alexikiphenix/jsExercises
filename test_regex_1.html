@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test regex 3</title>
+</head>
+<body>
+    
+    <script>
+        const myString = 'Hello the World is wonderfull !';
+        const regString = /^H[\w]+/;
+        const fromMySite = /^cpz[\w]/;
+        const listEmails = [];
+        
+        const email1 = "top_fighter@winners.ga";
+        const email2 = "real_people@fakeemail.kr";
+        const email3 = "pop_rock@fakeemail.ca";
+        const regEmail = /(^[a-z]+)([.\-_]?[a-z]*)*(@[a-z]+)([.\-_]?[a-z]*)*$/;
+        
+
+        console.log(regString.test(myString));
+        console.log(email1.match(regEmail));
+
+        
+        const frenchisizeEmail = (email) =>
+        {
+            return email.replace(regEmail, '$1$2$3.fr');
+        }
+        
+        // we should better create an array
+        let frEmail = frenchisizeEmail(email1);
+        let frEmail2 = frenchisizeEmail(email2);
+        let frEmail3 = frenchisizeEmail(email3);
+
+        console.log(`Original email : ${email1} french email : ${frEmail}`);
+
+        localStorage.setItem('cpzEmail1', frEmail);
+        localStorage.setItem('cpzEmail2', frEmail2);
+        localStorage.setItem('cpzEmail3', frEmail3);
+
+        console.log(localStorage);
+
+        const fillFromStorage = () =>
+        {
+            for(const element in localStorage)
+            {
+                if(element.match(fromMySite))   
+                {
+                    console.log(localStorage.getItem(element));
+                    listEmails.push(localStorage.getItem(element));
+                    console.log(listEmails);
+                }
+            }
+        }
+        
+        fillFromStorage();
+    </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,4 +77,84 @@
         
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .square
+        {
+            display: grid;
+            place-content: center;
+            width: 200px;
+            height: 200px;
+            margin: 5rem auto;
+            color: white;   
+            transform-origin: center center;         
+            transition: 3s;
+            font-size: 2rem;
+            background-color: darkred;
+        }
+        .square:hover
+        {
+            transform: scale(.5);
+            border-radius: 50%;
+            background-color: blue;
+        }
+    </style>
+    <title>Essai</title>
+</head>
+<body>
+    <div id="square01" class="square"></div> 
+    <div id="square02" class="square"></div> 
+    <div id="square03" class="square"></div> 
+    <div id="square04" class="square"></div> 
+
+    <script>
+        let counter01 = 0;
+        let counter02 = 0;
+        let counter03 = 0;
+        let counter04 = 0;
+
+        let square01 = document.querySelector(`#square01`);
+        square01.style.userSelect = `none`;
+        square01.addEventListener(`click`, () =>{
+            counter01++;
+            square01.innerHTML = `${counter01}`;
+        })
+
+        let square02 = document.querySelector(`#square02`);
+        square02.style.userSelect = `none`;
+        square02.addEventListener(`click`, () =>{
+            counter02++;
+            square02.innerHTML = `${counter02}`;
+        })
+
+        let square03 = document.querySelector(`#square03`);
+        square03.style.userSelect = `none`;
+        square03.addEventListener(`click`, () =>{
+            counter03++;
+            square03.innerHTML = `${counter03}`;
+        })
+        
+        let square04 = document.querySelector(`#square04`);
+        square04.style.userSelect = `none`;
+        square04.addEventListener(`click`, () =>{
+            counter04++;
+            square04.innerHTML = `${counter04}`;
+        })
+
+        // console.log(square01);
+        console.log(square03.innerHTML);
+        localStorage.setItem('counter01', square01.innerHTML);
+        localStorage.setItem('counter02', square02.innerHTML);
+        localStorage.setItem('counter03', square03.innerHTML);
+        localStorage.setItem('counter04', square04.innerHTML);
+        
+    </script>
+</body>
+>>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
 </html>

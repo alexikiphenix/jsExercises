@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
+    <style>
+        #boxImg
+        {
+            height: 7vh;
+            width: 7%;
+            margin: auto;
+            border: 1px solid #000;
+        }
+        #boxBtn 
+        {
+            text-align: center;
+        }
+
+        #btnDecrease, #btnIncrease
+        {
+            padding: .5rem;
+            color: rgb(214, 214, 214);
+            background-color: #bb5313;
+        }
+
+        [id^="btn"]:hover
+        {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #boxBtn
+        {
+            padding: 1rem;
+            border: 1px solid #000;
+        }
+
+
+    </style>
+    <title>Resizer</title>
+</head>
+<body>
+    <div id="boxImg"></div>
+    <div id="boxBtn">
+        <span id="btnDecrease">-</span>
+        <span id="btnIncrease">+</span>
+    </div>
+
+    <script>
+        const boxImg = document.querySelector(`#boxImg`);
+        const btnDecrease = document.querySelector(`#btnDecrease`);
+        const btnIncrease = document.querySelector(`#btnIncrease`);
+        let width;
+        let height;
+
+        const decrease = () =>{
+            width = boxImg.clientWidth;
+            height = boxImg.clientHeight;
+            boxImg.style.width = `${width-5}px`;
+            boxImg.style.height = `${height-5}px`;
+            console.log(width);
+        }
+        btnDecrease.addEventListener('mousedown', () =>{
+            const constantDecrease = setInterval(decrease, 100);
+        }
+        );
+        btnDecrease.addEventListener('mouseup', () =>{
+            clearInterval(constantDecrease);
+            console.log("clear");
+        }
+        );
+
+        const increase = () =>{
+            width = boxImg.clientWidth;
+            height = boxImg.clientHeight;
+            boxImg.style.width = `${width+5}px`;
+            boxImg.style.height = `${height+5}px`;
+            console.log(width);
+        }
+        btnIncrease.addEventListener('mousedown', () => 
+        {
+            setInterval(increase, 100);
+        }
+        );
+    </script>
+</body>
+</html>

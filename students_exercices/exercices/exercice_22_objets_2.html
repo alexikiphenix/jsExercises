@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objets 2</title>
+</head>
+<body>
+    <button id="playMe">Play Me</button>
+    <script>
+        let voiture1 = {
+            "marque" : "Ford",
+            "pays" : "USA",
+            "modele" : "mondeo"
+        }
+
+        let voiture2 = {
+            "marque" : "Renault",
+            "pays" : "français",
+            "modele" : "clio"
+        }
+
+        // console.log(voiture1);
+        // console.log(voiture2);
+
+        class Voiture {
+            constructor(marque, pays, modele)
+            {
+                this.marque = marque;
+                this.pays = pays;
+                this.modele = modele;
+                this.klaxonne = () =>
+                {                    
+                    console.log("Pinnnnnn pinnnnnnnnnnn !!!!!!!")
+                };
+            }
+        }
+        let voiture3 = new Voiture('Renault', 'France', 'clio')
+        let voiture4 = new Voiture('Hyundai', 'Corée du Sud', 'Ioniq 6')
+        
+        // console.log(voiture3);
+        // console.log(voiture4);
+
+
+        class Maison {
+            constructor(nbChambres, nbEtages, superficie)
+            {
+                this.nbChambres = nbChambres;
+                this.nbEtages = nbEtages;
+                this.superficie = superficie;
+            }
+        }
+    
+        let MaisonDeJohn = new Maison(3, 2, 150);
+        // console.log(MaisonDeJohn.superficie);
+        
+        voiture4.klaxonne();
+
+        let klaxon = new Audio(`assets/audio/klaxon-1.wav`); 
+
+        let btnPlayMe = document.getElementById(`playMe`);        
+        btnPlayMe.addEventListener('click', () =>
+        {
+            klaxon.play();           
+        })
+
+    </script>
+</body>
+</html>

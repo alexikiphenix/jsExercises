@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .red{
+            background-color: hsl(0, 100%, 50%);
+        }
+        .blue{
+            background-color: hsl(240, 100%, 50%);
+        }
+        div{height: 5px;}
+    </style>
+    <title>HSL</title>
+</head>
+<body>
+    <script>
+        for(let hue = 0; hue <= 360; hue++)
+            document.write(`<div style="background-color: hsl(${hue}, 100%, 50%)"></div>`)
+    </script>
+</body>
+</html>

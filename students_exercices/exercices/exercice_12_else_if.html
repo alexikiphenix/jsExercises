@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Else if</title>
+</head>
+<body>
+    
+    <script>
+        let marqueVoiture = prompt("Marque ? Ford, Chevrolet, Renault, Peugeot, BMW, Audi ?")
+        if(marqueVoiture === "Ford" || marqueVoiture === "Chevrolet" )
+        {
+            console.log(`${marqueVoiture}, voiture américaine`);            
+        }
+        else if(marqueVoiture === "Renault")
+        {
+            console.log(`${marqueVoiture}, voiture française`);           
+        }
+        else if(marqueVoiture === "BMW")
+        {
+            console.log(`${marqueVoiture}, voiture allemande`);            
+        }
+        else
+        {
+            console.log(`${marqueVoiture}, marque inconnue`); 
+        }
+    </script>
+</body>
+</html>

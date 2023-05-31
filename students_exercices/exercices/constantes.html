@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constante</title>
+</head>
+<body>
+
+    <script>
+        let prixMeubleHT = 100;
+        let prixLivreHT = 50;
+        const TVA = 1.196;
+        // comment calculer le prix TTC ?
+        let prixMeubleTTC = 100*TVA; 
+        let prixLivreTTC = 50*TVA; 
+
+
+        console.log(`Prix meuble HT : ${prixMeubleHT}`);
+        
+        //TVA = 1.2; // Si valeur redéfinie une erreur va bloquer la modification
+        prixMeubleTTC = 100*TVA;
+        console.log(`Prix meuble TTC : ${prixMeubleTTC}`);
+
+    </script>
+</body>
+</html>

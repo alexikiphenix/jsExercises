@@ -106,17 +106,16 @@
             {
 
                 case 'left':                
-                    let constantMoveId = setInterval(move, 100, "left");
-                break;
-                case 'right':
-                    boxImg.style.left = `${getRect(boxImg).x+range}px`;
+                    let constantMoveLeftId = setInterval(move, 100, "left");
                     break;
-                    case 'up':
-                        boxImg.style.top = `${getRect(boxImg).y-range}px`;
-                break;
+                case 'right':
+                    let constantMoveRightId = setInterval(move, 100, "right");
+                    break;
+                case 'up':
+                    let constantMoveUpId = setInterval(move, 100, "up");
+                    break;
                 case 'down':
-                    boxImg.style.top = `${getRect(boxImg).y+range}px`;
-                    console.log(getRect(boxImg).x);
+                    let constantMoveDownId = setInterval(move, 100, "down");
                     break;
             }
         }   

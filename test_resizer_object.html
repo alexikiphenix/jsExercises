@@ -100,6 +100,27 @@
         } // end function move
 
         
+        const constantMove = (direction) =>
+        {
+            switch(direction)
+            {
+
+                case 'left':                
+                    let constantMoveId = setInterval(move, 100, "left");
+                break;
+                case 'right':
+                    boxImg.style.left = `${getRect(boxImg).x+range}px`;
+                    break;
+                    case 'up':
+                        boxImg.style.top = `${getRect(boxImg).y-range}px`;
+                break;
+                case 'down':
+                    boxImg.style.top = `${getRect(boxImg).y+range}px`;
+                    console.log(getRect(boxImg).x);
+                    break;
+            }
+        }   
+
         btnLeft.addEventListener('mousedown', () =>{move(`left`);});
         btnRight.addEventListener('mousedown', () =>{move(`right`);});
         btnUp.addEventListener('mousedown', () =>{move(`up`);});

@@ -43,11 +43,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test json 3</title>
 </head>
 <body>
     
     <script>
+        if(localStorage)
+        {
+            for(const item in localStorage)
+                console.log(item);
+        }
+        
         const hero1 = {name: "Hulk", power1: "strenght", power2: "regeneration"};
 
         // Wrong way to do it

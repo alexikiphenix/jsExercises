@@ -47,7 +47,24 @@
 </head>
 <body>
     
+    <div id="btn-1">red</div>
+    <div id="btn-2">green</div>
+    <div id="btn-3">blue</div>
+    <div id="btn-4">white</div>
+    <div id="btn-5">black</div>
+    <div id="bigBox"></div>
     <script>
+        const setBtnColor = () =>
+        {
+            allBtn = document.querySelectorAll('[^="btn"]');
+            console.log(allBtn);
+            for(const btn of allBtn)
+            {
+                console.log(btn.innerText);
+            }
+        }
+
+        
         if(localStorage)
         {
             for(const item in localStorage)

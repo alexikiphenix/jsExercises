@@ -16,20 +16,21 @@
     <script>
         const setBtnColor = () =>
         {
-            allBtn = document.querySelectorAll('[^="btn"]');
+            allBtn = document.querySelectorAll('[id^="btn"]');
             console.log(allBtn);
             for(const btn of allBtn)
             {
                 console.log(btn.innerText);
+                console.log(btn);
             }
         }
 
-        
-        if(localStorage)
-        {
-            for(const item in localStorage)
-                console.log(item);
-        }
+        setBtnColor();
+        // if(localStorage)
+        // {
+        //     for(const item in localStorage)
+        //         console.log(item);
+        // }
         
 
        

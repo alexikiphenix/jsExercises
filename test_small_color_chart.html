@@ -14,6 +14,7 @@
     <div id="btn-5">black</div>
     <div id="bigBox"></div>
     <script>
+        const bigBox = document.querySelector('#bigBox');
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');
@@ -24,7 +25,6 @@
             }
         }
 
-
         setBtnColor();
         // if(localStorage)
         // {
@@ -33,9 +33,17 @@
         // }
         
         const makeRainbow = () => {
-            
+            let divColor;
+            for(let i = 0; i <= 360; i++)
+            {
+                divColor = document.createElement('div');
+                divColor.style.height = `1px`;
+                divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
+                bigBox.appendChild(divColor);
+            }
         }
        
+        makeRainbow();
        
     </script>
 </body>

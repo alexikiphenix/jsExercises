@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test json 3</title>
+    <title>test small color chart</title>
 </head>
 <body>
     
@@ -11,10 +11,17 @@
     <div id="btn-2">green</div>
     <div id="btn-3">blue</div>
     <div id="btn-4">white</div>
-    <div id="btn-5">black</div>
+    <div id="pickedColors"></div>
     <div id="bigBox"></div>
     <script>
         const bigBox = document.querySelector('#bigBox');
+        const pickedColors = document.querySelector('#pickedColors');
+        pickedColors.style.position = 'fixed';
+        pickedColors.style.top = '0';
+        pickedColors.style.right = '0';
+        pickedColors.style.padding = '1.5vw';
+        pickedColors.style.fontSize = '1vw';
+        pickedColors.style.backgroundColor = 'hsl(180 50% 50%)';
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');
@@ -42,6 +49,9 @@
                 divColor.addEventListener("click", () =>
                 {
                     console.log(divColor.dataset.color);
+                    const colorChoice = document.createElement('div');
+                    colorChoice.innerText = `hsl(${i} 50% 50%)`;
+                    pickedColors.appendChild(colorChoice);
                 })
                 bigBox.appendChild(divColor);
             }

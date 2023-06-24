@@ -39,6 +39,7 @@
                 divColor = document.createElement('div');
                 divColor.style.height = `1px`;
                 divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
+                divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
                 bigBox.appendChild(divColor);
             }
         }

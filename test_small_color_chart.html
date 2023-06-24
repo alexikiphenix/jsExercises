@@ -6,6 +6,8 @@
     <style>
         /* reset */
         body{margin: 0;}
+        #bigBox{width: 40vw; margin: auto; cursor: crosshair;}
+        
     </style>
     <title>test small color chart</title>
 </head>
@@ -24,7 +26,7 @@
         pickedColors.style.top = '0';
         pickedColors.style.right = '0';
         pickedColors.style.padding = '1.5vw';
-        pickedColors.style.fontSize = '1vw';
+        pickedColors.style.fontSize = '.8vw';
         pickedColors.style.backgroundColor = 'hsl(180 50% 50%)';
         const setBtnColor = () =>
         {
@@ -52,9 +54,10 @@
                 divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
                 divColor.addEventListener("click", () =>
                 {
-                    console.log(divColor.dataset.color);
+                    const computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
+                    console.log(computedColor);
                     const colorChoice = document.createElement('div');
-                    colorChoice.innerText = `hsl(${i} 50% 50%)`;
+                    colorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
                     pickedColors.appendChild(colorChoice);
                 })
                 bigBox.appendChild(divColor);

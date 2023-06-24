@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test json 3</title>
+</head>
+<body>
+    
+    <div id="btn-1">red</div>
+    <div id="btn-2">green</div>
+    <div id="btn-3">blue</div>
+    <div id="btn-4">white</div>
+    <div id="btn-5">black</div>
+    <div id="bigBox"></div>
+    <script>
+        const bigBox = document.querySelector('#bigBox');
+        const setBtnColor = () =>
+        {
+            allBtn = document.querySelectorAll('[id^="btn"]');
+            console.log(allBtn);
+            for(const btn of allBtn)
+            {
+                console.log(btn.innerText);                
+            }
+        }
+
+        setBtnColor();
+        // if(localStorage)
+        // {
+        //     for(const item in localStorage)
+        //         console.log(item);
+        // }
+        
+        const makeRainbow = () => {
+            for(let i = 0; i <= 360; i++)
+            {                
+                const divColor = document.createElement('div');
+                divColor.style.height = `1px`;
+                divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
+                divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
+                divColor.addEventListener("click", () =>
+                {
+                    console.log(divColor.dataset.color);
+                })
+                bigBox.appendChild(divColor);
+            }
+        }
+       
+        makeRainbow();
+       
+    </script>
+</body>
+</html>

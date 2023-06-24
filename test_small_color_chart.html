@@ -33,13 +33,16 @@
         // }
         
         const makeRainbow = () => {
-            let divColor;
             for(let i = 0; i <= 360; i++)
-            {
-                divColor = document.createElement('div');
+            {                
+                const divColor = document.createElement('div');
                 divColor.style.height = `1px`;
                 divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
                 divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
+                divColor.addEventListener("click", () =>
+                {
+                    console.log(divColor.dataset.color);
+                })
                 bigBox.appendChild(divColor);
             }
         }

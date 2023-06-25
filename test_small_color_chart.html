@@ -7,12 +7,15 @@
         /* reset */
         body{margin: 0;}
         #bigBox{width: 40vw; margin: auto; cursor: crosshair;}
+        .table{display: table;}
+        .row{display: table-row;}
+        .cell{display: table-cell; padding: .5vw;}
         
     </style>
     <title>test small color chart</title>
 </head>
 <body> 
-    <div id="pickedColors"></div>
+    <div id="boxChoices"></div>
     <div id="bigBox"></div>
 
 
@@ -20,13 +23,14 @@
 
     <script>
         const bigBox = document.querySelector('#bigBox');
-        const pickedColors = document.querySelector('#pickedColors');
-        pickedColors.style.position = 'fixed';
-        pickedColors.style.top = '0';
-        pickedColors.style.right = '0';
-        pickedColors.style.padding = '1.5vw';
-        pickedColors.style.fontSize = '.8vw';
-        pickedColors.style.backgroundColor = 'hsl(180 50% 50%)';
+        const boxChoices = document.querySelector('#boxChoices');
+        boxChoices.style.position = 'fixed';
+        boxChoices.style.top = '0';
+        boxChoices.style.right = '0';
+        boxChoices.style.padding = '1.5vw';
+        boxChoices.style.fontSize = '.8vw';
+        boxChoices.classList.add('table');
+        boxChoices.style.backgroundColor = 'hsl(180 50% 50%)';
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');
@@ -55,9 +59,22 @@
                 {
                     const computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
                     console.log(computedColor);
-                    const colorChoice = document.createElement('div');
-                    colorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
-                    pickedColors.appendChild(colorChoice);
+                    const boxColorChoice = document.createElement('div');
+                    const colorHSL = document.createElement('div');
+                    const colorRGB = document.createElement('div');
+                    
+                    boxColorChoice.classList.add('row');
+                    colorHSL.classList.add('cell');
+                    colorRGB.classList.add('cell');
+
+                    colorHSL.innerText = `hsl(${i} 50% 50%)`; 
+                    colorRGB.innerText = `${computedColor}`; 
+                    
+
+                    //boxColorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
+                    boxColorChoice.appendChild(colorHSL);
+                    boxColorChoice.appendChild(colorRGB);
+                    boxChoices.appendChild(boxColorChoice);
                 })
                 bigBox.appendChild(divColor);
             }

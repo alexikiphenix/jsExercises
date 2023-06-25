@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
+    <style>
+        body{margin: 0;}
+        [id^="btn"]
+        {
+            display: inline-grid;
+            place-content: center;
+            height: 25px;
+            width: 25px;
+            padding: 5px;
+            user-select: none;
+            color: white;
+            background-color: #464545;
+        }
+
+        [id^="btn"]:hover
+        {        
+            cursor: pointer;
+        }
+        [id^="btn"]:active
+        {
+            transform: scale(.9);
+            cursor: pointer;
+            box-shadow: 3px 3px 3px solid black;
+        }
+        #boxImg
+        {
+            position: absolute;            
+            height: 50px;
+            width:  50px;
+            background-color: blueviolet;
+        }
+    </style>
+    <title>Test translate</title>
+</head>
+<body>
+    <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
+    <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
+    <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
+    <span id="btnUp"><i class="fa-solid fa-arrow-up-long"></i></span>
+    <div id="boxImg"></div>
+
+    <script>
+        const btnRight = document.querySelector('#btnRight');
+        const btnLeft = document.querySelector('#btnLeft');
+        const btnUp = document.querySelector('#btnUp');
+        const btnDown = document.querySelector('#btnDown');        
+        const boxImg = document.querySelector('#boxImg');  
+        let range = 5;      
+
+        /***********************************************************************
+         ******************** FUNCTION GETBOUNDING RECTANGLE *******************
+         ***********************************************************************
+        */
+        const getRect = (element) =>
+        {
+            const rect = element.getBoundingClientRect();            
+            console.log(`x : ${rect.x} ---- y : ${rect.y}`);
+            return rect;
+        }
+           
+        // const move = (direction) =>
+        // {
+        //     if(direction === "left" || direction === "up")
+        //         range *=-1; // for changing sign
+        //     boxImg.style.left ="100px"; 
+        //     window[`${boxImg.style}.${direction}`] = "100px";
+        //     window[boxImg.style+'.'+direction] = "100px";
+        //     boxImg.style.concat('', direction) ="100px"; 
+        //     eval('window[`${boxImg.style}.${direction}`] = 100px')
+        // }
+
+        const move = (direction) =>
+        {
+            // if(direction === "left" || direction === "up")
+            switch(direction)
+            {
+                case 'left':                
+                    boxImg.style.left = `${getRect(boxImg).x-range}px`;                    
+                    // 2nd way to do it, but pay attention, transform will relocate the element
+                    //boxImg.style.transform = `translateX(${positionY}px)`;                              
+                break;
+                case 'right':
+                    boxImg.style.left = `${getRect(boxImg).x+range}px`;
+                break;
+                case 'up':
+                    boxImg.style.top = `${getRect(boxImg).y-range}px`;
+                break;
+                case 'down':
+                    boxImg.style.top = `${getRect(boxImg).y+range}px`;
+                    console.log(getRect(boxImg).x);
+                break;
+            }            
+        } // end function move
+
+        
+        const constantMove = (direction) =>
+        {
+            switch(direction)
+            {
+
+                case 'left':                
+                    let constantMoveLeftId = setInterval(move, 100, "left");
+                    break;
+                case 'right':
+                    let constantMoveRightId = setInterval(move, 100, "right");
+                    break;
+                case 'up':
+                    let constantMoveUpId = setInterval(move, 100, "up");
+                    break;
+                case 'down':
+                    let constantMoveDownId = setInterval(move, 100, "down");
+                    break;
+            }
+        }   
+
+        btnLeft.addEventListener('mousedown', () =>{move(`left`);});
+        btnRight.addEventListener('mousedown', () =>{move(`right`);});
+        btnUp.addEventListener('mousedown', () =>{move(`up`);});
+        btnDown.addEventListener('mousedown', () =>{move(`down`);});
+        
+        btnLeft.addEventListener('mousedown', () =>{constantMove(`left`);});
+        btnRight.addEventListener('mousedown', () =>{constantMove(`right`);});
+        btnUp.addEventListener('mousedown', () =>{constantMove(`up`);});
+        btnDown.addEventListener('mousedown', () =>{constantMove(`down`);});
+
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,41 +38,16 @@
     </script>
 </body>
 =======
-=======
->>>>>>> bfdd33767808c80086fe426d65239bd5615c3e8f
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test json 3</title>
+    <title>Document</title>
 </head>
 <body>
     
-    <div id="btn-1">red</div>
-    <div id="btn-2">green</div>
-    <div id="btn-3">blue</div>
-    <div id="btn-4">white</div>
-    <div id="btn-5">black</div>
-    <div id="bigBox"></div>
     <script>
-        const setBtnColor = () =>
-        {
-            allBtn = document.querySelectorAll('[^="btn"]');
-            console.log(allBtn);
-            for(const btn of allBtn)
-            {
-                console.log(btn.innerText);
-            }
-        }
-
-        
-        if(localStorage)
-        {
-            for(const item in localStorage)
-                console.log(item);
-        }
-        
         const hero1 = {name: "Hulk", power1: "strenght", power2: "regeneration"};
 
         // Wrong way to do it
@@ -82,19 +56,9 @@
         localStorage.setItem("hero1.power2", hero1.power2);        
 
         //localStorage.getItem("hero1");
-        console.log(localStorage);
         console.log(localStorage.getItem("hero1.name"));
-        console.log(localStorage.getItem("hero1.power1"));
-        console.log(localStorage.getItem("hero1.power2"));
-       
-        for(const item in localStorage)
-            console.log(item);
-       
-       
+        console.log(localStorage);
     </script>
 </body>
-<<<<<<< HEAD
 >>>>>>> 02a456e (adding test json 3)
-=======
->>>>>>> bfdd33767808c80086fe426d65239bd5615c3e8f
 </html>

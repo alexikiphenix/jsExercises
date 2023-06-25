@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const numbers = [1, 3, 5, 7, 11];
+
+        console.log(numbers.map(number => number + 1));
+        console.log(numbers.map(number => number * 2));
+
+        const numbersDivided = numbers.map(number => number / 2);
+        const numbersDoubled = numbers.map(number => number * 2);
+        const numbersRemove = numbers.map(number => number - 2);
+        const numbersConcat = numbers.map(number => `--${number}--`);
+
+    </script>
+</body>
+</html>

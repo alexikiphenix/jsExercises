@@ -24,6 +24,7 @@
     <script>
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
+        const tingSound = new Audio('./assets/audio/ting.wav');
         boxChoices.style.position = 'fixed';
         boxChoices.style.top = '0';
         boxChoices.style.right = '0';
@@ -75,6 +76,7 @@
                     boxColorChoice.appendChild(colorHSL);
                     boxColorChoice.appendChild(colorRGB);
                     boxChoices.appendChild(boxColorChoice);
+                    tingSound.play();
                 })
                 bigBox.appendChild(divColor);
             }

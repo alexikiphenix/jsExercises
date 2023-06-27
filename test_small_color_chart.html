@@ -8,7 +8,7 @@
         body{margin: 0;}
         #bigBox{width: 40vw; margin: auto; cursor: crosshair;}
         .table{display: table;}
-        .row{display: table-row;}
+        .row{display: table-row; margin-bottom: .7vw;}
         .cell{display: table-cell; padding: .5vw;}
         .smallBox{width: 1.2vw; height: 1.2vw; border: 1px solid white;}
         
@@ -67,7 +67,7 @@
                     const colorRGB = document.createElement('div');
                     const smallBox = document.createElement('div')
 
-                    smallBox.classList.add('smallBox');
+                    smallBox.classList.add('cell', 'smallBox');
                     smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');

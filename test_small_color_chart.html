@@ -10,6 +10,7 @@
         .table{display: table;}
         .row{display: table-row;}
         .cell{display: table-cell; padding: .5vw;}
+        .smallBox{width: 1.2vw; height: 1.2vw; border: 1px solid white;}
         
     </style>
     <title>test small color chart</title>
@@ -63,7 +64,8 @@
                     const boxColorChoice = document.createElement('div');
                     const colorHSL = document.createElement('div');
                     const colorRGB = document.createElement('div');
-                    
+                    const smallBox = document.createElement('div')
+                    smallBox.classList.add('smallBox');
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');
                     colorRGB.classList.add('cell');
@@ -73,6 +75,7 @@
                     
 
                     //boxColorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
+                    boxColorChoice.appendChild(smallBox);
                     boxColorChoice.appendChild(colorHSL);
                     boxColorChoice.appendChild(colorRGB);
                     boxChoices.appendChild(boxColorChoice);

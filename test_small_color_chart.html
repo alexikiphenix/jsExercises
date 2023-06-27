@@ -61,11 +61,14 @@
                 {
                     const computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
                     console.log(computedColor);
+
                     const boxColorChoice = document.createElement('div');
                     const colorHSL = document.createElement('div');
                     const colorRGB = document.createElement('div');
                     const smallBox = document.createElement('div')
+
                     smallBox.classList.add('smallBox');
+                    smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');
                     colorRGB.classList.add('cell');

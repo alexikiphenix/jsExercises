@@ -83,6 +83,10 @@
                     smallBox.classList.add('cell', 'smallBox');
                     smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
                     smallBox.setAttribute('data-color', `${computedColor}`); 
+                    smallBox.addEventListener('click', ()=>{
+                        console.log(`${smallBox.getAttribute('data-color')}`);
+                    })
+                   
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');
                     colorRGB.classList.add('cell');

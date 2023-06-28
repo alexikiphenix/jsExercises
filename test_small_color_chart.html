@@ -6,18 +6,38 @@
     <style>
         /* reset */
         body{margin: 0;}
-        #bigBox{width: 40vw; margin: auto; cursor: crosshair;}
+        #bigBox{            
+            width: 40vw; 
+            margin: auto; 
+            cursor: crosshair;
+        }
+        #boxChoices{
+            display: table;
+            /* table-layout: fixed; /* to force width */
+            max-width: 40vw; */
+            max-height: 10vh;
+            /* border-collapse: collapse; */
+            border-spacing: .1vw .8vw;
+            position: absolute; 
+            top: 0;
+            right: 0;            
+            padding: 1.5vw;
+            font-size: .8vw;
+            overflow: hidden;
+            background-color: hsl(180 50% 50%);
+        }
         .table{display: table; border-collapse: separate; border-spacing: .1vw 1vw;}
-        .row{display: table-row; margin-bottom: .7vw;}
+        .row{display: table-row; padding: 2vh;}
         .cell{display: table-cell; padding: .5vw;}
         .smallBox{width: 1.2vw; height: 1.2vw; border: 1px solid white;}
+        
         
     </style>
     <title>test small color chart</title>
 </head>
 <body> 
-    <div id="boxChoices"></div>
     <div id="bigBox"></div>
+    <div id="boxChoices"></div>
 
 
 
@@ -25,13 +45,7 @@
     <script>
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
-        const tingSound = new Audio('./assets/audio/ting.wav');
-        boxChoices.style.position = 'fixed';
-        boxChoices.style.top = '0';
-        boxChoices.style.right = '0';
-        boxChoices.style.padding = '1.5vw';
-        boxChoices.style.fontSize = '.8vw';
-        boxChoices.classList.add('table');
+        const tingSound = new Audio('./assets/audio/ting.wav');  
         boxChoices.style.backgroundColor = 'hsl(180 50% 50%)';
         const setBtnColor = () =>
         {

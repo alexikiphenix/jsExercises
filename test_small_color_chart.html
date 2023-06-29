@@ -29,8 +29,12 @@
         .table{display: table; border-collapse: separate; border-spacing: .1vw 1vw;}
         .row{display: table-row; padding: 2vh;}
         .cell{display: table-cell; padding: .5vw;}
-        .smallBox{width: 1.2vw; height: 1.2vw; border: 1px solid white;}
+        .smallBox{width: 1.2vw; height: 1.2vw; transition-duration: 2s; border: 1px solid white;}
         
+        .smallBox:hover
+        {
+            transform: rotate(360deg) scale(1.1);
+        }
         
     </style>
     <title>test small color chart</title>
@@ -40,8 +44,6 @@
     <div id="boxChoices"></div>
 
 
-
-
     <script>
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
@@ -49,7 +51,7 @@
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');
-            console.log(allBtn);
+            
             for(const btn of allBtn)
             {
                 console.log(btn.innerText);                

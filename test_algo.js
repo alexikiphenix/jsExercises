@@ -9,5 +9,6 @@ const calculate = (x, exponent) =>
 
 console.log(calculate(2, 10));
 console.log(calculate(7, 7));
+console.log(calculate(3, 12));
 
 

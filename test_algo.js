@@ -7,3 +7,4 @@ const calculate = (x, exponent) =>
     return x**exponent;
 }
 
+console.log(calculate(2, 10));

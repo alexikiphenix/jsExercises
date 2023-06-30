@@ -24,13 +24,14 @@
                 this.name = name;
                 this.power1 = power1;
                 this.power2 = power2;
-                this.power3 = power;
+                this.power3 = power3;
             }
         }
 
         const createPowers = () =>
         {   
-            let nbPowers;         
+            let nbPowers;  
+            let powers = [];       
             const percentage = getRandom(1, 100);
 
             if(percentage < 85)
@@ -41,20 +42,29 @@
                 nbPowers = 3;
 
             const powersListTmp = powersList;
-
+            for(let i = 1; i <= nbPowers; i++)
+            {
+                // selecting a random indice in powerListTmp for getting a power randomly
+                let indice = getRandom(0, powersListTmp.length-1);
+                powers.push(powersListTmp.slice(indice));
+            }
             
+            return powers;
         }
 
         const createHeroes = (nb = int) =>
         {
+           
             for(let i = 0; i < nb; i++)
             {
                 
             }
         }
-        const iceman = new Hero("iceman", "ice")
-        console.log(iceman);
         
+
+        console.log(powersList);
+        
+        console.log(powersList.slice(3, 2));
     </script>
 </body>
 </html>

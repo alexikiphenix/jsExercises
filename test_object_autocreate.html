@@ -18,6 +18,8 @@
             "fire", "ice", "strenght", "speed", "telekinesis", "teleport", "wind", "bolt", "water"
         ]
 
+        const heroesName =  ["Agnus", "Moulthor", "Koumar", "Licia", "Apila"]
+
         class Hero {
             constructor(name, power1, power2 = false, power3 = false)
             {
@@ -49,8 +51,7 @@
                 // selecting a random indice in powerListTmp for getting a power randomly
                 let indice = getRandom(0, powersListTmp.length-1);
                 
-                // adding the random power in the array powers
-                let indice2 = indice + 1;
+                // adding the random power in the array powers                
                 power = powersList.slice(indice, indice+1);
                 powers.push(power[0]);
             }
@@ -60,11 +61,11 @@
 
         const createHeroes = (nb = int) =>
         {
-           
-            for(let i = 0; i < nb; i++)
-            {
+            windows[`hero${1}`] = new Hero("")
+            // for(let i = 0; i < nb; i++)
+            // {
                 
-            }
+            // }
         }
         
         

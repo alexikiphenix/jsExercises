@@ -30,6 +30,12 @@
             }
         }
 
+        
+        const createName = (namesList = []) =>
+        {
+            return namesList[getRandom(0, namesList.length-1)];            
+        }
+
         const createPowers = () =>
         {   
             let power;
@@ -61,6 +67,8 @@
 
         const createHeroes = (nb = int) =>
         {
+            const name = createName(heroesName);
+            
             windows[`hero${1}`] = new Hero("")
             // for(let i = 0; i < nb; i++)
             // {
@@ -71,6 +79,7 @@
         
         console.log(powersList);
         console.log(createPowers());
+        console.log(createName(heroesName));
      
      
     </script>

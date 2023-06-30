@@ -46,7 +46,7 @@
             {
                 // selecting a random indice in powerListTmp for getting a power randomly
                 let indice = getRandom(0, powersListTmp.length-1);
-                powers.push(powersListTmp.slice(indice));
+                powers.push(powersListTmp.slice(indice, indice+1));
             }
             
             return powers;

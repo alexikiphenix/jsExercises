@@ -8,9 +8,10 @@
 <body>
     
     <script>
+        "use strict";
         let power;
-        let power2;
-        let power3;        
+        // let power2;
+        // let power3;        
         const getRandom = (min, max) => {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -62,12 +63,12 @@
                 
                 // adding the random power in the array powers  
                    
-                powerTmp = powersList.slice(indice, indice+1);
+                powerTmp = powersListTmp.slice(indice, indice+1);
                 window[`power${i}`] = powerTmp[0];
                 powers.push(window[`power${i}`]);
                 // console.log(powers);
             }
-            
+            console.log(powersListTmp);
             // if(!power2)
             //     power2 = null;
 
@@ -83,20 +84,31 @@
             {
                 window[`hero${i}`] = new Hero();
                 let nameTmp = createName(heroesName);
-                window[`hero${i}`].name = nameTmp;
-                console.log(nameTmp);
-                console.log(window[`hero${i}`].name);
+                window[`hero${i}`].name = nameTmp;                   
 
                 
-                const powers = createPowers();
-               
+                const powers = createPowers();    
+                console.log(powers);           
+
                 for(let j = 0; j < powers.length; j++)
                 {
                     // window[`power${j+1}`] = powers[j];
                     // let power1 = window'power1';
-                    window[`hero${i}`].eval(window[`power${i}`]) = "MEGATEST 1";       
-                    window[`hero${i}`].power2 = "MEGATEST 2";      
-                
+                    // window[`hero${i}`].eval(window[`power${i}`]) = "MEGATEST 1";       
+                    // window[`hero${i}`].${power1}` = "MEGATEST 1";     
+                   // window[`hero${i}`].power2 = "MEGATEST 2";     
+                    
+                    // if(j === 0)                    
+                    //     power1 = powers[0];
+
+                    // if(j === 1)
+                    //     power2 = powers[1];
+
+                    // if(j === 2)
+                    //     power3 = powers[2];
+                    window[`power${j+1}`] = powers[j];
+                    
+
                 }
                 
                
@@ -106,12 +118,12 @@
         }
         
         
-        console.log(powersList);
+        console.log(window);
       
         
-        // console.log(createHeroes(5));
-
         console.log(createHeroes(5));
+
+   
     </script>
 </body>
 </html>

@@ -24,7 +24,7 @@
         const heroesName =  ["Agnus", "Moulthor", "Koumar", "Licia", "Apila"]
 
         class Hero {
-            constructor(name, power1, power2 = false, power3 = false)
+            constructor(name = "", power1 = null, power2 = null, power3 = null)
             {
                 this.name = name;
                 this.power1 = power1;
@@ -42,9 +42,10 @@
         const createPowers = () =>
         {           
             let nbPowers;  
+            let powerTmp;
             let powers = [];       
-            const percentage = getRandom(1, 100);           
-            console.log(percentage);
+            //const percentage = getRandom(1, 100);           
+            const percentage = 100;
             if(percentage < 85)
                 nbPowers = 1;
             else if(percentage < 95)
@@ -52,23 +53,26 @@
             else
                 nbPowers = 3;
 
-            console.log(`nbPower => ${nbPowers}`);
+            
             const powersListTmp = powersList;
             for(let i = 1; i <= nbPowers; i++)
             {
                 // selecting a random indice in powerListTmp for getting a power randomly
                 let indice = getRandom(0, powersListTmp.length-1);
                 
-                // adding the random power in the array powers                
-                window[`power${i}`] = powersList.slice(indice, indice+1);
+                // adding the random power in the array powers  
+                   
+                powerTmp = powersList.slice(indice, indice+1);
+                window[`power${i}`] = powerTmp[0];
                 powers.push(window[`power${i}`]);
+                // console.log(powers);
             }
             
-            if(!power2)
-                power2 = null;
+            // if(!power2)
+            //     power2 = null;
 
-            if(!power3)
-                power3 = null;
+            // if(!power3)
+            //     power3 = null;
             return powers;
         }
 
@@ -77,12 +81,25 @@
             let heroes = [];
             for(let i = 1; i <= nb; i++)
             {
-                const name = createName(heroesName);
-                const powers = createPowers();
-                for(let j = 0; j < powers.length; j++)
-                    window[`power${j}`] = powers[j];
+                window[`hero${i}`] = new Hero();
+                let nameTmp = createName(heroesName);
+                window[`hero${i}`].name = nameTmp;
+                console.log(nameTmp);
+                console.log(window[`hero${i}`].name);
+
                 
-                window[`hero${1}`] = new Hero(name, power1, power2, power3)
+                const powers = createPowers();
+               
+                for(let j = 0; j < powers.length; j++)
+                {
+                    // window[`power${j+1}`] = powers[j];
+                    // let power1 = window'power1';
+                    window[`hero${i}`].eval(window[`power${i}`]) = "MEGATEST 1";       
+                    window[`hero${i}`].power2 = "MEGATEST 2";      
+                
+                }
+                
+               
                 heroes.push(window[`hero${1}`]);
             }
             return heroes;
@@ -92,9 +109,9 @@
         console.log(powersList);
       
         
-        console.log(createHeroes(5));
+        // console.log(createHeroes(5));
 
-     
+        console.log(createHeroes(5));
     </script>
 </body>
 </html>

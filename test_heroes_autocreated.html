@@ -63,7 +63,7 @@
                 
                 // adding the random power in the array powers  
                    
-                powerTmp = powersListTmp.slice(indice, indice+1);
+                powerTmp = powersListTmp.splice(indice, 1);
                 window[`power${i}`] = powerTmp[0];
                 powers.push(window[`power${i}`]);
                 // console.log(powers);

@@ -8,6 +8,9 @@
 <body>
     
     <script>
+        let power;
+        let power2;
+        let power3;        
         const getRandom = (min, max) => {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -37,8 +40,7 @@
         }
 
         const createPowers = () =>
-        {   
-            let power;
+        {           
             let nbPowers;  
             let powers = [];       
             const percentage = getRandom(1, 100);           
@@ -58,29 +60,40 @@
                 let indice = getRandom(0, powersListTmp.length-1);
                 
                 // adding the random power in the array powers                
-                power = powersList.slice(indice, indice+1);
-                powers.push(power[0]);
+                window[`power${i}`] = powersList.slice(indice, indice+1);
+                powers.push(window[`power${i}`]);
             }
             
+            if(!power2)
+                power2 = null;
+
+            if(!power3)
+                power3 = null;
             return powers;
         }
 
         const createHeroes = (nb = int) =>
         {
-            const name = createName(heroesName);
-            
-            windows[`hero${1}`] = new Hero("")
-            // for(let i = 0; i < nb; i++)
-            // {
+            let heroes = [];
+            for(let i = 1; i <= nb; i++)
+            {
+                const name = createName(heroesName);
+                const powers = createPowers();
+                for(let j = 0; j < powers.length; j++)
+                    window[`power${j}`] = powers[j];
                 
-            // }
+                window[`hero${1}`] = new Hero(name, power1, power2, power3)
+                heroes.push(window[`hero${1}`]);
+            }
+            return heroes;
         }
         
         
         console.log(powersList);
-        console.log(createPowers());
-        console.log(createName(heroesName));
-     
+      
+        
+        console.log(createHeroes(5));
+
      
     </script>
 </body>

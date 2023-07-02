@@ -37,13 +37,18 @@
 
     <script>
         const btnAttack = document.getElementById('btnAttack');
+        let activated = false;
 
         const toggleAttack = () =>
-        {
+        {     
             btnAttack.style.backgroundColor = `darkred`;
         }
 
-
+        btnAttack.addEventListener('click', () =>{
+            toggleAttack();
+            activated = !activated;
+            console.log(activated);
+        })
     </script>
 </body>
 </html>

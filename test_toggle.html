@@ -3,6 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{margin: 0;}
+        #wrapper{
+            display: grid;
+            place-content: center;
+            width: 100vw; height: 100vw;
+        }
+        #btnAttack
+        {
+            display: inline-block;
+            padding: .5rem;
+            border-radius: .2rem;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            background-color: darkslateblue;
+        }
+        #btnAttack:active 
+        {
+            padding: .3rem;
+            font-size: 90%;
+            box-shadow: .3rem .3rem .6rem rgb(48, 48, 48);
+        }
+
+    </style>
     <title>Test toggle</title>
 </head>
 <body>
@@ -18,7 +43,7 @@
             btnAttack.style.backgroundColor = `darkred`;
         }
 
-        
+
     </script>
 </body>
 </html>

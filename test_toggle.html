@@ -31,17 +31,25 @@
             background-color: rgb(143, 22, 6);
         }
      
-
+        .invisible
+        {
+            opacity: 0;
+        }
+        
     </style>
     <title>Test toggle</title>
 </head>
 <body>
     <div id="wrapper">
+        <div id="fightScene">
+            <img class="invisible" src="./assets/img/king_kong.gif" alt="">
+        </div>
         <div id="btnAttack" class="deactivated">Attacking</div>
     </div>
 
     <script>
         const btnAttack = document.getElementById('btnAttack');
+        const fightScene = document.querySelector('#fightScene');
         let activated = false;
 
         const toggleAttack = () =>
@@ -56,7 +64,6 @@
                 btnAttack.classList.remove('activated');
                 btnAttack.classList.add('deactivated');
             }
-
         }
 
         btnAttack.addEventListener('click', () =>{

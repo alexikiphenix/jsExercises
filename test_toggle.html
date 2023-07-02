@@ -17,22 +17,27 @@
             border-radius: .2rem;
             cursor: pointer;
             user-select: none;
-            color: white;
-            background-color: darkslateblue;
+            color: white;            
         }
-        #btnAttack:active 
+        .deactivated
+        {
+            background-color: darkslateblue;      
+        }
+        .activated 
         {
             padding: .3rem;
             font-size: 90%;
             box-shadow: .3rem .3rem .6rem rgb(48, 48, 48);
+            background-color: rgb(143, 22, 6);
         }
+     
 
     </style>
     <title>Test toggle</title>
 </head>
 <body>
     <div id="wrapper">
-        <div id="btnAttack">Attacking</div>
+        <div id="btnAttack" class="deactivated">Attacking</div>
     </div>
 
     <script>
@@ -41,12 +46,22 @@
 
         const toggleAttack = () =>
         {     
-            btnAttack.style.backgroundColor = `darkred`;
+            if(activated === true)
+            {                
+                btnAttack.classList.remove('deactivated');
+                btnAttack.classList.add('activated');
+            }
+            else    
+            {        
+                btnAttack.classList.remove('activated');
+                btnAttack.classList.add('deactivated');
+            }
+
         }
 
         btnAttack.addEventListener('click', () =>{
-            toggleAttack();
             activated = !activated;
+            toggleAttack();
             console.log(activated);
         })
     </script>

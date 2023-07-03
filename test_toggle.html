@@ -13,6 +13,7 @@
         #btnAttack
         {
             display: inline-block;
+            width: fit-content;
             padding: .5rem;
             border-radius: .2rem;
             cursor: pointer;
@@ -75,7 +76,7 @@
             <img id="imgFight" class="invisible" src="./assets/img/king_kong.gif" alt="">
         </div>
         <div id="spaceBetween">            
-            <img id="ball" src="assets/img/fireball.png"/>
+            <img id="ball" src="assets/img/fireball_right.webp"/>
         </div>
         <div id="btnAttack" class="deactivated">Attacking</div>
     </div>
@@ -92,8 +93,7 @@
                 btnAttack.classList.remove('deactivated');
                 btnAttack.classList.add('activated');
                 imgFight.classList.remove('invisible');
-                imgFight.classList.add('visible');
-                
+                imgFight.classList.add('visible');                
             }
             else    
             {        

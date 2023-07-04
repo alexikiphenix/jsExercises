@@ -109,6 +109,14 @@
         {
             acivated = !activated;
             console.log(activated);
+
+            if(activated === true)
+            {                
+                btnAttack.classList.remove('deactivated');
+                btnAttack.classList.add('activated');
+                imgFight.classList.remove('invisible');
+                imgFight.classList.add('visible');                
+            }
         }
 
         btnAttack.addEventListener('click', () =>{

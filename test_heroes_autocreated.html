@@ -37,7 +37,11 @@
         
         const createName = (namesList = []) =>
         {
-            return namesList[getRandom(0, namesList.length-1)];            
+            const indice = getRandom(0, namesList.length-1);
+            const name = namesList[indice];            
+            namesList.splice(indice, 1);
+
+            return name;
         }
 
         const createPowers = () =>
@@ -45,8 +49,8 @@
             let nbPowers;  
             let powerTmp;
             let powers = [];       
-            //const percentage = getRandom(1, 100);           
-            const percentage = 100;
+            const percentage = getRandom(1, 100);           
+           
             if(percentage < 85)
                 nbPowers = 1;
             else if(percentage < 95)
@@ -107,19 +111,15 @@
                     // if(j === 2)
                     //     power3 = powers[2];
                     window[`power${j+1}`] = powers[j];
-                    
-
                 }
                 
                
                 heroes.push(window[`hero${1}`]);
             }
             return heroes;
-        }
+        }        
         
-        
-        console.log(window);
-      
+        console.log(window);      
         
         console.log(createHeroes(5));
 

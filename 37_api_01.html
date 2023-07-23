@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<span>Cours du Bitcoin</span>
+<div id="boxTxt"></div>
+
+<script>
+    
+    // Emplacement pour afficher les données
+    const boxTxt = document.querySelector('#boxTxt');
+
+
+
+    const url= 'https://blockchain.info/ticker';
+
+    
+
+    // Création de la requête
+    // Nous créons un nouvel objet XMLHttpRequest
+    let myRequest = new XMLHttpRequest(); 
+
+    
+    
+    
+    // Nous appliquons la méthode open qui requiert 
+    // 2 paramètres GET / POST et l'URL
+    myRequest.open('GET', url); 
+
+    
+    
+    // Nous indiquons que nous souhaitons récupérer les données 
+    // au format JSON
+    myRequest.responseType = 'json'; 
+
+
+    // Nous envoyons une requête
+    myRequest.send();
+
+
+    // Nous attendons une réponse, et à la réception
+    // de celle-ci nous exécutons une fonction
+    
+    myRequest.onload = function() {
+        if(myRequest.readyState === XMLHttpRequest.DONE) // Attente exécution terminée
+        {  
+            if(myRequest.status === 200) // 200 signifie OK tout a fonctionné.
+            {
+                let myData = myRequest.response; // enregistrement des données reçues                
+                let bitcoinEuro = myData.EUR.last;      
+                boxTxt.innerHTML = `${bitcoinEuro}€`;          
+                console.log(bitcoinEuro)
+            }
+            else
+            {
+                alert('une erreur est survenue, veuillez recommencer');
+            }
+        }
+    }
+
+    
+</script>
+</body>
+</html>

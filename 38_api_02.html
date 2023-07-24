@@ -43,25 +43,27 @@
     myRequest.send();
 
 
-    // Nous attendons une réponse, et à la réception
-    // de celle-ci nous exécutons une fonction
-    
-    myRequest.onload = function() {
-        if(myRequest.readyState === XMLHttpRequest.DONE) // Attente exécution terminée
-        {  
-            if(myRequest.status === 200) // 200 signifie OK tout a fonctionné.
+    // La méthode onload permet d'attendre que la requête soit
+    // chargée (loaded) avant d'exécuter une fonction
+
+      // Nous comparons l'état de notre requête
+        // par rapport à l'état souhaité XMLHttpRequest.DONE
+        // la propriété DONE représente en quelque sorte
+        // un état prédéfini d'une requête terminée.
+        
+
+    myRequest.onload = function() 
+    {      
+        if(myRequest.readyState === XMLHttpRequest.DONE)
+        {
+            if(myRequest.status === 200)
             {
-                let myData = myRequest.response; // enregistrement des données reçues                
-                let bitcoinEuro = myData.EUR.last;      
-                boxTxt.innerHTML = `${bitcoinEuro}€`;          
-                console.log(bitcoinEuro)
-            }
-            else
-            {
-                alert('une erreur est survenue, veuillez recommencer');
+                
             }
         }
     }
+    
+
 
     
 </script>

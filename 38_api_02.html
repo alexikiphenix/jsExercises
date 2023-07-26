@@ -28,9 +28,11 @@
         #boxTxt
         {
             padding: .5rem;
+            font-size: 1.1rem;
             transition-duration: 3s;
             color: white;
             font-weight: bolder;
+
             background-color: rgb(14, 14, 14);
         }
         #boxTxt:hover
@@ -97,12 +99,14 @@
             if(myRequest.status === 200)
             {
                 // Enregistrement de la réponse à requête dans une variable
-                let myData = myRequest.response; 
-                console.log(myData);
-                console.log(myData.EUR);
-                console.log(myData.EUR.buy);
-                boxTxt.innerText = `${myData.EUR.buy}€`;
+                let myData = myRequest.response;                 
+                console.log(myData.EUR.last);     
+                
+                // affichage dans la page HTML (boxTxt)
+                boxTxt.innerText = `${myData.EUR.last}€`;
+                
             }
+      
         }
     }
     

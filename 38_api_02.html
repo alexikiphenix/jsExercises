@@ -95,6 +95,8 @@
                         console.log('Hausse');
                     else if(myData.EUR.last < previousValue)
                         console.log('Baisse');
+
+                    previousValue = myData.EUR.last;
                 }
                 else
                 {

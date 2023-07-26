@@ -46,7 +46,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>Cours du Bitcoin</h1>
+        <h1>Valeur du Bitcoin</h1>
         <div id="boxTxt"></div>
     </div>
 
@@ -55,6 +55,7 @@
     // Emplacement pour afficher les données
     const boxTxt = document.querySelector('#boxTxt');
     const url= 'https://blockchain.info/ticker';    
+    let previousValue;
 
     const getBitcoinValue = (url) =>
     {
@@ -90,6 +91,10 @@
                     let myData = myRequest.response;                 
                     console.log(myData.EUR.last);                   
                     boxTxt.innerText = `${myData.EUR.last}€`;
+                    if(myData.EUR.last > previousValue)
+                        console.log('Hausse');
+                    else if(myData.EUR.last < previousValue)
+                        console.log('Baisse');
                 }
                 else
                 {

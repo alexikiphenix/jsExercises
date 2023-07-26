@@ -42,7 +42,7 @@
             border: 1px solid black;
         }
     </style>
-    <title>Document</title>
+    <title>38 API 02</title>
 </head>
 <body>
     <div class="wrapper">
@@ -54,65 +54,55 @@
     
     // Emplacement pour afficher les données
     const boxTxt = document.querySelector('#boxTxt');
+    const url= 'https://blockchain.info/ticker';    
 
-
-
-    const url= 'https://blockchain.info/ticker';
-
-    
-
-    // Création de la requête
-    // Nous créons un nouvel objet XMLHttpRequest
-    let myRequest = new XMLHttpRequest(); 
-
-    
-    
-    
-    // Nous appliquons la méthode open qui requiert 
-    // 2 paramètres GET / POST et l'URL
-    myRequest.open('GET', url); 
-
-    
-    
-    // Nous indiquons que nous souhaitons récupérer les données 
-    // au format JSON
-    myRequest.responseType = 'json'; 
-
-
-    // Nous envoyons une requête
-    myRequest.send();
-
-
-    // La méthode onload permet d'attendre que la requête soit
-    // chargée (loaded) avant d'exécuter une fonction
-
-      // Nous comparons l'état de notre requête
+    const getBitcoinValue = (url) =>
+    {
+        // Création de la requête
+        // Nous créons un nouvel objet XMLHttpRequest
+        let myRequest = new XMLHttpRequest();           
+        
+        // Nous appliquons la méthode open qui requiert 
+        // 2 paramètres GET / POST et l'URL
+        myRequest.open('GET', url);     
+        
+        // Nous indiquons que nous souhaitons récupérer les données 
+        // au format JSON
+        myRequest.responseType = 'json'; 
+        
+        // Nous envoyons une requête
+        myRequest.send();
+        
+        // La méthode onload permet d'attendre que la requête soit
+        // chargée (loaded) avant d'exécuter une fonction
+        
+        // Nous comparons l'état de notre requête
         // par rapport à l'état souhaité XMLHttpRequest.DONE
         // la propriété DONE représente en quelque sorte
-        // un état prédéfini d'une requête terminée.
+        // un état prédéfini d'une requête terminée.     
         
-
-    myRequest.onload = function() 
-    {      
-        if(myRequest.readyState === XMLHttpRequest.DONE)
-        {
-            if(myRequest.status === 200)
+        myRequest.onload = function() 
+        {      
+            if(myRequest.readyState === XMLHttpRequest.DONE)
             {
-                // Enregistrement de la réponse à requête dans une variable
-                let myData = myRequest.response;                 
-                console.log(myData.EUR.last);     
-                
-                // affichage dans la page HTML (boxTxt)
-                boxTxt.innerText = `${myData.EUR.last}€`;
-                
+                if(myRequest.status === 200)
+                {                
+                    let myData = myRequest.response;                 
+                    console.log(myData.EUR.last);                   
+                    boxTxt.innerText = `${myData.EUR.last}€`;
+                }
+                else
+                {
+                    boxTxt.innerText = `Erreur données inaccessibles`;
+                }      
             }
-      
         }
     }
-    
-
-
-    
-</script>
-</body>
-</html>
+        
+    setInterval(getBitcoinValue, 1000, `https://blockchain.info/ticker`);
+        
+        
+        
+    </script>
+    </body>
+    </html>

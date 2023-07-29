@@ -75,9 +75,9 @@
         <span id="btnDecrease">-</span>
         <span id="btnIncrease">+</span>
         <span id="btnLeft"><i class="fa-solid fa-arrow-left-long"></i></span>
+        <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
         <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
         <span id="btnUp"><i class="fa-solid fa-arrow-up-long"></i></span>
-        <span id="btnRight"><i class="fa-solid fa-arrow-right-long"></i></span>
     </div>
 
     <script>    
@@ -187,10 +187,16 @@
             return false;
         }
         
-        /**
-         * @todo Explain things
-         * @return {void}
-         * 
+     
+        const checkDown = () =>
+        {
+            if(getRect(boxImg).y >= getRect(bigBox).y-range)
+                return true;
+            else
+                return false;          
+            return true;                                    
+        }
+
         const checkUp = () =>
         {
             if(getRect(boxImg).y >= getRect(bigBox).y-range)
@@ -288,20 +294,20 @@
                 break;
                 case "down": 
                     if(checkDown())
-                       boxImg.style.top  = `${getRect(boxImg).y-range}px`;
+                    {          
+                        let movement = getRect(boxImg).y-range; 
+                        console.log(movement);
+                        movement;                       
+                        boxImg.style.top = `${movement}px`;                  
+                    }
                 break;
                 case "up": 
                     if(checkUp())
-                    {
-                        // console.log(`${getRect(boxImg).y}px`);
-                        // console.log(`${getRect(boxImg).y-range}px`);
-                        let movement = getRect(boxImg).y-range; 
-                        console.log(movement);
-                        movement++;
-                        //boxImg.style.top = `${boxImg}px`;
-                        boxImg.style.top = `${movement}px`;
-                        //console.log(`${range}`);
-                        //boxImg.style.top  = `${getRect(boxImg).y-range}px`;
+                    {          
+                        // let movement = getRect(boxImg).y-80; 
+                        // console.log(getRect(boxImg).y+' '+movement);
+                        // movement;                       
+                        boxImg.style.top = `${getRect(boxImg).y-range}px`;                  
                     }
                 break;
                 default:

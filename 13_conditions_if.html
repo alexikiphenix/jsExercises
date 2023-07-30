@@ -10,7 +10,45 @@
     
     <script>
         /*
-            Exercice 01 :
+
+        Créer une fenêtre modale demandant : "Quel est votre régime alimentaire ?"
+            
+            Si l'utilisateur saisit "omnivore", le programme renvoie :
+                "Tu es omnivore tu consommes des protéines animales et des végétaux"
+            
+            Si l'utilisateur saisit "végétarien", le programme renvoie :
+                "Tu es végétarien tu ne consommes des végateux mais pas de protéines animales"
+            
+            Si l'utilisateur saisit "autre", le programme renvoie :
+                "Tu as un régime spécifique"
+
+
+        SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+        SINON SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+        SINON SI(CONDITION)
+            1 = CONDITION REMPLIE => Instructions
+            2 = Non REMPLIE => autres instructions
+        */
+        let typeRepas = "vegan";
+        if(typeRepas === "omnivore")
+        {
+            console.log(`${typeRepas}, tu es omnivore`);
+        }
+        else if(typeRepas === "vegetarien")
+        {
+            console.log(`${typeRepas}, tu es vegetarien`);
+        }
+        else
+        {
+            console.log(`${typeRepas}, tu es compliqué(e)`);
+        }
+
+       
+
+        /*
+            Exercice 02 :
             Créez une fenêtre modale demandant l'age de la personne
             En fonction de la réponse affichez :
              
@@ -20,6 +58,9 @@
             46 et 55 ans => "age, une carrière bien remplie";
             56 et 64 ans => "age, troisième partie de carrière";
             65 ans et plus => "age, une retraite bien méritée";
+
+
+            abs();
         */
 
          /*
@@ -53,28 +94,7 @@
     //    }
 
 
-        /*
-        SI(CONDITION)
-            1 = CONDITION REMPLIE => Instructions
-        SINON SI(CONDITION)
-            1 = CONDITION REMPLIE => Instructions
-        SINON SI(CONDITION)
-            1 = CONDITION REMPLIE => Instructions
-            2 = Non REMPLIE => autres instructions
-        */
-        let typeRepas = "vegan";
-        if(typeRepas === "omnivore")
-        {
-            console.log(`${typeRepas}, tu es omnivore`);
-        }
-        else if(typeRepas === "vegetarien")
-        {
-            console.log(`${typeRepas}, tu es vegetarien`);
-        }
-        else
-        {
-            console.log(`${typeRepas}, tu es compliqué(e)`);
-        }
+
 
         /*
             Valeurs "truthy et falsy"

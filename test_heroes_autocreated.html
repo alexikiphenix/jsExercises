@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test object auto create</title>
+</head>
+<body>
+    
+    <script>
+        "use strict";
+        let power;
+        // let power2;
+        // let power3;        
+        const getRandom = (min, max) => {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+        }
+
+        const powersList = [
+            "fire", "ice", "strenght", "speed", "telekinesis", "teleport", "wind", "bolt", "water"
+        ]
+
+        const heroesName =  ["Agnus", "Moulthor", "Koumar", "Licia", "Apila"]
+
+        class Hero {
+            constructor(name = "", powers = [])
+            {
+                this.name = name;
+                this.powers = [];
+            }
+        }
+
+        
+        const createName = (namesList = []) =>
+        {
+            const indice = getRandom(0, namesList.length-1);
+            const name = namesList[indice];            
+            namesList.splice(indice, 1);
+
+            return name;
+        }
+
+        const createPowers = () =>
+        {           
+            let nbPowers;  
+            let powerTmp;
+           // let powers = [];       
+            const percentage = getRandom(1, 100);           
+           
+            if(percentage < 85)
+                nbPowers = 1;
+            else if(percentage < 95)
+                nbPowers = 2;
+            else
+                nbPowers = 3;
+
+            
+            const powersListTmp = powersList;
+            for(let i = 1; i <= nbPowers; i++)
+            {
+                // selecting a random indice in powerListTmp for getting a power randomly
+                let indice = getRandom(0, powersListTmp.length-1);
+                
+                // adding the random power in the array powers  
+                   
+                powerTmp = powersListTmp.splice(indice, 1);
+                window[`power${i}`] = powerTmp[0];
+                powers.push(window[`power${i}`]);
+                // console.log(powers);
+            }
+            console.log(powersListTmp);
+            // if(!power2)
+            //     power2 = null;
+
+            // if(!power3)
+            //     power3 = null;
+            return powers;
+        }
+
+        const createHeroes = (nb = int) =>
+        {
+            let heroes = [];
+            for(let i = 1; i <= nb; i++)
+            {
+                window[`hero${i}`] = new Hero();
+                let nameTmp = createName(heroesName);
+                window[`hero${i}`].name = nameTmp;                   
+
+                
+                const powers = createPowers();    
+                console.log(powers);     
+                window[`hero${i}`].powers = powers;
+
+
+                    console.log(powers);
+
+                for(let j = 0; j < powers.length; j++)
+                {
+                    // window[`power${j+1}`] = powers[j];
+                    // let power1 = window'power1';
+                    // window[`hero${i}`].eval(window[`power${i}`]) = "MEGATEST 1";       
+                    // window[`hero${i}`].${power1}` = "MEGATEST 1";     
+                   // window[`hero${i}`].power2 = "MEGATEST 2";     
+                    
+                    // if(j === 0)                    
+                    //     power1 = powers[0];
+
+                    // if(j === 1)
+                    //     power2 = powers[1];
+
+                    // if(j === 2)
+                    //     power3 = powers[2];
+                    window[`power${j+1}`] = powers[j];
+                }
+                
+               
+                heroes.push(window[`hero${1}`]);
+            }
+            return heroes;
+        }        
+        
+        console.log(window);      
+        
+        console.log(createHeroes(5));
+
+   
+    </script>
+</body>
+</html>

@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test JSON 4</title>
 </head>
-<body>
-    
+<body>    
     <script>
         localStorage.setItem('name', 'oumar');
         localStorage.setItem('pouvoir1', 'glace');
@@ -19,8 +18,15 @@
             name: localStorage.getItem('name'),
             pouvoir1: localStorage.getItem('pouvoir1')
         }
+
+        const hero2 = {
+            name: localStorage.getItem('name'),
+            pouvoir1: localStorage.getItem('pouvoir2')
+        }
     
         let hero1Stringified = JSON.stringify(hero1);
+        let hero2Stringified = JSON.stringify(hero2);
+        
         console.log(hero1Stringified);
         console.log(JSON.parse(hero1Stringified));
     </script>

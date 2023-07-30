@@ -1,3 +1,150 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/99a584b223.js" crossorigin="anonymous"></script>
+    <style>
+        body{text-align: center;}
+        .box
+        {
+            margin: 10vh auto 1vh;
+            width: 20%;
+            user-select: none;
+            border: 1px solid black;
+        }
+        #bars-box
+        {            
+            display: flex;
+            justify-content: center;      
+            align-items: end;    
+            margin-bottom: 1rem;  
+            height: 30vh;              
+        }
+        #bar01
+        {
+            width: 50%;
+            height: 50%;            
+            background-color: darkred;
+        }
+
+        .turn45
+        {
+            transform: rotate(-45deg);
+        } 
+
+
+
+    </style>
+    <title>Test event 2</title>
+</head>
+<body>
+    <div class="box">
+        <div id="bars-box">
+            <div id="bar01"></div>
+        </div>
+        <button id="btnIncrease"><i class="fa-solid fa-arrows-up-down"></i></button>
+        <button id="btnDecrease"><i class="fa-solid turn45 fa-down-left-and-up-right-to-center"></i></button>
+        <button id="btnEnlarge"><i class="fa-solid fa-arrows-left-right"></i></button>
+        <button id="btnSlim"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+    </div>
+    <script>
+        const bar01 = document.querySelector('#bar01');
+        const btnIncrease = document.querySelector('#btnIncrease');
+        const btnDecrease = document.querySelector('#btnDecrease');        
+        const btnEnlarge = document.querySelector('#btnEnlarge');
+        const btnSlim = document.querySelector('#btnSlim');        
+        let barHeight = 50;
+        let barWidth = 50;
+        let increaseBarId;
+        let decreaseBarId;
+        let enlargeBarId;
+        let slimBarId;
+        let warning = false;
+
+        const increaseBar = () =>{
+            if(barHeight <= 99)
+            {
+                barHeight++;
+                bar01.style.height = `${barHeight}%`;
+            }
+        }
+        const decreaseBar = () =>{
+            if(barHeight >= 1)
+            {
+                barHeight--;
+                bar01.style.height = `${barHeight}%`;
+            }
+        }
+
+        const enlargeBar = () =>{
+            if(barWidth <= 99)
+            {
+                barWidth++;
+                bar01.style.width = `${barWidth}%`;
+            }
+        }
+
+        const slimBar = () =>{
+            if(barWidth >= 1)
+            {
+                barWidth--;
+                bar01.style.width = `${barWidth}%`;
+            }
+            else if(warning === false)
+            {
+                alert("minimum atteint !");
+                warning = true;
+            }
+        }
+
+
+        // btnIncrease.addEventListener('click', () =>{
+        //     increaseBar();
+        // })
+        // btnDecrease.addEventListener('click', () =>{
+        //     decreaseBar();
+        // })
+
+        btnIncrease.addEventListener('mousedown', () =>{
+            increaseBarId = setInterval(increaseBar, 10);
+        })
+
+        btnDecrease.addEventListener('mousedown', () =>{
+            decreaseBarId = setInterval(decreaseBar, 10);
+        })
+
+        btnEnlarge.addEventListener('mousedown', () =>{
+            enlargeBarId = setInterval(enlargeBar, 10);
+        })
+
+        btnSlim.addEventListener('mousedown', () =>{
+            slimBarId = setInterval(slimBar, 10);
+        })
+
+        btnIncrease.addEventListener('mouseup', () =>{
+            clearInterval(increaseBarId);
+        })
+
+        btnDecrease.addEventListener('mouseup', () =>{
+            clearInterval(decreaseBarId);
+        })
+
+        btnEnlarge.addEventListener('mouseup', () =>{
+            clearInterval(enlargeBarId);
+        })
+
+        btnSlim.addEventListener('mouseup', () =>{
+            clearInterval(slimBarId);
+        })
+
+         
+  
+    </script>
+</body>
+=======
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -146,4 +293,5 @@
   
     </script>
 </body>
+>>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
 </html>

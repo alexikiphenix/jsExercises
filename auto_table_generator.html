@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{box-sizing: border-box;}
+        #myTable{width: 100%; margin: auto; border: 1px solid black;}  
+        td{text-align: center;}
+    </style>
+    <title>auto_table_generator_v1</title>
+</head>
+<body>
+    <div id="imgBox">
+    </div>
+    <script>
+            let nbImages = 27;
+            let imgSize = 300; // in px               
+            
+            const createMyTable = () => {
+                let screenSize = window.innerWidth; 
+                let nbImgPerLine = parseInt(window.innerWidth/imgSize);    
+                let imgCounter = 0;
+                let imgBox = document.querySelector('#imgBox');
+                let myTable = document.createElement('table');
+                myTable.setAttribute('id', 'myTable');
+                                
+                for(let i = 0; i < nbImages/nbImgPerLine; i++)
+                {            
+                    let line = document.createElement('tr');
+                    for(let j = 0; j < nbImgPerLine; j++)
+                    {
+                        let cell = document.createElement('td')
+                        if(imgCounter < nbImages)
+                        {
+                            cell.innerText = `case ${imgCounter}`;
+                            cell.style.width = `${imgSize}px`;
+                            cell.style.height = `${imgSize}px`;
+                            // or cell.style.width = `${100/nbImgPerLine}%`; if you prefer in %
+                            cell.style.border = `2px dotted black`;
+                            // or cell.classList.add('myBorder'); if you prefer direct CSS rules.
+                        }
+                        line.appendChild(cell);                             
+                        imgCounter++;
+                    }
+                    myTable.appendChild(line);            
+                }
+                imgBox.appendChild(myTable);                        
+                console.log(`ecran ${screenSize}px => ${nbImgPerLine} x ${imgSize}px`);  
+            }
+            createMyTable();
+
+            window.addEventListener('resize', () =>
+            {
+                let showTable = document.querySelector('#myTable');
+                
+                if(document.querySelector('#myTable'))               
+                    myTable.remove();           
+                createMyTable();               
+            })            
+    </script>
+</body>
+</html>

@@ -11,8 +11,15 @@
         }
         #container
         {
-            width: 50vw;
-            margin: auto;           
+            width: 60vw;
+            min-height: 50vh;
+            margin: auto;   
+            padding: 1rem;
+            border-radius: .5rem;
+            box-shadow: 1rem 1rem 1.5rem rgb(128, 124, 124);               
+        }
+        h1{
+            margin-bottom: 5vh;
         }
         #mainBox
         {
@@ -26,13 +33,23 @@
         {
             width: 100%;
         }
-
+        textarea
+        {
+            padding: .5rem;
+            background-color: rgba(235, 155, 7, 0.356); 
+            transition-duration: 3s;            
+        }
+        textarea:hover
+        {
+            background-color: rgb(235, 110, 7); 
+        }
     </style>
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Page projet</title>
 </head>
 <body>
     <div id="container">
+        <h1>JS : ajouter des champs de saisie</h1>
         <main id="mainBox">        
         </main>
         <label for="newParagraph">Texte du paragraphe</label>
@@ -43,7 +60,13 @@
 
 
     <script defer>
-        
+        console.log(localStorage);
+        const paragraphs = [];
+        const getMyStorage = () =>
+        {
+            for(const pararagraph in localStorage);
+        }
+
         let mainBox = document.getElementById('mainBox');
         let addParagraphBtn = document.querySelector('#addParagraphBtn'); // autre méthode
         let newParagraph = document.getElementById('newParagraph');

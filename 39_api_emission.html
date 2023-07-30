@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* */
+        *{box-sizing: border-box;}
+        .wrapper
+        {
+            display: grid;
+            place-content: center;            
+            text-align: center;            
+        }
+        /* h1{
+            padding: .5rem;
+            margin: 0 auto;
+            transition-duration: 3s;
+            background-color: rgb(207, 89, 10);
+            color: rgb(255, 255, 255);
+        }
+        h1:hover
+        {
+            color: rgb(207, 89, 10);
+            background-color: #fff;
+            border: 1px solid rgb(207, 89, 10);
+        } */
+        /* #boxTxt
+        {
+            padding: .5rem;
+            font-size: 1.1rem;
+            transition-duration: 3s;
+            color: white;
+            font-weight: bolder;
+
+            background-color: rgb(14, 14, 14);
+        }
+        #boxTxt:hover
+        {
+            color: rgb(14, 14, 14);
+            background-color: white;
+            border: 1px solid black;
+        } */
+    </style>
+    <title>39 API emission</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>API : envoyer des données</h1>
+        <div id="boxTxt"></div>
+    </div>
+
+<script>
+    
+    // Emplacement pour afficher les données
+    const boxTxt = document.querySelector('#boxTxt');
+    // const urlOFF1= 'https://blockchain.info/ticker';    
+    const urlOFF2= 'https://lesoublisdelinfo.com/api.php';    
+    const url= 'http://metacra.cluster030.hosting.ovh.net/ajax.php';    
+    let previousValue;
+    
+
+    const sendMyInfos = () =>
+    {
+        // Création de la requête
+        // Nous créons un nouvel objet XMLHttpRequest
+        let myRequest = new XMLHttpRequest();           
+        
+        myRequest.open('POST', url);  
+
+        // permet de définir le header (nécessaire pour l'envoi d'un formulaire)
+        // en donner l'illusion au serveur que l'on envoie un formulaire
+        myRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')   
+        myRequest.responseType = 'json';     
+    
+        myRequest.send('firstname=Jane');  
+        
+        myRequest.onload = function() 
+        {      
+            if(myRequest.readyState === XMLHttpRequest.DONE)
+            {
+                if(myRequest.status === 200)
+                {                
+                    let myData = myRequest.response; 
+                    boxTxt.innerHTML = `<h2>${myData.greetings}</h2>`;                                 
+                    console.log(myData);
+                }
+                else
+                {
+                    boxTxt.innerText = `Erreur données inaccessibles`;
+                }      
+            }
+        }
+    }
+        
+
+    sendMyInfos();    
+        
+        
+    </script>
+    </body>
+    </html>

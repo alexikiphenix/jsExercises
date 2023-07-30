@@ -10,16 +10,16 @@
         #bigBox
         {
             position: relative;
-            display: grid;
+            /* display: grid;
             justify-content: center;            
-            align-items: end;
+            align-items: end; */
             margin-top: 5rem;
             height: 50vh;
             border: 1px solid #000;
         }
         #boxImg
         {
-            position: relative;
+            position: absolute;
             height: 5vh;
             width: 5vh;
             margin: auto auto 0;
@@ -152,9 +152,9 @@
             console.log("Resize");
         }
 
-        keepRelativePosition();
+        // keepRelativePosition();
 
-        window.addEventListener('resize', keepRelativePosition);
+        // window.addEventListener('resize', keepRelativePosition);
 
 
         /***********************************************************************
@@ -306,8 +306,11 @@
                     {          
                         // let movement = getRect(boxImg).y-80; 
                         // console.log(getRect(boxImg).y+' '+movement);
-                        // movement;                       
-                        boxImg.style.top = `${getRect(boxImg).y-range}px`;                  
+                        // movement;          
+
+                        boxImg.style.top = `${--(boxImg.getBoundingClientRect().y)}px`;                  
+                        // console.log(boxImg.getBoundingClientRect().y);
+                        // console.log(--(boxImg.getBoundingClientRect().y));
                     }
                 break;
                 default:

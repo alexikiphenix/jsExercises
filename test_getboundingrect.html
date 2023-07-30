@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{margin: 0;}
+        *{box-sizing: border-box;}
+        [id^="btn"]
+        {
+            display: inline-grid;
+            place-content: center;
+            padding: 7px;
+            height: 35px;
+            width: 35px;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            background-color: #d66b06;
+        }
+        [id^="box"]
+        {
+            display: grid;
+            place-content: center;
+            position: absolute;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            color: white;
+            font-size: 35px;
+            font-weight: 900;
+            background-color: #901313;
+        }
+
+        #box-2
+        {
+            left: 200px;
+        }
+    </style>
+    <title>test getBoundingClientRect</title>
+</head>
+<body>
+    <span id="btn-decrease">-</span>
+    <span id="btn-increase">+</span>
+    <div id="box-1">1</div>
+    <div id="box-2">2</div>
+
+    <script>
+        const box1 = document.querySelector(`#box-1`);
+        // let posY = 100;
+        const btnDecrease = document.getElementById(`btn-decrease`);
+        const btnIncrease = document.getElementById(`btn-increase`);
+        console.log(box1.getBoundingClientRect(box1));
+        btnDecrease.addEventListener('click', () =>
+        {
+            posY = --box1.getBoundingClientRect().y;
+            // posY--;
+
+            box1.style.top = `${--box1.getBoundingClientRect().y}px`;
+            console.log(box1.getBoundingClientRect());
+        })
+        btnIncrease.addEventListener('click', () =>
+        {
+            posY++;
+            box1.style.top = `${posY}px`;
+            console.log(box1.getBoundingClientRect());
+        })
+    </script>
+</body>
+</html>

@@ -340,10 +340,13 @@
                 btnDown.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
         
             // UP
-                btnUp.addEventListener('mousedown', () =>
-                    {moveWithInterval = setInterval(move, 100, "up");})                    
-                btnUp.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
-                btnUp.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
+                btnUp.addEventListener('click', () =>
+                    {move('up');}                    
+                )
+                // btnUp.addEventListener('mousedown', () =>
+                //     {moveWithInterval = setInterval(move, 100, "up");})                    
+                // btnUp.addEventListener('mouseup', () =>{ clearInterval(moveWithInterval);})
+                // btnUp.addEventListener('mouseout', () =>{ clearInterval(moveWithInterval);})
         }     
 
         moveConstantLy();

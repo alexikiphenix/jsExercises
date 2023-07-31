@@ -61,7 +61,19 @@
             user-select: none;
             /* border: 1px solid #000; */
         }
-
+        #areaTest
+        {
+            height: 50px;
+            width: 50px;
+            background-color: #40cc1d;
+        }
+        #buttonTest
+        {
+            height: 10px;
+            width: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
 
     </style>
     <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
@@ -79,6 +91,8 @@
         <span id="btnDown"><i class="fa-solid fa-arrow-down-long"></i></span>
         <span id="btnUp"><i class="fa-solid fa-arrow-up-long"></i></span>
     </div>
+    <div id="buttonTest">+</div>
+    <div id="areaTest"></div>
 
     <script>    
         "use strict";    
@@ -94,6 +108,8 @@
         let bigBoxRect;
         let boxImgRect;  
 
+        const areaTest = document.querySelector('#areaTest');
+        const buttonTest = document.querySelector(`#buttonTest`);
         let constantDecrease;     
         let constantIncrease;    
         let moveWithInterval;

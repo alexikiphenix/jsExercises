@@ -20,8 +20,8 @@
         #boxImg
         {
             position: absolute;
-            height: 5vh;
-            width: 5vh;
+            height: 20px;
+            width: 20px;
             margin: auto auto 0;
             /* border: 1px solid #000; */
             background-color: blueviolet;
@@ -302,13 +302,14 @@
                     }
                 break;
                 case "up": 
+                    boxImg.style.top = `${--(boxImg.getBoundingClientRect().y)}px`;                  
                     if(checkUp())
                     {          
                         // let movement = getRect(boxImg).y-80; 
                         // console.log(getRect(boxImg).y+' '+movement);
                         // movement;          
 
-                        boxImg.style.top = `${--(boxImg.getBoundingClientRect().y)}px`;                  
+                        // boxImg.style.top = `${--(boxImg.getBoundingClientRect().y)}px`;                  
                         // console.log(boxImg.getBoundingClientRect().y);
                         // console.log(--(boxImg.getBoundingClientRect().y));
                     }

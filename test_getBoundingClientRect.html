@@ -34,6 +34,7 @@
 
         #box-2
         {
+            position: absolute; /* check if it works first */
             left: 200px;
         }
     </style>
@@ -47,23 +48,19 @@
 
     <script>
         const box1 = document.querySelector(`#box-1`);
-        // let posY = 100;
+        
         const btnDecrease = document.getElementById(`btn-decrease`);
         const btnIncrease = document.getElementById(`btn-increase`);
         console.log(box1.getBoundingClientRect(box1));
         btnDecrease.addEventListener('click', () =>
-        {
-            posY = --box1.getBoundingClientRect().y;
-            // posY--;
-
+        {    
             box1.style.top = `${--box1.getBoundingClientRect().y}px`;
             console.log(box1.getBoundingClientRect());
         })
         btnIncrease.addEventListener('click', () =>
         {
-            posY++;
-            box1.style.top = `${posY}px`;
-            console.log(box1.getBoundingClientRect());
+            box1.style.top = `${++box1.getBoundingClientRect().y}px`;
+            console.log(posY);
         })
     </script>
 </body>

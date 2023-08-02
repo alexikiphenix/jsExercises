@@ -18,6 +18,11 @@
             color: white;
             background-color: #d66b06;
         }
+        #bigBox
+        {
+            min-height: 50vh;
+            border: 1px solid black;
+        }
         [id^="box"]
         {
             display: grid;
@@ -34,7 +39,7 @@
 
         #box-2
         {
-            position: absolute; /* check if it works first */
+            /* position: absolute;  TEST */
             left: 200px;
         }
     </style>
@@ -43,14 +48,18 @@
 <body>
     <span id="btn-decrease">-</span>
     <span id="btn-increase">+</span>
-    <div id="box-1">1</div>
-    <div id="box-2">2</div>
+    <div id="bigBox">
+        <div id="box-1">1</div>
+        <div id="box-2">2</div>
+    </div>
 
     <script>
         const box1 = document.querySelector(`#box-1`);
         
         const btnDecrease = document.getElementById(`btn-decrease`);
         const btnIncrease = document.getElementById(`btn-increase`);
+        const bigBox = document.querySelector(`#bigBox`);
+        
         console.log(box1.getBoundingClientRect(box1));
         btnDecrease.addEventListener('click', () =>
         {    

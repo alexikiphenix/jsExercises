@@ -62,20 +62,18 @@
 
 
     <script defer>
-        console.log(localStorage);
+        
         const paragraphs = [];
+        let myParagraphs = {};
         const getMyStorage = () =>
         {
             if(localStorage.getItem('myParagraphs'))
             {
-                const myParagraphs = JSON.parse(localStorage.getItem('myParagraphs'));
-            }
-            else
-            {
-                const myParagraphs = {};
+                myParagraphs = JSON.parse(localStorage.getItem('myParagraphs'));
             }
         }       
-
+        
+        getMyStorage();
 
         let mainBox = document.getElementById('mainBox');
         let addParagraphBtn = document.querySelector('#addParagraphBtn'); // autre méthode
@@ -91,9 +89,10 @@
             paragraph.innerText = `${text}`;
 
             paragraph.appendChild(btnEdit);
-            window[`${myParagraphs}.${counter}`] = text;
-            paragraph
-             
+            window[`myParagraphs.paragraph${counter}`] = new Object();        
+            window[`myParagraphs.paragraph${counter}.text`] = text;        
+            myParagraphs.paragraph1 = text;        
+            console.log(myParagraphs);
             mainBox.appendChild(paragraph);
         }
         

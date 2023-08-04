@@ -89,9 +89,9 @@
             paragraph.innerText = `${text}`;
 
             paragraph.appendChild(btnEdit);
-            window[`myParagraphs.paragraph${counter}`] = new Object();        
-            window[`myParagraphs.paragraph${counter}.text`] = text;        
-            myParagraphs.paragraph1 = text;        
+            window[`myParagraphs.paragraph${counter}`] = new Object('text');        
+            window[`myParagraphs.paragraph${counter}`].text = text;        
+                  
             console.log(myParagraphs);
             mainBox.appendChild(paragraph);
         }

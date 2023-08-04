@@ -66,11 +66,15 @@
         const paragraphs = [];
         const getMyStorage = () =>
         {
-            for(const pararagraph in localStorage)
-                console.log(pararagraph);
-        }
-
-        
+            if(localStorage.getItem('myParagraphs'))
+            {
+                const myParagraphs = JSON.parse(localStorage.getItem('myParagraphs'));
+            }
+            else
+            {
+                const myParagraphs = {};
+            }
+        }       
 
 
         let mainBox = document.getElementById('mainBox');
@@ -97,7 +101,8 @@
             if(newParagraph.value !== "") 
             {     
                 addParagraph(newParagraph.value);
-                localStorage.setItem(`paragraphe${counter}`, newParagraph.value);
+                //localStorage.setItem(`paragraphe${counter}`, newParagraph.value);
+
                 newParagraph.value = ``;
                 mySound.play();
                 counter++;

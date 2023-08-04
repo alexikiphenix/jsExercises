@@ -91,7 +91,7 @@
             paragraph.innerText = `${text}`;
 
             paragraph.appendChild(btnEdit);
-
+            window[`${myParagraphs}.${counter}`] = text;
             paragraph
              
             mainBox.appendChild(paragraph);

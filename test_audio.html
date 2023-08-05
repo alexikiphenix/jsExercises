@@ -24,14 +24,14 @@
     <script>
         const btnLaser = document.querySelector('#btnLaser');
         const btnTing = document.querySelector('#btnTing');
-        mySound = new Audio('assets/audio/laser.mp3')
+        soundLaser = new Audio('assets/audio/laser.mp3')
 
         const attack = () =>
         {
             btnLaser.addEventListener('click', () =>
             {  
-                mySound.currentTime = 0; // initialise le son à chaque clic
-                mySound.play();
+                soundLaser.currentTime = 0; // initialise le son à chaque clic
+                soundLaser.play();
             })
         }
 

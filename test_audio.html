@@ -24,7 +24,8 @@
     <script>
         const btnLaser = document.querySelector('#btnLaser');
         const btnTing = document.querySelector('#btnTing');
-        soundLaser = new Audio('assets/audio/laser.mp3')
+        const soundLaser = new Audio('assets/audio/laser.mp3')
+        const soundTing = new Audio('assets/audio/ting.wav')
 
         const attack = () =>
         {
@@ -32,6 +33,12 @@
             {  
                 soundLaser.currentTime = 0; // initialise le son à chaque clic
                 soundLaser.play();
+            })
+
+            btnTing.addEventListener('click', () =>
+            {  
+                soundTing.currentTime = 0; // initialise le son à chaque clic
+                soundTing.play();
             })
         }
 

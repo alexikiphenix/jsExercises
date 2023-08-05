@@ -6,8 +6,11 @@
     <style>
         #btnLaser
         {
+            display: grid;
+            place-content: center;
             width: 10vh;
             height: 10vh;
+            cursor: pointer;
             color: white;
             background-color: darkred;
         }
@@ -18,11 +21,19 @@
     
     <div id="btnLaser">Click me</div>
     <script>
+        const btnLaser = document.querySelector('#btnLaser');
         mySound = new Audio('assets/audio/laser.mp3')
 
-        
-        mySound.currentTime = 0; // initialise le son à chaque clic
-        mySound.play();
+        const attack = () =>
+        {
+            btnLaser.addEventListener('click', () =>
+            {  
+                mySound.currentTime = 0; // initialise le son à chaque clic
+                mySound.play();
+            })
+        }
+
+        attack();
     </script>
 </body>
 </html>

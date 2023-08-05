@@ -25,7 +25,9 @@
         const btnLaser = document.querySelector('#btnLaser');
         const btnTing = document.querySelector('#btnTing');
         const soundLaser = new Audio('assets/audio/laser.mp3')
-        const soundTing = new Audio('assets/audio/ting.wav')
+        const soundTing = new Audio('assets/audio/ting.wav');
+
+        console.log(soundLaser);
 
         const attack = () =>
         {
@@ -42,6 +44,7 @@
             })
 
             console.log('attack');
+            
         }
 
         attack();

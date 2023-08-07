@@ -34,12 +34,14 @@
             btnLaser.addEventListener('click', () =>
             {  
                 soundLaser.currentTime = 0; // initialise le son à chaque clic
+                soundLaser.volume(.1);
                 soundLaser.play();
             })
 
             btnTing.addEventListener('click', () =>
             {  
                 soundTing.currentTime = 0; // initialise le son à chaque clic
+                soundTing.volume(.4);
                 soundTing.play();
             })
 

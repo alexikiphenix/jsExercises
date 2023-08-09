@@ -39,6 +39,7 @@
         .row{display: table-row; padding: 2vh;}
         .cell{display: table-cell; padding: .5vw;}
         .smallBox{width: 1.2vw; height: 1.2vw; transition-duration: 2s; border: 1px solid white;}
+        .selected{border: 5px solid white;}
         
         .smallBox:hover
         {
@@ -106,6 +107,7 @@
                     smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
                     smallBox.setAttribute('data-color', `${computedColor}`); 
                     smallBox.addEventListener('click', ()=>{
+                        smallBox.classList.toggle('selected');
                         console.log(`${smallBox.getAttribute('data-color')}`);
                         computedColor = window.getComputedStyle(smallBox, null).getPropertyValue("background-color");
                         showClipboardColor(computedColor);

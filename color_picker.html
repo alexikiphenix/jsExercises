@@ -40,6 +40,7 @@
     <title>test small color chart</title>
 </head>
 <body> 
+    
     <div id="bigBox"></div>
     <div id="boxChoices"></div>
 
@@ -48,7 +49,9 @@
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
         const tingSound = new Audio('assets/audio/ting.wav');   
-        tingSound.volume = .5;       
+        tingSound.volume = .9;    
+        let clipboardColor;
+
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');
@@ -89,7 +92,9 @@
                     smallBox.addEventListener('click', ()=>{
                         console.log(`${smallBox.getAttribute('data-color')}`);
                     })
-                   
+                    
+                    clipboardColor = navigator.clipboard.writeText(`${computedColor}`);
+
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');
                     colorRGB.classList.add('cell');

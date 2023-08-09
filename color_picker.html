@@ -47,7 +47,8 @@
     <script>
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
-        const tingSound = new Audio('assets/audio/ting.wav');          
+        const tingSound = new Audio('assets/audio/ting.wav');   
+        tingSound.volume = .5;       
         const setBtnColor = () =>
         {
             allBtn = document.querySelectorAll('[id^="btn"]');

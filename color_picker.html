@@ -94,7 +94,7 @@
                 divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
                 divColor.addEventListener("click", () =>
                 {
-                    const computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
+                    let computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
                     console.log(computedColor);
 
                     const boxColorChoice = document.createElement('div');
@@ -107,6 +107,8 @@
                     smallBox.setAttribute('data-color', `${computedColor}`); 
                     smallBox.addEventListener('click', ()=>{
                         console.log(`${smallBox.getAttribute('data-color')}`);
+                        computedColor = window.getComputedStyle(smallBox, null).getPropertyValue("background-color");
+                        showClipboardColor(computedColor);
                     })
                     
                     showClipboardColor(computedColor);

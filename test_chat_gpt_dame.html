@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    }
+
+    .cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .black {
+    background-color: #555;
+    }
+
+    .white {
+    background-color: #fff;
+    }
+  </style>
+  <title>Jeu de Dames</title>
+</head>
+<body>
+  <div id="board" class="board">
+  </div>
+  <script>
+    const board = document.getElementById('board');
+    const rows = 8;
+    const cols = 8;
+    let currentPlayer = 'black';
+
+    function createCell(row, col, color) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell', color);
+    cell.dataset.row = row;
+    cell.dataset.col = col;
+    cell.addEventListener('click', handleCellClick);
+    return cell;
+    }
+
+    function initializeBoard() {
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+        const color = (row + col) % 2 === 0 ? 'white' : 'black';
+        const cell = createCell(row, col, color);
+        board.appendChild(cell);
+        }
+    }
+    }
+
+    function handleCellClick(event) {
+    const clickedCell = event.target;
+    const row = parseInt(clickedCell.dataset.row);
+    const col = parseInt(clickedCell.dataset.col);
+
+    // Implement your game logic here
+    // You can update the state of the game and handle piece movements
+    
+    // Example: Toggle piece color
+    if (currentPlayer === 'black') {
+        clickedCell.style.backgroundColor = '#000';
+        currentPlayer = 'white';
+    } else {
+        clickedCell.style.backgroundColor = '#fff';
+        currentPlayer = 'black';
+    }
+    }
+
+    initializeBoard();
+
+  </script>
+</body>
+</html>

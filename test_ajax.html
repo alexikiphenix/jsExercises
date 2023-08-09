@@ -57,7 +57,44 @@
         // const urlOFF1= 'https://blockchain.info/ticker';    
         const urlOFF2= 'https://lesoublisdelinfo.com/api.php';    
         const url= 'http://metacra.cluster030.hosting.ovh.net/ajax.php';    
- 
+        
+        let previousValue;        
+    
+        const sendMyInfos = () =>
+        {
+            // Création de la requête
+            // Nous créons un nouvel objet XMLHttpRequest
+            let myRequest = new XMLHttpRequest();           
+            
+            myRequest.open('POST', url);  
+    
+            // permet de définir le header (nécessaire pour l'envoi d'un formulaire)
+            // en donner l'illusion au serveur que l'on envoie un formulaire
+            myRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')   
+            myRequest.responseType = 'json';     
+        
+            myRequest.send('firstname=Jane');  
+            
+            myRequest.onload = function() 
+            {      
+                if(myRequest.readyState === XMLHttpRequest.DONE)
+                {
+                    if(myRequest.status === 200)
+                    {                
+                        let myData = myRequest.response; 
+                        boxTxt.innerHTML = `<h2>${myData.greetings}</h2>`;                                 
+                        console.log(myData);
+                    }
+                    else
+                    {
+                        boxTxt.innerText = `Erreur données inaccessibles`;
+                    }      
+                }
+            }
+        }
+            
+    
+        sendMyInfos();    
             
             
         </script>

@@ -6,6 +6,15 @@
     <style>
         /* reset */
         body{margin: 0;}
+        .hidden
+        {
+            display: none;
+            position: absolute;
+            left: 1vw;
+            top: 0;
+            transition-duration: 1.5s;
+            border: 1px dotted black;
+        }
         #bigBox{            
             width: 40vw; 
             margin: auto; 
@@ -40,7 +49,7 @@
     <title>test small color chart</title>
 </head>
 <body> 
-    
+    <div id="clipboardColor" class="hidden">Test </div>
     <div id="bigBox"></div>
     <div id="boxChoices"></div>
 
@@ -48,9 +57,9 @@
     <script>
         const bigBox = document.querySelector('#bigBox');
         const boxChoices = document.querySelector('#boxChoices');
+        const clipboardColor = document.getElementById(`clipboardColor`);
         const tingSound = new Audio('assets/audio/ting.wav');   
         tingSound.volume = .9;    
-        let clipboardColor;
 
         const setBtnColor = () =>
         {
@@ -60,6 +69,13 @@
             {
                 console.log(btn.innerText);                
             }
+        }
+
+        const showClipboardColor = (color = string) =>
+        {
+            navigator.clipboard.writeText(`${color}`);
+            clipboardColor.innerText = `${color} copié dans le presse-papier`;
+            clipboardColor.style.display = `inline-block`;
         }
 
         setBtnColor();
@@ -93,7 +109,7 @@
                         console.log(`${smallBox.getAttribute('data-color')}`);
                     })
                     
-                    clipboardColor = navigator.clipboard.writeText(`${computedColor}`);
+                    showClipboardColor(computedColor);
 
                     boxColorChoice.classList.add('row');
                     colorHSL.classList.add('cell');

@@ -80,13 +80,13 @@
         }
 
         setBtnColor();
-        // if(localStorage)
-        // {
-        //     for(const item in localStorage)
-        //         console.log(item);
-        // }
+        if(localStorage)
+        {
+            for(const item in localStorage)
+                console.log(item);
+        }
         
-        const makeRainbow = () => {
+        const makeColorChart = () => {
             for(let i = 0; i <= 360; i++)
             {                
                 const divColor = document.createElement('div');
@@ -135,7 +135,7 @@
             }
         }
        
-        makeRainbow();
+        makeColorChart();
        console.log("TEST");
     </script>
 </body>

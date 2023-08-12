@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        .wrapper
+        {
+            display: grid;
+            place-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
         #bgBox
         {            
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             grid-template-rows: repeat(10, 1fr);
             grid-gap: 1vh;
+            width: 80vh;
+            height: 80vh;
             place-content: center;
             border: 1px solid black;
         }
@@ -18,8 +27,10 @@
         PErsonnalize your bg
     </title>
 </head>
-<div id="boxBg"></div>
 <body>
+    <div class="wrapper">
+        <div id="boxBg"></div>
+    </div>
     
     <script>
         const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
@@ -28,6 +39,7 @@
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];
 
+        
         console.log(backgrounds.toString());
 
         localStorage.setItem('myBackgrounds', backgrounds);

@@ -11,11 +11,11 @@
             width: 100vw;
             height: 100vh;
         }
-        #bgBox
+        #boxBg
         {            
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10, 1fr);
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
             grid-gap: 1vh;
             width: 80vh;
             height: 80vh;
@@ -35,7 +35,10 @@
     <script>
         const bgBox = document.querySelector('#bgBox');
         const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
-        'bg06.jpg', ];
+        'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg',
+        'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 
+        'bg06.jpg'
+    ];
         const backgroundsObj = {};
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];
@@ -49,6 +52,7 @@
                     const bgImg = document.createElement('img');
                     bgImg.src = bgUrl;
                     bgImg.alt = bgUrl;
+                    bgImg.classList.add("bgImlg");
                     boxBg.appendChild(bgImg);                    
                 }
             )

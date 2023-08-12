@@ -33,6 +33,7 @@
     </div>
     
     <script>
+        const bgBox = document.querySelector('#bgBox');
         const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg', ];
         const backgroundsObj = {};
@@ -45,13 +46,15 @@
         {
             backgrounds.forEach( bgUrl =>
                 {
-                    const background = document.createElement('div');
-                    background.innerText = bgUrl;
+                    const bgImg = document.createElement('img');
+                    bgImg.src = bgUrl;
+                    bgImg.alt = bgUrl;
+                    boxBg.appendChild(bgImg);                    
                 }
             )
         }
 
-        
+        makeBoard();
 
         localStorage.setItem('myBackgrounds', backgrounds);
 

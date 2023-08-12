@@ -52,6 +52,7 @@
     
     <script>
         const bgBox = document.querySelector('#bgBox');
+        const btnValidate = document.getElementById('btnValidate');
         const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg',
         'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 'bg06.jpg', 
@@ -85,6 +86,13 @@
             const selectedBg = document.querySelectorAll('.selected');
             console.log(selectedBg);
         }
+
+        
+        btnValidate.addEventListener('click', () =>
+        {
+            getSelectedBg();
+        })
+        
         makeBoard();
 
         

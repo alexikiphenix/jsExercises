@@ -24,7 +24,7 @@
         }
     </style>
     <title>
-        PErsonnalize your bg
+        Personnalize your bg
     </title>
 </head>
 <body>
@@ -39,8 +39,19 @@
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];
 
-        
         console.log(backgrounds.toString());
+
+        const makeBoard = () =>
+        {
+            backgrounds.forEach( bgUrl =>
+                {
+                    const background = document.createElement('div');
+                    background.innerText = bgUrl;
+                }
+            )
+        }
+
+        
 
         localStorage.setItem('myBackgrounds', backgrounds);
 

@@ -72,8 +72,14 @@
             )
         }
 
+        const getSelectedBg = () =>
+        {
+            const selectedBg = document.querySelectorAll('.selected');
+            console.log(selectedBg);
+        }
         makeBoard();
 
+        
         localStorage.setItem('myBackgrounds', backgrounds);
 
         console.log(localStorage.getItem('myBackgrounds'));

@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #bgBox
+        {            
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            grid-gap: 1vh;
+            place-content: center;
+            border: 1px solid black;
+        }
+    </style>
     <title>
-        
+        PErsonnalize your bg
     </title>
 </head>
+<div id="boxBg"></div>
 <body>
-    <div id="boxBg"></div>
     
     <script>
         const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 

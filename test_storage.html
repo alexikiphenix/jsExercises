@@ -28,6 +28,10 @@
             height: 100%;
             object-fit: cover;
         }
+        .selected
+        {
+            border: 1vh solid green;
+        }
     </style>
     <title>
         Personnalize your bg
@@ -59,6 +63,10 @@
                     bgImg.src = bgUrl;
                     bgImg.alt = bgUrl;
                     bgImg.classList.add("bgImlg");
+                    bgImg.addEventListener('click', () =>
+                    {
+                        bgImg.classList.toggle('selected');
+                    })
                     boxBg.appendChild(bgImg);                    
                 }
             )

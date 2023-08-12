@@ -71,6 +71,7 @@
                     const bgImg = document.createElement('img');
                     bgImg.src = bgUrl;
                     bgImg.alt = bgUrl;
+                    bgImg.setAttribute('data-url', bgUrl);
                     bgImg.classList.add("bgImlg");
                     bgImg.addEventListener('click', () =>
                     {
@@ -85,6 +86,9 @@
         {
             const selectedBg = document.querySelectorAll('.selected');
             console.log(selectedBg);
+            selectedBg.forEach(bg =>{
+                console.log(bg.src);
+            })
         }
 
         

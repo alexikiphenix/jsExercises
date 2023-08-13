@@ -85,10 +85,13 @@
         const getSelectedBg = () =>
         {
             const selectedBg = document.querySelectorAll('.selected');
+            const selectedBgArray = [];
             console.log(selectedBg);
             selectedBg.forEach(bg =>{
                 console.log(bg.getAttribute('data-url'));
+                selectedBgArray.push(bg.getAttribute('data-url'));
             })
+            return selectedBgArray;
         }
 
         

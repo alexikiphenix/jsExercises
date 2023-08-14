@@ -94,9 +94,10 @@
             return selectedBgArray;
         }
         
-        const putBgInStorage = ()=>
+        const putBgInStorage = (array)=>
         {
-            
+            localStorage.setItem('myBackgrounds', array);
+            console.log(localStorage.getItem('myBackgrounds'));
         }
         
         btnValidate.addEventListener('click', () =>

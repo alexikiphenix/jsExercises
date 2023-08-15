@@ -10,6 +10,7 @@
             place-content: center;
             width: 100vw;
             height: 100vh;
+            text-align: center;
         }
         #boxBg
         {            
@@ -34,8 +35,12 @@
         }
         #btnValidate
         {
+            display: block;
+            width: 50%;
+            text-align: center;
             font-size: 1.4rem;
             font-weight: 900;
+            cursor: pointer;
             color: white;
             background: darkred;
         }
@@ -91,6 +96,7 @@
                 console.log(bg.getAttribute('data-url'));
                 selectedBgArray.push(bg.getAttribute('data-url'));
             })
+            putBgInStorage(selectedBgArray);
             return selectedBgArray;
         }
         

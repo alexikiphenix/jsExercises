@@ -120,37 +120,38 @@
         {
             display: grid;
             position: absolute;            
+            place-content: center;
             /* display: none; */
+            height: 1.5rem;
+            width: 1.5rem;
             left: 50%;
             top: 50%;
-            transition-duration: 5s;           
+            translate: -50% -50%;
+            transition-duration: 5s;  
+            padding: .3rem;       
+            border-radius: 50%;  
             color: white;
             font-weight: bolder;
             background-color: black;
         }
-        #bigBox2:hover [id^="smallBall"]
-        {
-            /* position: absolute;   */
-            display: inline;     
-            /* z-index: 7; */
-        }
-        #bigBox2:hover #smallBall1
+     
+        #bigBall:hover #smallBall1
         {     
             color: red;
            transform: translate(-40px, -40px) rotate(-360deg);
         }
-        #bigBox2:hover #smallBall2
+        #bigBall:hover #smallBall2
         {               
             transform: translate(40px, -40px) rotate(360deg);
             color: red;
             
         }
-        #bigBox2:hover #smallBall3
+        #bigBall:hover #smallBall3
         {                    
             transform: translate(-40px, 40px) rotate(-360deg);            
             color: red;       
         }
-        #bigBox2:hover #smallBall4
+        #bigBall:hover #smallBall4
         {               
             transform: translate(40px, 40px) rotate(360deg);                        
             color: rgb(0, 255, 55);           

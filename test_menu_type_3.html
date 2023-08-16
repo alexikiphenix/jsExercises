@@ -99,12 +99,16 @@
         }
         #bigBox2
         {
+            display: grid;
+            place-content: center;
             height: 50vh;
             width: 50vh;
             border: 1px solid black;
         }
         #bigBall
         {
+            display: grid;
+            place-content: center;
             position: relative;
             height: 20vh;
             width: 20vh;
@@ -115,15 +119,37 @@
         [id^="smallBall"]
         {
             position: absolute;
-            transition-duration: 5s;
-            top: 50%;
+            /* display: none; */
             left: 50%;
-            right: 50%;
+            top: 50%;
+            transition-duration: 5s;           
+        }
+        #bigBox2:hover [id^="smallBall"]
+        {
+            /* position: absolute;   */
+            display: inline;     
+            /* z-index: 7; */
         }
         #bigBox2:hover #smallBall1
-        {            
+        {     
             color: red;
-            left: 100px;
+           transform: translate(-40px, -40px) rotate(-360deg);
+        }
+        #bigBox2:hover #smallBall2
+        {               
+            transform: translate(40px, -40px) rotate(360deg);
+            color: red;
+            
+        }
+        #bigBox2:hover #smallBall3
+        {                    
+            transform: translate(-40px, 40px) rotate(-360deg);            
+            color: red;       
+        }
+        #bigBox2:hover #smallBall4
+        {               
+            transform: translate(40px, 40px) rotate(360deg);                        
+            color: red;           
         }
 
     </style>
@@ -144,9 +170,9 @@
         <input type="checkbox" id="trigger" /> -->
         <div id="bigBall">
             <div id="smallBall1">1</div>
-            <!-- <div id="smallBall2">2</div>
+            <div id="smallBall2">2</div>
             <div id="smallBall3">3</div>
-            <div id="smallBall4">4</div>         -->
+            <div id="smallBall4">4</div>        
         </div>
     </div>
     <span id="counter">0</span>

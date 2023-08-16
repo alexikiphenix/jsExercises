@@ -97,7 +97,28 @@
             rotate: 360deg;
             background-color: rgb(22, 48, 190);
         }
+        #bigBox2
+        {
+            height: 50vh;
+            width: 50vh;
+            border: 1px solid black;
+        }
+        #bigBall
+        {
+            position: relative;
+            height: 20vh;
+            width: 20vh;
+            border-radius: 50%;
+            border: 1px solid black;
 
+        }
+        [id^="smallBall"]
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        
     </style>
     <title>Menu type 3</title>
 </head>
@@ -110,6 +131,16 @@
         <div id="subMenu2">menu 2</div>
         <div id="subMenu3">menu 3</div>
         <div id="subMenu4">menu 4</div>        
+    </div>
+    <div id="bigBox2">              
+        <!-- <label id="triggerLabel" for="trigger">trigger</label>
+        <input type="checkbox" id="trigger" /> -->
+        <div id="bigBall">
+            <div id="smallBall1">1</div>
+            <div id="smallBall2">2</div>
+            <div id="smallBall3">3</div>
+            <div id="smallBall4">4</div>        
+        </div>
     </div>
     <span id="counter">0</span>
 

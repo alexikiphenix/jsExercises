@@ -110,22 +110,21 @@
             display: grid;
             place-content: center;
             position: relative;
-            height: 20vh;
-            width: 20vh;
+            height: 7vh;
+            width: 7vh;
             border-radius: 50%;
-            border: 1px solid black;
-
+            border: 1px solid red;
         }
         [id^="smallBall"]
         {
             display: grid;
-            position: absolute;            
             place-content: center;
+            position: absolute;            
             /* display: none; */
-            height: 1.5rem;
-            width: 1.5rem;
             left: 50%;
             top: 50%;
+            height: 0;
+            width: 0;
             translate: -50% -50%;
             transition-duration: 5s;  
             padding: .3rem;       
@@ -136,9 +135,9 @@
         }
      
         #bigBall:hover #smallBall1
-        {     
+        {          
             color: red;
-           transform: translate(-40px, -40px) rotate(-360deg);
+            transform: translate(-40px, -40px) rotate(-360deg);
         }
         #bigBall:hover #smallBall2
         {               

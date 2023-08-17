@@ -125,6 +125,7 @@
             top: 50%;
             height: 0;
             width: 0;
+            overflow: hidden;
             translate: -50% -50%;
             transition-duration: 5s;  
             padding: .3rem;       
@@ -155,6 +156,13 @@
             transform: translate(40px, 40px) rotate(360deg);                        
             color: rgb(0, 255, 55);           
         }
+        #test
+        {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            border: 1px solid black;
+        }
 
     </style>
     <title>Menu type 3</title>
@@ -180,6 +188,8 @@
         </div>
     </div>
     <span id="counter">0</span>
+
+    <div id="test">7</div>
 
     <script>
         const bigBox = document.getElementById('bigBox');

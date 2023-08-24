@@ -30,6 +30,7 @@
                 document.head.append(element);
 
                 // resolve()
+                element.onload = () resolve(`fichier ${script} est bien intégré`)
 
             });
         }

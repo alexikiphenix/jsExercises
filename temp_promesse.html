@@ -21,11 +21,16 @@
         });
 
         function loadScript(script)
-        {
+        {            
             return new Promise((resolve, reject) =>
             {
+                // tâches asynchrones
                 let element = document.createElement('script');
-                element.src = "test_files/test_asynchronous.js"
+                element.src = script;
+                document.head.append(element);
+
+                // resolve()
+
             });
         }
     

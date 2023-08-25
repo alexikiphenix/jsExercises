@@ -29,8 +29,12 @@
                 element.src = script;
                 document.head.append(element);
 
+                // 2 possibilités resolve ou reject :
                 // resolve()
-                element.onload = () resolve(`fichier ${script} est bien intégré`)
+                element.onload = () => resolve(`fichier ${script} est bien intégré`);
+
+                // reject()
+                element.onerror = () => reject(new Error(`Erreur ${script}`));
 
             });
         }

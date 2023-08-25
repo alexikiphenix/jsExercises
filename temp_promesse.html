@@ -40,21 +40,26 @@
             });
         }
 
-        const myPromise = loadScript('OFFtest_files/test_asynchronous.js');
+        const myPromise = loadScript('test_files/test_asynchronous.js');
 
         // then (signifie puis, ensuite... ) cela désigne ce que l'on fait suite au retour de la promesse
-        myPromise.then
-        (
-            function(result) 
-            {
-                console.log(result);
-                console.log(myPromise);
-            },
-            function(error)
-            {
-                console.log(error);
-            }
-        )
+        // myPromise.then
+        // (
+        //     function(result) 
+        //     {
+        //         console.log(result);
+        //         console.log(myPromise);
+        //     },
+        //     function(error)
+        //     {
+        //         console.log(error);
+        //     }
+        // )
+
+
+        // on pourrait aussi utiliser catch :
+        loadScript('OFFtest_files/test_asynchronous.js')
+        .catch(console.log);
     
     </script>
 </body>

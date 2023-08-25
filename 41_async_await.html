@@ -50,7 +50,8 @@
         {
             try
             {
-                const script1 = loadScript('test_files/test_asynchronous.js')
+                const script1 = await loadScript('test_files/test_asynchronous.js');
+                console.log(script1);
             }
             catch(error)
             {

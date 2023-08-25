@@ -51,11 +51,14 @@
             try
             {
                 const script1 = await loadScript('test_files/test_asynchronous.js');
-                console.log(script1);
+                console.log(script1);                
+                const script2 = await loadScript('test_files/test_asynchronous2.js');
+                console.log(script2);                
             }
             catch(error)
             {
                 console.log(error);
+                document.head.lastChild.remove();
             }
         }
     

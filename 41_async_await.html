@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test promises</title>
+</head>
+<body>    
+    <script>        
+        // Les promesses permettent de représenter l'état d'une opération asynchrone
+        // 3 états possibles : En cours | Réalisé | Echoué
+        // Les promesses ne changent jamais d'état
+
+        const myPromiseTest = new Promise((resolve, reject) =>
+        {
+            // Tâches asynchrones
+            
+            // Promesse réalisée
+
+            // Promesse échouée
+        });
+
+        function loadScript(script)
+        {            
+            return new Promise((resolve, reject) =>
+            {
+                // tâches asynchrones
+                let element = document.createElement('script');
+                element.src = script;
+                document.head.append(element);
+
+                // 2 possibilités resolve ou reject :
+                // resolve()
+                // onload veut dire lorsque l'élément sera chargé dans la page.
+                element.onload = () => resolve(`fichier ${script} est bien intégré`);
+
+                // reject()
+                // onerror signifie dès qu'il y aura une erreur.
+                element.onerror = () => reject(new Error(`Il y a une erreur : ${script}`));
+            });
+        }
+
+        const myPromise = loadScript('test_files/test_asynchronous.js');
+
+        // then (signifie puis, ensuite... ) cela désigne ce que l'on fait suite au retour de la promesse
+        // myPromise.then
+        // (
+        //     function(result) 
+        //     {
+        //         console.log(result);
+        //         console.log(myPromise);
+        //     },
+        //     function(error)
+        //     {
+        //         console.log(error);
+        //     }
+        // )
+
+
+        // on pourrait aussi utiliser catch :
+        // loadScript('test_files/test_asynchronous.js')
+        // .catch(console.log);
+    
+    </script>
+</body>
+</html>

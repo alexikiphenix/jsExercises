@@ -11,7 +11,7 @@
         // 3 états possibles : En cours | Réalisé | Echoué
         // Les promesses ne changent jamais d'état
 
-        const myPromise = new Promise((resolve, reject)=>
+        const myPromiseTest = new Promise((resolve, reject)=>
         {
             // Instructions asynchrones
             
@@ -31,13 +31,17 @@
 
                 // 2 possibilités resolve ou reject :
                 // resolve()
+                // onload veut dire lorsque l'élément sera chargé dans la page.
                 element.onload = () => resolve(`fichier ${script} est bien intégré`);
 
                 // reject()
+                // onerror signifie dès qu'il y aura une erreur.
                 element.onerror = () => reject(new Error(`Erreur ${script}`));
 
             });
         }
+
+        const myPromise = loadScript('test_files/test_asynchronous.js');
     
     </script>
 </body>

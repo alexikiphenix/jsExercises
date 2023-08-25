@@ -7,18 +7,24 @@
 </head>
 <body>    
     <script>        
-        // Les promesses permettent de représenter l'état d'une opération asynchrone
-        // 3 états possibles : En cours | Réalisé | Echoué
-        // Les promesses ne changent jamais d'état
 
-        const myPromiseTest = new Promise((resolve, reject) =>
-        {
-            // Tâches asynchrones
-            
-            // Promesse réalisée
+        // Async et Await sont des "sucres syntaxiques" car elles n'apportent pas de nouvelles fonctionnalités
+        // on place async devant une fonction pour la forcer à retourner une promesse
+        ///
 
-            // Promesse échouée
-        });
+
+        // async function sayHello() 
+        // {
+        //     const myPromise = new Promise((resolve, reject) =>            
+        //     {
+        //         setTimeout(()=> resolve('Promesse réalisée'), 4000) ;
+        //     });
+
+        //     let result = await myPromise;
+        //     console.log(result);
+        // }
+
+        // sayHello();
 
         function loadScript(script)
         {            
@@ -40,26 +46,17 @@
             });
         }
 
-        const myPromise = loadScript('test_files/test_asynchronous.js');
+        async function result() 
+        {
+            try
+            {
+                const script1 = loadScript('test_files/test_asynchronous.js')
+            }
+            catch(error)
+            {
 
-        // then (signifie puis, ensuite... ) cela désigne ce que l'on fait suite au retour de la promesse
-        // myPromise.then
-        // (
-        //     function(result) 
-        //     {
-        //         console.log(result);
-        //         console.log(myPromise);
-        //     },
-        //     function(error)
-        //     {
-        //         console.log(error);
-        //     }
-        // )
-
-
-        // on pourrait aussi utiliser catch :
-        // loadScript('test_files/test_asynchronous.js')
-        // .catch(console.log);
+            }
+        }
     
     </script>
 </body>

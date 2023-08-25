@@ -58,11 +58,24 @@
     <script>
         const bgBox = document.querySelector('#bgBox');
         const btnValidate = document.getElementById('btnValidate');
-        const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
-        'bg06.jpg', 'bg07.jpg', 'bg08.jpg', 'bg09.jpg', 'bg10.jpg', 'bg11.jpg', 'bg12.jpg',
-        'bg13.jpg', 'bg14.jpg', 'bg15.jpg', 'bg16.jpg', 'bg17.jpg', 'bg18.jpg', 'bg19.jpg', 
-        'bg20.jpg'
-    ];
+    //     const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
+    //     'bg06.jpg', 'bg07.jpg', 'bg08.jpg', 'bg09.jpg', 'bg10.jpg', 'bg11.jpg', 'bg12.jpg',
+    //     'bg13.jpg', 'bg14.jpg', 'bg15.jpg', 'bg16.jpg', 'bg17.jpg', 'bg18.jpg', 'bg19.jpg', 
+    //     'bg20.jpg'
+    // ];
+        const generateBgArray = (nbBg = Number) =>
+        {
+            const tmpArray = [];
+            for(let i = 1; i <= nbBg; i++)
+            {
+                if(nbBg.length <= 2)
+                    tmpArray.push(`bg0${nbBg}.jpg`);
+                else
+                    tmpArray.push(`bg${nbBg}.jpg`);
+            }
+        }
+
+
         const backgroundsObj = {};
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];

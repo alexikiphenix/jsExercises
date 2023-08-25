@@ -11,9 +11,9 @@
         // 3 états possibles : En cours | Réalisé | Echoué
         // Les promesses ne changent jamais d'état
 
-        const myPromiseTest = new Promise((resolve, reject)=>
+        const myPromiseTest = new Promise((resolve, reject) =>
         {
-            // Instructions asynchrones
+            // Tâches asynchrones
             
             // Promesse réalisée
 
@@ -36,7 +36,7 @@
 
                 // reject()
                 // onerror signifie dès qu'il y aura une erreur.
-                element.onerror = () => reject(new Error(`Il y a une erreur ${script}`));
+                element.onerror = () => reject(new Error(`Il y a une erreur : ${script}`));
             });
         }
 

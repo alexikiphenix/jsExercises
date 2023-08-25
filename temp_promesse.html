@@ -36,12 +36,25 @@
 
                 // reject()
                 // onerror signifie dès qu'il y aura une erreur.
-                element.onerror = () => reject(new Error(`Erreur ${script}`));
-
+                element.onerror = () => reject(new Error(`Il y a une erreur ${script}`));
             });
         }
 
-        const myPromise = loadScript('test_files/test_asynchronous.js');
+        const myPromise = loadScript('OFFtest_files/test_asynchronous.js');
+
+        // then (signifie puis, ensuite... ) cela désigne ce que l'on fait suite au retour de la promesse
+        myPromise.then
+        (
+            function(result) 
+            {
+                console.log(result);
+                console.log(myPromise);
+            },
+            function(error)
+            {
+                console.log(error);
+            }
+        )
     
     </script>
 </body>

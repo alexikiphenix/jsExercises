@@ -69,19 +69,22 @@
             for(let i = 1; i <= nbBg; i++)
             {
                 if(nbBg.length <= 2)
-                    tmpArray.push(`bg0${nbBg}.jpg`);
+                    tmpArray.push(`bg0${i}.jpg`);
                 else
-                    tmpArray.push(`bg${nbBg}.jpg`);
+                    tmpArray.push(`bg${i}.jpg`);
             }
+            return tmpArray;
         }
 
         const backgrounds = generateBgArray(20);
+
+        console.log(backgrounds);
 
         const backgroundsObj = {};
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];
 
-        console.log(backgrounds.toString());
+       console.log(backgrounds.toString());
 
         const makeBoard = () =>
         {

@@ -119,11 +119,12 @@
             let data = await myRequest.json();
             console.log(data.EUR);
             console.log(data.EUR.buy);
+            document.getElementById('boxTxt').textContent = data.EUR.buy;
         };
     }
     
     getBitcoinValue(url);
-    // setInterval(getBitcoinValue, 1000, `https://blockchain.info/ticker`);
+    //setInterval(getBitcoinValue, 1000, `https://blockchain.info/ticker`);
         
         
         

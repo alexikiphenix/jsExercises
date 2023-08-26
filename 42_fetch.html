@@ -109,10 +109,16 @@
         const myRequest = await fetch(url, {
             method: 'GET'
         })
-
+        console.log(myRequest);
         if(!myRequest.ok)
         {
             alert('Error');
+        }
+        else
+        {
+            let data = await myRequest.json();
+            console.log(data.EUR);
+            console.log(data.EUR.buy);
         };
     }
     

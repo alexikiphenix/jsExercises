@@ -109,8 +109,14 @@
         const myRequest = await fetch(url, {
             method: 'GET'
         })
+
+        if(!myRequest.ok)
+        {
+            alert('Error');
+        };
     }
-        
+    
+    getBitcoinValue(url);
     // setInterval(getBitcoinValue, 1000, `https://blockchain.info/ticker`);
         
         

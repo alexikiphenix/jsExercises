@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const url = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
+
+        const myRequest = new XMLHttpRequest();
+        myRequest.open('POST', url);
+        myRequest.responseType = 'json';
+        myRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+        myRequest.send('firstname=Adonkor');
+
+        myRequest.onload = () =>
+        {
+
+            if(myRequest.readyState === XMLHttpRequest.DONE) 
+            {
+                if(myRequest.status === 200)
+                {
+                    myData = myRequest.response;
+                    console.log(myData);
+                }
+                else
+                console.log('Erreur données distantes');
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

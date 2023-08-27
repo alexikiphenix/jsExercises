@@ -71,7 +71,7 @@
             let data = await myRequest.json();
             console.log(data.EUR);
             console.log(data.EUR.buy);
-            document.getElementById('boxTxt').textContent = `${data.EUR.buy} €`;
+            document.querySelector('#boxTxt').textContent = `${data.EUR.last} €`;
         };
     }
     

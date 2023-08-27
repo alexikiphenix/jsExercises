@@ -10,30 +10,35 @@
     <script>
         const url = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
 
-        const myRequest = new XMLHttpRequest();
-        myRequest.open('POST', url);
-        myRequest.responseType = 'json';
-        myRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        // const myRequest = new XMLHttpRequest();
+        // myRequest.open('POST', url);
+        // myRequest.responseType = 'json';
+        // myRequest.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
 
-        myRequest.send('firstname=Adonkor');
+        // myRequest.send('firstname=Adonkor');
 
-        myRequest.onload = () =>
+        // myRequest.onload = () =>
+        // {
+
+        //     if(myRequest.readyState === XMLHttpRequest.DONE) 
+        //     {
+        //         if(myRequest.status === 200)
+        //         {
+        //             myData = myRequest.response;
+        //             console.log(myData);
+        //         }
+        //         else
+        //         console.log('Erreur données distantes');
+        //     }
+        // }
+        
+        const sendInfos = async () =>
         {
-
-            if(myRequest.readyState === XMLHttpRequest.DONE) 
-            {
-                if(myRequest.status === 200)
-                {
-                    myData = myRequest.response;
-                    console.log(myData);
-                }
-                else
-                console.log('Erreur données distantes');
-            }
+            const myRequest2 = await fetch(url, {method: 'POST'});
+            let myData = await myRequest2.json();
         }
 
-
-
+        console.log(myData);
     </script>
 </body>
 </html>

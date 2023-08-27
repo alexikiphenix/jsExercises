@@ -32,19 +32,21 @@
         //     }
         // }
         
-        const sendInfos = async () =>
+        const sendInfos = async (firstname) =>
         {
             const myRequest = await fetch(url, 
                 {
+                    // method : POST / PUT / PATCH (modifie une partie de donnée) / DELETE
                     method: 'POST',         
                     headers: {
                         'Content-type': 'application/x-www-form-urlencoded'  
                         // 'Content-type': 'application/json' ne marchera pas ici car nous devons envoyer
-                        // comme si c'était un formulaire avec méthode POST
+                        // comme si nous envoyons un véritable formulaire avec méthode POST
                     },    
-                    body: {
-                        'firstname': 'Adonkor'
-                    }
+                    // new URLSearchParams() pas utile si envoie en json : 'Content-type': 'application/json'
+                    body: new URLSearchParams({
+                        firstname
+                    })
                 }
             );
             
@@ -57,7 +59,7 @@
             }
         }
 
-        sendInfos();
+        sendInfos('Adonkor');
     </script>
 </body>
 </html>

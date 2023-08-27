@@ -59,56 +59,8 @@
 
     const getBitcoinValue = async (url) =>
     {
-    //     // Création de la requête
-    //     // Nous créons un nouvel objet XMLHttpRequest
-    //     let myRequest = new XMLHttpRequest();           
-        
-    //     // Nous appliquons la méthode open qui requiert 
-    //     // 2 paramètres GET / POST et l'URL
-    //     myRequest.open('GET', url);     
-        
-    //     // Nous indiquons que nous souhaitons récupérer les données 
-    //     // au format JSON
-    //     myRequest.responseType = 'json'; 
-        
-    //     // Nous envoyons une requête
-    //     myRequest.send();
-        
-    //     // La méthode onload permet d'attendre que la requête soit
-    //     // chargée (loaded) avant d'exécuter une fonction
-        
-    //     // Nous comparons l'état de notre requête
-    //     // par rapport à l'état souhaité XMLHttpRequest.DONE
-    //     // la propriété DONE représente en quelque sorte
-    //     // un état prédéfini d'une requête terminée.     
-        
-    //     myRequest.onload = function() 
-    //     {      
-    //         if(myRequest.readyState === XMLHttpRequest.DONE)
-    //         {
-    //             if(myRequest.status === 200)
-    //             {                
-    //                 let myData = myRequest.response;                 
-    //                 console.log(myData.EUR.last);                   
-    //                 boxTxt.innerText = `${myData.EUR.last}€`;
-    //                 if(myData.EUR.last > previousValue)
-    //                     console.log('Hausse');
-    //                 else if(myData.EUR.last < previousValue)
-    //                     console.log('Baisse');
-
-    //                 previousValue = myData.EUR.last;
-    //             }
-    //             else
-    //             {
-    //                 boxTxt.innerText = `Erreur données inaccessibles`;
-    //             }      
-    //         }
-    //     }
-        
         // Fetch nécessite 2 choses : 1 url et 1 objet js
-        const myRequest = await fetch(url, {
-            method: 'GET'
-        })
+        const myRequest = await fetch(url, {method: 'GET'});
         console.log(myRequest);
         if(!myRequest.ok)
         {

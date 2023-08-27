@@ -32,13 +32,20 @@
         //     }
         // }
         
-        const sendInfos = async () =>
+        const sendInfos = async (url) =>
         {
-            const myRequest2 = await fetch(url, {method: 'POST'});
-            let myData = await myRequest2.json();
+            const myRequest = await fetch(url, {method: 'POST'});
+            
+            if(!myRequest.ok)
+                console.log('Erreur communication avec API');
+            else
+            {
+                let myData = await myRequest.json();
+                console.log(myData);
+            }
         }
 
-        console.log(myData);
+        sendInfos(url);
     </script>
 </body>
 </html>

@@ -78,8 +78,6 @@
 
         const backgrounds = generateBgArray(20);
 
-        console.log(backgrounds);
-
         const backgroundsObj = {};
         backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
         'bg06.jpg'];
@@ -137,6 +135,7 @@
         const backgroundsStr = localStorage.getItem('myBackgrounds');
         const backgroundsSelected = backgroundsStr.split(',');
         
+        console.log(backgroundsSelected);
 
     </script>
 </body>

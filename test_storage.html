@@ -102,6 +102,11 @@
             )
         }
 
+        const putBgInStorage = (array)=>
+        {
+            localStorage.setItem('myBackgrounds', array);          
+        }
+
         const getSelectedBg = () =>
         {
             const selectedBg = document.querySelectorAll('.selected');
@@ -115,11 +120,6 @@
             return selectedBgArray;
         }
         
-        const putBgInStorage = (array)=>
-        {
-            localStorage.setItem('myBackgrounds', array);
-            console.log(localStorage.getItem('myBackgrounds'));
-        }
         
         btnValidate.addEventListener('click', () =>
         {
@@ -131,12 +131,10 @@
         
         localStorage.setItem('myBackgrounds', backgrounds);
 
-        console.log(localStorage.getItem('myBackgrounds'));
+
         const backgroundsStr = localStorage.getItem('myBackgrounds');
         const backgroundsSelected = backgroundsStr.split(',');
         
-        console.log(backgroundsSelected);
-
     </script>
 </body>
 </html>

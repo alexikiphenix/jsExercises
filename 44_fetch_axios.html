@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const url = 'https://blockchain.info/tickerOFF';
+
+        const getBitcoinValue = async () =>
+        {    
+            // const myRequest = await fetch(url, {method: 'GET'});
+            // console.log(myRequest);
+            // if(!myRequest.ok)
+            // {
+            //     alert('Error');
+            // }
+            // else
+            // {
+            //     let data = await myRequest.json();
+            //     console.log(data.EUR);
+            //     console.log(data.EUR.buy);
+            //     document.querySelector('#boxTxt').textContent = `${data.EUR.last} €`;
+            // };
+            axios.get(url)
+                .then(function(myData)
+                    {
+                        console.log(myData.data.EUR.buy);
+                    }
+                )
+                .catch((error) => {
+                    console.log(error);
+                })
+
+        }
+    
+    getBitcoinValue();
+    console.log("Le code continue même en cas d'erreur");
+    //setInterval(getBitcoinValue, 1000, `https://blockchain.info/ticker`);
+        
+        
+
+    </script>
+</body>
+</html>

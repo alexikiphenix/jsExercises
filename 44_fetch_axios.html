@@ -37,6 +37,10 @@
                     document.querySelector('span').textContent = "Données inaccessibles";
                     console.log(error);
                 })
+                .then(() =>
+                {
+                    console.log('travail terminé');
+                })
                 // le catch est bien fonctionnel en cas d'erreur
         }
     

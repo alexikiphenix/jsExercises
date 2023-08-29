@@ -29,12 +29,12 @@
             // };
             axios.get(url)
                 .then(function(myData)
-                    {
-                        console.log(myData.data.EUR.buy);
-                        document.querySelector('span').textContent = myData.data.EUR.buy;
-                    }
-                )
+                {
+                    console.log(myData.data.EUR.buy);
+                    document.querySelector('span').textContent = myData.data.EUR.buy;
+                })
                 .catch((error) => {
+                    document.querySelector('span').textContent = "Données inaccessibles";
                     console.log(error);
                 })
                 // le catch est bien fonctionnel en cas d'erreur

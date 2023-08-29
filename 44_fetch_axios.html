@@ -8,6 +8,7 @@
 </head>
 <body>
     
+    <p>La valeur du Bitcoin est de <span></span>€</p>
     <script>
         const url = 'https://blockchain.info/ticker';
 
@@ -30,6 +31,7 @@
                 .then(function(myData)
                     {
                         console.log(myData.data.EUR.buy);
+                        document.querySelector('span').textContent = myData.data.EUR.buy;
                     }
                 )
                 .catch((error) => {

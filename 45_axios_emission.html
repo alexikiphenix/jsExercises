@@ -62,8 +62,12 @@
 
         // sendInfos('Adonkor');
         axios.post(url)
-         .then(()=>{})
-         .catch(()=>{})
+         .then((myData)=>{
+            console.log(myData);
+         })
+         .catch((error)=>{
+            console.log('Données non récupérées');
+         })
     </script>
 </body>
 </html>

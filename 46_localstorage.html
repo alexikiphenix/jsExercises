@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1{text-align: center;}
+    </style>
     <title>Localstorage</title>
 </head>
 <body>
-    
+    <h1></h1>
     <script>
         // Différence localStorage et SessionStorage
         // LocalStorage stocke les informations après la fermeture du navigateur.
@@ -20,6 +23,18 @@
         // length (propriété permettant d'obtenir le nombre d'éléments)
         // removeItem() / clear() (supprime tout)
         // key([index]) : permet d'obtenir la clé qui est à un index précis
+        
+        if(localStorage.getItem('firstname'))
+        {
+
+        }
+        else
+        {
+            let firstname = prompt('Quel est votre prénom ?')
+            localStorage.setItem('firstname', firstname);
+            document.querySelector('h1').append(`${firstname}, bienvenue dans le monde de la programmation`);
+        }
+
 
     </script>
 </body>

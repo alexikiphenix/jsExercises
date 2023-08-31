@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // Créer un cookie
+        document.cookie = 'firstname=Mariam';
+        
+        // Afficher les cookies
+        console.log(document.cookie);
+        
+        
+        // Modifier un cookie
+        document.cookie='firstname=Juliana';
+        
+        // Effacer un cookie
+        document.cookie = 'firstname=';
+
+
+        // Options
+            // path rend le cookie disponible que pour le dossier ou les sous dossiers concernés
+            document.cookie = 'firstname=Carmen; path=/admin';
+
+            // domain rend le cookie disponible que pour le dossier ou les sous dossiers concernés
+            document.cookie = 'firstname=Carmen; path=/admin; domain=mondomaine.com';
+            
+            // expires donne une date d'expiration (au format UTC)
+            let date = new Date(Date.now() + 31536000000);
+            date = date.toUTCString(); // donne une universelle sans fuseau horaire spécifique (universel)
+            document.cookie = `firstname=Carmen; path=/admin; domain=mondomaine.com; expires=${date}`;
+           
+            // max-age donne une durée de vie en ms                         
+            let duree = 31536000000
+            document.cookie = `firstname=Carmen; path=/admin; domain=mondomaine.com; max-age=${duree};`;
+
+
+            // secure rend les cookies uniquement valables sur les sites sécurisés (https)
+            document.cookie = `firstname=Carmen; path=/admin; domain=http://127.0.0.1:5503; max-age=${duree};`;
+
+            console.log(document.cookie);
+
+
+
+    </script>
+</body>
+</html>

@@ -69,13 +69,16 @@
             }
         )
 
-        axiosInstancePost.post(url,
-            {
-                firstname: 'Janka'
-            }
+        axiosInstancePost.post(url, 
+            new URLSearchParams
+            (
+                {
+                    firstname: 'Janka'
+                }
+            )
         )
          .then((myData)=>{
-            console.log(myData);
+            console.log(myData.data);
          })
          .catch((error)=>{
             console.log('Données non récupérées');

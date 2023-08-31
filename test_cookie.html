@@ -43,8 +43,18 @@
             // secure rend les cookies uniquement valables sur les sites sécurisés (https)
             document.cookie = `firstname=Carmen; path=/admin; domain=http://127.0.0.1:5503; max-age=${duree};`;
 
-            console.log(document.cookie);
+        
 
+
+            document.cookie = `firstname=Thomas; max-age=15`;
+            
+            const showCookie = () =>
+            {
+                console.log('Cookie => '+document.cookie);
+            }
+
+            showCookie();
+            setTimeout(showCookie, 17000);
 
 
     </script>

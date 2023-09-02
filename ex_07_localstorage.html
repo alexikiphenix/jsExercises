@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* reset */
+        *{box-sizing: border-box;}
+        body{margin: 0;}
+
+        #wrapper{
+            display: grid;
+            justify-content: center; 
+            align-content: start;
+            min-height: 100vh;
+        }
+        header{min-height: 5vh; margin-bottom: 20vh; border: 1px solid black;}
+        h1, h2, .txtCenter{text-align: center;}
+
+    </style>
     <title>Theme switching</title>
 </head>
 <body>
@@ -12,8 +27,10 @@
         </header>
         <section>
             <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita!</h2>
+            <p class="txtCenter">
+                <span id="btnSwitch">Thème clair</span>
+            </p>
         </section>
-        <span id="btnSwitch">Thème clair</span>
     </div>
     
 </body>

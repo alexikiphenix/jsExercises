@@ -43,7 +43,7 @@
     </style>
     <title>Theme switching</title>
 </head>
-<body>
+<body class="manger boire voyager dormir">
     <div id="wrapper">
         <header>
             <h1>Bienvenue dans l'univers du JavaScript</h1>
@@ -63,6 +63,7 @@
         const btnSwitch = document.querySelector('#btnSwitch');
         const txtBtn = document.getElementById('txtBtn');
 
+        console.log(document.body.className.indexOf('voyager'));
         const setRecordedTheme = () =>
         {
             if(localStorage.getItem('themeColor') === "dark")
@@ -78,8 +79,10 @@
 
         const switchThemeColor = () =>
         {
+            // méthode 1 if(document.body.matches('.dark'))
+            // méthode 2 if(document.body.className.indexOf('dark') > -1)
             if (document.body.classList.contains('dark'))   
-            {
+            { 
                 document.body.classList.remove('dark');            
                 txtBtn.innerText = 'Mode sombre';
                 localStorage.removeItem('themeColor');

@@ -65,18 +65,14 @@
 
         const setRecordedTheme = () =>
         {
-            if(localStorage.getItem('themeColor'))
+            if(localStorage.getItem('themeColor') === "dark")
             {
-                if(localStorage.getItem('themeColor') === "dark")
-                {
-                    document.body.classList.add('dark');
-                    txtBtn.innerText = `Mode clair`;
-                }
+                document.body.classList.add('dark');
+                txtBtn.innerText = `Mode clair`;
             }
             else
-                txtBtn.innerText = `Mode clair`;
-        }
-        
+                txtBtn.innerText = `Mode sombre`;
+        }        
         
         setRecordedTheme();
 

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d036c570ce.js" crossorigin="anonymous"></script>
     <style>
         /* reset */
         *{box-sizing: border-box;}
@@ -28,6 +29,17 @@
         {
             transform: scale(.9)
         }
+        .dark
+        {
+            color: white;
+            background-color: black;
+        }
+
+        .dark #btnSwitch
+        {
+            color: black;
+            background-color: rgb(248, 253, 245);
+        }
     </style>
     <title>Theme switching</title>
 </head>
@@ -38,11 +50,58 @@
         </header>
         <section>
             <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita!</h2>
-            <p class="txtCenter">
-                <span id="btnSwitch">Thème sombre</span>
-            </p>
+            <div class="txtCenter">
+                <div id="btnSwitch">
+                    <i class="fa-regular fa-sun"></i>
+                     <span id="txtBtn"></span>
+                </div>
+            </div>
         </section>
     </div>
     
+    <script>
+        const btnSwitch = document.querySelector('#btnSwitch');
+        const txtBtn = document.getElementById('txtBtn');
+
+        const setRecordedTheme = () =>
+        {
+            if(localStorage.getItem('themeColor'))
+            {
+                if(localStorage.getItem('themeColor') === "dark")
+                {
+                    document.body.classList.add('dark');
+                    txtBtn.innerText = `Mode clair`;
+                }
+            }
+            else
+                txtBtn.innerText = `Mode clair`;
+        }
+        
+        
+        setRecordedTheme();
+
+        const switchThemeColor = () =>
+        {
+            if (document.body.classList.contains('dark'))   
+            {
+                document.body.classList.remove('dark');            
+                txtBtn.innerText = 'Mode sombre';
+                localStorage.removeItem('themeColor');
+            }          
+            else
+            {
+                document.body.classList.add('dark');
+                txtBtn.innerText = 'Mode clair';
+                localStorage.setItem('themeColor', 'dark');
+            }
+        }
+
+        btnSwitch.addEventListener('click', () =>
+        {
+            switchThemeColor();
+        })
+
+
+    </script>
 </body>
 </html>

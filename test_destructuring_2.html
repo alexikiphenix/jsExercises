@@ -22,20 +22,22 @@
             }
         }
 
-        const Hero1 = new Hero("Iron-Man", "laser");
+        const hero1 = new Hero("Iron-Man", "laser");
 
         // destructuring object => destructuration d'un objet (affectation destructurée)
-        let {name, power1} = Hero1;
+        let {name, power1} = hero1;
         console.log(name);
         console.log(power1);
 
-        const Hero2 = new Hero("Black Panther", "agility");
-        const Hero3 = new Hero("Thor", "Lightning");
+        const hero2 = new Hero("Black Panther", "agility");
+        const hero3 = new Hero("Thor", "Lightning");
 
         heroes = [hero1, hero2, hero3]       
 
         const [p1, p2, p3] = heroes;
         console.log(p1);
+        console.log(p2);
+        console.log(p3);
 
     </script>
 </body>

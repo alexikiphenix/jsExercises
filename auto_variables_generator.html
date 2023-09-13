@@ -8,8 +8,12 @@
 <body>
     
     <script>
-
-        
+        const getRandomInt = (nbMin, nbMax) =>
+        {
+            const min = Math.ceil(nbMin);
+            const max = Math.floor(nbMax);
+            return Math.floor(Math.random()*(max-min+1) + min);
+        }
 
         class Hero {
             constructor(name, power)
@@ -32,6 +36,11 @@
         console.log(heroe2);
         console.log(heroe3);
         console.log(heroe4);
+
+    for(let i = 0; i < 10; i++)
+    {
+        console.log(getRandomInt());
+    }
     </script>
 </body>
 </html>

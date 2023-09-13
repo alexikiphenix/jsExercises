@@ -8,15 +8,30 @@
 <body>
     
     <script>
+
+        
+
+        class Hero {
+            constructor(name, power)
+            {
+                this.name = name;
+                this.power = power;
+            }
+        }
         // creating 5 heroes
-        for(let i = 1; i <= 5; i++)
+        const createHeroes = () =>
         {
-            window[`heroe${i}`] = new Object();
+            for(let i = 1; i <= 5; i++)
+            {
+                window[`heroe${i}`] = new Hero('Thorval', 'invisiblity');                
+            }
         }
 
+        createHeroes();
         console.log(heroe1);
         console.log(heroe2);
         console.log(heroe3);
+        console.log(heroe4);
     </script>
 </body>
 </html>

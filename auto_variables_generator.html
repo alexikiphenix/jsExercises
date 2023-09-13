@@ -19,11 +19,19 @@
         }
 
 
-        class Hero {
-            constructor(name, power)
+        class Hero {             
+            constructor(name)
             {
+                this.names = ['Donkor', 'Silvania', 'Beth', 'Arior', 'Kernus'],
+                this.powers = ['speed', 'strenght', 'force', 'fly', 'lightning'],
                 this.name = name;
-                this.power = power;
+                this.power = (() =>
+                    {
+                        const nbPower = getRandomInt(0,4);
+                        let nbPower2 = 2;
+                        return this.powers[nbPower2];
+                    }
+                )();
             }
         }
         // creating 5 heroes

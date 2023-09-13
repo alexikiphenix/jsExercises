@@ -8,12 +8,16 @@
 <body>
     
     <script>
+        const powers = [
+            'speed', 'strenght', 'force', 'fly', 'lightning'
+        ]
         const getRandomInt = (nbMin, nbMax) =>
         {
             const min = Math.ceil(nbMin);
             const max = Math.floor(nbMax);
             return Math.floor(Math.random()*(max-min+1) + min);
         }
+
 
         class Hero {
             constructor(name, power)

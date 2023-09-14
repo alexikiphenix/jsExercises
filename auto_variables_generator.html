@@ -8,6 +8,7 @@
 <body>
     
     <script>
+        
         const getRandomInt = (nbMin, nbMax) =>
         {
             const min = Math.ceil(nbMin);
@@ -15,33 +16,26 @@
             return Math.floor(Math.random()*(max-min+1) + min);
         }
 
+        const names = ['Donkor', 'Silvania', 'Beth', 'Arior', 'Kernus'];
+
         const powers = [
             'speed', 'strenght', 'force', 'fly', 'lightning'
-        ]
-        const powers2 = [
-            'speed', 'strenght', 'force', 'fly', 'lightning'
-        ]
-
+        ];
         
-        
-        while(powers2.length > 0)
-        {
-            const nbPower = getRandomInt(0, powers2.length-1);                
-            powers2.splice(nbPower, 1);            
-        }
-
-
         class Hero {             
-            constructor(name)
-            {
-                this.names = ['Donkor', 'Silvania', 'Beth', 'Arior', 'Kernus'],
-                this.powers = ['speed', 'strenght', 'force', 'fly', 'lightning'],
-                this.name = name;
+            constructor()
+            {                 
+                this.name = (() =>
+                    {
+                        const name = getRandomInt(0, names.length-1);
+                        return names.splice(name, 1);
+                    }
+                )();
+
                 this.power = (() =>
                     {
-                        // const nbPower = getRandomInt(0, this.powers.length-1);                        
-                        // return this.powers.splice(nbPower, 1);
-                        this.powers.splice(0, 1);
+                        const nbPower = getRandomInt(0, powers.length-1);                        
+                        return powers.splice(nbPower, 1);                        
                     }
                 )();
             }
@@ -62,25 +56,6 @@
         console.log(heroe3);
         console.log(heroe4);
         console.log(heroe5);
-
-        const myObjArr = {choice : ['i0', 'i1', 'i2', 'i3', 'i4']};
-        console.log(myObjArr);
-
-        myObjArr.choice.splice(0, 1);
-        console.log(myObjArr);
-        
-        myObjArr.choice.splice(0, 1);
-        console.log(myObjArr);
-        
-        myObjArr.choice.splice(0, 1);
-        console.log(myObjArr);
-        
-        // myObjArr.choice.splice(0, 1);
-        // console.log(myObjArr);
-        
-        // myObjArr.choice.splice(0, 1);
-        // console.log(myObjArr);
-
 
 
     </script>

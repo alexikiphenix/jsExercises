@@ -20,7 +20,7 @@
     <script>
          
         const url = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
-
+        let inputText = "";
         const showResult = (person) =>
         {
             const element = document.createElement('li');
@@ -57,7 +57,12 @@
             }
         }
 
-        searchPerson('Lydia');
+        document.querySelector('#search').addEventListener('input', (e)=>{
+            inputText += e;
+            console.log(e);
+            // console.log(inputText);
+            searchPerson(inputText);
+        })
     </script>
 
 </body>

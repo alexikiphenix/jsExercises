@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #wrapper{display: grid; place-content: center; width: 100vw; height: 100vh;}
+
+    </style>
+    <title>Test fetch send</title>
+</head>
+<body>
+    <div id="wrapper">
+        <p id="greetings">Welcome</p>
+    </div>
+
+    <script>
+        const url = 'https://lesoublisdelinfo.com/api.php';    
+        const url2 = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
+
+        const sendInfos = async (prenom) =>
+        {
+            const myRequest = await fetch(url, 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    prenom // = prenom: prenom (verson raccourcie car clé et valeur sont identiques)
+                })                     
+            });
+
+            if(!myRequest.ok)
+            {
+                console.log('Error');
+                console.log(myRequest);
+            }
+            else
+            {
+                const myData = await myRequest.json();
+                console.log(myData);
+            }
+
+        }
+
+        sendInfos('Jane');
+
+
+        const sendInfos2 = async (firstname) =>
+        {
+            const myRequest = await fetch(url2, 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    // si envoie json 'Content-Type': 'application/json'
+                },
+                body: new URLSearchParams({
+                    firstname // = prenom: prenom (verson raccourcie car clé et valeur sont identiques)
+                })                     
+            });
+
+            if(!myRequest.ok)
+            {
+                console.log('Error');
+                console.log(myRequest);
+            }
+            else
+            {
+                const myData = await myRequest.json();
+                console.log(myData);
+            }
+
+        }
+
+        sendInfos2('Martina');
+
+
+    </script>
+</body>
+</html>

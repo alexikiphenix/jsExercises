@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event handler</title>
+</head>
+<body>
+    
+    <section>
+        <h1 class="important">Gestion des évènements</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Laudantium quisquam natus illo est.</p>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script>
+        // JS
+
+        //let size = document.querySelector('p:first-of-type').clientHeight;
+        document.querySelector('h1').addEventListener('click', ()=>{
+            document.querySelector('h1').style.border = `1px dotted red`;
+        });
+
+
+        const paragraph = document.querySelectorAll('p');
+        console.log(paragraph);
+
+        //paragraph.forEach(element => console.log(element));
+        // paragraph.map(element => console.log(element))
+        paragraph.forEach(element => {  
+            //element.addEventListener('click', ()=>{element.style.fontSize = `${++element.clientHeight}px`})
+            const reducer = document.createElement('span');
+            element.appendChild(reducer);          
+            element.addEventListener('click', ()=>{                
+                let size = window.getComputedStyle(element).fontSize;               
+                let sizeWithoutPx = size.replace(/[a-z]+/g, "");  
+                sizeWithoutPx++;                         
+                element.style.fontSize = `${sizeWithoutPx}px`;            
+                reducer.innerText = `- ${window.getComputedStyle(element).fontSize}`; 
+            })
+            element.after('--- fin paragraphe ----');
+        })
+
+        // jQuery
+        // équivalent de getAttribute
+        $('h1').click(() => 
+            {
+                $('h1').css('border', '1px solid green');            
+            }
+        );
+       
+        // Equivalent de setAttribute
+      
+
+        
+    </script>
+</body>
+</html>

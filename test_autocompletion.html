@@ -51,15 +51,17 @@
             }
             else
             {
-                const myData = await myRequest.json();
-                console.log(myData.firstname);
-                showResult(myData.firstname);                
+                const myData = await myRequest.json();                
+                showResult(myData.greetings);                
             }
         }
 
         document.querySelector('#search').addEventListener('input', (e)=>{
-            inputText += e;
-            console.log(e);
+            if(e.data !== null && e.data !== undefined && e.data !== "")
+                inputText += e.data;
+            
+            console.log(inputText);
+            
             // console.log(inputText);
             searchPerson(inputText);
         })

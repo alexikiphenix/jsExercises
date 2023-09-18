@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #wrapper{display: grid; justify-content: center; align-content: start; width: 100vw; height: 100vh;}
+
+    </style>
+    <title>Test fetch send</title>
+</head>
+<body>
+    <div id="wrapper">
+        <label for="search">Saisir prénom nom</label>
+        <input type="search" id="search" />
+        <ul id="listResults">            
+        </ul>
+    </div>
+
+    <script>
+         
+        const url = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
+
+        const showResult = (person) =>
+        {
+            const element = document.createElement('li');
+            element.textContent = `${person}`;
+            // document.querySelector('#listResults').append(`essai ${element}`);
+            document.querySelector('#listResults').append(element);
+        }
+
+        const searchPerson = async () =>
+        {
+            const myRequest = await fetch(url,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'                        
+                    }                  
+                }
+            )
+
+            if(!myRequest.ok)
+            {
+                console.log('error');
+            }
+            else
+            {
+                const myData = await myRequest.json();
+                console.log(myData.firstname);
+                showResult(myData.firstname);
+                
+            }
+        }
+
+        searchPerson();
+    </script>
+
+</body>

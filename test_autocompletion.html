@@ -29,14 +29,19 @@
             document.querySelector('#listResults').append(element);
         }
 
-        const searchPerson = async () =>
+        const searchPerson = async (firstname) =>
         {
             const myRequest = await fetch(url,
                 {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'                        
-                    }                  
+                    },
+                    body: new URLSearchParams(
+                        {
+                            firstname
+                        }
+                    )                  
                 }
             )
 
@@ -48,12 +53,11 @@
             {
                 const myData = await myRequest.json();
                 console.log(myData.firstname);
-                showResult(myData.firstname);
-                
+                showResult(myData.firstname);                
             }
         }
 
-        searchPerson();
+        searchPerson('Lydia');
     </script>
 
 </body>

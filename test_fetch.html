@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #wrapper{display: grid; place-content: center; width: 100vw; height: 100vh; text-align: center;}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div>
+            <p>Valeur du bitcoin</p>
+            <span id="bitcoinValue"></span>            
+        </div>
+    </div>
+    <script>
+        const urlOFF= 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
+        const url= 'https://blockchain.info/ticker';  
+
+        const getBitcoinValue = async () => 
+        {
+            const myRequest = await fetch(url, 
+                {
+                    method: 'GET'
+                }
+            );
+
+            if(!myRequest.ok)
+            {
+                console.log('Une erreur dans la requete');
+            }
+            else
+            {
+                const myData = await myRequest.json();
+                document.querySelector('#bitcoinValue').textContent = `${myData.EUR.buy}€`;                
+            }
+        }
+
+        getBitcoinValue();
+    </script>
+</body>
+</html>

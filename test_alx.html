@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+                function constfuncs()
+                {
+                    var funcs = [];
+                    for(var i = 0; i < 10; i++)
+                        funcs[i] = function() {return i; };
+                    return funcs;            
+                }
+
+                var funcs = constfuncs();
+                console.log(funcs[5]());
+
+    </script>
+</body>
+</html>

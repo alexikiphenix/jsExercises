@@ -15,17 +15,22 @@
         <input type="search" id="search" />
         <ul id="listResults">            
         </ul>
+        <div id="text"></div>
     </div>
 
     <script>
          
         const url = 'http://metacra.cluster030.hosting.ovh.net/ajax.php';
+        const inputSearch = document.querySelector('#search');
+        const text = document.querySelector('#text');
+
         let inputText = "";
         const showResult = (person) =>
         {
             const element = document.createElement('li');
             element.textContent = `${person}`;
             // document.querySelector('#listResults').append(`essai ${element}`);
+            document.querySelector('#listResults').innerHTML = "";
             document.querySelector('#listResults').append(element);
         }
 
@@ -56,15 +61,55 @@
             }
         }
 
-        document.querySelector('#search').addEventListener('input', (e)=>{
+        inputSearch.addEventListener('input', (e)=>{
             if(e.data !== null && e.data !== undefined && e.data !== "")
-                inputText += e.data;
-            
-            console.log(inputText);
-            
-            // console.log(inputText);
-            searchPerson(inputText);
+            {
+                console.log(search.value);
+                searchPerson(inputSearch.value);
+            }                        
         })
+
+        text.textContent = "BONJOUR";
+
+
+        console.log(Math.max(7, 3));
+
+        // window.open("https://www.google.com");
+
+        console.log(new Boolean(10 > 9));
+
+        function printArray(a)
+        {
+            var len = a.length, i = 0;
+            if(len == 0)
+                console.log("Empty Array");
+            else
+            {
+                do{
+                    console.log(a[i]);
+                }while(++i <len)
+            }
+        }
+
+        let a = [1, 2, 3]
+        printArray(a);
+
+
+        var ten = (function(x) {return(x*x)} (10));
+
+
+        function constfuncs()
+        {
+            var funcs = [];
+            for(var i = 0; i < 10; i++)
+                funcs[i] = function() {return i; };
+            return funcs;            
+        }
+
+        var funcs = constfuncs();
+        funcs[5]();
     </script>
+
+    
 
 </body>

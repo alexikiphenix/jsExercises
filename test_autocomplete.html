@@ -13,15 +13,18 @@
     <script>
         const inSearch = document.querySelector('#inSearch');
         const names = ['Janus', 'Jane', 'Marcus', 'Olivia', 'Hyun', 'Hwanhee'];
+        const boxSelection = document.querySelector('#boxSelection');
 
         const namesLength = names.map(function(j) {
             return j.length});        
         console.log(namesLength);
 
-        inSearch.addEventListener("change", () =>
+        inSearch.addEventListener("input", () =>
         {
             boxSelection.innerText = `${inSearch.value}`;
         })
+
+
     </script>
 </body>
 </html>

@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <script>
-        if(localStorage.getItem('myBgList'))
-        {
-            console.log('liste bien présente');
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+      
+        let myBgList = {
+            "bg01":
+            {
+                "id": "1",
+                "src": '01soundOfSun.png'
+            },
+            "bg02": 
+            {
+                "id": "1",
+                "src": '02waveOfFun.png'
+            }
         }
-        else{
-            console.log('liste inexistante');
-            const myBgList = [
-                {
-                    id: 1,
-                    src: '01soundOfSun.png'
-                },
-                {
-                    id: 1,
-                    src: '02waveOfFun.png'
-                }
-            ]
-            localStorage.setItem('myBgList', myBgList);
-        }
+        myBgList = JSON.stringify(myBgList);
+        console.log(myBgList);
+        localStorage.setItem('myBgList', myBgList);
+
+        console.log(JSON.parse(myBgList));
     </script>
 </body>
 </html>

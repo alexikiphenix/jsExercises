@@ -26,12 +26,16 @@
         myBgList = JSON.stringify(myBgList);
         console.log(myBgList);
         localStorage.setItem('myBgList', myBgList);
-
-        if(localStorage.getItem('myBgList'))
-        {
-            console.log(JSON.parse(localStorage.getItem('myBgList')));
-            
+        
+        const getMyBackgrounds = () => {                        
+            if(localStorage.getItem('myBgList'))
+            {                
+                return JSON.parse(localStorage.getItem('myBgList'));               
+            }
+            else
+                return false;
         }
+        
     </script>
 </body>
 </html>

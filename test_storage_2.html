@@ -30,10 +30,22 @@
         const getMyBackgrounds = () => {                        
             if(localStorage.getItem('myBgList'))
             {                
-                return JSON.parse(localStorage.getItem('myBgList'));               
+              return JSON.parse(localStorage.getItem('myBgList'));               
             }
             else
-                return false;
+              return false;
+        }
+
+        const renderMyBackgrounds = (array) => {
+          if(getMyBackgrounds())
+          {
+            if(getMyBackgrounds().length > 0)
+            {
+              getMyBackgrounds().map(
+                (background) => console.log(background)
+              )
+            }
+          }
         }
         
     </script>

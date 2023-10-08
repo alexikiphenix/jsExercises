@@ -3,10 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          .backgroundContainer
+          {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 300px);
+            gap: 18px;
+          }
+        </style>
         <title>Document</title>
     </head>
     <body>
         
+        <div class="backgroundContainer">          
+        </div>
         <script>
       
         let myBgList = [            
@@ -42,12 +53,17 @@
             if(getMyBackgrounds().length > 0)
             {
               getMyBackgrounds().map(
-                (background) => console.log(background)
+                (background) => 
+                {
+                  console.log(background)
+                }
               )
             }
           }
         }
         
+
+        renderMyBackgrounds();
     </script>
 </body>
 </html>

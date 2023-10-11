@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread operator</title>
+</head>
+<body>
+    
+    <div>
+        <input type="checkbox">
+        <label for="">Veuillez décocher si vous ne souhaitez pas recevoir la newsletter</label>
+    </div>
+
+    <script>
+        const winners = [
+            "Ryu",
+            "Gandalf",
+            "Yoda"
+        ];
+
+        const sayHello = (person1, person2, person3) => {
+            console.log(`Hello ${person1}`);
+            console.log(`Hello ${person2}`);
+            console.log(`Hello ${person3}`);
+        }
+
+        const winnersCopy = [...winners];
+        const winnersCopy2 = winners;
+
+        console.log(winnersCopy);
+        console.log(winnersCopy2);
+
+
+        console.log('ee');
+
+        
+        const users = ["Gandalf", "Yoda", "Samus" ];
+        users.push("Eren");
+        
+        
+        const [hero1, hero2, hero3] = ["Gandalf", "Yoda", "Samus" ];
+        
+
+        
+
+
+
+        $numbers = [];
+        $numbers += "test";
+
+        console.log($numbers);
+
+    </script>
+</body>
+</html>

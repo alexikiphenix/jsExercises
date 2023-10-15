@@ -1,2 +1,2 @@
 # jsExercises
-Just an bunch of small exercices for beginners in JS
+Just a bunch of small test and exercices for my students (beginners) in JS

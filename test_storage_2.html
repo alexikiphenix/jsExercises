@@ -9,18 +9,16 @@
         
         <script>
       
-        let myBgList = {
-            "bg01":
+        let myBgList = [            
             {
                 "id": "1",
                 "src": '01soundOfSun.png'
-            },
-            "bg02": 
+            },           
             {
                 "id": "1",
                 "src": '02waveOfFun.png'
             }
-        }
+        ]
         myBgList = JSON.stringify(myBgList);
         console.log(myBgList);
         localStorage.setItem('myBgList', myBgList);

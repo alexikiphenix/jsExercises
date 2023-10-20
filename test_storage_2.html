@@ -15,15 +15,23 @@
                 "src": '01soundOfSun.png'
             },           
             {
-                "id": "1",
+                "id": "2",
                 "src": '02waveOfFun.png'
+            },
+            {
+                "id": "3",
+                "src": '03waveOfSuccess.png'
             }
         ]
         myBgList = JSON.stringify(myBgList);
         console.log(myBgList);
         localStorage.setItem('myBgList', myBgList);
 
-        console.log(JSON.parse(myBgList));
+        if(localStorage.getItem('myBgList'))
+        {
+            console.log(JSON.parse(localStorage.getItem('myBgList')));
+            
+        }
     </script>
 </body>
 </html>

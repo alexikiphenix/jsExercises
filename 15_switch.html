@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,6 +10,7 @@
 
     <script>
         let reponse = prompt("Quel marque de voiture avez-vous ?");
+            // Avec des if chainés :
             // if(reponse === "Ford")
             // {
             //     console.log("Marque américaine");
@@ -24,6 +24,8 @@
             // else
             //     console.log("Marque inconnue");
             
+        
+        // Switch opportun lorsque nombre de possibilités déterminé et précis (valeur exacte)
         switch(reponse)    
         {
             case "Ford":
@@ -65,72 +67,4 @@
 
     </script>    
 </body>
-=======
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Switch</title>
-</head>
-<body>
-
-    <script>
-        let reponse = prompt("Quel marque de voiture avez-vous ?");
-            // if(reponse === "Ford")
-            // {
-            //     console.log("Marque américaine");
-            // }
-            // else if(reponse === "Renault")
-            //     console.log("Marque française");
-            // else if(reponse === "BMW")
-            //     console.log("Marque allemande !");
-            // else if(reponse === "Mobius")
-            //     console.log("Marque kenyanne");
-            // else
-            //     console.log("Marque inconnue");
-            
-        switch(reponse)    
-        {
-            case "Ford":
-                console.log("Marque américaine");  
-                break;              
-            case "Renault":
-                console.log("Marque française");
-                break; 
-            case "BMW":
-                console.log("Marque allemande !");
-                break; 
-            case "Mobius":
-                console.log("Marque kenyanne");
-                break; 
-            default:
-                console.log("Marque inconnue");
-                break; 
-        }
-
-        let target = "Zira";
-        switch(target)
-        {
-            case "Marc":
-                console.log("Vous frappez Marc");
-                break;
-            case "John":
-                console.log("Vous frappez John");
-                break;
-            case "Ron":
-                console.log("Vous frappez Ron");
-                break;
-            case "Momo":
-                console.log("Vous frappez Momo");
-                break;
-            default:
-                console.log(`${target} est inconnu`);
-            break;
-        }
-
-    </script>    
-</body>
->>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
 </html>

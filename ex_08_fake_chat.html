@@ -8,6 +8,8 @@
 <body>
     
     <script>
+        let count = 0;
+        const talk = [];
         // just an exercice to handle localStorage
 
         // 1- Créer une liste de messages
@@ -44,10 +46,12 @@
 
         // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
         while(messages.length > 0)
-        {
-            console.log(getRandomMessage());            
+        { 
+            count++;                          
+            talk.push({'content' : getRandomMessage()});                        
         }
-
+        console.log(talk);
+        localStorage.setItem('talk', talk);
 
     </script>
 </body>

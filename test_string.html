@@ -68,11 +68,29 @@
             }
             while(continuer !== 'n')
             
-            console.log(listePrix);
-
+          
             // Niveau 3 
-            localStorage.setItem('liste prix', JSON.stringify(listePrix));
+            localStorage.setItem('listePrix', JSON.stringify(listePrix));
             
+
+            // Niveau 4
+            if(localStorage.getItem('listePrix'))
+            {
+                const listeDansStorage = JSON.parse(localStorage.getItem('listePrix'));
+                
+                prixDansStorage = JSON.parse(localStorage.getItem('listePrix'));
+                if(typeof prixDansStorage === 'object')
+                {
+                    if(prixDansStorage.length >= 3)
+                    {
+                        for(let i = 0; i < 3; i++)
+                            console.log(prixDansStorage[i]);
+                    }
+                    else
+                        prixDansStorage.map(prix => console.log(prix));
+                        
+                }
+            }
 
     </script>
 </body>

@@ -56,10 +56,11 @@
     </div>
     
     <script>
+        // bg = Background
         const bgBox = document.querySelector('#bgBox');
         const btnValidate = document.getElementById('btnValidate');
         let bgInStorage;
-        console.log(localStorage.getItem('myBackgrounds'));
+        
     //     const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
     //     'bg06.jpg', 'bg07.jpg', 'bg08.jpg', 'bg09.jpg', 'bg10.jpg', 'bg11.jpg', 'bg12.jpg',
     //     'bg13.jpg', 'bg14.jpg', 'bg15.jpg', 'bg16.jpg', 'bg17.jpg', 'bg18.jpg', 'bg19.jpg', 
@@ -69,20 +70,27 @@
         {
             const tmpArray = [];
             for(let i = 1; i <= nbBg; i++)
-            {
-                if(nbBg.length <= 2)
-                    tmpArray.push(`bg0${i}.jpg`);
-                else
-                    tmpArray.push(`bg${i}.jpg`);
+            {      
+                const bgObj  = {};              
+                bgObj.id = i;
+                bgObj.url = `bg${i}.jpg`;                                  
+                tmpArray.push(bgObj);
             }
+            localStorage.setItem('testBg', JSON.stringify(tmpArray));
             return tmpArray;
         }
 
         const backgrounds = generateBgArray(20);
 
-        const backgroundsObj = {};
-        backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
-        'bg06.jpg'];
+        if(localStorage.getItem('testBg'))
+        {
+            console.log('testBG bien dans le storage');
+            console.log(localStorage.getItem('testBg'));
+
+            // JSON.parse pour modifier la syntaxe pour récupérer les objets
+            // qui étaient sous forme de chaines de kr (JSON.stringify)
+            console.log(JSON.parse(localStorage.getItem('testBg')));
+        }
 
        //console.log(backgrounds.toString());
 
@@ -116,6 +124,9 @@
             
             selectedBg.forEach(bg =>{
                 console.log(bg.getAttribute('data-url'));
+                const bgForStorage = {
+                    
+                }
                 selectedBgArray.push(bg.getAttribute('data-url'));
             })
             putBgInStorage(selectedBgArray);

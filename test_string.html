@@ -50,11 +50,27 @@
         // Correction 
         // Niveau 1
             // Etape 1 : lire les données
-                const prixHT = prompt('Saisir le prix HT');
+                // const prixHT = prompt('Saisir le prix HT');
 
             // Etape 2 : écrire (calculer et afficher)
-                console.log(prixHT*1.2);
+                // console.log(prixHT*1.2);
+        
+        // Niveau 2 implique une répétition des instruction donc une boucle et une condition de fin
+            const listePrix = [];
+            let continuer;
+
+            do
+            {
+                const prixHT = prompt('Saisir le prix HT');
+                listePrix.push(prixHT*1.2);
+                continuer = prompt('Continuer ? n = non');
+                console.log('continuer =>'+continuer);
+            }
+            while(continuer !== 'n')
             
+            console.log(listePrix);
+
+
             
 
     </script>

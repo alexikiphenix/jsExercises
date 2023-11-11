@@ -8,6 +8,7 @@
     <title>Test string</title>
 </head>
 <body>
+    <div id="container"></div>
     
     <script>
         const myString = "j'essaye de voir !";        
@@ -27,6 +28,7 @@
         console.log(str1.concat(' ', str2));
 
         
+        const container = document.querySelector('#container');
 
         /*
             Niveau 1 :
@@ -84,10 +86,19 @@
                     if(prixDansStorage.length >= 3)
                     {
                         for(let i = 0; i < 3; i++)
+                        {
                             console.log(prixDansStorage[i]);
+                            container.appendChild(prixDansStorage[i]);
+                        }
                     }
                     else
-                        prixDansStorage.map(prix => console.log(prix));
+                    {
+                        prixDansStorage.map((prix) => {
+                            console.log(prix);
+                            container.append(' | '+prix);
+                        });
+
+                    }
                         
                 }
             }

@@ -82,21 +82,33 @@
 
         const backgrounds = generateBgArray(20);
 
-        if(localStorage.getItem('testBg'))
+        const getMyStorage = (name) =>
         {
-            console.log('testBG bien dans le storage');
-            console.log(localStorage.getItem('testBg'));
-
-            // JSON.parse pour modifier la syntaxe pour récupérer les objets
-            // qui étaient sous forme de chaines de kr (JSON.stringify)
-            console.log(JSON.parse(localStorage.getItem('testBg')));
+            if(localStorage.getItem(name))
+            {
+                console.log('testBG bien dans le storage');
+                console.log(localStorage.getItem('testBg'));
+                
+                // JSON.parse pour modifier la syntaxe pour récupérer les objets
+                // qui étaient sous forme de chaines de kr (JSON.stringify)
+                console.log(JSON.parse(localStorage.getItem('testBg')));
+                
+                const bgInStorage = JSON.parse(localStorage.getItem('testBg'));
+                console.log(typeof bgInStorage);
+                if(typeof bgInStorage === 'object')
+                {
+                    bgInStorage.forEach(bg => console.log(bg.id+' - '+bg.url));
+                }
+            }
         }
-
-       //console.log(backgrounds.toString());
-
-        const makeBoard = () =>
-        {
-            backgrounds.forEach( bgUrl =>
+            
+        getMyStorage('testBg');
+        
+            //console.log(backgrounds.toString());
+            
+            const makeBoard = () =>
+            {
+                backgrounds.forEach( bgUrl =>
                 {
                     const bgImg = document.createElement('img');
                     bgImg.src = bgUrl;

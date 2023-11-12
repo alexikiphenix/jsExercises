@@ -9,19 +9,54 @@
     
     <script>
         let count = 0;
-        const talk = [];
+        // const messages = [];       
         // just an exercice to handle localStorage
 
         // 1- Créer une liste de messages
         const messages = [
-            'J\'ai envie de sortir',
-            'On pourrait voir un film',
-            'Il fait beau aujourd\'hui',
-            'Je pense aux informations du jour',
-            'On peut aller pique-niquer',
-            'J\'ai beaucoup de boulot demain',
-            'On pourrait se faire un concert'
+            {
+                id: 1,
+                sender: '+3377777777',
+                recipient: '+33666666666',
+                content: 'J\'ai envie de sortir'
+            },
+            {
+                id: 2,
+                sender: '+33666666666',
+                recipient: '+3377777777',
+                content: 'On pourrait voir un film'
+            },
+            {
+                id: 3,
+                sender: '+3377777777',
+                recipient: '+33666666666',
+                content: 'Je pense aux informations du jour'
+            },
+            {
+                id: 4,
+                sender: '+33666666666',
+                recipient: '+3377777777',
+                content: 'On peut aller pique-niquer'
+            },
+            {
+                id: 5,
+                sender: '+3377777777',
+                recipient: '+33666666666',
+                content: 'J\'ai beaucoup de boulot demain'
+            },
+            {
+                id: 6,
+                sender: '+33666666666',
+                recipient: '+3377777777',
+                content: 'On pourrait se faire un concert'
+            }   
         ]
+
+        const talk = {
+            id : 1,
+            phoneOwner : '+33777777777',
+            messages: []
+        };
 
         // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
         // On renvoie un entier aléatoire entre une valeur min (incluse)
@@ -49,17 +84,14 @@
         { 
             count++;  
             // 5 enregistrer les messages au format JSON                       
-            talk.push(JSON.stringify({'message' : getRandomMessage()}));                   
+            talk.messages.push(JSON.stringify({'message' : getRandomMessage()}));                   
         }
-        for(let index = 0; index < talk.length; index++) 
-        {
-            console.log(talk[index]);            
-        }
+  
         
-        localStorage.setItem('fakeChat', talk);
+        localStorage.setItem('fakeChat', JSON.stringify(talk));
 
         console.log(localStorage.getItem('fakeChat'));
-        //const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
+        const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
         console.log(typeof myChatStorage);
         //myChatStorage.map((message) => log(message));
 

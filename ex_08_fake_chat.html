@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fake chat with localStorage</title>
 </head>
-<body>
-    
+<body>    
+
+    <div id="wrapper"></div>
     <script>
         let count = 0;
+        const wrapper = document.querySelector('#wrapper');
         // const messages = [];       
         // just an exercice to handle localStorage
 
@@ -83,17 +85,28 @@
         while(messages.length > 0)
         { 
             count++;  
-            // 5 enregistrer les messages au format JSON                       
-            talk.messages.push(JSON.stringify({'message' : getRandomMessage()}));                   
+            // 4-2 enregistrer les messages au format JSON                       
+            talk.messages.push(JSON.stringify(getRandomMessage()));                   
         }
   
-        
+
+        // 5 enregistrer dans le WebStorage
         localStorage.setItem('fakeChat', JSON.stringify(talk));
 
-        console.log(localStorage.getItem('fakeChat'));
+        // 6 Récupérer le webStorage
         const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
-        console.log(typeof myChatStorage);
-        //myChatStorage.map((message) => log(message));
+        
+        myChatStorage.messages.map((message) => 
+        {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.classList.add('message');
+            const messageObj = JSON.parse(message);
+            messageWrapper.innerHTML = `
+                <h6>${messageObj.sender}</h6>
+                <p>${messageObj.content}</p>
+            `;
+            wrapper.append(messageWrapper);
+        });
 
     </script>
 </body>

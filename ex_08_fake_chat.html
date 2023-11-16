@@ -14,9 +14,18 @@
             margin: 1.5vh;
             padding: 2vh;
             width: 40vw;
-            border-radius: 5vh;
+            border-radius: 7vh;
+        }
+        .phoneOwner
+        {
+            align-self: end;
             border-bottom-left-radius: 0;
             background-color: rgb(192, 245, 192);
+        }
+        .recipient
+        {            
+            border-bottom-right-radius: 0;
+            background-color: rgb(245, 192, 241);
         }
         
     </style>
@@ -121,8 +130,7 @@
             talk.phoneOwner === message.sender ?             
                 messageWrapper.classList.add('phoneOwner') :            
                 messageWrapper.classList.add('recipient');            
-            messageWrapper.innerHTML = `
-                <h6>${talk.phoneOwner}</h6>
+            messageWrapper.innerHTML = `                
                 <h6>${message.sender}</h6>
                 <p>${message.content}</p>
             `;

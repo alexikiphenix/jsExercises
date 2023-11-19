@@ -169,25 +169,28 @@
             if(getMsgInStorage)
             {
                 const myChatStorage = getMsgInStorage();
-                myChatStorage.messages.map((message) => 
-                {
-                    const messageWrapper = document.createElement('div');            
-                    message = JSON.parse(message);
-                    messageWrapper.classList.add('message');
-                    talk.phoneOwner === message.sender ?             
-                        messageWrapper.classList.add('phoneOwner') :            
-                        messageWrapper.classList.add('recipient');            
-                    messageWrapper.innerHTML = `                
-                        <h6>${message.sender}</h6>
-                        <p>${message.content}</p>
-                    `;
-                    wrapper.append(messageWrapper);
-                });
+                console.log(myChatStorage.messages);
+                // myChatStorage.messages.map((message) => 
+                // {
+                //     const messageWrapper = document.createElement('div');            
+                //     message = JSON.parse(message);
+                //     messageWrapper.classList.add('message');
+                //     talk.phoneOwner === message.sender ?             
+                //         messageWrapper.classList.add('phoneOwner') :            
+                //         messageWrapper.classList.add('recipient');            
+                //     messageWrapper.innerHTML = `                
+                //         <h6>${message.sender}</h6>
+                //         <p>${message.content}</p>
+                //     `;
+                //     wrapper.append(messageWrapper);
+                // });
             }
             else
                 return false;
         }
-        
+
+        renderMessages();
+
     </script>
 </body>
 </html>

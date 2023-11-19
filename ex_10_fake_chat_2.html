@@ -69,7 +69,7 @@
         // maintenant l'utilisateur doit pouvoir
         // envoyer un message, celui-ci sera enregistré
         // dans le localStorage
-
+        
         
         //**************** Exercice 2 ***********************
         //***************************************************
@@ -78,7 +78,7 @@
         let count = 0;
         const wrapper = document.querySelector('#wrapper');
         
-        const messages = [
+        const randomMessages = [
             {
                 id: 1,
                 sender: '+33777777777',
@@ -116,7 +116,18 @@
                 content: 'On pourrait se faire un concert'
             }   
         ]
-
+        // 1 Récupérer le webStorage
+        const getMsgInStorage = () => 
+        {
+            if(localStorage.getItem('fakeChat'))
+            {
+                const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
+                return myChatStorage;
+            }
+            else
+                return false;
+        }
+        
         const talk = {
             id : 1,
             phoneOwner : '+33777777777',
@@ -156,8 +167,6 @@
         // 5 enregistrer dans le WebStorage
         localStorage.setItem('fakeChat', JSON.stringify(talk));
 
-        // 6 Récupérer le webStorage
-        const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
         
         myChatStorage.messages.map((message) => 
         {

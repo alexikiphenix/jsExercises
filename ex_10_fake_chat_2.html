@@ -120,10 +120,7 @@
         const getMsgInStorage = () => 
         {
             if(localStorage.getItem('fakeChat'))
-            {
-                const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
-                return myChatStorage;
-            }
+                return JSON.parse(localStorage.getItem('fakeChat'));                            
             else
                 return false;
         }
@@ -131,7 +128,7 @@
         const talk = {
             id : 1,
             phoneOwner : '+33777777777',
-            messages: []
+            messages: [getMsgInStorage()]
         };
 
         // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
@@ -149,14 +146,14 @@
         // version 3.0
         // version 3.1 supprimer le message de la liste pour éviter doublon
         const getRandomMessage = () => {
-            const indice = getRandomInt(0, messages.length-1);
-            const message = messages[indice];
-            messages.splice(indice, 1);
+            const indice = getRandomInt(0, randomMessages.length-1);
+            const message = randomMessages[indice];
+            randomMessages.splice(indice, 1);
             return message;
         }
 
         // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
-        while(messages.length > 0)
+        while(randomMessages.length > 0)
         { 
             count++;  
             // 4-2 enregistrer les messages au format JSON                       
@@ -167,22 +164,30 @@
         // 5 enregistrer dans le WebStorage
         localStorage.setItem('fakeChat', JSON.stringify(talk));
 
-        
-        myChatStorage.messages.map((message) => 
+        const renderMessages = () =>
         {
-            const messageWrapper = document.createElement('div');            
-            message = JSON.parse(message);
-            messageWrapper.classList.add('message');
-            talk.phoneOwner === message.sender ?             
-                messageWrapper.classList.add('phoneOwner') :            
-                messageWrapper.classList.add('recipient');            
-            messageWrapper.innerHTML = `                
-                <h6>${message.sender}</h6>
-                <p>${message.content}</p>
-            `;
-            wrapper.append(messageWrapper);
-        });
-
+            if(getMsgInStorage)
+            {
+                const myChatStorage = getMsgInStorage();
+                myChatStorage.messages.map((message) => 
+                {
+                    const messageWrapper = document.createElement('div');            
+                    message = JSON.parse(message);
+                    messageWrapper.classList.add('message');
+                    talk.phoneOwner === message.sender ?             
+                        messageWrapper.classList.add('phoneOwner') :            
+                        messageWrapper.classList.add('recipient');            
+                    messageWrapper.innerHTML = `                
+                        <h6>${message.sender}</h6>
+                        <p>${message.content}</p>
+                    `;
+                    wrapper.append(messageWrapper);
+                });
+            }
+            else
+                return false;
+        }
+        
     </script>
 </body>
 </html>

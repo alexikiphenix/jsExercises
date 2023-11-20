@@ -77,7 +77,8 @@
         // une réponse aléatoire.
         let count = 0;
         const wrapper = document.querySelector('#wrapper');
-        
+        const messages = [];
+
         const randomMessages = [
             {
                 id: 1,
@@ -117,22 +118,22 @@
             }   
         ]
         // 1 Récupérer le webStorage
-        const getMsgInStorage = () => 
+        const getTalkInStorage = () => 
         {
-            if(localStorage.getItem('fakeChat'))
-            {
-                const fakeChat = JSON.parse(localStorage.getItem('fakeChat'));
-                console.log(fakeChat);
-                return JSON.parse(localStorage.getItem('fakeChat'));                            
-            }
-            else
-                return false;
+          if(localStorage.getItem('fakeChat'))
+          {
+            const fakeChat = JSON.parse(localStorage.getItem('fakeChat'));
+            console.log(fakeChat);                
+            return JSON.parse(localStorage.getItem('fakeChat'));                            
+          }
+          else
+            return false;
         }
         
         const talk = {
             id : 1,
             phoneOwner : '+33777777777',
-            messages: [getMsgInStorage()]
+            messages: randomMessages
         };
 
         // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
@@ -157,12 +158,12 @@
         }
 
         // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
-        while(randomMessages.length > 0)
-        { 
-            count++;  
-            // 4-2 enregistrer les messages au format JSON                       
-            talk.messages.push(JSON.stringify(getRandomMessage()));                   
-        }
+        // while(randomMessages.length > 0)
+        // { 
+        //     count++;  
+        //     // 4-2 enregistrer les messages au format JSON                       
+        //     talk.messages.push(JSON.stringify(getRandomMessage()));                   
+        // }
   
 
         // 5 enregistrer dans le WebStorage
@@ -170,10 +171,10 @@
 
         const renderMessages = () =>
         {
-            if(getMsgInStorage)
+            if(getTalkInStorage)
             {
-                const myChatStorage = getMsgInStorage();
-                console.log(myChatStorage);
+                const myChatStorage = getTalkInStorage();
+                
                 myChatStorage.messages.map((message) => 
                 {
                     const messageWrapper = document.createElement('div');  

@@ -5,56 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       *{box-sizing: border-box;}
-      body{margin: 0; background-color: black;}
+      body{margin: 0;
+        /* background-color: black; */
+      }
       #wrapper
       {
           display: flex;
           flex-direction: column;     
-          margin: auto;      
+          margin: auto;
+          padding-top: 12vh;                  
           width: 40vw;  
           background-color: rgba(255, 255, 255, 1);
       }
       header 
       {
+        position: fixed;        
+        top: 0;
         display: flex;
         justify-content: space-between;
-        padding: .6vh;
+        width: 40vw;        
+        padding: 1vh 1vh 2vh;
         font-size: 1.8vh;
+        border: 1px solid red;
+      }
+      #menuWrapper
+      {
+        /* height: 0; */        
+        display: flex;
+        flex-direction: row-reverse;        
+        justify-content: space-between;              
+      }
+      #menuCheck:checked+#menuWrapper
+      {
+        /* position: absolute;
+        top: 1vh;
+        right: 1vh;  */
+        /* overflow: visible; */
+        /* display: inline; */
+        /* width: 50%;       */
+        border-radius: .2vh;         
+        background-color: #fff;
+        border: 1px dotted rgb(196, 15, 15);
       }
       .menu
       {
+        /* display: none; */
+        font-size: 0;        
+        transition-duration: 2s;
+        overflow: hidden;
+        margin: 0;
+        list-style-type: none;        
+      }
+      #menuCheck:checked+#menuWrapper .menu
+      {
+        /* display: block; */
+        font-size: 1.8vh;        
+        padding: .8vh;        
+        display: block;
+      }
+      #menuCheck
+      {
+        display: none;
+      }
+      .menuTrigger
+      {
+        /* position: absolute; */
+        display: grid;
+        place-content: center;
+        height: 3vh;
         user-select: none;
         cursor: pointer;
         border: 1px solid;
         margin: 0;
         padding: .6vh;
       }
-      .menu:active
+  
+      /* .menu:active
       {
         transform: scale(.9);
         box-shadow: .1vh .1vh 1vh;
-      }
+      } */
       .message
       {
-          margin: 1.5vh;
-          padding: 2vh;
-          width: 41%;
-          border-radius: 5vh;
+        margin: 1.5vh;
+        padding: 2vh;
+        width: 41%;
+        border-radius: 5vh;
       }
       .message:last-of-type
       {  
-          margin-bottom: 22vh;        
+        margin-bottom: 22vh;        
       }
       .phoneOwner
       {
-          align-self: end;
-          border-bottom-left-radius: 0;
-          background-color: rgb(192, 245, 192);
+        align-self: end;
+        border-bottom-left-radius: 0;
+        background-color: rgb(192, 245, 192);
       }
       .recipient
       {            
-          border-bottom-right-radius: 0;
-          background-color: rgb(245, 192, 241);
+        border-bottom-right-radius: 0;
+        background-color: rgb(245, 192, 241);
       }
       #newMsgBox
       {
@@ -84,7 +135,7 @@
       {
         padding: .8vh;
         cursor: pointer;
-        font-size: 1.4vh;
+        font-size: 1.8vh;
         font-weight: 900;
         border-radius: 1vh;
         background-color: rgb(192, 245, 192);
@@ -95,7 +146,6 @@
         transform: scale(.9);
         box-shadow: .5vh .5vh 1vh rgb(28, 28, 28);
       }
-        
     </style>
     <title>Fake chat with localStorage</title>
 </head>
@@ -105,8 +155,16 @@
       <header>
         <div class="profilePicture">AX</div>
         <span class="nickname">Nickname</span>
-        <input id="menu" type="checkbox" >
-        <label for="menu" class="menu">&equiv;</label>
+        <input id="menuCheck" type="checkbox" >
+        <div id="menuWrapper">
+          <label for="menuCheck" class="menuTrigger">&equiv;</label>
+          <ul class="menu">
+            <li><a href="">item 1</a></li>
+            <li><a href="">item 2</a></li>
+            <li><a href="">item 3</a></li>
+            <li><a href="">item 4</a></li>
+          </ul>
+        </div>
       </header>
     </div>
     <div id="newMsgBox">

@@ -4,90 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        *{box-sizing: border-box;}
-        body{margin: 0; background-color: black;}
-        #wrapper
-        {
-            display: flex;
-            flex-direction: column;     
-            margin: auto;      
-            width: 40vw;  
-            background-color: rgba(255, 255, 255, 1);
-        }
-        header 
-        {
+      *{box-sizing: border-box;}
+      body{margin: 0; background-color: black;}
+      #wrapper
+      {
           display: flex;
-          justify-content: space-between;
-          padding: .6vh;
-          font-size: 1.8vh;
-        }
-        .menu
-        {
-          user-select: none;
-          cursor: pointer;
-          border: 1px solid;
-          margin: 0;
-          padding: .6vh;
-        }
-        .menu:active
-        {
-          transform: scale(.9);
-          box-shadow: .1vh .1vh 1vh;
-        }
-        .message
-        {
-            margin: 1.5vh;
-            padding: 2vh;
-            width: 41%;
-            border-radius: 5vh;
-        }
-        .message:last-of-type
-        {  
-            margin-bottom: 22vh;        
-        }
-        .phoneOwner
-        {
-            align-self: end;
-            border-bottom-left-radius: 0;
-            background-color: rgb(192, 245, 192);
-        }
-        .recipient
-        {            
-            border-bottom-right-radius: 0;
-            background-color: rgb(245, 192, 241);
-        }
-        #newMsgBox
-        {
-          position: fixed;
-          bottom: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 40vw;
-          min-height: 18vh;
-          margin: auto;
-          border-top: 1px solid black;
-          background-color: #fff;
-        }
-        #newMsgBox textarea
-        {
-            display: block;
-            flex: 3;
-            width: 98%;     
-            margin: 0 0 .5vh;
-            border-width: 0;       
-        }
-
-        #btnSend
-        {
-          padding: .8vh;
-          cursor: pointer;
-          font-size: 1.4vh;
-          font-weight: 900;
+          flex-direction: column;     
+          margin: auto;      
+          width: 40vw;  
+          background-color: rgba(255, 255, 255, 1);
+      }
+      header 
+      {
+        display: flex;
+        justify-content: space-between;
+        padding: .6vh;
+        font-size: 1.8vh;
+      }
+      .menu
+      {
+        user-select: none;
+        cursor: pointer;
+        border: 1px solid;
+        margin: 0;
+        padding: .6vh;
+      }
+      .menu:active
+      {
+        transform: scale(.9);
+        box-shadow: .1vh .1vh 1vh;
+      }
+      .message
+      {
+          margin: 1.5vh;
+          padding: 2vh;
+          width: 41%;
+          border-radius: 5vh;
+      }
+      .message:last-of-type
+      {  
+          margin-bottom: 22vh;        
+      }
+      .phoneOwner
+      {
+          align-self: end;
+          border-bottom-left-radius: 0;
           background-color: rgb(192, 245, 192);
-        }
+      }
+      .recipient
+      {            
+          border-bottom-right-radius: 0;
+          background-color: rgb(245, 192, 241);
+      }
+      #newMsgBox
+      {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40vw;
+        min-height: 18vh;
+        margin: auto;
+        border-top: 1px solid black;
+        background-color: #fff;
+      }
+      #newMsgBox textarea
+      {
+        display: block;
+        flex: 3;
+        width: 98%;     
+        margin: 0 0 .5vh;            
+        border-width: 0;       
+      }
+
+      #btnSend
+      {
+        padding: .8vh;
+        cursor: pointer;
+        font-size: 1.4vh;
+        font-weight: 900;
+        border-radius: 1vh;
+        background-color: rgb(192, 245, 192);
+      }
+
+      #btnSend:active
+      {
+        transform: scale(.9);
+        box-shadow: .5vh .5vh 1vh rgb(28, 28, 28);
+      }
         
     </style>
     <title>Fake chat with localStorage</title>
@@ -98,7 +105,8 @@
       <header>
         <div class="profilePicture">AX</div>
         <span class="nickname">Nickname</span>
-        <div class="menu">&equiv;</div>
+        <input id="menu" type="checkbox" >
+        <label for="menu" class="menu">&equiv;</label>
       </header>
     </div>
     <div id="newMsgBox">

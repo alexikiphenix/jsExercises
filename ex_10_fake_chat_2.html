@@ -132,7 +132,7 @@
         border-width: 0;       
       }
 
-      #btnSend
+      #btnSendMsg
       {
         padding: .8vh;
         cursor: pointer;
@@ -142,7 +142,7 @@
         background-color: rgb(192, 245, 192);
       }
 
-      #btnSend:active
+      #btnSendMsg:active
       {
         transform: scale(.9);
         box-shadow: .5vh .5vh 1vh rgb(28, 28, 28);
@@ -169,8 +169,8 @@
     </header>
   </div>
   <div id="newMsgBox">
-      <textarea name="newMsg" id="newMsg"></textarea>
-      <button id="btnSend" type="submit">Envoyer</button>
+      <textarea name="newMsg" id="inNewMsg"></textarea>
+      <button id="btnSendMsg" type="submit">Envoyer</button>
   </div>
   <script>
       //**************** Exercice 1 ***********************
@@ -187,9 +187,15 @@
       // une réponse aléatoire.
       let count = 0;
       const wrapper = document.querySelector('#wrapper');
-      const messages = [];
+      const inNewMsg = document.getElementById('inNewMsg');
+      const btnSendMsg = document.getElementById('btnSendMsg');      
+      const messages = [];      
       let myChatStorage;
-
+      btnSendMsg.addEventListener('click', ()=>
+      {
+        console.log(inNewMsg.value.length);
+        addMessage(inNewMsg.value)       
+      })
       const randomMessages = [
           {
               id: 1,
@@ -245,6 +251,8 @@
           phoneOwner : '+33777777777',
           messages: randomMessages
       };
+
+   
       
       // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
       function getRandomInt(min, max) {
@@ -300,21 +308,20 @@
         return false;
     } // renderMessages
 
-    const addMessage = () =>
+    const addMessage = (message) =>
     {
       if(getTalkInStorage)
-      {
         talk.messages = getTalkInStorage().messages;
-        console.log(talk.messages);
-      }
-      else
-        return false;
+
+      console.log(talk.messages);
+      talk.messages.push(message);
+      localStorage.setItem('fakeChat', JSON.stringify(talk));
+      console.log(talk.messages);      
     } // renderMessages
     
     renderMessages();
-    localStorage.setItem('fakeChat', JSON.stringify(talk));
 
-    addMessage();
+    
 
   </script>
 </body>

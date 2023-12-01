@@ -12,5 +12,14 @@
 </head>
 <body>
   <div id="wrapper"></div>
+  <script>
+    const wrapper = document.querySelector('#wrapper');
+    const comicBubble = {xStart: 0, xEnd: 0, yStart: 0, yEnd: 0};
+
+    wrapper.addEventListener('click', (e) =>
+    {
+      console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+    })
+  </script>
 </body>
 </html>

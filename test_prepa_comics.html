@@ -13,6 +13,28 @@
       ;
       width: 100vw; height: 100vh; border: 1px solid red;
     }
+    header
+    {
+      grid-area: header;
+      border: 1px dotted black;
+    }
+    #board
+    {
+      grid-area: board;
+      border: 1px dotted black;
+    }
+    #widgetsWrapper
+    {
+      grid-area: widgets;
+      border: 1px dotted black;
+    }
+    [id^="widget-"]
+    {
+      width: 50%;
+      padding: 1rem;
+      margin: 1rem;
+      border: 1px dotted rgb(231, 126, 6);
+    }
   </style>
   <title>Test prepa comics</title>
 </head>
@@ -20,7 +42,7 @@
   <div id="wrapper">
     <header>HEADER</header>
     <main id="board">BOARD</main>
-    <aside>
+    <aside id="widgetsWrapper">
       <div id="widget-1">widget-1</div>
       <div id="widget-2">widget-2</div>
       <div id="widget-3">widget-3</div>

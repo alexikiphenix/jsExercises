@@ -6,7 +6,13 @@
   <style>
     *{box-sizing: border-box;}
     body{margin: 0;}
-    #wrapper{width: 100vw; height: 100vh; border: 1px solid red;}
+    #wrapper{
+      display: grid;
+      grid-template-areas: "header header header" 
+                           "board board widgets"                           
+      ;
+      width: 100vw; height: 100vh; border: 1px solid red;
+    }
   </style>
   <title>Test prepa comics</title>
 </head>
@@ -14,6 +20,7 @@
   <div id="wrapper"></div>
   <script>
     const wrapper = document.querySelector('#wrapper');
+    // add text size and font-family
     const comicBubble = {xStart: 0, xEnd: 0, yStart: 0, yEnd: 0};
 
     wrapper.addEventListener('click', (e) =>

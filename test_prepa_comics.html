@@ -58,16 +58,23 @@
   <script>
     const wrapper = document.querySelector('#wrapper');
     // add text size and font-family
+
     const comicBubble = {xStart: 0, xEnd: 0, yStart: 0, yEnd: 0};
+
 
     board.addEventListener('mousedown', (e) =>
     {
       console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+      comicBubble.xStart = e.clientX;
+      comicBubble.yStart = e.clientY;
     })
 
     board.addEventListener('mouseup', (e) =>
     {
       console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+      comicBubble.xEnd = e.clientX;
+      comicBubble.yEnd = e.clientY;
+      console.log(comicBubble);
     })
   </script>
 </body>

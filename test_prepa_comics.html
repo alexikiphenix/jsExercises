@@ -41,7 +41,7 @@
       width: 8vw;
       border: 1px dotted rgb(15, 214, 25);
     }
-    [id^="btn"]
+    [id^="widget"]
     {
       width: 50%;
       padding: 1rem;
@@ -50,7 +50,7 @@
       transform-origin: center;
       border: 1px dotted rgb(231, 126, 6);
     }
-    [id^="btn"]:active
+    [id^="widget"]:active
     {
       transform: scale(.9);
     }
@@ -67,10 +67,10 @@
     <div id="creationsList">Creations</div>
     <main id="board">BOARD</main>
     <aside id="widgetsWrapper">
-      <div id="btnAddBubble">widget-1</div>
-      <div id="btnWidget-2">widget-2</div>
-      <div id="btnWidget-3">widget-3</div>
-      <div id="btnWidget-4">widget-4</div>
+      <div id="widgetAddBubble">widget-1</div>
+      <div id="widget-2">widget-2</div>
+      <div id="widget-3">widget-3</div>
+      <div id="widget-4">widget-4</div>
     </aside>
   </div>
   <script>
@@ -96,10 +96,10 @@
       console.log(comicBubble);
     })
 
-    const btnAddBubble = document.getElementById('btnAddBubble');
-    btnAddBubble.addEventListener('click', () =>
+    const widgetAddBubble = document.getElementById('widgetAddBubble');
+    widgetAddBubble.addEventListener('click', () =>
     {      
-      btnAddBubble.classList.toggle('selected');      
+      widgetAddBubble.classList.toggle('selected');      
     })
   </script>
 </body>

@@ -28,7 +28,7 @@
       grid-area: widgets;
       border: 1px dotted black;
     }
-    [id^="widget-"]
+    [id^="btn"]
     {
       width: 50%;
       padding: 1rem;
@@ -37,9 +37,13 @@
       transform-origin: center;
       border: 1px dotted rgb(231, 126, 6);
     }
-    [id^="widget-"]:active
+    [id^="btn"]:active
     {
       transform: scale(.9);
+    }
+    .selected
+    {
+      border: 2px solid green;
     }
   </style>
   <title>Test prepa comics</title>
@@ -49,18 +53,19 @@
     <header>HEADER</header>
     <main id="board">BOARD</main>
     <aside id="widgetsWrapper">
-      <div id="comicBubble">widget-1</div>
-      <div id="widget-2">widget-2</div>
-      <div id="widget-3">widget-3</div>
-      <div id="widget-4">widget-4</div>
+      <div id="btnAddBubble">widget-1</div>
+      <div id="btnWidget-2">widget-2</div>
+      <div id="btnWidget-3">widget-3</div>
+      <div id="btnWidget-4">widget-4</div>
     </aside>
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
+    
     // add text size and font-family
 
     const comicBubble = {xStart: 0, xEnd: 0, yStart: 0, yEnd: 0};
-
+ 
 
     board.addEventListener('mousedown', (e) =>
     {
@@ -75,6 +80,12 @@
       comicBubble.xEnd = e.clientX;
       comicBubble.yEnd = e.clientY;
       console.log(comicBubble);
+    })
+
+    const btnAddBubble = document.getElementById('btnAddBubble');
+    btnAddBubble.addEventListener('click', () =>
+    {      
+      btnAddBubble.classList.toggle('selected');      
     })
   </script>
 </body>

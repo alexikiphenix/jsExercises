@@ -20,8 +20,13 @@
     }
     #board
     {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 30px);
+      grid-template-rows: repeat(auto-fill, 30px);
+      grid-gap: 1px;   
       grid-area: board;
-      border: 1px dotted black;
+      background-color: rgb(100, 100, 100);
+      border: 1px dotted rgb(161, 17, 17);
     }
     #widgetsWrapper
     {

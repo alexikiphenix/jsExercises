@@ -8,10 +8,10 @@
     body{margin: 0;}
     #wrapper{
       display: grid;
+      width: 100vw; min-height: 100vh; border: 1px solid red;
       grid-template-areas: "header header header" 
-                           "board board widgets"                           
-      ;
-      width: 100vw; height: 100vh; border: 1px solid red;
+                           "creationsList board widgets"                           
+      ;      
     }
     header
     {
@@ -23,15 +23,23 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, 30px);
       grid-template-rows: repeat(auto-fill, 30px);
+      width: 80vw;
       grid-gap: 1px;   
       grid-area: board;
       background-color: rgb(100, 100, 100);
       border: 1px dotted rgb(161, 17, 17);
     }
+    #creationsList
+    {
+      grid-area: creationsList;
+      width: 12vw;
+      border: 1px dotted rgb(35, 15, 214);
+    }
     #widgetsWrapper
     {
       grid-area: widgets;
-      border: 1px dotted black;
+      width: 8vw;
+      border: 1px dotted rgb(15, 214, 25);
     }
     [id^="btn"]
     {
@@ -56,6 +64,7 @@
 <body>
   <div id="wrapper">
     <header>HEADER</header>
+    <div id="creationsList">Creations</div>
     <main id="board">BOARD</main>
     <aside id="widgetsWrapper">
       <div id="btnAddBubble">widget-1</div>

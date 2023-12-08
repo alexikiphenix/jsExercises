@@ -20,6 +20,7 @@
     }
     #board
     {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(auto-fill, 30px);
       grid-template-rows: repeat(auto-fill, 30px);
@@ -75,32 +76,57 @@
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
+    const board = document.getElementById('board');
     
+    console.log(board.getBoundingClientRect().left);
     // add text size and font-family
 
-    const comicBubble = {xStart: 0, xEnd: 0, yStart: 0, yEnd: 0};
- 
+    const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+    
+    const createComicBubble = (xStart, yStart, xEnd, yEnd) =>
+    {      
+      // - board.getBoundingClientRect().left to correct the gap on the left
+      xStart = xStart - board.getBoundingClientRect().left; 
+      xEnd = xEnd - board.getBoundingClientRect().left; 
+      yStart = yStart - board.getBoundingClientRect().top; 
+      yEnd = yEnd - board.getBoundingClientRect().top; 
+      // yStart = 50;
+      // xEnd = 350;
+      // yEnd = 350;
 
+      const newComicBubble = document.createElement('textarea');
+      newComicBubble.style.position = 'absolute';
+      newComicBubble.style.left = `${xStart}px`;
+      newComicBubble.style.width = `${(xEnd-xStart)}px`;
+      newComicBubble.style.top = `${yStart}px`;
+      newComicBubble.style.height = `${(yEnd-yStart)}px`;
+
+      board.appendChild(newComicBubble);
+    }
+    
+    
     board.addEventListener('mousedown', (e) =>
     {
-      console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+      // console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
       comicBubble.xStart = e.clientX;
       comicBubble.yStart = e.clientY;
     })
-
+    
     board.addEventListener('mouseup', (e) =>
     {
-      console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+      // console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
       comicBubble.xEnd = e.clientX;
       comicBubble.yEnd = e.clientY;
-      console.log(comicBubble);
+      
+      console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
+      createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
     })
-
+    
     const widgetAddBubble = document.getElementById('widgetAddBubble');
     widgetAddBubble.addEventListener('click', () =>
     {      
       widgetAddBubble.classList.toggle('selected');      
     })
-  </script>
+    </script>
 </body>
 </html>

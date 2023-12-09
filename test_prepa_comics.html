@@ -77,11 +77,10 @@
   <script>
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
-    let myZIndex = 1;
+    let myZIndex = 1;    
     
-    console.log(board.getBoundingClientRect().left);
-    // add text size and font-family
-
+    
+    // next step add text size and font-family
     const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
     
     const createComicBubble = (xStart, yStart, xEnd, yEnd) =>
@@ -98,19 +97,32 @@
       if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
       {
         const newComicBubble = document.createElement('textarea');
-        //myZIndex++;
-        newComicBubble.style.zIndex = ++myZIndex;
+        myZIndex++;
+        newComicBubble.setAttribute('data-id', myZIndex);
+        newComicBubble.style.zIndex = myZIndex;
         newComicBubble.style.position = 'absolute';
         newComicBubble.style.left = `${xStart}px`;
         newComicBubble.style.width = `${(xEnd-xStart)}px`;
         newComicBubble.style.top = `${yStart}px`;
         newComicBubble.style.height = `${(yEnd-yStart)}px`;
         board.appendChild(newComicBubble);
-        console.log(myZIndex);
+        createBubbleOptions(myZIndex);        
       }
-
+      else
+        console.log("Bulle trop petite");
     }
     
+    const createBubbleOptions = (bubbleDataId) =>
+    {
+      const right = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect().right;
+      const bubbleOptions = document.createElement('div');
+      bubbleOptions.style.position = 'absolute';
+      bubbleOptions.style.right = `${right}px`;
+      bubbleOptions.innerHTML = '<span>X</span>';
+      // Must be corrected : appendChild doesn't work on textarea 
+      document.querySelector(`[data-id='${bubbleDataId}']`).appendChild(bubbleOptions);
+      console.log(bubbleOptions);
+    }
     
     board.addEventListener('mousedown', (e) =>
     {

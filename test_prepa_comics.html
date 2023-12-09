@@ -77,6 +77,16 @@
   <script>
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
+    const deleteComicBubble = (bubbleDataId) => 
+    {
+      document.querySelector(`[data-id='${bubbleDataId}']`).addEventListener('click', ()=>
+      {
+        document.querySelector(`[data-id='${bubbleDataId}']`).remove();      
+        // test :
+        document.getElementById('widget-4').remove();  
+        console.log('clic on delete');
+      })
+    }
     let myZIndex = 1;    
     
     
@@ -94,6 +104,7 @@
       // xEnd = 350;
       // yEnd = 350;
 
+      // the comic bubble must be at least 25px height and width
       if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
       {        
         const newComicBubble = document.createElement('textarea');
@@ -117,30 +128,30 @@
       const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();
       const boardClientRect = board.getBoundingClientRect();
       const bubbleOptions = document.createElement('div');
+      const btnDeleteBubble = document.createElement('div');     
+      btnDeleteBubble.innerText = 'X';
+      btnDeleteBubble.addEventListener('click', () =>{deleteComicBubble(bubbleDataId)});
+      bubbleOptions.append(btnDeleteBubble);
       bubbleOptions.style.border = '3px solid violet';
       bubbleOptions.style.position = 'absolute';
       bubbleOptions.style.left = `${bubbleClientRect.right-boardClientRect.left}px`;      
-      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`;      
-      bubbleOptions.innerHTML = '<span>X</span>';
-      // Must be corrected : appendChild doesn't work on textarea 
-      board.appendChild(bubbleOptions);
-      console.log(bubbleOptions);
+      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`; 
+      
+     
+      board.appendChild(bubbleOptions);      
     }
     
     board.addEventListener('mousedown', (e) =>
     {
-      // console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
       comicBubble.xStart = e.clientX;
       comicBubble.yStart = e.clientY;
     })
     
     board.addEventListener('mouseup', (e) =>
-    {
-      // console.log(`xStart = ${e.clientX} | yStart = ${e.clientY}`);
+    {   
       comicBubble.xEnd = e.clientX;
-      comicBubble.yEnd = e.clientY;
-      
-      console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
+      comicBubble.yEnd = e.clientY;      
+      //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
       createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
     })
     

@@ -95,7 +95,7 @@
       // yEnd = 350;
 
       if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
-      {
+      {        
         const newComicBubble = document.createElement('textarea');
         myZIndex++;
         newComicBubble.setAttribute('data-id', myZIndex);
@@ -114,13 +114,16 @@
     
     const createBubbleOptions = (bubbleDataId) =>
     {
-      const right = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect().right;
+      const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();
+      const boardClientRect = board.getBoundingClientRect();
       const bubbleOptions = document.createElement('div');
+      bubbleOptions.style.border = '3px solid violet';
       bubbleOptions.style.position = 'absolute';
-      bubbleOptions.style.right = `${right}px`;
+      bubbleOptions.style.left = `${bubbleClientRect.right-boardClientRect.left}px`;      
+      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`;      
       bubbleOptions.innerHTML = '<span>X</span>';
       // Must be corrected : appendChild doesn't work on textarea 
-      document.querySelector(`[data-id='${bubbleDataId}']`).appendChild(bubbleOptions);
+      board.appendChild(bubbleOptions);
       console.log(bubbleOptions);
     }
     

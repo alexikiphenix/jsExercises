@@ -77,15 +77,17 @@
   <script>
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
+
+    // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 
     {
-      document.querySelector(`[data-id='${bubbleDataId}']`).addEventListener('click', ()=>
-      {
-        document.querySelector(`[data-id='${bubbleDataId}']`).remove();      
-        // test :
-        document.getElementById('widget-4').remove();  
-        console.log('clic on delete');
-      })
+      // document.querySelector(`[data-id='${bubbleDataId}']`).addEventListener('click', ()=>
+      // {
+      //   document.querySelector(`[data-id='${bubbleDataId}']`).remove();      
+      //   // test :
+      //   document.getElementById('widget-4').remove();  
+      // })
+      console.log('clic on delete');
     }
     let myZIndex = 1;    
     
@@ -135,8 +137,7 @@
       bubbleOptions.style.border = '3px solid violet';
       bubbleOptions.style.position = 'absolute';
       bubbleOptions.style.left = `${bubbleClientRect.right-boardClientRect.left}px`;      
-      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`; 
-      
+      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`;       
      
       board.appendChild(bubbleOptions);      
     }

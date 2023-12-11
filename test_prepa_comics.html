@@ -38,20 +38,22 @@
     }
     #widgetsWrapper
     {
-      grid-area: widgets;
+      grid-area: widgets;   
       width: 8vw;
       border: 1px dotted rgb(15, 214, 25);
     }
-    [id^="widget"]
+
+    /* [class="widget"] != .widget in case of mulitple classes */
+    .widget
     {
       width: 50%;
-      padding: 1rem;
+      padding: .4rem;
       margin: 1rem;
       /* transition: all 2s; */
       transform-origin: center;
       border: 1px dotted rgb(231, 126, 6);
     }
-    [id^="widget"]:active
+    [class="widget"]:active
     {
       transform: scale(.9);
     }
@@ -68,10 +70,10 @@
     <div id="creationsList">Creations</div>
     <main id="board">BOARD</main>
     <aside id="widgetsWrapper">
-      <div id="widgetAddBubble">widget-1</div>
-      <div id="widget-2">widget-2</div>
-      <div id="widget-3">widget-3</div>
-      <div id="widget-4">widget-4</div>
+      <div id="widgetAddBubble" class="widget">widget-1</div>
+      <div id="widget-2" class="widget">widget-2</div>
+      <div id="widget-3" class="widget">widget-3</div>
+      <div id="widget-4" class="widget">widget-4</div>
     </aside>
   </div>
   <script>

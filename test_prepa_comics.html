@@ -49,10 +49,12 @@
       width: 50%;
       padding: .4rem;
       margin: 1rem;
+      cursor: pointer;
+      user-select: none;
       /* transition: all 2s; */
       transform-origin: center;
       border: 1px dotted rgb(231, 126, 6);
-    }
+    }    
     [class="widget"]:active
     {
       transform: scale(.9);
@@ -70,7 +72,7 @@
     <div id="creationsList">Creations</div>
     <main id="board">BOARD</main>
     <aside id="widgetsWrapper">
-      <div id="widgetAddBubble" class="widget">widget-1</div>
+      <div id="widgetAddBubble" class="widget autres classes">widget-1</div>
       <div id="widget-2" class="widget">widget-2</div>
       <div id="widget-3" class="widget">widget-3</div>
       <div id="widget-4" class="widget">widget-4</div>
@@ -93,38 +95,50 @@
     }
     let myZIndex = 1;    
     
+    console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));
+    
+    
     
     // next step add text size and font-family
     const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
     
     const createComicBubble = (xStart, yStart, xEnd, yEnd) =>
-    {      
-      // - board.getBoundingClientRect().left to correct the gap on the left
-      xStart = xStart - board.getBoundingClientRect().left; 
-      xEnd = xEnd - board.getBoundingClientRect().left; 
-      yStart = yStart - board.getBoundingClientRect().top; 
-      yEnd = yEnd - board.getBoundingClientRect().top; 
-      // yStart = 50;
-      // xEnd = 350;
-      // yEnd = 350;
+    { 
+      // We check first if the widget is selected
+      if(
+        typeof(document.getElementById('widgetAddBubble').className.indexOf('selected')) === 'number' 
+        && document.getElementById('widgetAddBubble').className.indexOf('selected') > -1    
+      )
+      {
 
-      // the comic bubble must be at least 25px height and width
-      if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
-      {        
-        const newComicBubble = document.createElement('textarea');
-        myZIndex++;
-        newComicBubble.setAttribute('data-id', myZIndex);
-        newComicBubble.style.zIndex = myZIndex;
-        newComicBubble.style.position = 'absolute';
-        newComicBubble.style.left = `${xStart}px`;
-        newComicBubble.style.width = `${(xEnd-xStart)}px`;
-        newComicBubble.style.top = `${yStart}px`;
-        newComicBubble.style.height = `${(yEnd-yStart)}px`;
-        board.appendChild(newComicBubble);
-        createBubbleOptions(myZIndex);        
-      }
-      else
+        // - board.getBoundingClientRect().left to correct the gap on the left
+        xStart = xStart - board.getBoundingClientRect().left; 
+        xEnd = xEnd - board.getBoundingClientRect().left; 
+        yStart = yStart - board.getBoundingClientRect().top; 
+        yEnd = yEnd - board.getBoundingClientRect().top; 
+        // yStart = 50;
+        // xEnd = 350;
+        // yEnd = 350;
+        
+        // the comic bubble must be at least 25px height and width
+        if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
+        {        
+          const newComicBubble = document.createElement('textarea');
+          myZIndex++;
+          newComicBubble.setAttribute('data-id', myZIndex);
+          newComicBubble.style.zIndex = myZIndex;
+          newComicBubble.style.position = 'absolute';
+          newComicBubble.style.left = `${xStart}px`;
+          newComicBubble.style.width = `${(xEnd-xStart)}px`;
+          newComicBubble.style.top = `${yStart}px`;
+          newComicBubble.style.height = `${(yEnd-yStart)}px`;
+          board.appendChild(newComicBubble);
+          createBubbleOptions(myZIndex);        
+        }
+        else
         console.log("Bulle trop petite");
+      }
+
     }
     
     const createBubbleOptions = (bubbleDataId) =>
@@ -143,7 +157,7 @@
      
       board.appendChild(bubbleOptions);      
     }
-    
+        
     board.addEventListener('mousedown', (e) =>
     {
       comicBubble.xStart = e.clientX;

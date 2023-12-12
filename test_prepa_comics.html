@@ -59,9 +59,23 @@
     {
       transform: scale(.9);
     }
+    #listWidgetsCreated
+    {
+      border-top: .2rem solid black;
+    }
+
     .selected
     {
       border: 2px solid green;
+    }
+    .btnOption
+    {
+      cursor: pointer;
+    }
+    .btnOption:hover, .btnOption:active
+    {
+      color: white;
+      background-color: black;
     }
   </style>
   <title>Test prepa comics</title>
@@ -76,6 +90,8 @@
       <div id="widget-2" class="widget">widget-2</div>
       <div id="widget-3" class="widget">widget-3</div>
       <div id="widget-4" class="widget">widget-4</div>
+      <div id="listWidgetsCreated">        
+      </div>
     </aside>
   </div>
   <script>
@@ -110,7 +126,6 @@
         && document.getElementById('widgetAddBubble').className.indexOf('selected') > -1    
       )
       {
-
         // - board.getBoundingClientRect().left to correct the gap on the left
         xStart = xStart - board.getBoundingClientRect().left; 
         xEnd = xEnd - board.getBoundingClientRect().left; 

@@ -59,7 +59,7 @@
     {
       transform: scale(.9);
     }
-    #listWidgetsCreated
+    #widgetsCreatedWrapper
     {
       border-top: .2rem solid black;
     }
@@ -90,13 +90,14 @@
       <div id="widget-2" class="widget">widget-2</div>
       <div id="widget-3" class="widget">widget-3</div>
       <div id="widget-4" class="widget">widget-4</div>
-      <div id="listWidgetsCreated">        
+      <div id="widgetsCreatedWrapper">        
       </div>
     </aside>
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
+    
 
     // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 
@@ -148,6 +149,7 @@
           newComicBubble.style.top = `${yStart}px`;
           newComicBubble.style.height = `${(yEnd-yStart)}px`;
           board.appendChild(newComicBubble);
+
           createBubbleOptions(myZIndex);        
         }
         else

@@ -148,6 +148,7 @@
       const bubbleOptions = document.createElement('div');
       const btnDeleteBubble = document.createElement('div');     
       btnDeleteBubble.innerText = 'X';
+      btnDeleteBubble.classList.add('btnOption');
       btnDeleteBubble.addEventListener('click', () =>{deleteComicBubble(bubbleDataId)});
       bubbleOptions.append(btnDeleteBubble);
       bubbleOptions.style.border = '3px solid violet';

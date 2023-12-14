@@ -97,7 +97,7 @@
   <script>
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
-    
+    const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
 
     // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 
@@ -114,10 +114,44 @@
     
     console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));
     
+
     
     
     // next step add text size and font-family
     const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+
+    // Create a de delete button which can remove the element got by id
+    const createDeleteBtn = (idElement) =>
+    {
+      if(typeof document.getElementById(idElement) === 'object')      
+      {
+        const btnDelete = document.createElement('div');
+        btnDelete.setAttribute('data-btn-delete', idElement);
+        btnDelete.style.display = 'inline-block';
+        btnDelete.classList.add('btnOption');
+        btnDelete.innerText = 'X';
+        btnDelete.addEventListener('click', (e) =>
+        {
+          document.getElementById(idElement).remove();
+          document.querySelector(`[data-bubble-options-wrapper='${idElement}']`).remove();
+          document.querySelector(`[data-btn-delete='${idElement}']`).remove();
+          btnDelete.remove();
+          console.log(e);
+        });        
+        return btnDelete;
+      }      
+      else
+        return false;
+    }
+
+    
+
+    const createBubbleInfos = (idBubble) => 
+    {
+      const bubbleInfos = document.querySelector(`[data-id='${bubbleId}']`);
+      //const bubbleInfos = document.createElement('div');
+      bubbleInfos.setAttribute('data-id', idBubble);
+    }
     
     const createComicBubble = (xStart, yStart, xEnd, yEnd) =>
     { 
@@ -141,6 +175,7 @@
         {        
           const newComicBubble = document.createElement('textarea');
           myZIndex++;
+          newComicBubble.setAttribute('id', myZIndex);
           newComicBubble.setAttribute('data-id', myZIndex);
           newComicBubble.style.zIndex = myZIndex;
           newComicBubble.style.position = 'absolute';
@@ -149,7 +184,9 @@
           newComicBubble.style.top = `${yStart}px`;
           newComicBubble.style.height = `${(yEnd-yStart)}px`;
           board.appendChild(newComicBubble);
+          widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
 
+          console.log(createDeleteBtn(myZIndex));
           createBubbleOptions(myZIndex);        
         }
         else
@@ -163,11 +200,13 @@
       const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();
       const boardClientRect = board.getBoundingClientRect();
       const bubbleOptions = document.createElement('div');
-      const btnDeleteBubble = document.createElement('div');     
-      btnDeleteBubble.innerText = 'X';
-      btnDeleteBubble.classList.add('btnOption');
-      btnDeleteBubble.addEventListener('click', () =>{deleteComicBubble(bubbleDataId)});
-      bubbleOptions.append(btnDeleteBubble);
+      // const btnDeleteBubble = document.createElement('div');     
+      bubbleOptions.setAttribute('data-bubble-options-wrapper', bubbleDataId);
+      // btnDeleteBubble.innerText = 'X';
+      // btnDeleteBubble.classList.add('btnOption');
+      //btnDeleteBubble.addEventListener('click', () =>{deleteComicBubble(bubbleDataId)});
+      //bubbleOptions.append(btnDeleteBubble);
+      bubbleOptions.append(createDeleteBtn(bubbleDataId));
       bubbleOptions.style.border = '3px solid violet';
       bubbleOptions.style.position = 'absolute';
       bubbleOptions.style.left = `${bubbleClientRect.right-boardClientRect.left}px`;      

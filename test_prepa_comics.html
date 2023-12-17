@@ -30,6 +30,12 @@
       background-color: rgb(100, 100, 100);
       border: 1px dotted rgb(161, 17, 17);
     }
+    #mainCanvas
+    {
+      width: 100%;
+      height: 100%;
+      border: 2px solid green;
+    }
     #creationsList
     {
       grid-area: creationsList;
@@ -82,9 +88,22 @@
 </head>
 <body>
   <div id="wrapper">
-    <header>HEADER</header>
+    <header>HEADER
+      <canvas height="220" width="220">
+        <input type="text" width="120" height="120" placeholder="TEST input"/>
+        <div>TEST</div>
+        <script>
+          var canvas = document.querySelector("canvas");
+          var ctx = canvas.getContext("2d");
+          ctx.fillStyle = "green";
+          ctx.fillRect(10, 10, 100, 100);
+        </script>
+      </canvas>
+    </header>
     <div id="creationsList">Creations</div>
-    <main id="board">BOARD</main>
+    <div id="board"> 
+      <canvas id="mainCanvas"></canvas>       
+    </div>
     <aside id="widgetsWrapper">
       <div id="widgetAddBubble" class="widget autres classes">widget-1</div>
       <div id="widget-2" class="widget">widget-2</div>
@@ -98,6 +117,8 @@
     const wrapper = document.querySelector('#wrapper');
     const board = document.getElementById('board');
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
+    const canvas = document.querySelector('canvas');
+    console.log(canvas);
 
     // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 

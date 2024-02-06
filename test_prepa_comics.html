@@ -118,8 +118,9 @@
     const board = document.getElementById('board');
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
-    console.log(canvas);
-
+    const widgetAddBubble = document.getElementById('widgetAddBubble');
+    let myZIndex = 1;    
+        
     // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 
     {
@@ -131,7 +132,6 @@
       // })
       console.log('clic on delete');
     }
-    let myZIndex = 1;    
     
     console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));
     
@@ -250,12 +250,16 @@
       createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
     })
     
-    const widgetAddBubble = document.getElementById('widgetAddBubble');
-    widgetAddBubble.addEventListener('click', () =>
-    {      
-      board.style.cursor = `crosshair`;
-      widgetAddBubble.classList.toggle('selected');      
-    })
+    const allowCreateBubble = () =>
+    {
+      widgetAddBubble.addEventListener('click', () =>
+      {      
+        board.style.cursor = `crosshair`;
+        widgetAddBubble.classList.toggle('selected');      
+      })
+    }
+
+    allowCreateBubble();
     </script>
 </body>
 </html>

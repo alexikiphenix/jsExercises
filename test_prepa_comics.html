@@ -235,12 +235,15 @@
      
       board.appendChild(bubbleOptions);      
     }
-        
-    board.addEventListener('mousedown', (e) =>
+    
+    const setBubbleStartPosition = () => 
     {
-      comicBubble.xStart = e.clientX;
-      comicBubble.yStart = e.clientY;
-    })
+      board.addEventListener('mousedown', (e) =>
+      {
+        comicBubble.xStart = e.clientX;
+        comicBubble.yStart = e.clientY;
+      })
+    }
     
     board.addEventListener('mouseup', (e) =>
     {   

@@ -245,13 +245,16 @@
       })
     }
     
-    board.addEventListener('mouseup', (e) =>
-    {   
-      comicBubble.xEnd = e.clientX;
-      comicBubble.yEnd = e.clientY;      
-      //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
-      createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
-    })
+    const setBubbleEndPosition = () =>
+    {
+      board.addEventListener('mouseup', (e) =>
+      {     
+        comicBubble.xEnd = e.clientX;
+        comicBubble.yEnd = e.clientY;      
+        //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
+        //createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
+      })
+    }
     
     const allowCreateBubble = () =>
     {
@@ -263,6 +266,9 @@
     }
 
     allowCreateBubble();
+    setBubbleStartPosition();
+    setBubbleEndPosition();
+    
     </script>
 </body>
 </html>

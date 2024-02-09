@@ -119,8 +119,23 @@
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
     const widgetAddBubble = document.getElementById('widgetAddBubble');
+    let choice = "";
     let myZIndex = 1;    
         
+    widgetAddBubble.addEventListener('click', () =>
+    {
+      widgetAddBubble.classList.toggle('selected');   
+
+      if(choice === "")
+      {
+        choice = "addBubble";
+        board.style.cursor = `crosshair`;
+      }
+      else
+        choice = "";
+
+      console.log('choice =>'+choice);
+    })
     // FX TO CORRECT NOT ACTIVATED
     const deleteComicBubble = (bubbleDataId) => 
     {
@@ -133,12 +148,13 @@
       console.log('clic on delete');
     }
     
-    console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));
+    //console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));
     
 
     
     
     // next step add text size and font-family
+    const cursorPosition = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
     const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
 
     // Create a de delete button which can remove the element got by id
@@ -174,25 +190,28 @@
       bubbleInfos.setAttribute('data-id', idBubble);
     }
     
-    const createComicBubble = (xStart, yStart, xEnd, yEnd) =>
+    const createComicBubble = () =>
     { 
+      console.log('Create comic bubble');
       // We check first if the widget is selected
       if(
         typeof(document.getElementById('widgetAddBubble').className.indexOf('selected')) === 'number' 
         && document.getElementById('widgetAddBubble').className.indexOf('selected') > -1    
       )
-      {
+      {        
         // - board.getBoundingClientRect().left to correct the gap on the left
-        xStart = xStart - board.getBoundingClientRect().left; 
-        xEnd = xEnd - board.getBoundingClientRect().left; 
-        yStart = yStart - board.getBoundingClientRect().top; 
-        yEnd = yEnd - board.getBoundingClientRect().top; 
+        // setBubbleStartPosition();
+        // setBubbleEndPosition();
+        // xStart = xStart - board.getBoundingClientRect().left; 
+        // xEnd = xEnd - board.getBoundingClientRect().left; 
+        // yStart = yStart - board.getBoundingClientRect().top; 
+        // yEnd = yEnd - board.getBoundingClientRect().top; 
         // yStart = 50;
         // xEnd = 350;
         // yEnd = 350;
         
         // the comic bubble must be at least 25px height and width
-        if(xEnd-xStart >= 25 && yEnd-yStart >= 25)
+        if(comicBubble.xEnd - comicBubble.xStart >= 25 && comicBubble.yEnd - comicBubble.yStart >= 25)
         {        
           const newComicBubble = document.createElement('textarea');
           myZIndex++;
@@ -200,10 +219,12 @@
           newComicBubble.setAttribute('data-id', myZIndex);
           newComicBubble.style.zIndex = myZIndex;
           newComicBubble.style.position = 'absolute';
-          newComicBubble.style.left = `${xStart}px`;
-          newComicBubble.style.width = `${(xEnd-xStart)}px`;
-          newComicBubble.style.top = `${yStart}px`;
-          newComicBubble.style.height = `${(yEnd-yStart)}px`;
+          newComicBubble.style.left = `${comicBubble.xStart}px`;
+          console.log(`left => ${comicBubble.xStart}px`);
+          newComicBubble.style.width = `${(comicBubble.xEnd-comicBubble.xStart)}px`;
+          newComicBubble.style.top = `${comicBubble.yStart}px`;
+          console.log(`top => ${comicBubble.yStart}px`);
+          newComicBubble.style.height = `${(comicBubble.yEnd - comicBubble.yStart)}px`;
           board.appendChild(newComicBubble);
           widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
 
@@ -220,7 +241,8 @@
     {
       const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();
       const boardClientRect = board.getBoundingClientRect();
-      const bubbleOptions = document.createElement('div');
+      const bubbleOptions = document.createElement('div');  
+    
       // const btnDeleteBubble = document.createElement('div');     
       bubbleOptions.setAttribute('data-bubble-options-wrapper', bubbleDataId);
       // btnDeleteBubble.innerText = 'X';
@@ -240,8 +262,17 @@
     {
       board.addEventListener('mousedown', (e) =>
       {
-        comicBubble.xStart = e.clientX;
-        comicBubble.yStart = e.clientY;
+        // console.log('START position');
+        console.log('test setBubbleStartReaction ');
+        comicBubble.xStart = e.clientX - board.getBoundingClientRect().left; ;
+        comicBubble.yStart = e.clientY - board.getBoundingClientRect().top;
+        // xStart = xStart - board.getBoundingClientRect().left; 
+        // xEnd = xEnd - board.getBoundingClientRect().left; 
+        // yStart = yStart - board.getBoundingClientRect().top; 
+        // yEnd = yEnd - board.getBoundingClientRect().top; 
+        //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
+        const position = {x: comicBubble.xStart, y: comicBubble.yStart};
+
       })
     }
     
@@ -249,26 +280,44 @@
     {
       board.addEventListener('mouseup', (e) =>
       {     
-        comicBubble.xEnd = e.clientX;
-        comicBubble.yEnd = e.clientY;      
-        //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
+        comicBubble.xEnd = e.clientX - board.getBoundingClientRect().left;
+        comicBubble.yEnd = e.clientY - board.getBoundingClientRect().top;      
+        createComicBubble();
         //createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
       })
     }
     
-    const allowCreateBubble = () =>
+    // const allowCreateBubble = () =>
+    // {
+    //   widgetAddBubble.addEventListener('click', () =>
+    //   {      
+    //     board.style.cursor = `crosshair`;
+    //     widgetAddBubble.classList.toggle('selected');      
+    //   })
+    // }
+
+    
+    
+    const handleActionOnBoard = () =>
     {
-      widgetAddBubble.addEventListener('click', () =>
-      {      
-        board.style.cursor = `crosshair`;
-        widgetAddBubble.classList.toggle('selected');      
-      })
+      console.log('handleAction');
+      switch(choice)
+      {
+        case "addBubble":                     
+          //allowCreateBubble();
+          setBubbleStartPosition();
+          setBubbleEndPosition();
+          // board.addEventListener('mousedown', () =>{ setBubbleStartPosition;})
+          // board.addEventListener('mouseup', () =>{ setBubbleStartPosition;})
+          
+        break;
+        case "": console.log('Pas de choix');
+          break;
+      }
     }
 
-    allowCreateBubble();
-    setBubbleStartPosition();
-    setBubbleEndPosition();
-    
+    board.addEventListener('mousedown', () =>{handleActionOnBoard();});
+    board.addEventListener('mouseup', () =>{handleActionOnBoard();});
     </script>
 </body>
 </html>

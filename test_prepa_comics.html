@@ -201,7 +201,7 @@
       {        
         // - board.getBoundingClientRect().left to correct the gap on the left
         // getMouseDownPosition();
-        // setBubbleEndPosition();
+        // getMouseUpPosition();
         // xStart = xStart - board.getBoundingClientRect().left; 
         // xEnd = xEnd - board.getBoundingClientRect().left; 
         // yStart = yStart - board.getBoundingClientRect().top; 
@@ -272,11 +272,12 @@
         // yEnd = yEnd - board.getBoundingClientRect().top; 
         //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
         const position = {x: comicBubble.xStart, y: comicBubble.yStart};
-
+        return position;
       })
     }
     
-    const setBubbleEndPosition = () =>
+    
+    const getMouseUpPosition = () =>
     {
       board.addEventListener('mouseup', (e) =>
       {     
@@ -287,6 +288,9 @@
       })
     }
     
+    getMouseDownPosition();
+    getMouseDownPosition();
+
     // const allowCreateBubble = () =>
     // {
     //   widgetAddBubble.addEventListener('click', () =>
@@ -306,7 +310,7 @@
         case "addBubble":                     
           //allowCreateBubble();
           getMouseDownPosition();
-          setBubbleEndPosition();
+          getMouseUpPosition();
           // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})
           // board.addEventListener('mouseup', () =>{ getMouseDownPosition;})
           

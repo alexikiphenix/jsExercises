@@ -154,8 +154,8 @@
     
     
     // next step add text size and font-family
-    const cursorPosition = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
-    const comicBubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+    const cursorPositions = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+    const cursorPositions = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
 
     // Create a de delete button which can remove the element got by id
     const createDeleteBtn = (idElement) =>
@@ -211,7 +211,7 @@
         // yEnd = 350;
         
         // the comic bubble must be at least 25px height and width
-        if(comicBubble.xEnd - comicBubble.xStart >= 25 && comicBubble.yEnd - comicBubble.yStart >= 25)
+        if(cursorPositions.xEnd - cursorPositions.xStart >= 25 && cursorPositions.yEnd - cursorPositions.yStart >= 25)
         {        
           const newComicBubble = document.createElement('textarea');
           myZIndex++;
@@ -219,12 +219,12 @@
           newComicBubble.setAttribute('data-id', myZIndex);
           newComicBubble.style.zIndex = myZIndex;
           newComicBubble.style.position = 'absolute';
-          newComicBubble.style.left = `${comicBubble.xStart}px`;
-          console.log(`left => ${comicBubble.xStart}px`);
-          newComicBubble.style.width = `${(comicBubble.xEnd-comicBubble.xStart)}px`;
-          newComicBubble.style.top = `${comicBubble.yStart}px`;
-          console.log(`top => ${comicBubble.yStart}px`);
-          newComicBubble.style.height = `${(comicBubble.yEnd - comicBubble.yStart)}px`;
+          newComicBubble.style.left = `${cursorPositions.xStart}px`;
+          console.log(`left => ${cursorPositions.xStart}px`);
+          newComicBubble.style.width = `${(cursorPositions.xEnd-cursorPositions.xStart)}px`;
+          newComicBubble.style.top = `${cursorPositions.yStart}px`;
+          console.log(`top => ${cursorPositions.yStart}px`);
+          newComicBubble.style.height = `${(cursorPositions.yEnd - cursorPositions.yStart)}px`;
           board.appendChild(newComicBubble);
           widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
 
@@ -264,14 +264,14 @@
       {
         // console.log('START position');
         console.log('test setBubbleStartReaction ');
-        comicBubble.xStart = e.clientX - board.getBoundingClientRect().left; ;
-        comicBubble.yStart = e.clientY - board.getBoundingClientRect().top;
+        cursorPositions.xStart = e.clientX - board.getBoundingClientRect().left; ;
+        cursorPositions.yStart = e.clientY - board.getBoundingClientRect().top;
         // xStart = xStart - board.getBoundingClientRect().left; 
         // xEnd = xEnd - board.getBoundingClientRect().left; 
         // yStart = yStart - board.getBoundingClientRect().top; 
         // yEnd = yEnd - board.getBoundingClientRect().top; 
-        //console.log(`xStart = ${comicBubble.xStart} | yStart = ${comicBubble.yStart} | xEnd = ${comicBubble.xEnd} | yEnd = ${comicBubble.xStart}`);
-        const position = {x: comicBubble.xStart, y: comicBubble.yStart};
+        //console.log(`xStart = ${cursorPositions.xStart} | yStart = ${cursorPositions.yStart} | xEnd = ${cursorPositions.xEnd} | yEnd = ${cursorPositions.xStart}`);
+        const position = {x: cursorPositions.xStart, y: cursorPositions.yStart};
         return position;
       })
     }
@@ -281,15 +281,15 @@
     {
       board.addEventListener('mouseup', (e) =>
       {     
-        comicBubble.xEnd = e.clientX - board.getBoundingClientRect().left;
-        comicBubble.yEnd = e.clientY - board.getBoundingClientRect().top;      
+        cursorPositions.xEnd = e.clientX - board.getBoundingClientRect().left;
+        cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;      
         createComicBubble();
-        //createComicBubble(comicBubble.xStart, comicBubble.yStart, comicBubble.xEnd, comicBubble.yEnd);
+        //createComicBubble(cursorPositions.xStart, cursorPositions.yStart, cursorPositions.xEnd, cursorPositions.yEnd);
       })
     }
     
     getMouseDownPosition();
-    getMouseDownPosition();
+    getMouseUpPosition();
 
     // const allowCreateBubble = () =>
     // {

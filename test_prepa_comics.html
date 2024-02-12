@@ -30,12 +30,12 @@
       background-color: rgb(100, 100, 100);
       border: 1px dotted rgb(161, 17, 17);
     }
-    #mainCanvas
+    /* #mainCanvas
     {
       width: 100%;
       height: 100%;
       border: 2px solid green;
-    }
+    } */
     #creationsList
     {
       grid-area: creationsList;
@@ -99,10 +99,10 @@
           ctx.fillRect(10, 10, 100, 100);
         </script>
       </canvas> -->
+      <!-- <canvas id="mainCanvas"></canvas>        -->
     </header>
     <div id="creationsList">Creations</div>
     <div id="board"> 
-      <canvas id="mainCanvas"></canvas>       
     </div>
     <aside id="widgetsWrapper">
       <div id="widgetAddBubble" class="widget autres classes">widget-1</div>
@@ -153,8 +153,7 @@
 
     
     
-    // next step add text size and font-family
-    const cursorPositions = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+    // next step add text size and font-family    
     const cursorPositions = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
 
     // Create a de delete button which can remove the element got by id

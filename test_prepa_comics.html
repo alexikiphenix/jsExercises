@@ -284,6 +284,8 @@
         cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;      
         createComicBubble();
         //createComicBubble(cursorPositions.xStart, cursorPositions.yStart, cursorPositions.xEnd, cursorPositions.yEnd);
+        const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
+        return position;
       })
     }
     

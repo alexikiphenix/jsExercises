@@ -1,32 +1,46 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test addEventListener</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple clientX et clientY</title>
+  <style>
+    #coordonnees {
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-    
-    <script>
-        
-    </script>
+
+<!-- Ajoutez un élément pour afficher les coordonnées -->
+<div id="coordonnees">Cliquez n'importe où sur la page</div>
+
+<script>
+  // Définissez une fonction qui gère l'événement et traite les coordonnées
+  function gestionnaireClic(event) {
+    // Obtient les coordonnées X et Y par rapport à la fenêtre du navigateur
+    var x = event.clientX;
+    var y = event.clientY;
+
+    // Traitez les coordonnées comme vous le souhaitez
+    traiterCoordonnees(x, y);
+  }
+
+  // Définissez une fonction pour traiter les coordonnées
+  function traiterCoordonnees(x, y) {
+    // Mettez à jour le contenu de l'élément avec les coordonnées
+    coordonneesElement.textContent = "Coordonnées X : " + x + ", Coordonnées Y : " + y;
+
+    // Vous pouvez également utiliser les coordonnées dans d'autres parties de votre code
+    // Par exemple, les envoyer à un serveur, les utiliser pour déplacer un élément, etc.
+  }
+
+  // Sélectionnez l'élément pour afficher les coordonnées
+  var coordonneesElement = document.getElementById("coordonnees");
+
+  // Ajoutez un écouteur d'événements pour le clic de la souris
+  document.addEventListener("click", gestionnaireClic);
+</script>
+
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test addEventListener</title>
-</head>
-<body>
-    
-    <script>
-        
-    </script>
-</body>
->>>>>>> 08ed60be0768071ec8a591a4b06bab956f484462
-</html>
+</html> 

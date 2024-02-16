@@ -4,17 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      canvas{width: 100vw; height: 100vh;}
+    </style>
     <title>Functions</title>
   </head>
   <body>
-    <script>
-      // nom = paramètres
-      function sayHello(nom) {
-        console.log(`Bonjour ${nom}!`);
-      }
+    <canvas id="canvas">
 
-      // Marcus = argument
-      sayHello(`Marcus`);
-    </script>
+    </canvas>
+
+<script>
+var paramVal1= null;
+var paramVal2 = null;
+  document.addEventListener("DOMContentLoaded", init, false);
+
+  function init()
+  {
+    var canvas = document.getElementById("canvas");
+    canvas.addEventListener("mousedown", getPosition, false);
+
+return {x: paramVal1, y: paramVar2};
+
+  }
+
+  function getPosition(event)
+  {
+    var x = new Number();
+    var y = new Number();
+    var canvas = document.getElementById("canvas");
+
+    if (event.x != undefined && event.y != undefined)
+    {
+      x = event.x;
+      y = event.y;
+    }
+    else
+    {
+      x = event.clientX + document.body.scrollLeft +
+          document.documentElement.scrollLeft;
+      y = event.clientY + document.body.scrollTop +
+          document.documentElement.scrollTop;
+    }
+
+    x -= canvas.offsetLeft;
+    y -= canvas.offsetTop;
+
+paramVal1 = x;
+paramVal2 = y;
+
+    alert("x: " + x + "  y: " + y); // here can print the correct position
+
+    // if I add the two values here, and return them. How can I receive the values in funciton init()
+    // var clickPosition={"x":x, "y":y};
+    // return clickPosition;
+  }
+
+</script>
+
+    
   </body>
 </html>

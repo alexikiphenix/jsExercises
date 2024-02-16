@@ -121,7 +121,9 @@
     const widgetAddBubble = document.getElementById('widgetAddBubble');
     let choice = "";
     let myZIndex = 1;    
-        
+    let position2;
+    let position3;
+
     widgetAddBubble.addEventListener('click', () =>
     {
       widgetAddBubble.classList.toggle('selected');   
@@ -191,7 +193,7 @@
         // xEnd = 350;
         // yEnd = 350;
         
-        // the comic bubble must be at least 25px height and width
+        // the comic bubble must be at least 25px height and width    
         if(cursorPositions.xEnd - cursorPositions.xStart >= 25 && cursorPositions.yEnd - cursorPositions.yStart >= 25)
         {        
           const newComicBubble = document.createElement('textarea');
@@ -210,7 +212,7 @@
           createBubbleOptions(myZIndex);        
         }
         else
-          alert("Bulle trop petite !");
+          console.log("Bulle trop petite !");
       }
 
     }
@@ -239,15 +241,22 @@
     {
       board.addEventListener('mousedown', (e) =>
       {             
-        cursorPositions.xStart = e.clientX - board.getBoundingClientRect().left; ;
-        cursorPositions.yStart = e.clientY - board.getBoundingClientRect().top;
+        const xStart = e.clientX - board.getBoundingClientRect().left; 
+        const yStart = e.clientY - board.getBoundingClientRect().top;
+        // cursorPositions.xStart = e.clientX - board.getBoundingClientRect().left; 
+        // cursorPositions.yStart = e.clientY - board.getBoundingClientRect().top;
         // xStart = xStart - board.getBoundingClientRect().left; 
         // xEnd = xEnd - board.getBoundingClientRect().left; 
         // yStart = yStart - board.getBoundingClientRect().top; 
         // yEnd = yEnd - board.getBoundingClientRect().top; 
-        //console.log(`xStart = ${cursorPositions.xStart} | yStart = ${cursorPositions.yStart} | xEnd = ${cursorPositions.xEnd} | yEnd = ${cursorPositions.xStart}`);
-        const position = {x: cursorPositions.xStart, y: cursorPositions.yStart};
-        return position;
+        // console.log(`xStart = ${cursorPositions.xStart} | yStart = ${cursorPositions.yStart} | xEnd = ${cursorPositions.xEnd} | yEnd = ${cursorPositions.xStart}`);
+        // const position = {x: cursorPositions.xStart, y: cursorPositions.yStart};
+        //let position4 = new Object();
+        position4 = {"x": xStart, "y": yStart};    
+        
+        position3 = "MouseDown";
+        // throw position;
+        return position3;
       })
     }
     
@@ -260,7 +269,10 @@
         cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;      
         // createComicBubble();
         //createComicBubble(cursorPositions.xStart, cursorPositions.yStart, cursorPositions.xEnd, cursorPositions.yEnd);
+        //const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
         const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
+        // position2 = "TEST =>";
+        
         return position;
       })
     }
@@ -285,7 +297,8 @@
       {
         case "addBubble":                     
           //allowCreateBubble();
-          getMouseDownPosition();
+          //getMouseDownPosition();
+          console.log(getMouseDownPosition());
           getMouseUpPosition();
           createComicBubble();
           // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})

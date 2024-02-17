@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *{box-sizing: border-box;}
+    body{margin: 0;}
+    #wrapper{
+      display: grid;
+      width: 100vw; min-height: 100vh; border: 1px solid red;
+      grid-template-areas: "header header header" 
+                           "creationsList board widgets"                           
+      ;      
+    }
+    header
+    {
+      grid-area: header;
+      border: 1px dotted black;
+    }
+    #board
+    {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 30px);
+      grid-template-rows: repeat(auto-fill, 30px);
+      width: 80vw;
+      grid-gap: 1px;   
+      grid-area: board;
+      background-color: rgb(100, 100, 100);
+      border: 1px dotted rgb(161, 17, 17);
+    }
+    /* #mainCanvas
+    {
+      width: 100%;
+      height: 100%;
+      border: 2px solid green;
+    } */
+    #creationsList
+    {
+      grid-area: creationsList;
+      width: 12vw;
+      border: 1px dotted rgb(35, 15, 214);
+    }
+    #widgetsWrapper
+    {
+      grid-area: widgets;   
+      width: 8vw;
+      border: 1px dotted rgb(15, 214, 25);
+    }
+
+    /* [class="widget"] != .widget in case of mulitple classes */
+    .widget
+    {
+      width: 50%;
+      padding: .4rem;
+      margin: 1rem;
+      cursor: pointer;
+      user-select: none;
+      /* transition: all 2s; */
+      transform-origin: center;
+      border: 1px dotted rgb(231, 126, 6);
+    }    
+    [class="widget"]:active
+    {
+      transform: scale(.9);
+    }
+    #widgetsCreatedWrapper
+    {
+      border-top: .2rem solid black;
+    }
+
+    .selected
+    {
+      border: 2px solid green;
+    }
+    .btnOption
+    {
+      cursor: pointer;
+    }
+    .btnOption:hover, .btnOption:active
+    {
+      color: white;
+      background-color: black;
+    }
+  </style>
+  <title>Test prepa comics</title>
+</head>
+<body>
+  <div id="wrapper">
+    <header>HEADER
+      <!-- <canvas height="220" width="220">
+        <input type="text" width="120" height="120" placeholder="TEST input"/>
+        <div>TEST</div>
+        <script>
+          var canvasTest = document.querySelector("canvas");
+          var ctx = canvasTest.getContext("2d");
+          ctx.fillStyle = "green";
+          ctx.fillRect(10, 10, 100, 100);
+        </script>
+      </canvas> -->
+      <!-- <canvas id="mainCanvas"></canvas>        -->
+    </header>
+    <div id="creationsList">Creations</div>
+    <div id="board"> 
+    </div>
+    <aside id="widgetsWrapper">
+      <div id="widgetAddBubble" class="widget autres classes">widget-1</div>
+      <div id="widget-2" class="widget">widget-2</div>
+      <div id="widget-3" class="widget">widget-3</div>
+      <div id="widget-4" class="widget">widget-4</div>
+      <div id="widgetsCreatedWrapper">        
+      </div>
+    </aside>
+  </div>
+  <script>
+    const wrapper = document.querySelector('#wrapper');
+    const board = document.getElementById('board');
+    const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
+    const canvas = document.querySelector('canvas');
+    const widgetAddBubble = document.getElementById('widgetAddBubble');
+    let choice = "";
+    let myZIndex = 1;    
+    let position2;
+    let position3;
+
+    widgetAddBubble.addEventListener('click', () =>
+    {
+      widgetAddBubble.classList.toggle('selected');   
+
+      if(choice === "")
+      {
+        choice = "addBubble";
+        board.style.cursor = `crosshair`;
+      }
+      else
+        choice = "";      
+    })
+      
+    //console.log(typeof(document.getElementById('widgetAddBubble').className.indexOf('widget')));    
+    
+    // next step add text size and font-family    
+    const cursorPositions = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
+
+    // Create a de delete button which can remove the element got by id
+    const createDeleteBtn = (idElement) =>
+    {
+      if(typeof document.getElementById(idElement) === 'object')      
+      {
+        const btnDelete = document.createElement('div');
+        btnDelete.setAttribute('data-btn-delete', idElement);
+        btnDelete.style.display = 'inline-block';
+        btnDelete.classList.add('btnOption');
+        btnDelete.innerText = 'X';
+        btnDelete.addEventListener('click', (e) =>
+        {
+          document.getElementById(idElement).remove();
+          document.querySelector(`[data-bubble-options-wrapper='${idElement}']`).remove();
+          document.querySelector(`[data-btn-delete='${idElement}']`).remove();
+          btnDelete.remove();          
+        });        
+        return btnDelete;
+      }      
+      else
+        return false;
+    }
+
+    
+
+    const createBubbleInfos = (idBubble) => 
+    {
+      const bubbleInfos = document.querySelector(`[data-id='${bubbleId}']`);
+      //const bubbleInfos = document.createElement('div');
+      bubbleInfos.setAttribute('data-id', idBubble);
+    }
+    
+    const createComicBubble = () =>
+    {       
+      // We check first if the widget is selected
+      if(
+        typeof(document.getElementById('widgetAddBubble').className.indexOf('selected')) === 'number' 
+        && document.getElementById('widgetAddBubble').className.indexOf('selected') > -1    
+      )
+      {        
+        // - board.getBoundingClientRect().left to correct the gap on the left
+        // getMouseDownPosition();
+        // getMouseUpPosition();
+        // xStart = xStart - board.getBoundingClientRect().left; 
+        // xEnd = xEnd - board.getBoundingClientRect().left; 
+        // yStart = yStart - board.getBoundingClientRect().top; 
+        // yEnd = yEnd - board.getBoundingClientRect().top; 
+        // yStart = 50;
+        // xEnd = 350;
+        // yEnd = 350;
+        
+        // the comic bubble must be at least 25px height and width    
+        if(cursorPositions.xEnd - cursorPositions.xStart >= 25 && cursorPositions.yEnd - cursorPositions.yStart >= 25)
+        {        
+          const newComicBubble = document.createElement('textarea');
+          myZIndex++;
+          newComicBubble.setAttribute('id', myZIndex);
+          newComicBubble.setAttribute('data-id', myZIndex);
+          newComicBubble.style.zIndex = myZIndex;
+          newComicBubble.style.position = 'absolute';
+          newComicBubble.style.left = `${cursorPositions.xStart}px`;          
+          newComicBubble.style.width = `${(cursorPositions.xEnd-cursorPositions.xStart)}px`;
+          newComicBubble.style.top = `${cursorPositions.yStart}px`;          
+          newComicBubble.style.height = `${(cursorPositions.yEnd - cursorPositions.yStart)}px`;
+          board.appendChild(newComicBubble);
+          widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
+          
+          createBubbleOptions(myZIndex);        
+        }
+        else
+          console.log("Bulle trop petite !");
+      }
+
+    }
+    
+    const createBubbleOptions = (bubbleDataId) =>
+    {
+      const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();
+      const boardClientRect = board.getBoundingClientRect();
+      const bubbleOptions = document.createElement('div');      
+      // const btnDeleteBubble = document.createElement('div');     
+      bubbleOptions.setAttribute('data-bubble-options-wrapper', bubbleDataId);
+      // btnDeleteBubble.innerText = 'X';
+      // btnDeleteBubble.classList.add('btnOption');
+      //btnDeleteBubble.addEventListener('click', () =>{deleteComicBubble(bubbleDataId)});
+      //bubbleOptions.append(btnDeleteBubble);
+      bubbleOptions.append(createDeleteBtn(bubbleDataId));
+      bubbleOptions.style.border = '3px solid violet';
+      bubbleOptions.style.position = 'absolute';
+      bubbleOptions.style.left = `${bubbleClientRect.right-boardClientRect.left}px`;      
+      bubbleOptions.style.top = `${bubbleClientRect.top-boardClientRect.top}px`;       
+     
+      board.appendChild(bubbleOptions);      
+    }
+    
+    const getMouseDownPosition = () => 
+    {
+      board.addEventListener('mousedown', (e) =>
+      {             
+        const xStart = e.clientX - board.getBoundingClientRect().left; 
+        const yStart = e.clientY - board.getBoundingClientRect().top;
+        // cursorPositions.xStart = e.clientX - board.getBoundingClientRect().left; 
+        // cursorPositions.yStart = e.clientY - board.getBoundingClientRect().top;
+        // xStart = xStart - board.getBoundingClientRect().left; 
+        // xEnd = xEnd - board.getBoundingClientRect().left; 
+        // yStart = yStart - board.getBoundingClientRect().top; 
+        // yEnd = yEnd - board.getBoundingClientRect().top; 
+        // console.log(`xStart = ${cursorPositions.xStart} | yStart = ${cursorPositions.yStart} | xEnd = ${cursorPositions.xEnd} | yEnd = ${cursorPositions.xStart}`);
+        // const position = {x: cursorPositions.xStart, y: cursorPositions.yStart};
+        //let position4 = new Object();
+        position4 = {"x": xStart, "y": yStart};    
+        
+        position3 = "MouseDown";
+        // throw position;
+        return position3;
+      })
+    }
+    
+    
+    const getMouseUpPosition = () =>
+    {
+      board.addEventListener('mouseup', (e) =>
+      {     
+        cursorPositions.xEnd = e.clientX - board.getBoundingClientRect().left;
+        cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;      
+        // createComicBubble();
+        //createComicBubble(cursorPositions.xStart, cursorPositions.yStart, cursorPositions.xEnd, cursorPositions.yEnd);
+        //const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
+        const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
+        // position2 = "TEST =>";
+        
+        return position;
+      })
+    }
+    
+    getMouseDownPosition();
+    getMouseUpPosition();
+
+    // const allowCreateBubble = () =>
+    // {
+    //   widgetAddBubble.addEventListener('click', () =>
+    //   {      
+    //     board.style.cursor = `crosshair`;
+    //     widgetAddBubble.classList.toggle('selected');      
+    //   })
+    // }
+
+    
+    
+    const handleActionOnBoard = () =>
+    {      
+      switch(choice)
+      {
+        case "addBubble":                     
+          //allowCreateBubble();
+          //getMouseDownPosition();
+          console.log(getMouseDownPosition());
+          getMouseUpPosition();
+          createComicBubble();
+          // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})
+          // board.addEventListener('mouseup', () =>{ getMouseDownPosition;})          
+        break;
+        case "": console.log('Pas de choix');
+          break;
+      }
+    }
+
+    board.addEventListener('mousedown', () =>{handleActionOnBoard();});
+    board.addEventListener('mouseup', () =>{handleActionOnBoard();});
+    </script>
+</body>
+</html>

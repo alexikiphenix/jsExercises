@@ -200,7 +200,7 @@
       )
       {        
         // - board.getBoundingClientRect().left to correct the gap on the left
-        // setBubbleStartPosition();
+        // getMouseDownPosition();
         // setBubbleEndPosition();
         // xStart = xStart - board.getBoundingClientRect().left; 
         // xEnd = xEnd - board.getBoundingClientRect().left; 
@@ -258,7 +258,7 @@
       board.appendChild(bubbleOptions);      
     }
     
-    const setBubbleStartPosition = () => 
+    const getMouseDownPosition = () => 
     {
       board.addEventListener('mousedown', (e) =>
       {
@@ -305,10 +305,10 @@
       {
         case "addBubble":                     
           //allowCreateBubble();
-          setBubbleStartPosition();
+          getMouseDownPosition();
           setBubbleEndPosition();
-          // board.addEventListener('mousedown', () =>{ setBubbleStartPosition;})
-          // board.addEventListener('mouseup', () =>{ setBubbleStartPosition;})
+          // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})
+          // board.addEventListener('mouseup', () =>{ getMouseDownPosition;})
           
         break;
         case "": console.log('Pas de choix');

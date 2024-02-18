@@ -8,16 +8,23 @@
     #coordonnees {
       font-size: 18px;
     }
+    #board{margin: auto; width: 80vw; height: 80vh; border: 1px solid black;}
   </style>
 </head>
 <body>
 
 <!-- Ajoutez un élément pour afficher les coordonnées -->
-<div id="coordonnees">Cliquez n'importe où sur la page</div>
+<div id="coordonnees">Cliquez dans le tableau</div>
+
+<div id="board"></div>
 
 <script>
+  const board = document.getElementById('board');
+
   // Définissez une fonction qui gère l'événement et traite les coordonnées
-  function gestionnaireClic(event) {
+  function gestionnaireClic(event) 
+  {
+
     // Obtient les coordonnées X et Y par rapport à la fenêtre du navigateur
     var x = event.clientX;
     var y = event.clientY;
@@ -39,7 +46,7 @@
   var coordonneesElement = document.getElementById("coordonnees");
 
   // Ajoutez un écouteur d'événements pour le clic de la souris
-  document.addEventListener("click", gestionnaireClic);
+  board.addEventListener("click", gestionnaireClic);
 </script>
 
 </body>

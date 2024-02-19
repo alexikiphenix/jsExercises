@@ -119,6 +119,7 @@
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
     const widgetAddBubble = document.getElementById('widgetAddBubble');
+    const bubble = {xStart: null, yStart: null, xEnd: null, yEnd: null};
     let choice = "";
     let myZIndex = 1;    
     let position2;
@@ -174,7 +175,7 @@
       bubbleInfos.setAttribute('data-id', idBubble);
     }
     
-    const createComicBubble = () =>
+    const createComicBubble = (xtart, yStart, xEnd, yEnd) =>
     {       
       // We check first if the widget is selected
       if(
@@ -266,12 +267,8 @@
       board.addEventListener('mouseup', (e) =>
       {     
         cursorPositions.xEnd = e.clientX - board.getBoundingClientRect().left;
-        cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;      
-        // createComicBubble();
-        //createComicBubble(cursorPositions.xStart, cursorPositions.yStart, cursorPositions.xEnd, cursorPositions.yEnd);
-        //const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
-        const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};
-        // position2 = "TEST =>";
+        cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;
+        const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};        
         
         return position;
       })
@@ -291,14 +288,15 @@
 
     
     
-    const handleActionOnBoard = () =>
+    const handleActionOnBoard = (event) =>
     {      
+      console.log(`x : ${event.clientX} | y : ${event.clientY}`);
       switch(choice)
       {
         case "addBubble":                     
           //allowCreateBubble();
           //getMouseDownPosition();
-          console.log(getMouseDownPosition());
+          console.log(`x : ${event.clientX} | y : ${event.clientY}`);
           getMouseUpPosition();
           createComicBubble();
           // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})
@@ -309,8 +307,8 @@
       }
     }
 
-    board.addEventListener('mousedown', () =>{handleActionOnBoard();});
-    board.addEventListener('mouseup', () =>{handleActionOnBoard();});
+    board.addEventListener('click', handleActionOnBoard);
+    // board.addEventListener('mouseup', () =>{handleActionOnBoard();});
     </script>
 </body>
 </html>

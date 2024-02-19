@@ -20,11 +20,11 @@
 
 <script>
   const board = document.getElementById('board');
+  const bubble = {xStart: 0, yStart: 0, xEnd: 0, yEnd: 0};
 
   // Définissez une fonction qui gère l'événement et traite les coordonnées
   function gestionnaireClic(event) 
   {
-
     // Obtient les coordonnées X et Y par rapport à la fenêtre du navigateur
     var x = event.clientX;
     var y = event.clientY;

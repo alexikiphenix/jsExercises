@@ -262,17 +262,17 @@
     }
     
     
-    const getMouseUpPosition = () =>
-    {
-      board.addEventListener('mouseup', (e) =>
-      {     
-        cursorPositions.xEnd = e.clientX - board.getBoundingClientRect().left;
-        cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;
-        const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};        
+    // const getMouseUpPosition = () =>
+    // {
+    //   board.addEventListener('mouseup', (e) =>
+    //   {     
+    //     cursorPositions.xEnd = e.clientX - board.getBoundingClientRect().left;
+    //     cursorPositions.yEnd = e.clientY - board.getBoundingClientRect().top;
+    //     const position = {x: cursorPositions.xEnd, y: cursorPositions.yEnd};        
         
-        return position;
-      })
-    }
+    //     return position;
+    //   })
+    // }
     
     getMouseDownPosition();
     getMouseUpPosition();
@@ -295,9 +295,9 @@
       {
         case "addBubble":                     
           //allowCreateBubble();
-          //getMouseDownPosition();
+          
           console.log(`x : ${event.clientX} | y : ${event.clientY}`);
-          getMouseUpPosition();
+          
           createComicBubble();
           // board.addEventListener('mousedown', () =>{ getMouseDownPosition;})
           // board.addEventListener('mouseup', () =>{ getMouseDownPosition;})          
@@ -307,7 +307,7 @@
       }
     }
 
-    board.addEventListener('click', handleActionOnBoard);
+    board.addEventListener('mousedown', handleActionOnBoard);
     // board.addEventListener('mouseup', () =>{handleActionOnBoard();});
     </script>
 </body>

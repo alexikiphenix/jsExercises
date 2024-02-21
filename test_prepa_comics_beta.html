@@ -273,9 +273,7 @@
     //     return position;
     //   })
     // }
-    
-    getMouseDownPosition();
-    getMouseUpPosition();
+
 
     // const allowCreateBubble = () =>
     // {
@@ -288,7 +286,7 @@
 
     
     
-    const handleActionOnBoard = (event) =>
+    const handleMouseDown = (event) =>
     {      
       console.log(`x : ${event.clientX} | y : ${event.clientY}`);
       switch(choice)
@@ -307,8 +305,8 @@
       }
     }
 
-    board.addEventListener('mousedown', handleActionOnBoard);
-    // board.addEventListener('mouseup', () =>{handleActionOnBoard();});
+    board.addEventListener('mousedown', handleMouseDown);
+    // board.addEventListener('mouseup', () =>{handleMouseDown();});
     </script>
 </body>
 </html>

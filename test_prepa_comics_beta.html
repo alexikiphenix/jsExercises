@@ -194,8 +194,9 @@
         // xEnd = 350;
         // yEnd = 350;
         
-        // the comic bubble must be at least 25px height and width    
-        if(bubble.xEnd - bubble.xStart >= 25 && bubble.yEnd - bubble.yStart >= 25)
+        // the comic bubble must be at least 25px height and width. Math.abs to handle the case
+        // where the bubble is created from right to left or bottom to top    
+        if(Math.abs(bubble.xEnd - bubble.xStart) >= 25 && Math.abs(bubble.yEnd - bubble.yStart >= 25))
         {        
           const newComicBubble = document.createElement('textarea');
           myZIndex++;
@@ -203,6 +204,24 @@
           newComicBubble.setAttribute('data-id', myZIndex);
           newComicBubble.style.zIndex = myZIndex;
           newComicBubble.style.position = 'absolute';
+          
+          // In case of the bubble is drawn from right to left    
+          if(bubble.xStart > bubble.xEnd)
+          {
+            const xTemp = bubble.xStart;
+            bubble.xStart = bubble.xEnd;
+            bubble.xEnd = xTemp;
+          }
+
+          // // In case of the bubble is drawn from right to left    
+          // if(bubble.yStart > bubble.yEnd)
+          // {
+          //   const yTemp = bubble.yStart;
+          //   bubble.yStart = bubble.yEnd;
+          //   bubble.yEnd = yTemp;
+          // }
+
+
           newComicBubble.style.left = `${bubble.xStart}px`;          
           newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
           newComicBubble.style.top = `${bubble.yStart}px`;          

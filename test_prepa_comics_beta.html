@@ -120,10 +120,15 @@
     const canvas = document.querySelector('canvas');
     const widgetAddBubble = document.getElementById('widgetAddBubble');
     const bubble = {xStart: null, yStart: null, xEnd: null, yEnd: null};
+    const viewfinder = document.createElement('div');
     let choice = "";
     let myZIndex = 1;    
     let position2;
     let position3;
+    
+    viewfinder.style.border = '5px solid red';
+    viewfinder.style.display = 'none';
+    board.appendChild(viewfinder);
 
     widgetAddBubble.addEventListener('click', () =>
     {

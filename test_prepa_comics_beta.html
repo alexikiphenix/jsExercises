@@ -120,15 +120,22 @@
     const canvas = document.querySelector('canvas');
     const widgetAddBubble = document.getElementById('widgetAddBubble');
     const bubble = {xStart: null, yStart: null, xEnd: null, yEnd: null};
-    const viewfinder = document.createElement('div');
+    const viewfinderX = document.createElement('div');
+    const viewfinderY = document.createElement('div');
     let choice = "";
     let myZIndex = 1;    
     let position2;
     let position3;
     
-    viewfinder.style.border = '5px solid red';
-    viewfinder.style.display = 'none';
-    board.appendChild(viewfinder);
+    viewfinderX.style.position = 'absolute';
+    viewfinderX.style.width = `100%`;
+    viewfinderX.style.borderTop = '1px dotted red';
+    viewfinderY.style.position = 'absolute';
+    viewfinderY.style.height = `100%`;
+    viewfinderY.style.borderLeft = '1px dotted red';
+    // viewfinderY.style.display = 'none';
+    board.appendChild(viewfinderX);
+    board.appendChild(viewfinderY);
 
     widgetAddBubble.addEventListener('click', () =>
     {
@@ -339,8 +346,23 @@
       }
     }
 
+    const handleMouseMove = (event) =>
+    {      
+      switch(choice)
+      {
+        case "addBubble": 
+          viewfinderX.style.top = `${event.clientY - board.offsetTop}px`;          
+          viewfinderY.style.left = `${event.clientX - board.offsetLeft}px`;
+          console.log(viewfinderY);      
+          break;
+        case "": console.log('Aucun choix effectué');
+          break;
+      }
+    }
+
     board.addEventListener('mousedown', handleMouseDown);
     board.addEventListener('mouseup', handleMouseUp);
+    board.addEventListener('mousemove', handleMouseMove);
     </script>
 </body>
 </html>

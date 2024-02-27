@@ -115,6 +115,7 @@
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
+    const header = document.getElementById('mainHeader');
     const board = document.getElementById('board');
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
@@ -246,7 +247,42 @@
         else
           console.log("Bulle trop petite !");
       }
+    } // createComicBubble
 
+    const createComicBubbleBis = () =>
+    {
+      const newComicBubble = document.createElement('textarea');
+          myZIndex++;
+          newComicBubble.setAttribute('id', myZIndex);
+          newComicBubble.setAttribute('data-id', myZIndex);
+          newComicBubble.style.zIndex = myZIndex;
+          newComicBubble.style.position = 'absolute';
+          
+          // In case of the bubble is drawn from right to left    
+          if(bubble.xStart > bubble.xEnd)
+          {
+            const xTemp = bubble.xStart;
+            bubble.xStart = bubble.xEnd;
+            bubble.xEnd = xTemp;
+          }
+
+          // In case of the bubble is drawn from right to left    
+          if(bubble.yStart > bubble.yEnd)
+          {
+            const yTemp = bubble.yStart;
+            bubble.yStart = bubble.yEnd;
+            bubble.yEnd = yTemp;
+          }
+
+
+          newComicBubble.style.left = `${bubble.xStart}px`;          
+          newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
+          newComicBubble.style.top = `${bubble.yStart}px`;          
+          newComicBubble.style.height = `${(bubble.yEnd - bubble.yStart)}px`;
+          board.appendChild(newComicBubble);
+          widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
+          
+          createBubbleOptions(myZIndex);        
     }
     
     const createBubbleOptions = (bubbleDataId) =>

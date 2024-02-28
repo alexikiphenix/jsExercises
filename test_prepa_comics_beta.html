@@ -115,7 +115,8 @@
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
-    const header = document.getElementById('mainHeader');
+    const header = document.getElementsByTagName('header');
+    console.log(header);
     const board = document.getElementById('board');
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
@@ -249,7 +250,7 @@
       }
     } // createComicBubble
 
-    const createComicBubbleBis = () =>
+    const createComicBubbleBis = (event) =>
     {
       const newComicBubble = document.createElement('textarea');
           myZIndex++;
@@ -273,18 +274,34 @@
             bubble.yStart = bubble.yEnd;
             bubble.yEnd = yTemp;
           }
-
-
-          newComicBubble.style.left = `${bubble.xStart}px`;          
-          newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
-          newComicBubble.style.top = `${bubble.yStart}px`;          
-          newComicBubble.style.height = `${(bubble.yEnd - bubble.yStart)}px`;
-          board.appendChild(newComicBubble);
-          widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
+          newComicBubble.style.left = `${event.clientX}px`;          
+          newComicBubble.style.top = `${event.clientY}px`;          
+          // newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
+          newComicBubble.style.width = '5px';
+          newComicBubble.style.height = '5px';          
+          // newComicBubble.style.top = `${bubble.yStart}px`;          
+          // newComicBubble.style.height = `${(bubble.yEnd - bubble.yStart)}px`;
+          // widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
+          header[0].addEventListener('mousemove', (event) =>
+          {            
+            newComicBubble.style.width = `${event.clientX - newComicBubble.offsetLeft}px`;
+            newComicBubble.style.height = `${event.clientY - newComicBubble.offsetTop}px`;
+          })
           
-          createBubbleOptions(myZIndex);        
+          // header[0].addEventListener('mouseup', ()=>
+          // {
+          //   header[0].removeEventListener('mousemove', false);
+          // })
+
+          header[0].appendChild(newComicBubble);
+          //createBubbleOptions(myZIndex);        
     }
     
+  
+    header[0].addEventListener('mousedown', createComicBubbleBis);
+    
+    // header.addEventListener('mousemove', createComicBubbleBis);
+
     const createBubbleOptions = (bubbleDataId) =>
     {
       const bubbleClientRect = document.querySelector(`[data-id='${bubbleDataId}']`).getBoundingClientRect();

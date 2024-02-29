@@ -300,6 +300,13 @@
   
     header[0].addEventListener('mousedown', createComicBubbleBis);
     
+    header[0].addEventListener('mouseup', () =>
+    {
+      header[0].removeEventListener('mousedown', createComicBubbleBis, false);
+      header[0].removeEventListener('mousemove', createComicBubbleBis, false);
+      console.log('MOUSE UP');
+    });
+    
     // header.addEventListener('mousemove', createComicBubbleBis);
 
     const createBubbleOptions = (bubbleDataId) =>

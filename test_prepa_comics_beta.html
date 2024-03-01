@@ -115,8 +115,7 @@
   </div>
   <script>
     const wrapper = document.querySelector('#wrapper');
-    const header = document.getElementsByTagName('header');
-    console.log(header);
+    const header = document.getElementsByTagName('header');    
     const board = document.getElementById('board');
     const widgetsCreatedWrapper = document.querySelector('#widgetsCreatedWrapper');
     const canvas = document.querySelector('canvas');
@@ -124,6 +123,7 @@
     const bubble = {xStart: null, yStart: null, xEnd: null, yEnd: null};
     const viewfinderX = document.createElement('div');
     const viewfinderY = document.createElement('div');
+    let selectedComicBubble = document.createElement('textarea');
     let choice = "";
     let myZIndex = 1;    
     let position2;
@@ -253,59 +253,100 @@
     const createComicBubbleBis = (event) =>
     {
       const newComicBubble = document.createElement('textarea');
-          myZIndex++;
-          newComicBubble.setAttribute('id', myZIndex);
-          newComicBubble.setAttribute('data-id', myZIndex);
-          newComicBubble.style.zIndex = myZIndex;
-          newComicBubble.style.position = 'absolute';
-          
-          // In case of the bubble is drawn from right to left    
-          if(bubble.xStart > bubble.xEnd)
-          {
-            const xTemp = bubble.xStart;
-            bubble.xStart = bubble.xEnd;
-            bubble.xEnd = xTemp;
-          }
+      myZIndex++;
+      newComicBubble.setAttribute('id', myZIndex);
+      newComicBubble.setAttribute('data-id', myZIndex);
+      newComicBubble.classList.add('selected-comic-bubble');
+      newComicBubble.style.zIndex = myZIndex;
+      newComicBubble.style.position = 'absolute';
+      
+      // In case of the bubble is drawn from right to left    
+      if(bubble.xStart > bubble.xEnd)
+      {
+        const xTemp = bubble.xStart;
+        bubble.xStart = bubble.xEnd;
+        bubble.xEnd = xTemp;
+      }
 
-          // In case of the bubble is drawn from right to left    
-          if(bubble.yStart > bubble.yEnd)
-          {
-            const yTemp = bubble.yStart;
-            bubble.yStart = bubble.yEnd;
-            bubble.yEnd = yTemp;
-          }
-          newComicBubble.style.left = `${event.clientX}px`;          
-          newComicBubble.style.top = `${event.clientY}px`;          
-          // newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
-          newComicBubble.style.width = '5px';
-          newComicBubble.style.height = '5px';          
-          // newComicBubble.style.top = `${bubble.yStart}px`;          
-          // newComicBubble.style.height = `${(bubble.yEnd - bubble.yStart)}px`;
-          // widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
-          header[0].addEventListener('mousemove', (event) =>
-          {            
-            newComicBubble.style.width = `${event.clientX - newComicBubble.offsetLeft}px`;
-            newComicBubble.style.height = `${event.clientY - newComicBubble.offsetTop}px`;
-          })
-          
-          // header[0].addEventListener('mouseup', ()=>
-          // {
-          //   header[0].removeEventListener('mousemove', false);
-          // })
+      // In case of the bubble is drawn from right to left    
+      if(bubble.yStart > bubble.yEnd)
+      {
+        const yTemp = bubble.yStart;
+        bubble.yStart = bubble.yEnd;
+        bubble.yEnd = yTemp;
+      }
+      newComicBubble.style.left = `${event.clientX}px`;          
+      newComicBubble.style.top = `${event.clientY}px`;          
+      // newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
+      newComicBubble.style.width = '5px';
+      newComicBubble.style.height = '5px';          
+      // newComicBubble.style.top = `${bubble.yStart}px`;          
+      // newComicBubble.style.height = `${(bubble.yEnd - bubble.yStart)}px`;
+      // widgetsCreatedWrapper.appendChild(createDeleteBtn(myZIndex));
 
-          header[0].appendChild(newComicBubble);
-          //createBubbleOptions(myZIndex);        
+      /**************************             **********/
+      // header[0].addEventListener('mousemove', (event) =>
+      // {            
+      //   newComicBubble.style.width = `${event.clientX - newComicBubble.offsetLeft}px`;
+      //   newComicBubble.style.height = `${event.clientY - newComicBubble.offsetTop}px`;
+      // })
+      /********************************           *******************/
+      
+      // header[0].addEventListener('mouseup', ()=>
+      // {
+      //   header[0].removeEventListener('mousemove', false);
+      // })
+     
+
+      header[0].appendChild(newComicBubble);
+      //createBubbleOptions(myZIndex);        
     }
     
+    const handleMouseMove2 = () =>
+    {             
+      selectedComicBubble = document.querySelector('.selected-comic-bubble');
+      if(selectedComicBubble)
+      {
+        console.log(selectedComicBubble);
+        if(event.clientX >= selectedComicBubble.offsetLeft)
+          selectedComicBubble.style.width = `${event.clientX - selectedComicBubble.offsetLeft}px`;
+        else
+          selectedComicBubble.style.width = `${selectedComicBubble.offsetLeft - event.clientX}px`;
+        if(event.clientY - selectedComicBubble.offsetTop)
+          selectedComicBubble.style.height = `${event.clientY - selectedComicBubble.offsetTop}px`;    
+        else
+          selectedComicBubble.style.height = `${selectedComicBubble.offsetTop - event.clientY}px`;   
+      }
+    }
+
+    const handleMouseUp2 = () =>
+    {             
+      selectedComicBubble = document.querySelector('.selected-comic-bubble');
+      if(selectedComicBubble)
+      {
+        selectedComicBubble.classList.remove('selected-comic-bubble');
+        // header[0].removeEventListener('mousemove', handleMouseMove2);  
+      }
+    }
+
+    // const handleMouseMove2 = (event, bubble) =>
+    // {
+              
+    //   bubble.style.width = `${event.clientX - newComicBubble.offsetLeft}px`;
+    //   bubble.style.height = `${event.clientY - newComicBubble.offsetTop}px`;         
+    // }
   
     header[0].addEventListener('mousedown', createComicBubbleBis);
+    header[0].addEventListener('mousemove', handleMouseMove2);
+    header[0].addEventListener('mouseup', handleMouseUp2);
+    header[0].addEventListener('mouseleave', handleMouseUp2);
     
-    header[0].addEventListener('mouseup', () =>
-    {
-      header[0].removeEventListener('mousedown', createComicBubbleBis, false);
-      header[0].removeEventListener('mousemove', createComicBubbleBis, false);
-      console.log('MOUSE UP');
-    });
+    // header[0].addEventListener('mouseup', () =>
+    // {
+    //   header[0].removeEventListener('mousedown', createComicBubbleBis, false);
+    //   header[0].removeEventListener('mousemove', createComicBubbleBis, false);
+    //   console.log('MOUSE UP');
+    // });
     
     // header.addEventListener('mousemove', createComicBubbleBis);
 

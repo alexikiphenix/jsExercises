@@ -128,6 +128,8 @@
     let myZIndex = 1;    
     let position2;
     let position3;
+    let xEnd; 
+    let yEnd; 
     
     viewfinderX.style.position = 'absolute';
     viewfinderX.style.width = `100%`;
@@ -275,8 +277,10 @@
         bubble.yStart = bubble.yEnd;
         bubble.yEnd = yTemp;
       }
-      newComicBubble.style.left = `${event.clientX}px`;          
+      newComicBubble.style.left = `${event.clientX}px`;        
+      xEnd = event.clientX;   
       newComicBubble.style.top = `${event.clientY}px`;          
+      yEnd = event.clientY;   
       // newComicBubble.style.width = `${(bubble.xEnd-bubble.xStart)}px`;
       newComicBubble.style.width = '5px';
       newComicBubble.style.height = '5px';          
@@ -307,15 +311,24 @@
       selectedComicBubble = document.querySelector('.selected-comic-bubble');
       if(selectedComicBubble)
       {
-        console.log(selectedComicBubble);
+        selectedComicBubble.style.border = '1px solid black';
+        // console.log(selectedComicBubble);
         if(event.clientX >= selectedComicBubble.offsetLeft)
           selectedComicBubble.style.width = `${event.clientX - selectedComicBubble.offsetLeft}px`;
         else
-          selectedComicBubble.style.width = `${selectedComicBubble.offsetLeft - event.clientX}px`;
-        if(event.clientY - selectedComicBubble.offsetTop)
+        {          
+          console.log(`xEnd => ${xEnd}px`);
+          selectedComicBubble.style.left = `${event.clientX}px`;
+          selectedComicBubble.style.width = `${xEnd - event.clientX}px`;
+        }
+        if(event.clientY >= selectedComicBubble.offsetTop)
           selectedComicBubble.style.height = `${event.clientY - selectedComicBubble.offsetTop}px`;    
         else
-          selectedComicBubble.style.height = `${selectedComicBubble.offsetTop - event.clientY}px`;   
+        {
+          console.log(`yEnd => ${yEnd}px`);
+          selectedComicBubble.style.top = `${event.clientY}px`;          
+          selectedComicBubble.style.height = `${yEnd - event.clientY}px`;   
+        }
       }
     }
 

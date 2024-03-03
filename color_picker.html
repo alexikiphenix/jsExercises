@@ -2,142 +2,145 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* reset */
-        body{margin: 0;}
-        .hidden
-        {
-            display: none;
-            position: absolute;
-            left: 1vw;
-            top: 0;
-            padding: .1rem;
-            transition-duration: 1.5s;
-            border: 1px dotted black;
-        }
-        #bigBox{            
-            width: 40vw; 
-            margin: auto; 
-            cursor: crosshair;
-        }
-        #boxChoices{
-            display: table;
-            /* table-layout: fixed; /* to force width 
-            max-width: 40vw; */
-            max-height: 10vh;
-            /* border-collapse: collapse; */
-            border-spacing: .1vw .8vw;
-            position: absolute; 
-            top: 0;
-            right: 0;            
-            padding: 1.5vw;
-            font-size: .8vw;
-            overflow: hidden;
-            background-color: hsl(180 50% 50%);
-        }
-        .table{display: table; border-collapse: separate; border-spacing: .1vw 1vw;}
-        .row{display: table-row; padding: 2vh;}
-        .cell{display: table-cell; padding: .5vw;}
-        .smallBox{width: 1.2vw; height: 1.2vw; transition-duration: 2s; border: 1px solid white;}
-        .selected{border: 5px solid white;}
-        
-        .smallBox:hover
-        {
-            transform: rotate(360deg) scale(1.1);
-        }
-        
-    </style>
-    <title>test small color chart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      /* reset */
+      body{margin: 0;}
+      .hidden
+      {
+          display: none;
+          position: absolute;
+          left: 1vw;
+          top: 0;
+          padding: .1rem;
+          transition-duration: 1.5s;
+          border: 1px dotted black;
+      }
+      #bigBox{            
+          width: 40vw; 
+          margin: auto; 
+          cursor: crosshair;
+      }
+      #boxChoices{
+          display: table;
+          /* table-layout: fixed; /* to force width 
+          max-width: 40vw; */
+          max-height: 10vh;
+          /* border-collapse: collapse; */
+          border-spacing: .1vw .8vw;
+          position: absolute; 
+          top: 0;
+          right: 0;            
+          padding: 1.5vw;
+          font-size: .8vw;
+          overflow: hidden;
+          background-color: hsl(180 50% 50%);
+      }
+      .table{display: table; border-collapse: separate; border-spacing: .1vw 1vw;}
+      .row{display: table-row; padding: 2vh;}
+      .cell{display: table-cell; padding: .5vw;}
+      .smallBox{width: 1.2vw; height: 1.2vw; transition-duration: 2s; border: 1px solid white;}
+      .selected{border: 5px solid white;}
+      
+      .smallBox:hover
+      {
+          transform: rotate(360deg) scale(1.1);
+      }
+      
+  </style>
+  <title>test small color chart</title>
 </head>
 <body> 
-    <div id="clipboardColor" class="hidden">Test </div>
-    <div id="bigBox"></div>
-    <div id="boxChoices"></div>
+  <div id="clipboardColor" class="hidden">Test </div>
+  <div id="bigBox"></div>
+  <div id="boxChoices"></div>
 
 
-    <script>
-        const bigBox = document.querySelector('#bigBox');
-        const boxChoices = document.querySelector('#boxChoices');
-        const clipboardColor = document.getElementById(`clipboardColor`);
-        const tingSound = new Audio('assets/audio/ting.wav');   
-        tingSound.volume = .7;    
+  <script>
+    const bigBox = document.querySelector('#bigBox');
+    const boxChoices = document.querySelector('#boxChoices');
+    const clipboardColor = document.getElementById(`clipboardColor`);
+    const tingSound = new Audio('assets/audio/ting.wav');   
+    tingSound.volume = .7;    
 
-        const setBtnColor = () =>
+    const setBtnColor = () =>
+    {
+      allBtn = document.querySelectorAll('[id^="btn"]');
+      
+      for(const btn of allBtn)
+      {
+        console.log(btn.innerText);                
+      }
+    }
+
+    const showClipboardColor = (color = string) =>
+    {
+      navigator.clipboard.writeText(`${color}`);
+      clipboardColor.innerText = `${color} copié dans le presse-papier`;
+      clipboardColor.style.display = `inline-block`;
+    }
+
+    setBtnColor();
+    if(localStorage)
+    {
+      for(const item in localStorage)
+        console.log(item);
+    }
+    
+    const makeColorChart = () => {
+      for(let i = 0; i <= 360; i++)
+      {                
+        const divColor = document.createElement('div');
+        divColor.style.height = `1px`;
+        divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
+        divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
+        divColor.addEventListener("click", () =>
         {
-            allBtn = document.querySelectorAll('[id^="btn"]');
-            
-            for(const btn of allBtn)
-            {
-                console.log(btn.innerText);                
-            }
-        }
+          let computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
+          console.log(computedColor);
 
-        const showClipboardColor = (color = string) =>
-        {
-            navigator.clipboard.writeText(`${color}`);
-            clipboardColor.innerText = `${color} copié dans le presse-papier`;
-            clipboardColor.style.display = `inline-block`;
-        }
+          const boxColorChoice = document.createElement('div');
+          const colorHSL = document.createElement('div');
+          const colorRGB = document.createElement('div');
+          const smallBox = document.createElement('div')
 
-        setBtnColor();
-        if(localStorage)
-        {
-            for(const item in localStorage)
-                console.log(item);
-        }
-        
-        const makeColorChart = () => {
-            for(let i = 0; i <= 360; i++)
-            {                
-                const divColor = document.createElement('div');
-                divColor.style.height = `1px`;
-                divColor.style.backgroundColor = `hsl(${i} 50% 50%)`;
-                divColor.setAttribute('data-color', `hsl(${i} 50% 50%)`);
-                divColor.addEventListener("click", () =>
-                {
-                    let computedColor = window.getComputedStyle(divColor, null).getPropertyValue("background-color");
-                    console.log(computedColor);
+          smallBox.classList.add('cell', 'smallBox');
+          smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
+          smallBox.setAttribute('data-color', `${computedColor}`); 
+          smallBox.addEventListener('click', ()=>{
+            smallBox.classList.toggle('selected');
+            console.log(`${smallBox.getAttribute('data-color')}`);
+            computedColor = window.getComputedStyle(smallBox, null).getPropertyValue("background-color");
+            showClipboardColor(computedColor);
+          })
+          
+          showClipboardColor(computedColor);
 
-                    const boxColorChoice = document.createElement('div');
-                    const colorHSL = document.createElement('div');
-                    const colorRGB = document.createElement('div');
-                    const smallBox = document.createElement('div')
+          boxColorChoice.classList.add('row');
+          colorHSL.classList.add('cell');
+          colorRGB.classList.add('cell');
 
-                    smallBox.classList.add('cell', 'smallBox');
-                    smallBox.style.backgroundColor = `hsl(${i} 50% 50%)`; 
-                    smallBox.setAttribute('data-color', `${computedColor}`); 
-                    smallBox.addEventListener('click', ()=>{
-                        smallBox.classList.toggle('selected');
-                        console.log(`${smallBox.getAttribute('data-color')}`);
-                        computedColor = window.getComputedStyle(smallBox, null).getPropertyValue("background-color");
-                        showClipboardColor(computedColor);
-                    })
-                    
-                    showClipboardColor(computedColor);
-
-                    boxColorChoice.classList.add('row');
-                    colorHSL.classList.add('cell');
-                    colorRGB.classList.add('cell');
-
-                    colorHSL.innerText = `hsl(${i} 50% 50%)`; 
-                    colorRGB.innerText = `${computedColor}`; 
-                    
-
-                    //boxColorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
-                    boxColorChoice.appendChild(smallBox);
-                    boxColorChoice.appendChild(colorHSL);
-                    boxColorChoice.appendChild(colorRGB);
-                    boxChoices.appendChild(boxColorChoice);      
-                    tingSound.currentTime = 0;             
-                    tingSound.play();
-                })
-                bigBox.appendChild(divColor);
-            }
-        }
-       
-        makeColorChart();
-       console.log("TEST");
-    </script>
+          colorHSL.innerText = `hsl(${i} 50% 50%)`; 
+          colorRGB.innerText = `${computedColor}`; 
+          
+          //boxColorChoice.innerText = `hsl(${i} 50% 50%) => ${computedColor}`;
+          boxColorChoice.appendChild(smallBox);
+          boxColorChoice.appendChild(colorHSL);
+          boxColorChoice.appendChild(colorRGB);
+          boxChoices.appendChild(boxColorChoice);  
+          
+          // set sound.currentTime = 0 is important 
+          // otherwise play() won't work again before the
+          // sound ends
+          tingSound.currentTime = 0;             
+          tingSound.play();
+      })
+      bigBox.appendChild(divColor);
+    } // makeColorChart
+  }
+  
+  makeColorChart();
+    
+  </script>
 </body>
 </html>

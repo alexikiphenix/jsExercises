@@ -10,6 +10,7 @@
     <script>
         "use strict";
         let power;
+        let powers = [];
         // let power2;
         // let power3;        
         const getRandom = (min, max) => {
@@ -67,6 +68,7 @@
                    
                 powerTmp = powersListTmp.splice(indice, 1);
                 window[`power${i}`] = powerTmp[0];
+                
                 powers.push(window[`power${i}`]);
                 // console.log(powers);
             }

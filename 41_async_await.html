@@ -42,7 +42,7 @@
 
                 // reject()
                 // onerror signifie dès qu'il y aura une erreur.
-                element.onerror = () => reject(new Error(`Il y a une erreur : ${script}`));
+                element.onerror = () => reject(new Error(`Il y a une erreur : fichier ${script} non chargé`));
             });
         }
 
@@ -52,7 +52,7 @@
             {
                 const script1 = await loadScript('test_files/test_asynchronous.js');
                 console.log(script1);                
-                const script2 = await loadScript('test_files/test_asynchronous2.js');
+                const script2 = await loadScript('test_files/test_asynchronous3.js');
                 console.log(script2);                
             }
             catch(error)

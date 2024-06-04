@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{box-sizing: border-box;}
+        .wrapper    
+        {
+            display: grid;
+            place-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        #jauge
+        {
+            width: 5vw;
+            height: 20px;
+            background-color: #12ac34;
+        }
+        .controlsWrapper
+        {
+            display: flex;
+        }
+        .controlsWrapper > span
+        {
+            display: grid;
+            place-content: center;
+            width: 2.5vw;
+            height: 2.5vw;
+            color: white;
+            background-color: black;
+        }
+    </style>
+    <title>test resizer shoe</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div id="jauge"></div>
+        <div class="controlsWrapper">
+            <span id="btnIncrease">+</span>
+            <span id="btnDecrease">-</span>
+        </div>
+    </div>
+    <script>
+        const jauge = document.querySelector('#jauge');
+        const btnDecrease = document.querySelector('#btnDecrease');
+        const btnIncrease = document.getElementById('btnIncrease');
+        let height = 10;
+        
+        btnIncrease.addEventListener('mousedown',() =>{
+            jauge.style.height = `${++height}px`;
+        } )
+    </script>
+</body>
+</html>

@@ -20,6 +20,7 @@
             {
                 prenom = prompt('Quel est votre prénom ?');
                 nom = prompt('Quel est votre nom ?');
+                // Nous utilisons ici le l'objet global Window pour créer les éléments dynamiquement
                 // window['Personne'+i] = new Personne('Doe'+i, 'John'+i);
                 window[`Personne${i}`] = new Personne(`John${i}`);
                 console.log(window[`Personne${i}`]);

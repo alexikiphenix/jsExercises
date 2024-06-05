@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Spread operator</title>
 </head>
 <body>
     
-    <script>
+    <div>
+        <input type="checkbox">
+        <label for="">Veuillez décocher si vous ne souhaitez pas recevoir la newsletter</label>
+    </div>
 
-        const users = [{name: "Jaeger"}, {firstName: "Eren"}, {title: "Clash of titans"}];
-       
-       
-        const mySpread = users.explode();
+    <script>
+        const winners = [
+            "Ryu",
+            "Gandalf",
+            "Yoda"
+        ];
+
+        const sayHello = (person1, person2, person3) => {
+            console.log(`Hello ${person1}`);
+            console.log(`Hello ${person2}`);
+            console.log(`Hello ${person3}`);
+        }
+
+        const winnersCopy = [...winners];
+        const winnersCopy2 = winners;
+
+        console.log(winnersCopy);
+        console.log(winnersCopy2);
+
+
+        console.log('ee');
 
         
-        console.log(users);
-        console.log(mySpread);
+        const users = ["Gandalf", "Yoda", "Samus" ];
+        users.push("Eren");
+        
+        
+        const [hero1, hero2, hero3] = ["Gandalf", "Yoda", "Samus" ];
+        
 
-        const messages = ["Jaeger", "Eren", "Paul"];
+        
 
-        console.log(...messages);
 
+
+        $numbers = [];
+        $numbers += "test";
+
+        console.log($numbers);
 
     </script>
 </body>

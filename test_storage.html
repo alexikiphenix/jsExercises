@@ -56,9 +56,11 @@
     </div>
     
     <script>
+        // bg = Background
         const bgBox = document.querySelector('#bgBox');
         const btnValidate = document.getElementById('btnValidate');
         let bgInStorage;
+        
     //     const backgrounds = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
     //     'bg06.jpg', 'bg07.jpg', 'bg08.jpg', 'bg09.jpg', 'bg10.jpg', 'bg11.jpg', 'bg12.jpg',
     //     'bg13.jpg', 'bg14.jpg', 'bg15.jpg', 'bg16.jpg', 'bg17.jpg', 'bg18.jpg', 'bg19.jpg', 
@@ -68,26 +70,45 @@
         {
             const tmpArray = [];
             for(let i = 1; i <= nbBg; i++)
-            {
-                if(nbBg.length <= 2)
-                    tmpArray.push(`bg0${i}.jpg`);
-                else
-                    tmpArray.push(`bg${i}.jpg`);
+            {      
+                const bgObj  = {};              
+                bgObj.id = i;
+                bgObj.url = `bg${i}.jpg`;                                  
+                tmpArray.push(bgObj);
             }
+            localStorage.setItem('testBg', JSON.stringify(tmpArray));
             return tmpArray;
         }
 
         const backgrounds = generateBgArray(20);
 
-        const backgroundsObj = {};
-        backgroundsObj.list = ['bg01.jpg', 'bg02.jpg', 'bg03.jpg', 'bg04.jpg', 'bg05.jpg', 
-        'bg06.jpg'];
-
-       console.log(backgrounds.toString());
-
-        const makeBoard = () =>
+        const getMyStorage = (name) =>
         {
-            backgrounds.forEach( bgUrl =>
+            if(localStorage.getItem(name))
+            {
+                console.log('testBG bien dans le storage');
+                console.log(localStorage.getItem('testBg'));
+                
+                // JSON.parse pour modifier la syntaxe pour récupérer les objets
+                // qui étaient sous forme de chaines de kr (JSON.stringify)
+                console.log(JSON.parse(localStorage.getItem('testBg')));
+                
+                const bgInStorage = JSON.parse(localStorage.getItem('testBg'));
+                console.log(typeof bgInStorage);
+                if(typeof bgInStorage === 'object')
+                {
+                    bgInStorage.forEach(bg => console.log(bg.id+' - '+bg.url));
+                }
+            }
+        }
+            
+        getMyStorage('testBg');
+        
+            //console.log(backgrounds.toString());
+            
+            const makeBoard = () =>
+            {
+                backgrounds.forEach( bgUrl =>
                 {
                     const bgImg = document.createElement('img');
                     bgImg.src = bgUrl;
@@ -112,12 +133,16 @@
         {
             const selectedBg = document.querySelectorAll('.selected');
             const selectedBgArray = [];
-            console.log(selectedBg);
+            
             selectedBg.forEach(bg =>{
                 console.log(bg.getAttribute('data-url'));
+                const bgForStorage = {
+                    
+                }
                 selectedBgArray.push(bg.getAttribute('data-url'));
             })
             putBgInStorage(selectedBgArray);
+            
             return selectedBgArray;
         }
         
@@ -134,6 +159,7 @@
 
 
         const backgroundsStr = localStorage.getItem('myBackgrounds');
+      
         const backgroundsSelected = backgroundsStr.split(',');
         
     </script>

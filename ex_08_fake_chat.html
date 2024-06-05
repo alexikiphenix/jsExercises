@@ -3,12 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{box-sizing: border-box;}
+        #wrapper
+        {
+            display: flex;
+            flex-direction: column;     
+            margin: auto;      
+            width: 50vw;  
+        }
+        .message
+        {
+            margin: 1.5vh;
+            padding: 2vh;
+            width: 40%;
+            border-radius: 5vh;
+        }
+        .message:last-of-type
+        {  
+            margin-bottom: 22vh;        
+        }
+        .phoneOwner
+        {
+            align-self: end;
+            border-bottom-left-radius: 0;
+            background-color: rgb(192, 245, 192);
+        }
+        .recipient
+        {            
+            border-bottom-right-radius: 0;
+            background-color: rgb(245, 192, 241);
+        }
+        #newMsgBox
+        {
+            display: flex;
+            flex-direction: column;
+            width: 40vw;
+            min-height: 18vh;
+            margin: auto;
+            border: 1px solid black;
+        }
+        #newMsgBox textarea
+        {
+            display: block;
+            flex: 3;
+            width: 100%;            
+        }
+        
+    </style>
     <title>Fake chat with localStorage</title>
 </head>
-<body>
-    
+<body>    
+
+    <div id="wrapper">
+
+    </div>
+    <div id="newMsgBox">
+        <textarea name="newMsg" id="newMsg"></textarea>
+        <button type="submit">Envoyer</button>
+    </div>
     <script>
+        let count = 0;
+        const wrapper = document.querySelector('#wrapper');
+        // const messages = [];       
         // just an exercice to handle localStorage
+
+        // 1- Créer une liste de messages
+        const messages = [
+            {
+                id: 1,
+                sender: '+33777777777',
+                recipient: '+33666666666',
+                content: 'J\'ai envie de sortir'
+            },
+            {
+                id: 2,
+                sender: '+33666666666',
+                recipient: '+33777777777',
+                content: 'On pourrait voir un film'
+            },
+            {
+                id: 3,
+                sender: '+33777777777',
+                recipient: '+33666666666',
+                content: 'Je pense aux informations du jour'
+            },
+            {
+                id: 4,
+                sender: '+33666666666',
+                recipient: '+33777777777',
+                content: 'On peut aller pique-niquer'
+            },
+            {
+                id: 5,
+                sender: '+33777777777',
+                recipient: '+33666666666',
+                content: 'J\'ai beaucoup de boulot demain'
+            },
+            {
+                id: 6,
+                sender: '+33666666666',
+                recipient: '+33777777777',
+                content: 'On pourrait se faire un concert'
+            }   
+        ]
+
+        const talk = {
+            id : 1,
+            phoneOwner : '+33777777777',
+            messages: []
+        };
+
+        // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
+        // On renvoie un entier aléatoire entre une valeur min (incluse)
+        // et une valeur max (incluse).
+        // Attention : si on utilisait Math.round(), on aurait une distribution
+        // non uniforme !
+        function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 3- Créer une fonction qui renvoie un message au hasard : 
+        // version 3.0
+        // version 3.1 supprimer le message de la liste pour éviter doublon
+        const getRandomMessage = () => {
+            const indice = getRandomInt(0, messages.length-1);
+            const message = messages[indice];
+            messages.splice(indice, 1);
+            return message;
+        }
+
+        // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
+        while(messages.length > 0)
+        { 
+            count++;  
+            // 4-2 enregistrer les messages au format JSON                       
+            talk.messages.push(JSON.stringify(getRandomMessage()));                   
+        }
+  
+
+        // 5 enregistrer dans le WebStorage
+        localStorage.setItem('fakeChat', JSON.stringify(talk));
+
+        // 6 Récupérer le webStorage
+        const myChatStorage = JSON.parse(localStorage.getItem('fakeChat'));
+        
+        myChatStorage.messages.map((message) => 
+        {
+            const messageWrapper = document.createElement('div');            
+            message = JSON.parse(message);
+            messageWrapper.classList.add('message');
+            talk.phoneOwner === message.sender ?             
+                messageWrapper.classList.add('phoneOwner') :            
+                messageWrapper.classList.add('recipient');            
+            messageWrapper.innerHTML = `                
+                <h6>${message.sender}</h6>
+                <p>${message.content}</p>
+            `;
+            wrapper.append(messageWrapper);
+        });
+
     </script>
 </body>
 </html>

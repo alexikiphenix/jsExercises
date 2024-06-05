@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* 
+        v1 sans SASS
+        vert 1 : rgb(192, 245, 192);
+      */
+      *{box-sizing: border-box;}
+      body{margin: 0;
+        background-color: black;
+      }
+      #wrapper
+      {
+          display: flex;
+          flex-direction: column;     
+          margin: auto;
+          padding-top: 12vh;                  
+          width: 40vw;  
+          background-color: rgba(255, 255, 255, 1);
+      }
+      header 
+      {
+        position: fixed;        
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 40vw;        
+        padding: 1vh 1vh 2vh;
+        font-size: 1.8vh; 
+        font-weight: 900;      
+        color: rgb(228, 225, 225);
+        background-color: #2db74b;
+      }
+      #menuWrapper
+      {
+        /* height: 0; */        
+        display: flex;
+        flex-direction: row-reverse;        
+        justify-content: space-between;              
+      }
+      #menuCheck:checked+#menuWrapper
+      {
+        /* position: absolute;
+        top: 1vh;
+        right: 1vh;  */
+        /* overflow: visible; */
+        /* display: inline; */
+        /* width: 50%;       */
+        border-radius: .2vh;         
+        background-color: rgba(255, 255, 255, .5);
+        
+      }
+      .menu
+      {
+        /* display: none; */
+        font-size: 0;        
+        transition-duration: 1s;
+        overflow: hidden;
+        margin: 0;
+        list-style-type: none;        
+      }
+      #menuCheck:checked+#menuWrapper .menu
+      {
+        /* display: block; */
+        font-size: 1.8vh;        
+        padding: .8vh;        
+        display: block;
+      }
+      #menuCheck
+      {
+        display: none;
+      }
+      .menuTrigger
+      {
+        /* position: absolute; */
+        display: grid;
+        place-content: center;
+        height: 3vh;
+        user-select: none;
+        cursor: pointer;
+        border: 1px solid;
+        margin: 0;
+        padding: .6vh;
+      }
+      .menu a 
+      {
+        font-weight: normal;
+        text-decoration: none;
+        color: rgb(59, 58, 58);
+      }
+      .menu a:hover
+      {
+        text-decoration: underline;
+      }
+      /* .menu:active
+      {
+        transform: scale(.9);
+        box-shadow: .1vh .1vh 1vh;
+      } */
+      .message
+      {
+        margin: 1.5vh;
+        padding: 2vh;
+        width: 41%;
+        border-radius: 5vh;
+      }
+      .message:last-of-type
+      {  
+        margin-bottom: 22vh;        
+      }
+      .phoneOwner
+      {
+        align-self: end;
+        border-bottom-left-radius: 0;
+        background-color: rgb(192, 245, 192);
+      }
+      .recipient
+      {            
+        border-bottom-right-radius: 0;
+        background-color: rgb(245, 192, 241);
+      }
+      #newMsgBox
+      {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40vw;
+        min-height: 18vh;
+        margin: auto;       
+        background-color: #fff;
+      }
+      #inNewMsg
+      {
+        display: block;
+        flex: 3;
+        width: 95%;     
+        margin: 0 0 .5vh;  
+        border-radius: 5vh;          
+        border-width: 1px solid rgb(126, 126, 126);       
+      }
+
+      #btnSendMsg
+      {
+        padding: .8vh;
+        cursor: pointer;
+        font-size: 1.8vh;
+        font-weight: 900;
+        border-radius: 1vh;
+        background-color: rgb(192, 245, 192);
+      }
+
+      #btnSendMsg:active
+      {
+        transform: scale(.9);
+        box-shadow: .5vh .5vh 1vh rgb(28, 28, 28);
+      }
+    </style>
+    <title>Fake chat with localStorage</title>
+</head>
+<body>    
+
+  <div id="wrapper">
+    <header>
+      <div class="profilePicture">AX</div>
+      <span class="nickname">Nickname</span>
+      <input id="menuCheck" type="checkbox" >
+      <div id="menuWrapper">
+        <label for="menuCheck" class="menuTrigger">&equiv;</label>
+        <ul class="menu">
+          <li><a href="">item 1</a></li>
+          <li><a href="">item 2</a></li>
+          <li><a href="">item 3</a></li>
+          <li><a href="">item 4</a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
+  <div id="newMsgBox">
+      <textarea name="newMsg" id="inNewMsg"></textarea>
+      <button id="btnSendMsg" type="submit">Envoyer</button>
+  </div>
+  <script>
+      //**************** Exercice 1 ***********************
+      //***************************************************
+      // Nouvel objectif, nous reprenons l'ex 8  fake chat
+      // maintenant l'utilisateur doit pouvoir
+      // envoyer un message, celui-ci sera enregistré
+      // dans le localStorage
+      
+      
+      //**************** Exercice 2 ***********************
+      //***************************************************
+      // après chaque message envoyé nous devons recevoir
+      // une réponse aléatoire.
+      let count = 0;
+      const wrapper = document.querySelector('#wrapper');
+      const inNewMsg = document.getElementById('inNewMsg');
+      const btnSendMsg = document.getElementById('btnSendMsg');      
+      const messages = [];      
+      let myChatStorage;
+      btnSendMsg.addEventListener('click', ()=>
+      {
+        console.log(inNewMsg.value.length);
+        addMessage(inNewMsg.value)       
+      })
+      const randomMessages = [
+          {
+              id: 1,
+              sender: '+33777777777',
+              recipient: '+33666666666',
+              content: 'J\'ai envie de sortir'
+          },
+          {
+              id: 2,
+              sender: '+33666666666',
+              recipient: '+33777777777',
+              content: 'On pourrait voir un film'
+          },
+          {
+              id: 3,
+              sender: '+33777777777',
+              recipient: '+33666666666',
+              content: 'Je pense aux informations du jour'
+          },
+          {
+              id: 4,
+              sender: '+33666666666',
+              recipient: '+33777777777',
+              content: 'On peut aller pique-niquer'
+          },
+          {
+              id: 5,
+              sender: '+33777777777',
+              recipient: '+33666666666',
+              content: 'J\'ai beaucoup de boulot demain'
+          },
+          {
+              id: 6,
+              sender: '+33666666666',
+              recipient: '+33777777777',
+              content: 'On pourrait se faire un concert'
+          }   
+      ]
+      
+      const getTalkInStorage = () => 
+      {
+        if(localStorage.getItem('fakeChat'))
+        {
+          const fakeChat = JSON.parse(localStorage.getItem('fakeChat'));                       
+          return JSON.parse(localStorage.getItem('fakeChat'));                            
+        }
+        else
+          return false;
+      }        
+      
+      const talk = {
+          id : 1,
+          phoneOwner : '+33777777777',
+          messages: randomMessages
+      };
+
+   
+      
+      // 2- Créer une fonction aléatoire ou utiliser celle de MDN 
+      function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // 3- Créer une fonction qui renvoie un message au hasard : 
+      // version 3.0
+      // version 3.1 supprimer le message de la liste pour éviter doublon
+      const getRandomMessage = () => {
+          const indice = getRandomInt(0, randomMessages.length-1);
+          const message = randomMessages[indice];
+          randomMessages.splice(indice, 1);
+          return message;
+      }
+
+      // 4- Faire une boucle renvoyant les messages tant que le tableau n'est pas vide
+      // while(randomMessages.length > 0)
+      // { 
+      //     count++;  
+      //     // 4-2 enregistrer les messages au format JSON                       
+      //     talk.messages.push(JSON.stringify(getRandomMessage()));                   
+      // }
+
+
+      // 5 enregistrer dans le WebStorage
+      
+    const renderMessages = () =>
+    {
+      if(getTalkInStorage)
+      {
+        myChatStorage = getTalkInStorage();
+        
+        myChatStorage.messages.map((message) => 
+        {
+          const messageWrapper = document.createElement('div');         
+          //message = JSON.parse(message);             
+
+          messageWrapper.classList.add('message');
+          talk.phoneOwner === message.sender ?             
+              messageWrapper.classList.add('phoneOwner') :            
+              messageWrapper.classList.add('recipient');            
+          messageWrapper.innerHTML = `                
+              <h6>${message.sender}</h6>
+              <p>${message.content}</p>
+          `;
+          wrapper.append(messageWrapper);
+        });
+      }
+      else
+        return false;
+    } // renderMessages
+
+    const addMessage = (message) =>
+    {
+      if(getTalkInStorage)
+        talk.messages = getTalkInStorage().messages;
+
+      console.log(talk.messages);
+      talk.messages.push(message);
+      localStorage.setItem('fakeChat', JSON.stringify(talk));
+      console.log(talk.messages);      
+    } // renderMessages
+    
+    renderMessages();
+
+    
+
+  </script>
+</body>
+</html>

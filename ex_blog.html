@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      *{box-sizing: border-box;}
+      body{margin: 0; background-color: rgb(63, 136, 136);}
+      .wrapper
+      {
+        margin: auto;
+        padding: 2.5vh;
+        width: 65vw;
+        border-bottom-left-radius: 1vh;
+        border-bottom-right-radius: 1vh;
+        background-color: rgb(255, 255, 255);
+      }
+      h1
+      {
+        margin-top: 0;
+        padding: .5vh;
+        font-size: 2.5vh;
+        text-align: center;
+        color:#fff;
+        border-radius: .5vh;
+        background-color: rgb(63, 136, 136);
+      }
+      #inTxtWrapper
+      {
+        padding: .5vh;
+        text-align: center;
+      }
+      #inTxt
+      {
+        width: 100%;
+        min-height: 10vh;
+        padding: .9vh;
+        border-radius: 1vh;
+        /* border: 1px solid rgb(63, 136, 136); */
+        box-shadow: 1vh 1vh 1.5vh rgb(130, 129, 129);
+      }
+      #inTxt:focus
+      {
+        border: 1px solid rgb(63, 136, 136);
+      }
+      #btnAddTxt
+      {
+        margin: 3vh 2vh;
+        padding: 2vh;
+        cursor: pointer;
+        font-size: 1.4vh;
+        border-radius: 2vh;
+        color: #fff;
+        background-color: rgb(63, 136, 136);
+      }
+      article
+      {
+        margin-bottom: 4vh;
+        padding: 1vh;
+        border-radius: 1vh;
+        /* border: 1px solid grey; */
+        box-shadow: 1vh 1vh 1.5vh rgb(130, 129, 129);
+      }
+      p{
+        text-align: justify;        
+      }
+    </style>
+    <title>Ex blog</title>
+</head>
+<body>
+    <div class="wrapper">
+      <header>
+        <h1>Mon blog</h1>
+      </header>
+      <main id="mainArticles">
+        <h2>Mes activités</h2>
+        <article>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est rerum voluptas voluptate unde deleniti quo aliquid facilis autem nobis!</p>
+          <p>Pariatur delectus quos hic dignissimos, soluta molestias, ut accusamus consequuntur tempore iure aut! Eos quasi officiis placeat excepturi veritatis consectetur.</p>
+        </article>
+        <article>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quidem ex tenetur molestias distinctio quod sapiente ut nemo suscipit voluptates.</p>
+          <p>Omnis impedit voluptatem soluta, eligendi consequatur tempora, perferendis illum magnam molestias, numquam voluptas facere vel itaque dignissimos esse enim totam?</p>
+        </article>
+      </main>     
+      <div id="inTxtWrapper">
+        <textarea name="inText" id="inTxt" placeholder="Ecrire le texte ici"></textarea>
+        <button id="btnAddTxt" type="submit">Enregistrer</button>
+      </div>      
+    </div>
+
+
+    <script>
+      // Exercice 1 : en cliquant sur enregistrer le texte saisi doit s'ajouter 
+      // en dessous sous forme d'1 article contenant 1 seul paragraphe
+
+        // Etape 1 : "récupérer" le textarea et le button dans une variable JS 
+        // pour pouvoir appliquer plus facilement les méthodes JS        
+        const inTxt = document.querySelector('#inTxt');
+        const btnAddTxt = document.querySelector('#btnAddTxt');
+       
+        
+        // Etape 2 créer une fonction ajouter du texte : 
+        const addTxt = (txt) => 
+        {
+          // Gestion du textarea vide ou avec un espace
+          // axe d'amélioration : gérer plusieurs espaces
+          if(txt !== "" && txt != " ")
+          {
+            const newArticle = document.createElement('article');
+            // const newTxt = document.createElement('p');
+            // Etape 4 utiliser une regex pour remplacer
+            // les retours à la ligne par des <p>
+            txt = '<p>'+txt.replace(/\n/g, '</p><p>')+'</p>';
+            // newTxt.innerText = `${txt}`;               
+            
+            document.querySelector('main').appendChild(newArticle);
+            newArticle.innerHTML = txt;          
+          }
+          else  
+            return false;
+        }
+
+        // Etape 3 ajouter un écouteur d'évènement pour réagir au clic
+        // et exécuter la fonction
+        btnAddTxt.addEventListener('click', () =>
+        {               
+          addTxt(inTxt.value);
+        })
+
+      // Exercice 2 : ajout d'un article mais avec autant de <p> qu'il
+      // y a de retours à la ligne.
+    </script>
+</body>
+</html>

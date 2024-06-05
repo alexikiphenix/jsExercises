@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          #backgroundContainer
+          {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 300px);
+            gap: 18px;
+            margin: auto;
+          }
+          
+          #backgroundContainer > div {
+            width: 300px;
+            height: 300px;
+          }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>        
+        <div id="backgroundContainer">          
+        </div>
+        <script>
+        const backgroundContainer = document.querySelector('#backgroundContainer');
+        let myBgList = [            
+            {
+                "id": "1",
+                "src": '01soundOfSun.png'
+            },           
+            {
+                "id": "2",
+                "src": '02waveOfFun.png'
+            },
+            {
+                "id": "3",
+                "src": '03waveOfSuccess.png'
+            }
+        ]
+        myBgList = JSON.stringify(myBgList);
+        console.log(myBgList);
+        localStorage.setItem('myBgList', myBgList);
+        
+        const getMyBackgrounds = () => {                        
+            if(localStorage.getItem('myBgList'))
+            {                
+              return JSON.parse(localStorage.getItem('myBgList'));               
+            }
+            else
+              return false;
+        }
+
+        const renderMyBackgrounds = (array) => {
+          if(getMyBackgrounds())
+          {
+            if(typeof getMyBackgrounds() === 'array' && getMyBackgrounds().length > 0)
+            {
+              getMyBackgrounds().map(
+                (background) => 
+                {
+                  console.log(background);
+                  console.log(background.id)
+                  const div = document.createElement('div');
+                  div.style.backgroundImage = `${background.src}`;
+                  backgroundContainer.appendChild(div);                  
+                }
+              )
+            }
+          }
+        }        
+
+        renderMyBackgrounds();
+    </script>
+</body>
+</html>

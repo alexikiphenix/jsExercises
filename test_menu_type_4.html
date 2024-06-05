@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #bigBox
+        {
+            position: relative;
+            /* height: 400px;
+            width: 400px; */
+            display: inline-grid; 
+            place-content: center;
+            border: 1px solid #000;            
+        }
+        #triggerLabel
+        {        
+            display: grid;
+            place-content: center;           
+            user-select: none;                   
+            color: white;    
+            background-color: black;
+            border: 1px solid #000;
+            border-radius: 50%;    
+            height: 80px;
+            width:  80pX;   
+        }
+        #trigger
+        {
+            display: none;
+        }
+        [id^="subMenu"]
+        {
+            display: grid;
+            place-content: center;   
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            height: 3px;
+            width: 3px; 
+            overflow: hidden;
+            transition: 2s;        
+            user-select: none;     
+            color: white;    
+            background-color: rgb(190, 16, 16);            
+            border-radius: 50%;
+        }  
+        #subMenu1
+        {
+            background-color: rgb(16, 190, 54);
+            border: 1px solid #58bb07;
+        } 
+   
+        #trigger:checked~#subMenu1
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: -100% -100%;
+            rotate: -360deg;
+        }
+        #trigger:checked~#subMenu2
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: 100% -100%;
+            rotate: 360deg;
+        }
+        #trigger:checked~#subMenu3
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: -100% 100%;
+            rotate: -360deg;
+        }
+        #trigger:checked~#subMenu4
+        {
+            display: grid;
+            position: absolute;
+            height: 80px;
+            width:  80pX;   
+            /* top: 0;
+            left: 0; */
+            translate: 100% 100%;
+            rotate: 360deg;
+            background-color: rgb(22, 48, 190);
+        }
+        #bigBox2
+        {
+            display: grid;
+            place-content: center;
+            height: 50vh;
+            width: 50vh;
+            border: 1px solid black;
+        }
+        #bigBall
+        {
+            display: grid;
+            place-content: center;
+            position: relative;
+            height: 7vh;
+            width: 7vh;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+        [id^="smallBall"]
+        {
+            display: grid;
+            place-content: center;
+            position: absolute;            
+            /* display: none; */
+            left: 50%;
+            top: 50%;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            translate: -50% -50%;                        
+            transition-duration: 2s;  
+            border-radius: 50%;  
+            color: white;
+            font-weight: bolder;
+            background-color: black;
+        }
+     
+        #bigBall:hover [id^="smallBall"]
+        {
+            height: 3vh;
+            width: 3vh;
+            padding: .7rem;
+        }
+
+        #bigBall:hover #smallBall1
+        {          
+            color: red;
+            transform: translate(-40px, -40px) rotate(-360deg);
+        }
+        #bigBall:hover #smallBall2
+        {               
+            transform: translate(40px, -40px) rotate(360deg);
+            color: red;
+            
+        }
+        #bigBall:hover #smallBall3
+        {                    
+            transform: translate(-40px, 40px) rotate(-360deg);            
+            color: red;       
+        }
+        #bigBall:hover #smallBall4
+        {               
+            transform: translate(40px, 40px) rotate(360deg);                        
+            color: rgb(0, 255, 55);           
+        }
+    
+
+    </style>
+    <title>Menu type 3</title>
+</head>
+<body>
+    <!-- Il faut se rappeler le sélecteur voisins généraux  -->
+    <div id="bigBox">              
+        <label id="triggerLabel" for="trigger">trigger</label>
+        <input type="checkbox" id="trigger" />
+        <div id="subMenu1">menu 1</div>
+        <div id="subMenu2">menu 2</div>
+        <div id="subMenu3">menu 3</div>
+        <div id="subMenu4">menu 4</div>        
+        <div id="subMenu4">menu 4</div>        
+    </div>
+    <div id="bigBox2">              
+        <!-- <label id="triggerLabel" for="trigger">trigger</label>
+        <input type="checkbox" id="trigger" /> -->
+        <div id="bigBall">
+            <div id="smallBall1">1</div>
+            <div id="smallBall2">2</div>
+            <div id="smallBall3">3</div>
+            <div id="smallBall4">4</div>        
+        </div>
+    </div>
+    <span id="counter">0</span>
+
+    
+
+    <script>
+        const bigBox = document.getElementById('bigBox');
+        const trigger = document.getElementById('trigger');
+        const counterBox = document.querySelector(`#counter`);
+        console.log(counterBox);
+        let counter = 0;
+        const count = () =>
+        {
+            counter++;
+            console.log(counter);
+            counterBox.innerText = `${counter}`;
+        }
+
+        trigger.addEventListener('click', () => 
+            {
+                count();
+            }
+        )
+        count();
+       
+    </script>
+</body>
+</html>

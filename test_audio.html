@@ -12,6 +12,7 @@
             height: 10vh;
             cursor: pointer;
             color: white;
+            user-select: none;
             background-color: darkred;
         }
     </style>
@@ -24,8 +25,8 @@
     <script>
         const btnLaser = document.querySelector('#btnLaser');
         const btnTing = document.querySelector('#btnTing');
-        const soundLaser = new Audio('assets/audio/laser.mp3')
-        const soundTing = new Audio('assets/audio/ting.wav');
+        const soundLaser = new Audio('./assets/audio/laser.mp3')
+        const soundTing = new Audio('./assets/audio/ting.wav');
 
         console.log(soundLaser);
 
@@ -33,15 +34,15 @@
         {
             btnLaser.addEventListener('click', () =>
             {  
-                soundLaser.currentTime = 0; // initialise le son à chaque clic
-                soundLaser.volume(.1);
+                soundLaser.currentTime = 0; // initialise le son à chaque clic                
+                soundLaser.volume = .3;
                 soundLaser.play();
             })
 
             btnTing.addEventListener('click', () =>
             {  
                 soundTing.currentTime = 0; // initialise le son à chaque clic
-                soundTing.volume(.4);
+                soundTing.volume = .4;
                 soundTing.play();
             })
 
